@@ -1,13 +1,24 @@
-﻿using BulgarianWines.Web.ViewModels.Wines;
-using Microsoft.AspNetCore.Mvc;
+﻿using BulgarianWines.Services.Data;
 
 namespace BulgarianWines.Web.Controllers
 {
+    using BulgarianWines.Web.ViewModels.Wines;
+    using Microsoft.AspNetCore.Mvc;
+
     public class WinesController : Controller
     {
+        private readonly ICategoriesService categoriesService;
+
+        public WinesController(ICategoriesService categoriesService)
+        {
+            this.categoriesService = categoriesService;
+        }
+
         public IActionResult Create()
         {
-            return this.View();
+            var viewModel = new CreateWineInputModel();
+            viewModel.CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs();
+            return this.View(viewModel);
         }
 
         [HttpPost]
@@ -15,7 +26,8 @@ namespace BulgarianWines.Web.Controllers
         {
             if (!this.ModelState.IsValid)
             {
-                return this.View();
+                input.CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs();
+                return this.View(input);
             }
 
             return this.Redirect("/");

@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace BulgarianWines.Data.Models
+﻿namespace BulgarianWines.Data.Models
 {
+    using System.Collections.Generic;
+
     using BulgarianWines.Data.Common.Models;
 
     public class Wine : BaseDeletableModel<int>
@@ -14,6 +14,14 @@ namespace BulgarianWines.Data.Models
         public string Name { get; set; }
 
         public string Description { get; set; }
+
+        public string Harvest { get; set; }
+
+        public string Origin { get; set; }
+
+        public string Volume { get; set; }
+
+        public string Variety { get; set; }
 
         public string ImageUrl { get; set; }
 

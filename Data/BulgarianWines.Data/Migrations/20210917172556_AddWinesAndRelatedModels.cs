@@ -1,8 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace BulgarianWines.Data.Migrations
+﻿namespace BulgarianWines.Data.Migrations
 {
+    using System;
+
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class AddWinesAndRelatedModels : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
