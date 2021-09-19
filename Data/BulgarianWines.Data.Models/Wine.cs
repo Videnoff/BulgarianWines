@@ -15,13 +15,13 @@
 
         public string Description { get; set; }
 
-        public string Harvest { get; set; }
-
         public string Origin { get; set; }
 
-        public string Variety { get; set; }
-
         public string ImageUrl { get; set; }
+
+        public int VarietyId { get; set; }
+
+        public virtual Variety Variety { get; set; }
 
         public int CategoryId { get; set; }
 
@@ -30,6 +30,10 @@
         public int VolumeId { get; set; }
 
         public virtual Volume Volume { get; set; }
+
+        public int HarvestId { get; set; }
+
+        public virtual Harvest Harvest { get; set; }
 
         public virtual ICollection<Image> Images { get; set; }
 

@@ -29,6 +29,7 @@
                               new SettingsSeeder(),
                               new CategoriesSeeder(),
                               new VolumesSeeder(),
+                              new HarvestsSeeder(),
                           };
 
             foreach (var seeder in seeders)

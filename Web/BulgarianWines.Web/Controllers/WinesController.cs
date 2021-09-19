@@ -11,15 +11,18 @@
         private readonly ICategoriesService categoriesService;
         private readonly IWinesService winesService;
         private readonly IVolumesService volumesService;
+        private readonly IHarvestsService harvestsService;
 
         public WinesController(
             ICategoriesService categoriesService,
             IWinesService winesService,
-            IVolumesService volumesService)
+            IVolumesService volumesService,
+            IHarvestsService harvestsService)
         {
             this.categoriesService = categoriesService;
             this.winesService = winesService;
             this.volumesService = volumesService;
+            this.harvestsService = harvestsService;
         }
 
         public IActionResult Create()
@@ -28,6 +31,7 @@
             {
                 CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs(),
                 VolumesItems = this.volumesService.GetAllAsKeyValuePairs(),
+                HarvestsItems = this.harvestsService.GetAllAsKeyValuePairs(),
             };
 
             return this.View(viewModel);
@@ -40,6 +44,7 @@
             {
                 input.CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs();
                 input.VolumesItems = this.volumesService.GetAllAsKeyValuePairs();
+                input.HarvestsItems = this.harvestsService.GetAllAsKeyValuePairs();
                 return this.View(input);
             }
 

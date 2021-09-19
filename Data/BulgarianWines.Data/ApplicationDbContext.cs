@@ -34,6 +34,8 @@
 
         public DbSet<Volume> Volumes { get; set; }
 
+        public DbSet<Harvest> Harvests { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

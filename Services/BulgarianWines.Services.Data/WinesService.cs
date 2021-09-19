@@ -22,7 +22,7 @@
                 Name = input.Name,
                 CategoryId = input.CategoryId,
                 Description = input.Description,
-                Harvest = input.Harvest,
+                HarvestId = input.HarvestId,
                 VolumeId = input.VolumeId,
                 Origin = input.Origin,
                 Variety = input.Variety,
