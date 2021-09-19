@@ -2,6 +2,7 @@
 @{
     this.ViewData["Title"] = "Add new Wine";
     var categoryItems = this.Model.CategoriesItems.Select(x => new SelectListItem(x.Value, x.Key));
+    var volumeItems = this.Model.VolumesItems.Select(x => new SelectListItem(x.Value, x.Key));
 }
 <h1>
     @this.ViewData["Title"]
@@ -30,9 +31,9 @@
         <span asp-validation-for="Origin" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Volume"></label>
-        <input asp-for="Volume" class="form-control" />
-        <span asp-validation-for="Volume" class="text-danger"></span>
+        <label asp-for="VolumeId"></label>
+        <select asp-for="VolumeId" class="form-control" asp-items="volumeItems"></select>
+        <span asp-validation-for="VolumeId" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="Variety"></label>

@@ -6,26 +6,26 @@
     using BulgarianWines.Data.Common.Repositories;
     using BulgarianWines.Data.Models;
 
-    public class CategoriesService : ICategoriesService
+    public class VolumesService : IVolumesService
     {
-        private readonly IDeletableEntityRepository<Category> categoriesRepository;
+        private readonly IDeletableEntityRepository<Volume> volumesRepository;
 
-        public CategoriesService(IDeletableEntityRepository<Category> categoriesRepository)
+        public VolumesService(IDeletableEntityRepository<Volume> volumesRepository)
         {
-            this.categoriesRepository = categoriesRepository;
+            this.volumesRepository = volumesRepository;
         }
 
         public IEnumerable<KeyValuePair<string, string>> GetAllAsKeyValuePairs()
         {
-            return this.categoriesRepository
+            return this.volumesRepository
                 .AllAsNoTracking()
                 .Select(x => new
                 {
                     x.Id,
-                    x.Name,
+                    x.Quantity,
                 })
                 .ToList()
-                .Select(x => new KeyValuePair<string, string>(x.Id.ToString(), x.Name));
+                .Select(x => new KeyValuePair<string, string>(x.Id.ToString(), x.Quantity));
         }
     }
 }

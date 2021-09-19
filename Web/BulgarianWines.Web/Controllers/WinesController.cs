@@ -1,34 +1,49 @@
-﻿using BulgarianWines.Services.Data;
-
-namespace BulgarianWines.Web.Controllers
+﻿namespace BulgarianWines.Web.Controllers
 {
+    using System.Threading.Tasks;
+
+    using BulgarianWines.Services.Data;
     using BulgarianWines.Web.ViewModels.Wines;
     using Microsoft.AspNetCore.Mvc;
 
     public class WinesController : Controller
     {
         private readonly ICategoriesService categoriesService;
+        private readonly IWinesService winesService;
+        private readonly IVolumesService volumesService;
 
-        public WinesController(ICategoriesService categoriesService)
+        public WinesController(
+            ICategoriesService categoriesService,
+            IWinesService winesService,
+            IVolumesService volumesService)
         {
             this.categoriesService = categoriesService;
+            this.winesService = winesService;
+            this.volumesService = volumesService;
         }
 
         public IActionResult Create()
         {
-            var viewModel = new CreateWineInputModel();
-            viewModel.CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs();
+            var viewModel = new CreateWineInputModel
+            {
+                CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs(),
+                VolumesItems = this.volumesService.GetAllAsKeyValuePairs(),
+            };
+
             return this.View(viewModel);
         }
 
         [HttpPost]
-        public IActionResult Create(CreateWineInputModel input)
+        public async Task<IActionResult> CreateAsync(CreateWineInputModel input)
         {
             if (!this.ModelState.IsValid)
             {
                 input.CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs();
+                input.VolumesItems = this.volumesService.GetAllAsKeyValuePairs();
                 return this.View(input);
             }
+
+            await this.winesService.CreateAsync(input);
 
             return this.Redirect("/");
         }

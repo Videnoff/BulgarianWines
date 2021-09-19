@@ -28,6 +28,7 @@
                               new RolesSeeder(),
                               new SettingsSeeder(),
                               new CategoriesSeeder(),
+                              new VolumesSeeder(),
                           };
 
             foreach (var seeder in seeders)

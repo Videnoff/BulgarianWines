@@ -18,13 +18,15 @@
         public string Origin { get; set; }
 
         [Required]
-        public string Volume { get; set; }
+        public string Variety { get; set; }
 
         [Required]
-        public string Variety { get; set; }
+        public int VolumeId { get; set; }
 
         public int CategoryId { get; set; }
 
         public IEnumerable<KeyValuePair<string, string>> CategoriesItems { get; set; }
+
+        public IEnumerable<KeyValuePair<string, string>> VolumesItems { get; set; }
     }
 }

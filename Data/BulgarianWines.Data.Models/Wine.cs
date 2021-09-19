@@ -19,8 +19,6 @@
 
         public string Origin { get; set; }
 
-        public string Volume { get; set; }
-
         public string Variety { get; set; }
 
         public string ImageUrl { get; set; }
@@ -28,6 +26,10 @@
         public int CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
+
+        public int VolumeId { get; set; }
+
+        public virtual Volume Volume { get; set; }
 
         public virtual ICollection<Image> Images { get; set; }
 
