@@ -4,6 +4,7 @@
     var categoryItems = this.Model.CategoriesItems.Select(x => new SelectListItem(x.Value, x.Key));
     var volumeItems = this.Model.VolumesItems.Select(x => new SelectListItem(x.Value, x.Key));
     var harvestItems = this.Model.HarvestsItems.Select(x => new SelectListItem(x.Value, x.Key));
+    var varietyItems = this.Model.VarietyItems.Select(x => new SelectListItem(x.Value, x.Key));
 }
 <h1>
     @this.ViewData["Title"]
@@ -37,9 +38,9 @@
         <span asp-validation-for="VolumeId" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Variety"></label>
-        <input asp-for="Variety" class="form-control" />
-        <span asp-validation-for="Variety" class="text-danger"></span>
+        <label asp-for="VarietyId"></label>
+        <select asp-for="VarietyId" class="form-control" asp-items="varietyItems"></select>
+        <span asp-validation-for="VarietyId" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="CategoryId"></label>

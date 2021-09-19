@@ -68,6 +68,7 @@
             services.AddTransient<ICategoriesService, CategoriesService>();
             services.AddTransient<IVolumesService, VolumesService>();
             services.AddTransient<IHarvestsService, HarvestsService>();
+            services.AddTransient<IVarietiesService, VarietiesService>();
             services.AddTransient<IWinesService, WinesService>();
         }
 

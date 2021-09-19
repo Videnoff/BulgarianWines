@@ -25,7 +25,7 @@
                 HarvestId = input.HarvestId,
                 VolumeId = input.VolumeId,
                 Origin = input.Origin,
-                Variety = input.Variety,
+                VarietyId = input.VarietyId,
             };
 
             await this.winesRepository.AddAsync(wine);

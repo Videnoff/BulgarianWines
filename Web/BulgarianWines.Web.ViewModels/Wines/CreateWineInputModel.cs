@@ -15,7 +15,7 @@
         public string Origin { get; set; }
 
         [Required]
-        public string Variety { get; set; }
+        public int VarietyId { get; set; }
 
         [Required]
         public int HarvestId { get; set; }
@@ -31,5 +31,7 @@
         public IEnumerable<KeyValuePair<string, string>> VolumesItems { get; set; }
 
         public IEnumerable<KeyValuePair<string, string>> HarvestsItems { get; set; }
+
+        public IEnumerable<KeyValuePair<string, string>> VarietyItems { get; set; }
     }
 }

@@ -36,6 +36,8 @@
 
         public DbSet<Harvest> Harvests { get; set; }
 
+        public DbSet<Variety> Varieties { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
