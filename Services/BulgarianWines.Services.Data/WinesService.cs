@@ -24,7 +24,7 @@
                 Description = input.Description,
                 HarvestId = input.HarvestId,
                 VolumeId = input.VolumeId,
-                Origin = input.Origin,
+                OriginId = input.OriginId,
                 VarietyId = input.VarietyId,
             };
 

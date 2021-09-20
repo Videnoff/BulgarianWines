@@ -15,7 +15,9 @@
 
         public string Description { get; set; }
 
-        public string Origin { get; set; }
+        public int OriginId { get; set; }
+
+        public virtual Origin Origin { get; set; }
 
         public string ImageUrl { get; set; }
 

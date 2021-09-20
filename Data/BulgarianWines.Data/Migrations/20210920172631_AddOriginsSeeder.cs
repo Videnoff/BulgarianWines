@@ -1,26 +1,25 @@
-﻿namespace BulgarianWines.Data.Migrations
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+namespace BulgarianWines.Data.Migrations
 {
-    using System;
-
-    using Microsoft.EntityFrameworkCore.Migrations;
-
-    public partial class AddVarietiesSeeder : Migration
+    public partial class AddOriginsSeeder : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Variety",
+                name: "Origin",
                 table: "Wines");
 
             migrationBuilder.AddColumn<int>(
-                name: "VarietyId",
+                name: "OriginId",
                 table: "Wines",
                 type: "int",
                 nullable: false,
                 defaultValue: 0);
 
             migrationBuilder.CreateTable(
-                name: "Varieties",
+                name: "Origins",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -33,24 +32,24 @@
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Varieties", x => x.Id);
+                    table.PrimaryKey("PK_Origins", x => x.Id);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Wines_VarietyId",
+                name: "IX_Wines_OriginId",
                 table: "Wines",
-                column: "VarietyId");
+                column: "OriginId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Varieties_IsDeleted",
-                table: "Varieties",
+                name: "IX_Origins_IsDeleted",
+                table: "Origins",
                 column: "IsDeleted");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Wines_Varieties_VarietyId",
+                name: "FK_Wines_Origins_OriginId",
                 table: "Wines",
-                column: "VarietyId",
-                principalTable: "Varieties",
+                column: "OriginId",
+                principalTable: "Origins",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
         }
@@ -58,22 +57,22 @@
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Wines_Varieties_VarietyId",
+                name: "FK_Wines_Origins_OriginId",
                 table: "Wines");
 
             migrationBuilder.DropTable(
-                name: "Varieties");
+                name: "Origins");
 
             migrationBuilder.DropIndex(
-                name: "IX_Wines_VarietyId",
+                name: "IX_Wines_OriginId",
                 table: "Wines");
 
             migrationBuilder.DropColumn(
-                name: "VarietyId",
+                name: "OriginId",
                 table: "Wines");
 
             migrationBuilder.AddColumn<string>(
-                name: "Variety",
+                name: "Origin",
                 table: "Wines",
                 type: "nvarchar(max)",
                 nullable: true);

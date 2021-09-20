@@ -31,6 +31,7 @@
                               new VolumesSeeder(),
                               new HarvestsSeeder(),
                               new VarietiesSeeder(),
+                              new OriginsSeeder(),
                           };
 
             foreach (var seeder in seeders)
