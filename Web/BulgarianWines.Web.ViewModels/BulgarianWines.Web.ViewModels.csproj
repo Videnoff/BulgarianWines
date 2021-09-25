@@ -24,8 +24,4 @@
     <ProjectReference Include="..\..\Services\BulgarianWines.Services.Mapping\BulgarianWines.Services.Mapping.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Wines\" />
-  </ItemGroup>
-
 </Project>

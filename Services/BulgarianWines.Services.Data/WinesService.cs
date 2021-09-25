@@ -1,4 +1,7 @@
-﻿namespace BulgarianWines.Services.Data
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace BulgarianWines.Services.Data
 {
     using System.Threading.Tasks;
 
@@ -30,6 +33,27 @@
 
             await this.winesRepository.AddAsync(wine);
             await this.winesRepository.SaveChangesAsync();
+        }
+
+        public IEnumerable<AllWinesViewModel> GetAll(int page, int itemsPerPage = 12)
+        {
+            var wines = this.winesRepository.AllAsNoTracking()
+                .OrderByDescending(x => x.Id)
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage)
+                .Select(x => new AllWinesViewModel
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    CategoryName = x.Category.Name,
+                    CategoryId = x.CategoryId,
+                    ImageUrl = x.Images.FirstOrDefault().RemoteImageUrl != null ?
+                        x.Images.FirstOrDefault().RemoteImageUrl :
+                        "/images/wines/" + x.Images.FirstOrDefault().Id + "." + x.Images.FirstOrDefault().Extension,
+                })
+                .ToList();
+
+            return wines;
         }
     }
 }

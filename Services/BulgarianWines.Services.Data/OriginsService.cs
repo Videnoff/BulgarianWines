@@ -24,6 +24,7 @@
                     x.Id,
                     x.Name,
                 })
+                .OrderBy(x => x.Name)
                 .ToList()
                 .Select(x => new KeyValuePair<string, string>(x.Id.ToString(), x.Name));
         }
