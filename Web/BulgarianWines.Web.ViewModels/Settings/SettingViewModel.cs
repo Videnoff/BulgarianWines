@@ -1,9 +1,8 @@
 ﻿namespace BulgarianWines.Web.ViewModels.Settings
 {
+    using AutoMapper;
     using BulgarianWines.Data.Models;
     using BulgarianWines.Services.Mapping;
-
-    using AutoMapper;
 
     public class SettingViewModel : IMapFrom<Setting>, IHaveCustomMappings
     {

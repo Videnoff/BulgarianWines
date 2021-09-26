@@ -4,7 +4,6 @@ namespace BulgarianWines.Data.Models
     using System;
 
     using BulgarianWines.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
 
     public class ApplicationRole : IdentityRole, IAuditInfo, IDeletableEntity

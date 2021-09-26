@@ -19,7 +19,7 @@
 
         public virtual ApplicationUser User { get; set; }
 
-        public string RemoteImageUrl { get; set; }
+        public string ImageUrl { get; set; }
 
         public string Extension { get; set; }
     }

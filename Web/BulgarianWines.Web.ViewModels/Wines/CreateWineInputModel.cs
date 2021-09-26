@@ -3,7 +3,12 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class CreateWineInputModel
+    using BulgarianWines.Data.Models;
+    using BulgarianWines.Services.Mapping;
+    using BulgarianWines.Web.Infrastructure.ValidationAttributes;
+    using Microsoft.AspNetCore.Http;
+
+    public class CreateWineInputModel : IMapTo<Wine>
     {
         [Required]
         public string Name { get; set; }
@@ -35,5 +40,9 @@
         public IEnumerable<KeyValuePair<string, string>> VarietyItems { get; set; }
 
         public IEnumerable<KeyValuePair<string, string>> OriginsItems { get; set; }
+
+        [Display(Name = "Add Images")]
+        [ImageAttribute]
+        public IEnumerable<IFormFile> UploadedImages { get; set; }
     }
 }

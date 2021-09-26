@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\BulgarianWines.Data.Models\BulgarianWines.Data.Models.csproj" />
     <ProjectReference Include="..\..\Services\BulgarianWines.Services.Mapping\BulgarianWines.Services.Mapping.csproj" />
+    <ProjectReference Include="..\BulgarianWines.Web.Infrastructure\BulgarianWines.Web.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

@@ -8,11 +8,8 @@
     using BulgarianWines.Data.Common.Repositories;
     using BulgarianWines.Data.Models;
     using BulgarianWines.Data.Repositories;
-
     using Microsoft.EntityFrameworkCore;
-
     using Moq;
-
     using Xunit;
 
     public class SettingsServiceTests

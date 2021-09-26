@@ -7,7 +7,6 @@
     using BulgarianWines.Data.Models;
     using BulgarianWines.Services.Data;
     using BulgarianWines.Web.ViewModels.Settings;
-
     using Microsoft.AspNetCore.Mvc;
 
     public class SettingsController : BaseController

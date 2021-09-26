@@ -13,9 +13,7 @@
     using BulgarianWines.Data.Seeding;
     using BulgarianWines.Services.Data;
     using BulgarianWines.Services.Messaging;
-
     using CommandLine;
-
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;

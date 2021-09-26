@@ -6,7 +6,6 @@
 
     using BulgarianWines.Common;
     using BulgarianWines.Data.Models;
-
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
 

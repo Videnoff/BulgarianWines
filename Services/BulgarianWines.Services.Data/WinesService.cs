@@ -1,35 +1,49 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace BulgarianWines.Services.Data
+﻿namespace BulgarianWines.Services.Data
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using BulgarianWines.Data.Common.Repositories;
     using BulgarianWines.Data.Models;
+    using BulgarianWines.Services.Mapping;
     using BulgarianWines.Web.ViewModels.Wines;
+    using Microsoft.AspNetCore.Http;
 
     public class WinesService : IWinesService
     {
-        private readonly IDeletableEntityRepository<Wine> winesRepository;
+        private const string AzureContainerName = "publicimages";
 
-        public WinesService(IDeletableEntityRepository<Wine> winesRepository)
+        private readonly IDeletableEntityRepository<Wine> winesRepository;
+        private readonly IDeletableEntityRepository<Image> imagesRepository;
+        private readonly IImagesService imagesService;
+
+        public WinesService(
+            IDeletableEntityRepository<Wine> winesRepository,
+            IDeletableEntityRepository<Image> imagesRepository,
+            IImagesService imagesService)
         {
             this.winesRepository = winesRepository;
+            this.imagesRepository = imagesRepository;
+            this.imagesService = imagesService;
         }
 
-        public async Task CreateAsync(CreateWineInputModel input)
+        public async Task CreateAsync<T>(T input, IEnumerable<IFormFile> images, string fullDirectoryPath, string webRootPath)
         {
-            var wine = new Wine
+            var wine = AutoMapperConfig.MapperInstance.Map<Wine>(input);
+
+            if (images != null && images.Count() > 0)
             {
-                Name = input.Name,
-                CategoryId = input.CategoryId,
-                Description = input.Description,
-                HarvestId = input.HarvestId,
-                VolumeId = input.VolumeId,
-                OriginId = input.OriginId,
-                VarietyId = input.VarietyId,
-            };
+                foreach (var image in images)
+                {
+                    var imageUrl = await this.imagesService.UploadAzureBlobImageAsync(image, AzureContainerName);
+
+                    wine.Images.Add(new Image
+                    {
+                        ImageUrl = imageUrl.Replace(webRootPath, string.Empty).Replace("\\", "/"),
+                    });
+                }
+            }
 
             await this.winesRepository.AddAsync(wine);
             await this.winesRepository.SaveChangesAsync();
@@ -47,8 +61,8 @@ namespace BulgarianWines.Services.Data
                     Name = x.Name,
                     CategoryName = x.Category.Name,
                     CategoryId = x.CategoryId,
-                    ImageUrl = x.Images.FirstOrDefault().RemoteImageUrl != null ?
-                        x.Images.FirstOrDefault().RemoteImageUrl :
+                    ImageUrl = x.Images.FirstOrDefault().ImageUrl != null ?
+                        x.Images.FirstOrDefault().ImageUrl :
                         "/images/wines/" + x.Images.FirstOrDefault().Id + "." + x.Images.FirstOrDefault().Extension,
                 })
                 .ToList();

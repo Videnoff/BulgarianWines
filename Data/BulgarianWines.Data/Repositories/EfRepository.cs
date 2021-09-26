@@ -5,7 +5,6 @@
     using System.Threading.Tasks;
 
     using BulgarianWines.Data.Common.Repositories;
-
     using Microsoft.EntityFrameworkCore;
 
     public class EfRepository<TEntity> : IRepository<TEntity>

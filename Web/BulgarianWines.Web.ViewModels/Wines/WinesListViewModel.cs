@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace BulgarianWines.Web.ViewModels.Wines
+﻿namespace BulgarianWines.Web.ViewModels.Wines
 {
+    using System.Collections.Generic;
+
     public class WinesListViewModel
     {
         public IEnumerable<AllWinesViewModel> Wines { get; set; }

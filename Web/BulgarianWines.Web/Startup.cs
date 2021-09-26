@@ -2,17 +2,18 @@
 {
     using System.Reflection;
 
+    using Azure.Storage.Blobs;
     using BulgarianWines.Data;
     using BulgarianWines.Data.Common;
     using BulgarianWines.Data.Common.Repositories;
     using BulgarianWines.Data.Models;
     using BulgarianWines.Data.Repositories;
     using BulgarianWines.Data.Seeding;
+    using BulgarianWines.Services;
     using BulgarianWines.Services.Data;
     using BulgarianWines.Services.Mapping;
     using BulgarianWines.Services.Messaging;
     using BulgarianWines.Web.ViewModels;
-
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -71,6 +72,9 @@
             services.AddTransient<IVarietiesService, VarietiesService>();
             services.AddTransient<IOriginsService, OriginsService>();
             services.AddTransient<IWinesService, WinesService>();
+            services.AddTransient<IImagesService, ImagesService>();
+            services.AddSingleton(x =>
+                new BlobServiceClient(this.configuration["BlobConnectionString"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

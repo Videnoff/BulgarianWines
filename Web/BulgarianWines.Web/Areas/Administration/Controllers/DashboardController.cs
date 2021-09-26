@@ -2,7 +2,6 @@
 {
     using BulgarianWines.Services.Data;
     using BulgarianWines.Web.ViewModels.Administration.Dashboard;
-
     using Microsoft.AspNetCore.Mvc;
 
     public class DashboardController : AdministrationController

@@ -8,7 +8,6 @@
 
     using BulgarianWines.Data.Common.Models;
     using BulgarianWines.Data.Models;
-
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 

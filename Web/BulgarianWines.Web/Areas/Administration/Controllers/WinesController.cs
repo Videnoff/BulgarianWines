@@ -1,18 +1,27 @@
-﻿using System.Threading.Tasks;
-using BulgarianWines.Services.Data;
-using BulgarianWines.Web.ViewModels.Wines;
-using Microsoft.AspNetCore.Mvc;
-
-namespace BulgarianWines.Web.Areas.Administration.Controllers
+﻿namespace BulgarianWines.Web.Areas.Administration.Controllers
 {
+    using System.Threading.Tasks;
+
+    using Azure.Storage.Blobs;
+    using BulgarianWines.Services.Data;
+    using BulgarianWines.Web.ViewModels.Wines;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Mvc;
+
     public class WinesController : AdministrationController
     {
+        private const string ProductsDirectoryPath = "\\images\\wines\\";
+
         private readonly ICategoriesService categoriesService;
         private readonly IWinesService winesService;
         private readonly IVolumesService volumesService;
         private readonly IHarvestsService harvestsService;
         private readonly IVarietiesService varietiesService;
         private readonly IOriginsService originsService;
+        private readonly BlobServiceClient blobServiceClient;
+        private readonly IWebHostEnvironment webHostEnvironment;
+
+        private readonly string fullDirectoryPath;
 
         public WinesController(
             ICategoriesService categoriesService,
@@ -20,7 +29,9 @@ namespace BulgarianWines.Web.Areas.Administration.Controllers
             IVolumesService volumesService,
             IHarvestsService harvestsService,
             IVarietiesService varietiesService,
-            IOriginsService originsService)
+            IOriginsService originsService,
+            BlobServiceClient blobServiceClient,
+            IWebHostEnvironment webHostEnvironment)
         {
             this.categoriesService = categoriesService;
             this.winesService = winesService;
@@ -28,6 +39,10 @@ namespace BulgarianWines.Web.Areas.Administration.Controllers
             this.harvestsService = harvestsService;
             this.varietiesService = varietiesService;
             this.originsService = originsService;
+            this.blobServiceClient = blobServiceClient;
+            this.webHostEnvironment = webHostEnvironment;
+
+            this.fullDirectoryPath = this.webHostEnvironment.WebRootPath + ProductsDirectoryPath;
         }
 
         public IActionResult Create()
@@ -58,7 +73,9 @@ namespace BulgarianWines.Web.Areas.Administration.Controllers
                 return this.View(input);
             }
 
-            await this.winesService.CreateAsync(input);
+            await this.winesService.CreateAsync<CreateWineInputModel>(input, input.UploadedImages, this.fullDirectoryPath, this.webHostEnvironment.WebRootPath);
+
+            this.TempData["Alert"] = "Successfully created product.";
 
             return this.Redirect("/");
         }
