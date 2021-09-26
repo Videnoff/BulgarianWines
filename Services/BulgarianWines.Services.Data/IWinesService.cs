@@ -11,5 +11,7 @@
         Task CreateAsync<T>(T input, IEnumerable<IFormFile> images, string fullDirectoryPath, string webRootPath);
 
         IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 12);
+
+        int GetCount();
     }
 }

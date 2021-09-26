@@ -2,10 +2,8 @@
 {
     using System.Collections.Generic;
 
-    public class WinesListViewModel
+    public class WinesListViewModel : PagingViewModel
     {
         public IEnumerable<AllWinesViewModel> Wines { get; set; }
-
-        public int PageNumber { get; set; }
     }
 }

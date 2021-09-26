@@ -60,5 +60,10 @@
 
             return wines;
         }
+
+        public int GetCount()
+        {
+            return this.winesRepository.All().Count();
+        }
     }
 }

@@ -17,10 +17,19 @@
 
         public IActionResult All(int id = 1)
         {
+            if (id <= 0)
+            {
+                return this.NotFound();
+            }
+
+            const int itemsPerPage = 12;
+
             var viewModel = new WinesListViewModel
             {
+                ItemsPerPage = itemsPerPage,
                 PageNumber = id,
-                Wines = this.winesService.GetAll<AllWinesViewModel>(id),
+                WinesCount = this.winesService.GetCount(),
+                Wines = this.winesService.GetAll<AllWinesViewModel>(id, itemsPerPage),
             };
 
             return this.View(viewModel);
