@@ -15,12 +15,12 @@
             this.winesService = winesService;
         }
 
-        public IActionResult All(int id)
+        public IActionResult All(int id = 1)
         {
             var viewModel = new WinesListViewModel
             {
                 PageNumber = id,
-                Wines = this.winesService.GetAll(id),
+                Wines = this.winesService.GetAll<AllWinesViewModel>(id),
             };
 
             return this.View(viewModel);
