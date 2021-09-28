@@ -34,5 +34,10 @@
 
             return this.View(viewModel);
         }
+
+        public IActionResult SingleWine()
+        {
+            return this.View();
+        }
     }
 }

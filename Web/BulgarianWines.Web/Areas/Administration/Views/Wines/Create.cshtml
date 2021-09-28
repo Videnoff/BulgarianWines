@@ -1,11 +1,26 @@
 ﻿@model BulgarianWines.Web.ViewModels.Wines.CreateWineInputModel
 @{
     this.ViewData["Title"] = "Add new Wine";
-    var categoryItems = this.Model.CategoriesItems.Select(x => new SelectListItem(x.Value, x.Key));
-    var volumeItems = this.Model.VolumesItems.Select(x => new SelectListItem(x.Value, x.Key));
-    var harvestItems = this.Model.HarvestsItems.Select(x => new SelectListItem(x.Value, x.Key));
-    var varietyItems = this.Model.VarietyItems.Select(x => new SelectListItem(x.Value, x.Key));
-    var originItems = this.Model.OriginsItems.Select(x => new SelectListItem(x.Value, x.Key));
+    var categoryItems = this.Model
+        .CategoriesItems
+        .Select(x =>
+            new SelectListItem(x.Value, x.Key));
+    var volumeItems = this.Model
+        .VolumesItems
+        .Select(x =>
+            new SelectListItem(x.Value, x.Key));
+    var harvestItems = this.Model
+        .HarvestsItems
+        .Select(x =>
+            new SelectListItem(x.Value, x.Key));
+    var varietyItems = this.Model
+        .VarietyItems
+        .Select(x =>
+            new SelectListItem(x.Value, x.Key));
+    var originItems = this.Model
+        .OriginsItems
+        .Select(x =>
+            new SelectListItem(x.Value, x.Key));
 }
 <h1>
     @this.ViewData["Title"]

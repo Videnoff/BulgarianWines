@@ -37,8 +37,4 @@
     <ProjectReference Include="..\BulgarianWines.Web.Infrastructure\BulgarianWines.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\BulgarianWines.Web.ViewModels\BulgarianWines.Web.ViewModels.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Wines\" />
-  </ItemGroup>
 </Project>
