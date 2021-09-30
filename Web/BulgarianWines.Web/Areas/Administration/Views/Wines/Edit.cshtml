@@ -1,16 +1,16 @@
-﻿@model BulgarianWines.Web.ViewModels.Wines.CreateWineInputModel
+﻿@model BulgarianWines.Data.Models.Wine
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 
-<h2>Create</h2>
+<h2>Edit</h2>
 
 <h4>Wine</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
@@ -24,7 +24,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="OriginId" class="control-label"></label>
-                <select asp-for="OriginId" class ="form-control" asp-items="ViewBag.OriginId"></select>
+                <select asp-for="OriginId" class="form-control" asp-items="ViewBag.OriginId"></select>
+                <span asp-validation-for="OriginId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ImageUrl" class="control-label"></label>
@@ -33,23 +34,28 @@
             </div>
             <div class="form-group">
                 <label asp-for="VarietyId" class="control-label"></label>
-                <select asp-for="VarietyId" class ="form-control" asp-items="ViewBag.VarietyId"></select>
+                <select asp-for="VarietyId" class="form-control" asp-items="ViewBag.VarietyId"></select>
+                <span asp-validation-for="VarietyId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
+                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="VolumeId" class="control-label"></label>
-                <select asp-for="VolumeId" class ="form-control" asp-items="ViewBag.VolumeId"></select>
+                <select asp-for="VolumeId" class="form-control" asp-items="ViewBag.VolumeId"></select>
+                <span asp-validation-for="VolumeId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="HarvestId" class="control-label"></label>
-                <select asp-for="HarvestId" class ="form-control" asp-items="ViewBag.HarvestId"></select>
+                <select asp-for="HarvestId" class="form-control" asp-items="ViewBag.HarvestId"></select>
+                <span asp-validation-for="HarvestId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="UserId" class="control-label"></label>
-                <select asp-for="UserId" class ="form-control" asp-items="ViewBag.UserId"></select>
+                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <div class="checkbox">
@@ -63,6 +69,7 @@
                 <input asp-for="DeletedOn" class="form-control" />
                 <span asp-validation-for="DeletedOn" class="text-danger"></span>
             </div>
+            <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="CreatedOn" class="control-label"></label>
                 <input asp-for="CreatedOn" class="form-control" />
@@ -74,16 +81,14 @@
                 <span asp-validation-for="ModifiedOn" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">
-        Back to List
-    </a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
