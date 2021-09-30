@@ -7,12 +7,12 @@
 <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
         <li class="page-item @if (!Model.HasPreviousPage) { <text>disabled</text> }">
-            <a class="page-link" asp-action="All" asp-route-id="@Model.FirstPage">
+            <a class="page-link" asp-action="AllWines" asp-route-id="@Model.FirstPage">
                 First
             </a>
         </li>
         <li class="page-item @if (!Model.HasPreviousPage) { <text>disabled</text> }">
-            <a class="page-link" asp-action="All" asp-route-id="@Model.PreviousPageNumber">
+            <a class="page-link" asp-action="AllWines" asp-route-id="@Model.PreviousPageNumber">
                 Previous
             </a>
         </li>
@@ -21,7 +21,7 @@
             if (i > 0)
             {
                 <li class="page-item">
-                    <a class="page-link" asp-action="All" asp-route-id="@i">
+                    <a class="page-link" asp-action="AllWines" asp-route-id="@i">
                         @i
                     </a>
                 </li>
@@ -37,19 +37,19 @@
             if (i <= Model.PagesCount)
             {
                 <li class="page-item">
-                    <a class="page-link" asp-action="All" asp-route-id="@i">
+                    <a class="page-link" asp-action="AllWines" asp-route-id="@i">
                         @i
                     </a>
                 </li>
             }
         }
         <li class="page-item @if (!Model.HasNextPage) { <text>disabled</text> }">
-            <a class="page-link" asp-action="All" asp-route-id="@Model.NextPageNumber">
+            <a class="page-link" asp-action="AllWines" asp-route-id="@Model.NextPageNumber">
                 Next
             </a>
         </li>
         <li class="page-item @if (!Model.HasNextPage) { <text>disabled</text> }">
-            <a class="page-link" asp-action="All" asp-route-id="@Model.PagesCount">
+            <a class="page-link" asp-action="AllWines" asp-route-id="@Model.PagesCount">
                 Last
             </a>
         </li>

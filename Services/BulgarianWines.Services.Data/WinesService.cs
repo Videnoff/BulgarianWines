@@ -65,5 +65,11 @@
         {
             return this.winesRepository.All().Count();
         }
+
+        public T GetById<T>(int id)
+        {
+            return this.winesRepository.AllAsNoTracking().Where(x => x.Id == id)
+                .To<T>().FirstOrDefault();
+        }
     }
 }

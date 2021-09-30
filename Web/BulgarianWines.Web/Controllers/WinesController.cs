@@ -15,7 +15,7 @@
             this.winesService = winesService;
         }
 
-        public IActionResult All(int id = 1)
+        public IActionResult AllWines(int id = 1)
         {
             if (id <= 0)
             {
@@ -35,9 +35,10 @@
             return this.View(viewModel);
         }
 
-        public IActionResult SingleWine()
+        public IActionResult SingleWine(int id)
         {
-            return this.View();
+            var wine = this.winesService.GetById<SingleProductViewModel>(id);
+            return this.View(wine);
         }
     }
 }

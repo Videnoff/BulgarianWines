@@ -21,6 +21,7 @@
                 <img src="@wine.ImageUrl" class="card-img-top" alt="@wine.Name">
                 <div class="card-body">
                     <h5 class="card-title">
+                        <a asp-action="SingleWine" asp-route-id="@wine.Id"></a>
                         @wine.Name
                     </h5>
                     <p class="card-text">
