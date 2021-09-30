@@ -5,6 +5,7 @@
     using System.IO;
     using System.Threading.Tasks;
 
+    using BulgarianWines.Common;
     using BulgarianWines.Data;
     using BulgarianWines.Data.Common;
     using BulgarianWines.Data.Common.Repositories;
@@ -19,8 +20,10 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
 
-    public static class Program
+    public class Program
     {
+        private static readonly AdminCredentials AdminCredentials;
+
         public static int Main(string[] args)
         {
             Console.WriteLine($"{typeof(Program).Namespace} ({string.Join(" ", args)}) starts working...");
@@ -33,7 +36,7 @@
             {
                 var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
                 dbContext.Database.Migrate();
-                new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
+                new ApplicationDbContextSeeder(AdminCredentials).SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
             }
 
             using (var serviceScope = serviceProvider.CreateScope())

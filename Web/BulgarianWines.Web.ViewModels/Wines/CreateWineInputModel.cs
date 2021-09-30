@@ -1,5 +1,6 @@
 ﻿namespace BulgarianWines.Web.ViewModels.Wines
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
@@ -44,5 +45,14 @@
         [Display(Name = "Add Images")]
         [ImageAttribute]
         public IEnumerable<IFormFile> UploadedImages { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
+
+        public DateTime? CreatedOn { get; set; }
+
+        public DateTime? ModifiedOn { get; set; }
+
     }
 }

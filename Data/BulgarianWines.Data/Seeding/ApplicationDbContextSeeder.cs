@@ -4,11 +4,19 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
+    using BulgarianWines.Common;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
 
     public class ApplicationDbContextSeeder : ISeeder
     {
+        private readonly AdminCredentials adminCredentials;
+
+        public ApplicationDbContextSeeder(AdminCredentials adminCredentials)
+        {
+            this.adminCredentials = adminCredentials;
+        }
+
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
             if (dbContext == null)
@@ -32,6 +40,7 @@
                               new HarvestsSeeder(),
                               new VarietiesSeeder(),
                               new OriginsSeeder(),
+                              new AdminSeeder(this.adminCredentials),
                           };
 
             foreach (var seeder in seeders)

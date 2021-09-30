@@ -1,6 +1,29 @@
 ﻿@model BulgarianWines.Web.ViewModels.Wines.CreateWineInputModel
 
 @{
+    var categoryItems = this.Model
+        .CategoriesItems
+        .Select(x =>
+            new SelectListItem(x.Value, x.Key));
+    var volumeItems = this.Model
+        .VolumesItems
+        .Select(x =>
+            new SelectListItem(x.Value, x.Key));
+    var harvestItems = this.Model
+        .HarvestsItems
+        .Select(x =>
+            new SelectListItem(x.Value, x.Key));
+    var varietyItems = this.Model
+        .VarietyItems
+        .Select(x =>
+            new SelectListItem(x.Value, x.Key));
+    var originItems = this.Model
+        .OriginsItems
+        .Select(x =>
+            new SelectListItem(x.Value, x.Key));
+}
+
+@{
     ViewData["Title"] = "Create";
 }
 
@@ -24,32 +47,28 @@
             </div>
             <div class="form-group">
                 <label asp-for="OriginId" class="control-label"></label>
-                <select asp-for="OriginId" class ="form-control" asp-items="ViewBag.OriginId"></select>
+                <select asp-for="OriginId" class="form-control" asp-items="ViewBag.OriginId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
-                <input asp-for="ImageUrl" class="form-control" />
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                <label asp-for="UploadedImages" class="control-label"></label>
+                <input asp-for="UploadedImages" class="col-md-2" />
+                <span asp-validation-for="UploadedImages" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="VarietyId" class="control-label"></label>
-                <select asp-for="VarietyId" class ="form-control" asp-items="ViewBag.VarietyId"></select>
+                <select asp-for="VarietyId" class="form-control" asp-items="ViewBag.VarietyId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
+                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="VolumeId" class="control-label"></label>
-                <select asp-for="VolumeId" class ="form-control" asp-items="ViewBag.VolumeId"></select>
+                <select asp-for="VolumeId" class="form-control" asp-items="ViewBag.VolumeId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="HarvestId" class="control-label"></label>
-                <select asp-for="HarvestId" class ="form-control" asp-items="ViewBag.HarvestId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
-                <select asp-for="UserId" class ="form-control" asp-items="ViewBag.UserId"></select>
+                <select asp-for="HarvestId" class="form-control" asp-items="ViewBag.HarvestId"></select>
             </div>
             <div class="form-group">
                 <div class="checkbox">

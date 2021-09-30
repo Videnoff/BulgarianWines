@@ -3,6 +3,7 @@
     using System.Reflection;
 
     using Azure.Storage.Blobs;
+    using BulgarianWines.Common;
     using BulgarianWines.Data;
     using BulgarianWines.Data.Common;
     using BulgarianWines.Data.Common.Repositories;
@@ -35,6 +36,7 @@
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
 
@@ -87,7 +89,13 @@
             {
                 var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
                 dbContext.Database.Migrate();
-                new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
+                var adminCredentials = new AdminCredentials
+                {
+                    AdminUsername = this.configuration["AdminCredentials:AdminUsername"],
+                    AdminPassword = this.configuration["AdminCredentials:AdminPassword"],
+                };
+
+                new ApplicationDbContextSeeder(adminCredentials).SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
             }
 
             if (env.IsDevelopment())

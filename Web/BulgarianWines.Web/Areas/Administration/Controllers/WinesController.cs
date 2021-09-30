@@ -1,17 +1,16 @@
-﻿using Azure.Storage.Blobs;
-using BulgarianWines.Services.Data;
-using BulgarianWines.Web.ViewModels.Wines;
-using Microsoft.AspNetCore.Hosting;
-
-namespace BulgarianWines.Web.Areas.Administration.Controllers
+﻿namespace BulgarianWines.Web.Areas.Administration.Controllers
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
+    using Azure.Storage.Blobs;
     using BulgarianWines.Data;
     using BulgarianWines.Data.Models;
+    using BulgarianWines.Services.Data;
+    using BulgarianWines.Web.ViewModels.Wines;
+    using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.EntityFrameworkCore;
