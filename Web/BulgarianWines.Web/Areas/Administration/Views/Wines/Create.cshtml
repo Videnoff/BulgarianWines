@@ -33,7 +33,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-area="Administration" asp-controller="Wines" asp-action="Create" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
@@ -47,7 +47,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="OriginId" class="control-label"></label>
-                <select asp-for="OriginId" class="form-control" asp-items="ViewBag.OriginId"></select>
+                <select asp-for="OriginId" class="form-control" asp-items="originItems"></select>
             </div>
             <div class="form-group">
                 <label asp-for="UploadedImages" class="control-label"></label>
@@ -56,19 +56,19 @@
             </div>
             <div class="form-group">
                 <label asp-for="VarietyId" class="control-label"></label>
-                <select asp-for="VarietyId" class="form-control" asp-items="ViewBag.VarietyId"></select>
+                <select asp-for="VarietyId" class="form-control" asp-items="varietyItems"></select>
             </div>
             <div class="form-group">
                 <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                <select asp-for="CategoryId" class="form-control" asp-items="categoryItems"></select>
             </div>
             <div class="form-group">
                 <label asp-for="VolumeId" class="control-label"></label>
-                <select asp-for="VolumeId" class="form-control" asp-items="ViewBag.VolumeId"></select>
+                <select asp-for="VolumeId" class="form-control" asp-items="volumeItems"></select>
             </div>
             <div class="form-group">
                 <label asp-for="HarvestId" class="control-label"></label>
-                <select asp-for="HarvestId" class="form-control" asp-items="ViewBag.HarvestId"></select>
+                <select asp-for="HarvestId" class="form-control" asp-items="harvestItems"></select>
             </div>
             <div class="form-group">
                 <div class="checkbox">

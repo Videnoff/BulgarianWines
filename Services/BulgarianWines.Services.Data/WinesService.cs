@@ -32,7 +32,7 @@
         {
             var wine = AutoMapperConfig.MapperInstance.Map<Wine>(input);
 
-            if (images != null && images.Count() > 0)
+            if (images != null && images.Any())
             {
                 foreach (var image in images)
                 {

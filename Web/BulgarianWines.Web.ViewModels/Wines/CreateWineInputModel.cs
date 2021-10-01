@@ -32,16 +32,6 @@
         [Required]
         public int CategoryId { get; set; }
 
-        public IEnumerable<KeyValuePair<string, string>> CategoriesItems { get; set; }
-
-        public IEnumerable<KeyValuePair<string, string>> VolumesItems { get; set; }
-
-        public IEnumerable<KeyValuePair<string, string>> HarvestsItems { get; set; }
-
-        public IEnumerable<KeyValuePair<string, string>> VarietyItems { get; set; }
-
-        public IEnumerable<KeyValuePair<string, string>> OriginsItems { get; set; }
-
         [Display(Name = "Add Images")]
         [ImageAttribute]
         public IEnumerable<IFormFile> UploadedImages { get; set; }
@@ -54,5 +44,14 @@
 
         public DateTime? ModifiedOn { get; set; }
 
+        public IEnumerable<KeyValuePair<string, string>> CategoriesItems { get; set; }
+
+        public IEnumerable<KeyValuePair<string, string>> VolumesItems { get; set; }
+
+        public IEnumerable<KeyValuePair<string, string>> HarvestsItems { get; set; }
+
+        public IEnumerable<KeyValuePair<string, string>> VarietyItems { get; set; }
+
+        public IEnumerable<KeyValuePair<string, string>> OriginsItems { get; set; }
     }
 }
