@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Services.Data
+﻿using System.Threading.Tasks;
+
+namespace BulgarianWines.Services.Data
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -28,5 +30,25 @@
                 .ToList()
                 .Select(x => new KeyValuePair<string, string>(x.Id.ToString(), x.Name));
         }
+
+        public async Task<bool> RestoreAsync(int id)
+        {
+            var category = this.GetDeletedCategoryById(id);
+
+            if (category == null)
+            {
+                return false;
+            }
+
+            this.categoriesRepository.Undelete(category);
+            await this.categoriesRepository.SaveChangesAsync();
+
+            return true;
+        }
+
+        private Category GetDeletedCategoryById(int id) =>
+            this.categoriesRepository
+                .AllAsNoTrackingWithDeleted()
+                .FirstOrDefault(x => x.IsDeleted && x.Id == id);
     }
 }

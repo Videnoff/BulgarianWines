@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web.Areas.Administration.Controllers
+﻿using BulgarianWines.Services.Data;
+
+namespace BulgarianWines.Web.Areas.Administration.Controllers
 {
     using System.Linq;
     using System.Threading.Tasks;
@@ -11,10 +13,14 @@
     public class CategoriesController : AdministrationController
     {
         private readonly IDeletableEntityRepository<Category> categoriesRepository;
+        private readonly ICategoriesService categoriesService;
 
-        public CategoriesController(IDeletableEntityRepository<Category> categoriesRepository)
+        public CategoriesController(
+            IDeletableEntityRepository<Category> categoriesRepository,
+            ICategoriesService categoriesService)
         {
             this.categoriesRepository = categoriesRepository;
+            this.categoriesService = categoriesService;
         }
 
         // GET: Administration/Categories
@@ -147,6 +153,22 @@
 
             this.categoriesRepository.Delete(category);
             await this.categoriesRepository.SaveChangesAsync();
+
+            return this.RedirectToAction(nameof(this.Index));
+        }
+
+        public async Task<IActionResult> Restore(int id)
+        {
+            var restoreResult = await this.categoriesService.RestoreAsync(id);
+
+            if (restoreResult)
+            {
+                this.TempData["Alert"] = "Successfully restored category";
+            }
+            else
+            {
+                this.TempData["Error"] = "There was a problem restoring the category";
+            }
 
             return this.RedirectToAction(nameof(this.Index));
         }
