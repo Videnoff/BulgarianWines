@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web.Areas.Administration.Controllers
+﻿using BulgarianWines.Data.Common.Repositories;
+
+namespace BulgarianWines.Web.Areas.Administration.Controllers
 {
     using System.Linq;
     using System.Threading.Tasks;
@@ -25,6 +27,7 @@
         private readonly IOriginsService originsService;
         private readonly BlobServiceClient blobServiceClient;
         private readonly IWebHostEnvironment webHostEnvironment;
+        private readonly IDeletableEntityRepository<Wine> winesRepository;
 
         private readonly string fullDirectoryPath;
         private readonly ApplicationDbContext db;
@@ -38,6 +41,7 @@
             IOriginsService originsService,
             BlobServiceClient blobServiceClient,
             IWebHostEnvironment webHostEnvironment,
+            IDeletableEntityRepository<Wine> winesRepository,
             ApplicationDbContext db)
         {
             this.categoriesService = categoriesService;
@@ -48,6 +52,7 @@
             this.originsService = originsService;
             this.blobServiceClient = blobServiceClient;
             this.webHostEnvironment = webHostEnvironment;
+            this.winesRepository = winesRepository;
             this.db = db;
 
             this.fullDirectoryPath = this.webHostEnvironment.WebRootPath + ProductsDirectoryPath;
@@ -56,16 +61,9 @@
         // GET: Administration/Wines
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = this.db
-                .Wines
-                .Include(w => w.Category)
-                .Include(w => w.Harvest)
-                .Include(w => w.Origin)
-                .Include(w => w.User)
-                .Include(w => w.Variety)
-                .Include(w => w.Volume);
-
-            return this.View(await applicationDbContext.ToListAsync());
+            return this.View(await this.winesRepository
+                .AllWithDeleted()
+                .ToListAsync());
         }
 
         // GET: Administration/Wines/Details/5
@@ -245,6 +243,7 @@
                 .Include(w => w.User)
                 .Include(w => w.Variety)
                 .Include(w => w.Volume)
+                .Include(w => w.Images)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (wine == null)
@@ -256,14 +255,48 @@
         }
 
         // POST: Administration/Wines/Delete/5
+        //[HttpPost]
+        //[ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> DeleteConfirmed(int id)
+        //{
+        //    var wine = await this.db.Wines.FindAsync(id);
+        //    this.db.Wines.Remove(wine);
+        //    await this.db.SaveChangesAsync();
+        //    return this.RedirectToAction(nameof(this.Index));
+        //}
+
         [HttpPost]
-        [ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var wine = await this.db.Wines.FindAsync(id);
-            this.db.Wines.Remove(wine);
-            await this.db.SaveChangesAsync();
+            var deleteResult = await this.winesService.DeleteAsync(id);
+
+            if (deleteResult)
+            {
+                this.TempData["Alert"] = "Successfully deleted product.";
+            }
+            else
+            {
+                this.TempData["Error"] = "There was a problem deleting the product.";
+            }
+
+            return this.RedirectToAction(nameof(this.Index));
+        }
+
+        public async Task<IActionResult> Restore(int id)
+        {
+            var restoreResult = await this.winesService.RestoreAsync(id);
+
+            if (restoreResult)
+            {
+                this.TempData["Alert"] = "Successfully restored product";
+            }
+            else
+            {
+                this.TempData["Error"] = "There was a problem restoring the product";
+            }
+
             return this.RedirectToAction(nameof(this.Index));
         }
 

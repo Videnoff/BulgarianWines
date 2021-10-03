@@ -26,7 +26,7 @@
             @Html.DisplayNameFor(model => model.Origin)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Origin.Id)
+            @Html.DisplayFor(model => model.Origin.Name)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.ImageUrl)
@@ -38,25 +38,25 @@
             @Html.DisplayNameFor(model => model.Variety)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Variety.Id)
+            @Html.DisplayFor(model => model.Variety.Name)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Category)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Category.Id)
+            @Html.DisplayFor(model => model.Category.Name)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Volume)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Volume.Id)
+            @Html.DisplayFor(model => model.Volume.Quantity)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Harvest)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Harvest.Id)
+            @Html.DisplayFor(model => model.Harvest.Year)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.User)
@@ -91,6 +91,10 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id">
+        Edit
+    </a> |
+    <a asp-action="Index">
+        Back to List
+    </a>
 </div>

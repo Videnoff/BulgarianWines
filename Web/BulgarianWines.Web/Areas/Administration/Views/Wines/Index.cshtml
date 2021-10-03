@@ -55,53 +55,69 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Origin.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Variety.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Volume.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Harvest.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsDeleted)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeletedOn)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedOn)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModifiedOn)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Origin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Images)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Variety)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Volume.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Harvest.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsDeleted)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeletedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedOn)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">
+                        Edit
+                    </a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">
+                        Details
+                    </a>
+                    @if (item.IsDeleted)
+                    {
+                        <a asp-action="Restore" asp-route-id="@item.Id">
+                            | Restore
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.Id">
+                            | Delete
+                        </a>
+                    }
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -50,14 +50,17 @@
                     </a> |
                     <a asp-action="Details" asp-route-id="@item.Id">
                         Details
-                    </a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">
-                        Delete
-                    </a> |
+                    </a>
                     @if (item.IsDeleted)
                     {
                         <a asp-action="Restore" asp-route-id="@item.Id">
-                            Restore
+                            | Restore
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.Id">
+                            | Delete
                         </a>
                     }
 

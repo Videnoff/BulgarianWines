@@ -15,5 +15,9 @@
         int GetCount();
 
         T GetById<T>(int id);
+
+        public Task<bool> DeleteAsync(int id);
+
+        public Task<bool> RestoreAsync(int id);
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Services.Data
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace BulgarianWines.Services.Data
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -71,5 +73,51 @@
             return this.winesRepository.AllAsNoTracking().Where(x => x.Id == id)
                 .To<T>().FirstOrDefault();
         }
+
+        public async Task<bool> DeleteAsync(int id)
+        {
+            var product = this.GetById(id);
+
+            if (product == null)
+            {
+                return false;
+            }
+
+            this.winesRepository.Delete(product);
+
+            foreach (var image in product.Images)
+            {
+                this.imagesRepository.Delete(image);
+            }
+
+            await this.winesRepository.SaveChangesAsync();
+            await this.imagesRepository.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<bool> RestoreAsync(int id)
+        {
+            var product = this.GetDeletedProductById(id);
+
+            if (product == null)
+            {
+                return false;
+            }
+
+            this.winesRepository.Undelete(product);
+            await this.winesRepository.SaveChangesAsync();
+
+            return true;
+        }
+
+        private Wine GetDeletedProductById(int id) =>
+            this.winesRepository
+                .AllAsNoTrackingWithDeleted()
+                .FirstOrDefault(x => x.IsDeleted && x.Id == id);
+
+        private Wine GetById(int id) =>
+            this.winesRepository.All().Include(x => x.Images)
+                .FirstOrDefault(x => x.Id == id);
     }
 }
