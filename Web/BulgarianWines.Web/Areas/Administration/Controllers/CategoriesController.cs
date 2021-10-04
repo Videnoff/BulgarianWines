@@ -1,12 +1,11 @@
-﻿using BulgarianWines.Services.Data;
-
-namespace BulgarianWines.Web.Areas.Administration.Controllers
+﻿namespace BulgarianWines.Web.Areas.Administration.Controllers
 {
     using System.Linq;
     using System.Threading.Tasks;
 
     using BulgarianWines.Data.Common.Repositories;
     using BulgarianWines.Data.Models;
+    using BulgarianWines.Services.Data;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
 

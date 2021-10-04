@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace BulgarianWines.Services.Data
+﻿namespace BulgarianWines.Services.Data
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -11,6 +9,7 @@ namespace BulgarianWines.Services.Data
     using BulgarianWines.Services.Mapping;
     using BulgarianWines.Web.ViewModels.Wines;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.EntityFrameworkCore;
 
     public class WinesService : IWinesService
     {
@@ -38,11 +37,12 @@ namespace BulgarianWines.Services.Data
             {
                 foreach (var image in images)
                 {
-                    var imageUrl = await this.imagesService.UploadAzureBlobImageAsync(image, AzureContainerName);
+                    wine.ImageUrl = await this.imagesService.UploadAzureBlobImageAsync(image, AzureContainerName);
+                    var imageUrl = wine.ImageUrl;
 
                     wine.Images.Add(new Image
                     {
-                        ImageUrl = imageUrl.Replace(webRootPath, string.Empty).Replace("\\", "/"),
+                        ImageUrl = imageUrl,
                     });
                 }
             }
@@ -72,6 +72,39 @@ namespace BulgarianWines.Services.Data
         {
             return this.winesRepository.AllAsNoTracking().Where(x => x.Id == id)
                 .To<T>().FirstOrDefault();
+        }
+
+        public async Task<bool> EditAsync<T>(T model, IEnumerable<IFormFile> images, string fullDirectoryPath, string webRootPath)
+        {
+            var newProduct = AutoMapperConfig.MapperInstance.Map<Wine>(model);
+
+            var foundProduct = this.GetById(newProduct.Id);
+
+            if (foundProduct == null)
+            {
+                return false;
+            }
+
+            foundProduct.Name = newProduct.Name;
+            foundProduct.Description = newProduct.Description;
+
+            if (images != null && images.Count() > 0)
+            {
+                foreach (var image in images)
+                {
+                    var imageUrl = await this.imagesService.UploadAzureBlobImageAsync(image, AzureContainerName);
+
+                    foundProduct.Images.Add(new Image
+                    {
+                        ImageUrl = imageUrl.Replace(webRootPath, string.Empty).Replace("\\", "/"),
+                    });
+                }
+            }
+
+            this.winesRepository.Update(foundProduct);
+            await this.winesRepository.SaveChangesAsync();
+
+            return true;
         }
 
         public async Task<bool> DeleteAsync(int id)

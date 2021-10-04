@@ -16,6 +16,8 @@
 
         T GetById<T>(int id);
 
+        public Task<bool> EditAsync<T>(T model, IEnumerable<IFormFile> images, string fullDirectoryPath, string webRootPath);
+
         public Task<bool> DeleteAsync(int id);
 
         public Task<bool> RestoreAsync(int id);

@@ -1,9 +1,8 @@
-﻿using System.Threading.Tasks;
-
-namespace BulgarianWines.Services.Data
+﻿namespace BulgarianWines.Services.Data
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
 
     using BulgarianWines.Data.Common.Repositories;
     using BulgarianWines.Data.Models;
