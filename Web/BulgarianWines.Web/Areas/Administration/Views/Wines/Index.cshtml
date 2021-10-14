@@ -1,125 +1,153 @@
-﻿@model IEnumerable<BulgarianWines.Data.Models.Wine>
+﻿@model IEnumerable<BulgarianWines.Web.ViewModels.Wines.ProductViewModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "All Wines";
 }
 
-<h2>Index</h2>
+<link href="~/css/showmore.css" rel="stylesheet" />
+
+<h2>
+    All Wines
+</h2>
 
 <p>
     <a asp-action="Create">
         Create New
     </a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Origin)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Variety)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Volume)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Harvest)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsDeleted)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeletedOn)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedOn)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModifiedOn)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<div class="table-responsive">
+    <table class="table align-middle table-striped table-hover table-bordered">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Origin)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ImageUrl)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Variety)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Volume)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Harvest.Year)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.User)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsDeleted)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DeletedOn)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedOn)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ModifiedOn)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">
-                        Edit
-                    </a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">
-                        Details
-                    </a>
-                    @if (item.IsDeleted)
-                    {
-                        <a asp-action="Restore" asp-route-id="@item.Id">
-                            | Restore
-                        </a>
-                    }
-                    else
-                    {
-                        <a asp-action="Delete" asp-route-id="@item.Id">
-                            | Delete
-                        </a>
-                    }
-                </td>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Origin</th>
+                <th>Variety</th>
+                <th>Category</th>
+                <th>Volume</th>
+                <th>Harvest</th>
+                <th>IsDeleted</th>
+                <th>DeletedOn</th>
+                <th>CreatedOn</th>
+                <th>ModifiedOn</th>
+                <th>Actions</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @if (!Model.Any())
+            {
+                <tr class="row">
+                    <td class="col-12 d-flex justify-content-center">
+                        <strong>
+                            No products
+                        </strong>
+                    </td>
+                </tr>
+            }
+            @foreach (var item in Model)
+            {
+                var nextSpaceIndex = item.Description.LastIndexOf(" ", 30, StringComparison.Ordinal);
+                <tr>
+                    <td style="width: 100%; height: 100%; text-align: center; vertical-align: auto">
+                        <img src="@item.ImageUrl" style="max-height: 100%; max-width: 100%" alt="@item.Name" />
+                    </td>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        <div class="comment more">
+                            @item.Description
+                        </div>
+                    </td>
+                    <td>
+                        @item.OriginName
+                    </td>
+                    <td>
+                        @item.VarietyName
+                    </td>
+                    <td>
+                        @item.CategoryName
+                    </td>
+                    <td>
+                        @item.VolumeQuantity
+                    </td>
+                    <td>
+                        @item.HarvestYear
+                    </td>
+                    <td>
+                        @item.IsDeleted
+                    </td>
+                    <td>
+                        @item.DeletedOn
+                    </td>
+                    <td>
+                        @item.CreatedOn
+                    </td>
+                    <td>
+                        @item.ModifiedOn
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">
+                            Edit
+                        </a>
+                        <a asp-action="Details" asp-route-id="@item.Id">
+                            Details
+                        </a>
+                        @if (item.IsDeleted)
+                        {
+                            <a asp-action="Restore" asp-route-id="@item.Id">
+                                Restore
+                            </a>
+                        }
+                        else
+                        {
+                            <a asp-action="Delete" asp-route-id="@item.Id">
+                                Delete
+                            </a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var showChar = 100;
+            var ellipsestext = "...";
+            var moretext = "more";
+            var lesstext = "less";
+            $('.more').each(function () {
+                var content = $(this).html();
+
+                if (content.length > showChar) {
+
+                    var c = content.substr(0, showChar);
+                    var h = content.substr(showChar - 1, content.length - showChar);
+
+                    var html = c + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+
+                    $(this).html(html);
+                }
+
+            });
+
+            $(".morelink").click(function () {
+                if ($(this).hasClass("less")) {
+                    $(this).removeClass("less");
+                    $(this).html(moretext);
+                } else {
+                    $(this).addClass("less");
+                    $(this).html(lesstext);
+                }
+                $(this).parent().prev().toggle();
+                $(this).prev().toggle();
+                return false;
+            });
+        });
+    </script>>
+}

@@ -6,6 +6,7 @@
 
     using BulgarianWines.Data.Common.Repositories;
     using BulgarianWines.Data.Models;
+    using BulgarianWines.Services.Mapping;
 
     public class CategoriesService : ICategoriesService
     {
@@ -29,6 +30,10 @@
                 .ToList()
                 .Select(x => new KeyValuePair<string, string>(x.Id.ToString(), x.Name));
         }
+
+        public IEnumerable<T> GetAll<T>() => this.categoriesRepository.AllAsNoTracking().To<T>().ToList();
+
+        public IEnumerable<Category> GetAll() => this.categoriesRepository.AllAsNoTracking().ToList();
 
         public async Task<bool> RestoreAsync(int id)
         {

@@ -1,12 +1,11 @@
-﻿using BulgarianWines.Data.Common.Repositories;
-
-namespace BulgarianWines.Web.Areas.Administration.Controllers
+﻿namespace BulgarianWines.Web.Areas.Administration.Controllers
 {
     using System.Linq;
     using System.Threading.Tasks;
 
     using Azure.Storage.Blobs;
     using BulgarianWines.Data;
+    using BulgarianWines.Data.Common.Repositories;
     using BulgarianWines.Data.Models;
     using BulgarianWines.Services.Data;
     using BulgarianWines.Web.ViewModels.Wines;
@@ -59,11 +58,22 @@ namespace BulgarianWines.Web.Areas.Administration.Controllers
         }
 
         // GET: Administration/Wines
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id = 1)
         {
-            return this.View(await this.winesRepository
-                .AllWithDeleted()
-                .ToListAsync());
+            //return this.View(await this.winesRepository
+            //    .AllWithDeleted()
+            //    .ToListAsync());
+
+            if (id <= 0)
+            {
+                return this.NotFound();
+            }
+
+            const int itemsPerPage = 12;
+
+            var wines = this.winesService.GetAll<ProductViewModel>(id, itemsPerPage);
+            return this.View(wines);
+
         }
 
         // GET: Administration/Wines/Details/5
@@ -101,9 +111,11 @@ namespace BulgarianWines.Web.Areas.Administration.Controllers
             //this.ViewData["VarietyId"] = new SelectList(this.db.Varieties, "Id", "Id");
             //this.ViewData["VolumeId"] = new SelectList(this.db.Volumes, "Id", "Id");
 
+            var categories = this.categoriesService.GetAll();
+
             var viewModel = new CreateWineInputModel
             {
-                CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs(),
+                Categories = categories,
                 VolumesItems = this.volumesService.GetAllAsKeyValuePairs(),
                 HarvestsItems = this.harvestsService.GetAllAsKeyValuePairs(),
                 VarietyItems = this.varietiesService.GetAllAsKeyValuePairs(),
@@ -138,12 +150,12 @@ namespace BulgarianWines.Web.Areas.Administration.Controllers
         //}
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateAsync(CreateWineInputModel input)
+        public async Task<IActionResult> Create(CreateWineInputModel input)
         {
             if (!this.ModelState.IsValid)
             {
-                input.CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs();
+                var categories = this.categoriesService.GetAll();
+                input.Categories = categories;
                 input.VolumesItems = this.volumesService.GetAllAsKeyValuePairs();
                 input.HarvestsItems = this.harvestsService.GetAllAsKeyValuePairs();
                 input.VarietyItems = this.varietiesService.GetAllAsKeyValuePairs();

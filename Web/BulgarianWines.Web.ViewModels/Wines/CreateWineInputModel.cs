@@ -18,19 +18,26 @@
         public string Description { get; set; }
 
         [Required]
+        [Display(Name = "Select Origin")]
         public int OriginId { get; set; }
 
         [Required]
+        [Display(Name = "Select Variety")]
         public int VarietyId { get; set; }
 
         [Required]
+        [Display(Name = "Select Harvest")]
         public int HarvestId { get; set; }
 
         [Required]
+        [Display(Name = "Select Volume")]
         public int VolumeId { get; set; }
 
         [Required]
+        [Display(Name = "Select Category")]
         public int CategoryId { get; set; }
+
+        public IEnumerable<Category> Categories { get; set; }
 
         [Display(Name = "Add Images")]
         [ImageAttribute]
@@ -43,8 +50,6 @@
         public DateTime? CreatedOn { get; set; }
 
         public DateTime? ModifiedOn { get; set; }
-
-        public IEnumerable<KeyValuePair<string, string>> CategoriesItems { get; set; }
 
         public IEnumerable<KeyValuePair<string, string>> VolumesItems { get; set; }
 
