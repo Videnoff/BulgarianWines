@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    using BulgarianWines.Web.ViewModels.Wines;
     using Microsoft.AspNetCore.Http;
 
     public interface IWinesService
@@ -21,5 +20,7 @@
         public Task<bool> DeleteAsync(int id);
 
         public Task<bool> RestoreAsync(int id);
+
+        public Task<bool> DeleteImageAsync(string id);
     }
 }

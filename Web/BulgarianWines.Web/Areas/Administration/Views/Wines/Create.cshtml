@@ -1,14 +1,14 @@
 ﻿@model BulgarianWines.Web.ViewModels.Wines.CreateWineInputModel
 
 @{
-    //var categoryItems = this.Model
-    //    .CategoriesItems
-    //    .Select(x =>
-    //        new SelectListItem(x.Value, x.Key));
-    var volumeItems = this.Model
-        .VolumesItems
+    var categoryItems = this.Model
+        .CategoriesItems
         .Select(x =>
             new SelectListItem(x.Value, x.Key));
+    var volumeItems = this.Model
+.VolumesItems
+.Select(x =>
+    new SelectListItem(x.Value, x.Key));
     var harvestItems = this.Model
         .HarvestsItems
         .Select(x =>
@@ -61,7 +61,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" class="form-control" asp-items="Model.Categories.Select(x => new SelectListItem(x.Name, x.Id.ToString()))"></select>
+                <select asp-for="CategoryId" class="form-control" asp-items="categoryItems"></select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
             <div class="form-group">

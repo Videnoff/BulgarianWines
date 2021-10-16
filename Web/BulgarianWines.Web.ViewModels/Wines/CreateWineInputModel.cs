@@ -51,6 +51,8 @@
 
         public DateTime? ModifiedOn { get; set; }
 
+        public IEnumerable<KeyValuePair<string, string>> CategoriesItems { get; set; }
+
         public IEnumerable<KeyValuePair<string, string>> VolumesItems { get; set; }
 
         public IEnumerable<KeyValuePair<string, string>> HarvestsItems { get; set; }

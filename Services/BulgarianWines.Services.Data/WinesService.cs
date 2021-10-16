@@ -70,8 +70,11 @@
 
         public T GetById<T>(int id)
         {
-            return this.winesRepository.AllAsNoTracking().Where(x => x.Id == id)
-                .To<T>().FirstOrDefault();
+            return this.winesRepository
+                .AllAsNoTracking()
+                .Where(x => x.Id == id)
+                .To<T>()
+                .FirstOrDefault();
         }
 
         public async Task<bool> EditAsync<T>(T model, IEnumerable<IFormFile> images, string fullDirectoryPath, string webRootPath)
@@ -87,6 +90,10 @@
 
             foundProduct.Name = newProduct.Name;
             foundProduct.Description = newProduct.Description;
+            foundProduct.Harvest = newProduct.Harvest;
+            foundProduct.Origin = newProduct.Origin;
+            foundProduct.Variety = newProduct.Variety;
+            foundProduct.Category = newProduct.Category;
 
             if (images != null && images.Count() > 0)
             {
@@ -144,6 +151,21 @@
             return true;
         }
 
+        public async Task<bool> DeleteImageAsync(string id)
+        {
+            var image = this.GetImageById(id);
+
+            if (image == null)
+            {
+                return false;
+            }
+
+            this.imagesRepository.Delete(image);
+            await this.imagesRepository.SaveChangesAsync();
+
+            return true;
+        }
+
         private Wine GetDeletedProductById(int id) =>
             this.winesRepository
                 .AllAsNoTrackingWithDeleted()
@@ -151,6 +173,10 @@
 
         private Wine GetById(int id) =>
             this.winesRepository.All().Include(x => x.Images)
+                .FirstOrDefault(x => x.Id == id);
+
+        private Image GetImageById(string id) =>
+            this.imagesRepository.All()
                 .FirstOrDefault(x => x.Id == id);
     }
 }

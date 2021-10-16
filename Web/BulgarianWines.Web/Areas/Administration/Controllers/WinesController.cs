@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web.Areas.Administration.Controllers
+﻿using BulgarianWines.Web.ViewModels.Administration.Wines;
+
+namespace BulgarianWines.Web.Areas.Administration.Controllers
 {
     using System.Linq;
     using System.Threading.Tasks;
@@ -60,10 +62,6 @@
         // GET: Administration/Wines
         public async Task<IActionResult> Index(int id = 1)
         {
-            //return this.View(await this.winesRepository
-            //    .AllWithDeleted()
-            //    .ToListAsync());
-
             if (id <= 0)
             {
                 return this.NotFound();
@@ -104,18 +102,9 @@
         // GET: Administration/Wines/Create
         public IActionResult Create()
         {
-            //this.ViewData["CategoryId"] = new SelectList(this.db.Categories, "Id", "Id");
-            //this.ViewData["HarvestId"] = new SelectList(this.db.Harvests, "Id", "Id");
-            //this.ViewData["OriginId"] = new SelectList(this.db.Origins, "Id", "Id");
-            //this.ViewData["UserId"] = new SelectList(this.db.Users, "Id", "Id");
-            //this.ViewData["VarietyId"] = new SelectList(this.db.Varieties, "Id", "Id");
-            //this.ViewData["VolumeId"] = new SelectList(this.db.Volumes, "Id", "Id");
-
-            var categories = this.categoriesService.GetAll();
-
             var viewModel = new CreateWineInputModel
             {
-                Categories = categories,
+                CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs(),
                 VolumesItems = this.volumesService.GetAllAsKeyValuePairs(),
                 HarvestsItems = this.harvestsService.GetAllAsKeyValuePairs(),
                 VarietyItems = this.varietiesService.GetAllAsKeyValuePairs(),
@@ -154,8 +143,7 @@
         {
             if (!this.ModelState.IsValid)
             {
-                var categories = this.categoriesService.GetAll();
-                input.Categories = categories;
+                input.CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs();
                 input.VolumesItems = this.volumesService.GetAllAsKeyValuePairs();
                 input.HarvestsItems = this.harvestsService.GetAllAsKeyValuePairs();
                 input.VarietyItems = this.varietiesService.GetAllAsKeyValuePairs();
@@ -172,28 +160,55 @@
         }
 
         // GET: Administration/Wines/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int id)
         {
-            if (id == null)
+            //if (id == null)
+            //{
+            //    return this.NotFound();
+            //}
+
+            //var wine = await this.db.Wines.FindAsync(id);
+
+            //if (wine == null)
+            //{
+            //    return this.NotFound();
+            //}
+
+            //this.ViewData["CategoryId"] = new SelectList(this.db.Categories, "Id", "Id", wine.CategoryId);
+            //this.ViewData["HarvestId"] = new SelectList(this.db.Harvests, "Id", "Id", wine.HarvestId);
+            //this.ViewData["OriginId"] = new SelectList(this.db.Origins, "Id", "Id", wine.OriginId);
+            //this.ViewData["UserId"] = new SelectList(this.db.Users, "Id", "Id", wine.UserId);
+            //this.ViewData["VarietyId"] = new SelectList(this.db.Varieties, "Id", "Id", wine.VarietyId);
+            //this.ViewData["VolumeId"] = new SelectList(this.db.Volumes, "Id", "Id", wine.VolumeId);
+
+            //var categories = this.categoriesService.GetAll();
+            //var inputModel = this.winesService.GetById<EditProductViewModel>(id);
+
+            //if (inputModel == null)
+            //{
+            //    this.TempData["Error"] = "Product not found.";
+            //    return this.RedirectToAction(nameof(this.Index));
+            //}
+
+            //inputModel.Categories = categories;
+
+            //return this.View(inputModel);
+
+            var product = this.winesService.GetById<EditProductViewModel>(id);
+
+            if (product == null)
             {
-                return this.NotFound();
+                this.TempData["Error"] = "Product not found!";
+                return this.RedirectToAction(nameof(this.Index));
             }
 
-            var wine = await this.db.Wines.FindAsync(id);
+            product.CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs();
+            product.VolumesItems = this.volumesService.GetAllAsKeyValuePairs();
+            product.HarvestsItems = this.harvestsService.GetAllAsKeyValuePairs();
+            product.VarietyItems = this.varietiesService.GetAllAsKeyValuePairs();
+            product.OriginsItems = this.originsService.GetAllAsKeyValuePairs();
 
-            if (wine == null)
-            {
-                return this.NotFound();
-            }
-
-            this.ViewData["CategoryId"] = new SelectList(this.db.Categories, "Id", "Id", wine.CategoryId);
-            this.ViewData["HarvestId"] = new SelectList(this.db.Harvests, "Id", "Id", wine.HarvestId);
-            this.ViewData["OriginId"] = new SelectList(this.db.Origins, "Id", "Id", wine.OriginId);
-            this.ViewData["UserId"] = new SelectList(this.db.Users, "Id", "Id", wine.UserId);
-            this.ViewData["VarietyId"] = new SelectList(this.db.Varieties, "Id", "Id", wine.VarietyId);
-            this.ViewData["VolumeId"] = new SelectList(this.db.Volumes, "Id", "Id", wine.VolumeId);
-
-            return this.View(wine);
+            return this.View(product);
         }
 
         // POST: Administration/Wines/Edit/5
@@ -201,43 +216,25 @@
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Name,Description,OriginId,ImageUrl,VarietyId,CategoryId,VolumeId,HarvestId,UserId,IsDeleted,DeletedOn,Id,CreatedOn,ModifiedOn")] Wine wine)
+        public async Task<IActionResult> Edit(int id, EditProductViewModel model)
         {
-            if (id != wine.Id)
+            if (!this.ModelState.IsValid)
             {
-                return this.NotFound();
+                return this.View();
             }
 
-            if (this.ModelState.IsValid)
-            {
-                try
-                {
-                    this.db.Update(wine);
-                    await this.db.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!this.WineExists(wine.Id))
-                    {
-                        return this.NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+            var result = await this.winesService.EditAsync<EditProductViewModel>(model, model.UploadedImages, this.fullDirectoryPath, this.webHostEnvironment.WebRootPath);
 
-                return this.RedirectToAction(nameof(this.Index));
+            if (result)
+            {
+                this.TempData["Alert"] = "Successfully edited product.";
+            }
+            else
+            {
+                this.TempData["Error"] = "There was a problem editing the product.";
             }
 
-            this.ViewData["CategoryId"] = new SelectList(this.db.Categories, "Id", "Id", wine.CategoryId);
-            this.ViewData["HarvestId"] = new SelectList(this.db.Harvests, "Id", "Id", wine.HarvestId);
-            this.ViewData["OriginId"] = new SelectList(this.db.Origins, "Id", "Id", wine.OriginId);
-            this.ViewData["UserId"] = new SelectList(this.db.Users, "Id", "Id", wine.UserId);
-            this.ViewData["VarietyId"] = new SelectList(this.db.Varieties, "Id", "Id", wine.VarietyId);
-            this.ViewData["VolumeId"] = new SelectList(this.db.Volumes, "Id", "Id", wine.VolumeId);
-
-            return this.View(wine);
+            return this.RedirectToAction(nameof(this.SingleWine), new {area = string.Empty, id});
         }
 
         // GET: Administration/Wines/Delete/5
@@ -307,6 +304,28 @@
             else
             {
                 this.TempData["Error"] = "There was a problem restoring the product";
+            }
+
+            return this.RedirectToAction(nameof(this.Index));
+        }
+
+        public IActionResult SingleWine(int id)
+        {
+            var wine = this.winesService.GetById<SingleProductViewModel>(id);
+            return this.View(wine);
+        }
+
+        public async Task<IActionResult> DeleteImage(string id)
+        {
+            var result = await this.winesService.DeleteImageAsync(id);
+
+            if (result)
+            {
+                this.TempData["Alert"] = "Successfully deleted image!";
+            }
+            else
+            {
+                this.TempData["Error"] = "There was a problem deleting the image!";
             }
 
             return this.RedirectToAction(nameof(this.Index));

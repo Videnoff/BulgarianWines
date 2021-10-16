@@ -1,4 +1,27 @@
-﻿@model BulgarianWines.Data.Models.Wine
+﻿@model BulgarianWines.Web.ViewModels.Wines.EditProductViewModel
+@{
+    var categoriesItems = this.Model.CategoriesItems
+        .Select(x =>
+            new SelectListItem(x.Value, x.Key));
+    var volumeItems = this.Model
+.VolumesItems
+.Select(x =>
+    new SelectListItem(x.Value, x.Key));
+    var harvestItems = this.Model
+        .HarvestsItems
+        .Select(x =>
+            new SelectListItem(x.Value, x.Key));
+    var varietyItems = this.Model
+        .VarietyItems
+        .Select(x =>
+            new SelectListItem(x.Value, x.Key));
+    var originItems = this.Model
+.OriginsItems
+.Select(x =>
+    new SelectListItem(x.Value, x.Key));
+}
+
+<link href="~/css/tableInEdit.css" rel="stylesheet" asp-append-version="true" />
 
 @{
     ViewData["Title"] = "Edit";
@@ -9,9 +32,9 @@
 <h4>Wine</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="col-md-7">
+        <form asp-area="Administration" asp-controller="Wines" asp-action="Edit" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -24,38 +47,33 @@
             </div>
             <div class="form-group">
                 <label asp-for="OriginId" class="control-label"></label>
-                <select asp-for="OriginId" class="form-control" asp-items="ViewBag.OriginId"></select>
+                <select asp-for="OriginId" class="form-control" asp-items="originItems"></select>
                 <span asp-validation-for="OriginId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
-                <input asp-for="ImageUrl" class="form-control" />
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                <label asp-for="UploadedImages" class="control-label"></label>
+                <input asp-for="UploadedImages" class="form-control" />
+                <span asp-validation-for="UploadedImages" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="VarietyId" class="control-label"></label>
-                <select asp-for="VarietyId" class="form-control" asp-items="ViewBag.VarietyId"></select>
+                <select asp-for="VarietyId" class="form-control" asp-items="varietyItems"></select>
                 <span asp-validation-for="VarietyId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                <select asp-for="CategoryId" class="form-control" asp-items="categoriesItems"></select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="VolumeId" class="control-label"></label>
-                <select asp-for="VolumeId" class="form-control" asp-items="ViewBag.VolumeId"></select>
+                <select asp-for="VolumeId" class="form-control" asp-items="volumeItems"></select>
                 <span asp-validation-for="VolumeId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="HarvestId" class="control-label"></label>
-                <select asp-for="HarvestId" class="form-control" asp-items="ViewBag.HarvestId"></select>
+                <select asp-for="HarvestId" class="form-control" asp-items="harvestItems"></select>
                 <span asp-validation-for="HarvestId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
-                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
-                <span asp-validation-for="UserId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <div class="checkbox">
@@ -84,6 +102,37 @@
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </form>
+    </div>
+    <div class="col-md-4">
+        <table class="table align-middle table-striped table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        Image
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var image in Model.Images)
+                {
+                    <tr>
+                        <td style="width: 50%; height: 50%; text-align: center; vertical-align: auto">
+                            <img src="@image.ImageUrl" style="max-height: 100%; max-width: 100%" alt="@Model.Name" />
+                        </td>
+                        <td>
+                            <div>
+                                <a asp-controller="Wines" asp-action="DeleteImage" asp-route-id="@image.Id" class="btn btn-danger btn-sm">
+                                    Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 </div>
 
