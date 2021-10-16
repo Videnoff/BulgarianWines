@@ -21,15 +21,13 @@
     new SelectListItem(x.Value, x.Key));
 }
 
-<link href="~/css/tableInEdit.css" rel="stylesheet" asp-append-version="true" />
-
 @{
     ViewData["Title"] = "Edit";
 }
 
 <h2>Edit</h2>
 
-<h4>Wine</h4>
+<h4>@Model.Name</h4>
 <hr />
 <div class="row">
     <div class="col-md-7">
@@ -37,12 +35,12 @@
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
+                <textarea asp-for="Name" class="form-control edit-with-tinymce"></textarea>
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
+                <textarea asp-for="Description" class="form-control edit-with-tinymce"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -84,18 +82,18 @@
             </div>
             <div class="form-group">
                 <label asp-for="DeletedOn" class="control-label"></label>
-                <input asp-for="DeletedOn" class="form-control" />
+                <input asp-for="DeletedOn" class="form-control" disabled="disabled" />
                 <span asp-validation-for="DeletedOn" class="text-danger"></span>
             </div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="CreatedOn" class="control-label"></label>
-                <input asp-for="CreatedOn" class="form-control" />
+                <input asp-for="CreatedOn" class="form-control" disabled="disabled" />
                 <span asp-validation-for="CreatedOn" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ModifiedOn" class="control-label"></label>
-                <input asp-for="ModifiedOn" class="form-control" />
+                <input asp-for="ModifiedOn" class="form-control" disabled="disabled" />
                 <span asp-validation-for="ModifiedOn" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -104,7 +102,7 @@
         </form>
     </div>
     <div class="col-md-4">
-        <table class="table align-middle table-striped table-hover table-bordered">
+        <table class="table align-middle table-striped table-hover table-bordered" style="margin-left: 100px;">
             <thead>
                 <tr>
                     <th>
@@ -142,4 +140,18 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="~/lib/tinymce/tinymce.min.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+    tinymce.init({
+            selector: "textarea.edit-with-tinymce",
+            relative_urls: false,
+            remove_script_host: false,
+            convert_urls: true,
+            plugins: [
+                "image paste table link code media fullscreen wordcount searchreplace lists"
+            ],
+            toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent"
+    });
+    </script>
 }
