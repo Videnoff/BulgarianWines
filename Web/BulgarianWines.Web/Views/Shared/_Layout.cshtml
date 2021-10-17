@@ -8,16 +8,66 @@
         @this.ViewData["Title"] - @GlobalConstants.SystemName
     </title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
-    <link href="~/css/wined/style.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/lib/fontawesome/css/all.css" rel="stylesheet" asp-append-version="true" />
+
+    <script src="~/js/wined/jquery/jquery-2.1.1.min.js"></script>
+    <!-- <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" /> -->
+    <script src="~/js/wined/bootstrap/js/bootstrap.min.js"></script>
+    <link href="~/js/wined/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
     <link href="~/css/wined/stylesheet.css" rel="stylesheet" />
-    <link href="~/lib/fontawesome/css/all.css" rel="stylesheet" asp-append-version="true"/>
-    <link href="~/css/wined/singleProduct.css" rel="stylesheet" />
+    <link href="~/css/wined/themecss/lightbox.css" rel="stylesheet" />
+    <link href="~/js/wined/jquery/magnific/magnific-popup.css" rel="stylesheet" />
+    <link href="~/js/wined/jquery/owl-carousel/owl.carousel.css" rel="stylesheet" />
+    <link href="~/js/wined/jquery/owl-carousel/owl.transitions.css" rel="stylesheet" />
+    <link href="~/css/wined/themecss/carousel.css" rel="stylesheet" />
+    <link href="~/css/wined/themecss/custom.css" rel="stylesheet" />
+    <link href="~/css/wined/themecss/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/wined/themecss/animate.css" rel="stylesheet" />
+
+
+
+    <!-- <link href="style.href" type="text/css" rel="style.rel" media="style.media" />
+    <link href="style.href" type="text/css" rel="style.rel" media="style.media" />
+    <link href="style.href" type="text/css" rel="style.rel" media="style.media" />
+    <link href="style.href" type="text/css" rel="style.rel" media="style.media" />
+     -->
+
+    <script src="~/js/wined/lightbox/lightbox-2.6.min.js"></script>
+    <link href="~/js/wined/jquery/swiper/css/swiper.min.css" rel="stylesheet" />
+    <link href="~/js/wined/jquery/swiper/css/opencart.css" rel="stylesheet" />
+    <link href="~/js/wined/jquery/owl-carousel/owl.carousel.css" rel="stylesheet" media="screen" />
+    <link href="~/js/wined/jquery/owl-carousel/owl.transitions.css" rel="stylesheet" media="screen" />
+    <script src="~/js/wined/jquery/swiper/js/swiper.jquery.js"></script>
+    <script src="~/js/wined/jquery/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/js/wined/common.js"></script>
+    <link href="~/images/wined/cart.png" />
+
+    <!-- Theme Start -->
+
+    <script type="text/javascript" src="~/js/wined/themejs/custom.js"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jstree.min.js"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/carousel.min.js"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/productcarosel.min.js"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jquery.custom.min.js"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jquery.formalize.min.js"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jquery.elevatezoom.min.js"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/bootstrap-notify.min.js"></script>
+    <script type="text/javascript" src="~/js/wined/jquery/magnific/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript" src="~/js/wined/jquery/owl-carousel/owl.carousel.min.js"></script>
+    <link href="~/js/wined/jquery/magnific/magnific-popup.css" rel="stylesheet" />
+    <script type="text/javascript" src="~/js/wined/themejs/tabs.js"></script>
+    <script type="text/javascript" src="~/js/wined/jquery.countdown.js"></script>
+    <script type="text/javascript" src="~/js/wined/jquery.countdown.min.js"></script>
+    <!-- Theme End -->
+
+    <script src="~/js/wined/common.js"></script>
+    <script src="~/js/wined/themejs/parallax.js"></script>
 
     <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
 </head>
-<body>
-    <div class="wrap">
-        <header class="header" id="frame-panel">
+<body class="common-home   layout-1">
+    @*<header class="header" id="frame-panel">
             <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
                 <div class="container">
                     <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
@@ -57,21 +107,550 @@
                     </div>
                 </div>
             </nav>
-        </header>
+        </header>*@
 
-        <div class="container">
-            <partial name="_CookieConsentPartial" />
-            <main role="main" class="pb-3">
-                @this.RenderBody()
-            </main>
-        </div>
+    <header>
+        <div class="header">
+            <div class="header-nav-wrapper">
+                <div class="container">
+                    <div class="header-nav-left">
+                        <div class="nav pull-left ">
 
-        <footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </div>
+                    </div>
+                    <div class="header-nav-right">
+
+                        <!--<div id="wish-list" class="wish-list hidden-md-down">
+                        <div class="wish-details">
+                        <span class="wish-image"></span>
+                        </div>
+
+                        <div class="wish-list-details dropdown-menu">
+                        <div class="header-wishlist"><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=account/wishlist" id="wishlist-total" title="Wish List (0)"><span class="wishlist">Wish List (0)</span></a></div>
+                        </div>
+                        </div>-->
+
+
+
+
+                    </div>
+                </div>
             </div>
-        </footer>
+
+            <div class="content_headercms_top">
+                <div id="main-menu" class="main-menu">
+                    <nav class="nav-container" role="navigation">
+                        <div class="nav-inner">
+                            <!-- ======= Menu Code START ========= -->
+                            <!-- Opencart 3 level Category Menu-->
+                            <div id="menu" class="main-menu">
+                                <div class="nav-responsive">
+                                    <span>Menu</span>
+                                    <div class="menu-expand-wrapper">
+                                        <div class="expandable"></div>
+                                    </div>
+                                </div>
+                                <div class="nav-mainmenu btn-modal hidden-sm hidden-xs">
+                                    <span class="mainmenu-btn-wrapper">
+                                        <span class="mainmenu-btn"></span>
+                                    </span>
+                                    <span class="mainmenu-text">menu</span>
+                                </div>
+                                <ul class="nav navbar-nav">
+                                    <li class="top_level home"><a href="index9328.html?route=common/home">Home</a></li>
+                                    <li class="top_level"> <a href="indexc295.html?route=information/blogger/blogs">blog</a></li>
+                                    <li class="top_level dropdown">
+                                        <a href="index8122.html?route=product/category&amp;path=34">our store</a>
+
+                                        <div class="dropdown-menu megamenu column3">
+                                            <div class="dropdown-inner">
+                                                <ul class="list-unstyled childs_1">
+                                                    <!-- 2 Level Sub Categories START -->
+                                                    <li class="dropdown">
+                                                        <a href="index22d5.html?route=product/category&amp;path=34_43">marsala wine</a>
+
+                                                        <div class="dropdown-menu">
+                                                            <div class="dropdown-inner">
+                                                                <ul class="list-unstyled childs_2">
+                                                                    <li><a href="indexa84d.html?route=product/category&amp;path=34_43_50">accusamus iusto	</a></li>
+                                                                    <li><a href="indexa249.html?route=product/category&amp;path=34_43_47">nulla venenatis</a></li>
+                                                                    <li><a href="indexd24f.html?route=product/category&amp;path=34_43_28">Phasellus tempu</a></li>
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
+                                                    </li>
+                                                    <!-- 2 Level Sub Categories END -->
+
+                                                </ul>
+                                                <ul class="list-unstyled childs_1">
+                                                    <!-- 2 Level Sub Categories START -->
+                                                    <li class="dropdown">
+                                                        <a href="index0e62.html?route=product/category&amp;path=34_49">sagrantino</a>
+
+                                                        <div class="dropdown-menu">
+                                                            <div class="dropdown-inner">
+                                                                <ul class="list-unstyled childs_2">
+                                                                    <li><a href="index3286.html?route=product/category&amp;path=34_49_53">temporibus autem</a></li>
+                                                                    <li><a href="index5168.html?route=product/category&amp;path=34_49_55">ullamco laboris </a></li>
+                                                                    <li><a href="indexc614.html?route=product/category&amp;path=34_49_44">voluptatem sequi</a></li>
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
+                                                    </li>
+                                                    <!-- 2 Level Sub Categories END -->
+
+                                                </ul>
+                                                <ul class="list-unstyled childs_1">
+                                                    <!-- 2 Level Sub Categories START -->
+                                                    <li class="dropdown">
+                                                        <a href="index7e21.html?route=product/category&amp;path=34_48">vernaccia</a>
+
+                                                        <div class="dropdown-menu">
+                                                            <div class="dropdown-inner">
+                                                                <ul class="list-unstyled childs_2">
+                                                                    <li><a href="index893e.html?route=product/category&amp;path=34_48_52">rem aperiam</a></li>
+                                                                    <li><a href="indexc5f8.html?route=product/category&amp;path=34_48_51">ridiculus mus</a></li>
+                                                                    <li><a href="indexeae5.html?route=product/category&amp;path=34_48_24">dictum gravida</a></li>
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
+                                                    </li>
+                                                    <!-- 2 Level Sub Categories END -->
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </li>
+
+                                    <li class="top_level dropdown">
+                                        <a href="index98dc.html?route=product/category&amp;path=20">lambrusco</a>
+
+                                        <div class="dropdown-menu megamenu column1">
+                                            <div class="dropdown-inner">
+                                                <ul class="list-unstyled childs_1">
+                                                    <!-- 2 Level Sub Categories START -->
+                                                    <li><a href="indexd9fe.html?route=product/category&amp;path=20_26">gravida</a></li>
+                                                    <!-- 2 Level Sub Categories END -->
+                                                    <!-- 2 Level Sub Categories START -->
+                                                    <li><a href="indexf345.html?route=product/category&amp;path=20_27">lighting &amp; studio</a></li>
+                                                    <!-- 2 Level Sub Categories END -->
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </li>
+
+                                    <li class="top_level dropdown">
+                                        <a href="index1647.html?route=product/category&amp;path=25">etruscan </a>
+
+                                        <div class="dropdown-menu megamenu column1">
+                                            <div class="dropdown-inner">
+                                                <ul class="list-unstyled childs_1">
+                                                    <!-- 2 Level Sub Categories START -->
+                                                    <li><a href="indexf3db.html?route=product/category&amp;path=25_31">canonical adaptations</a></li>
+                                                    <!-- 2 Level Sub Categories END -->
+                                                    <!-- 2 Level Sub Categories START -->
+                                                    <li><a href="index68a7.html?route=product/category&amp;path=25_30">moscato</a></li>
+                                                    <!-- 2 Level Sub Categories END -->
+                                                    <!-- 2 Level Sub Categories START -->
+                                                    <li><a href="indexc219.html?route=product/category&amp;path=25_29">Safed chalwan</a></li>
+                                                    <!-- 2 Level Sub Categories END -->
+                                                    <!-- 2 Level Sub Categories START -->
+                                                    <li><a href="index955a.html?route=product/category&amp;path=25_32">untrammelled owing</a></li>
+                                                    <!-- 2 Level Sub Categories END -->
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </li>
+
+                                    <li class="top_level dropdown">
+                                        <a href="index7fa3.html?route=product/category&amp;path=18">gattinara</a>
+
+                                        <div class="dropdown-menu megamenu column1">
+                                            <div class="dropdown-inner">
+                                                <ul class="list-unstyled childs_1">
+                                                    <!-- 2 Level Sub Categories START -->
+                                                    <li><a href="index8470.html?route=product/category&amp;path=18_45">ghemme docg</a></li>
+                                                    <!-- 2 Level Sub Categories END -->
+                                                    <!-- 2 Level Sub Categories START -->
+                                                    <li><a href="index9f41.html?route=product/category&amp;path=18_46">Macs</a></li>
+                                                    <!-- 2 Level Sub Categories END -->
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </li>
+
+                                    <li class="top_level"><a href="index70a9.html?route=product/category&amp;path=57">grapefruits</a></li>
+                                    <li class="top_level"><a href="indexb152.html?route=product/category&amp;path=17">pomegranates</a></li>
+                                    <li class="top_level"><a href="index6067.html?route=product/category&amp;path=60">tengelows</a></li>
+                                    <li class="top_level"><a href="index76bc.html?route=product/category&amp;path=61">cantaloupe</a></li>
+                                    <li class="top_level"><a href="index0854.html?route=product/category&amp;path=62">gaming console</a></li>
+
+
+
+
+
+                                    <!--<li class="level0" ><a href="">Sitemap</a></li>
+                                    <li class="level0" ><a href="">contact us</a></li>
+                                    <li class="level0" ><a href="">about us</a></li> -->
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </nav>
+
+                </div>
+                </nav>
+                <div class="dropdown myaccount">
+                    <a href="indexe223.html?route=account/account" title="My Account" class="dropdown-toggle" data-toggle="dropdown">
+                        <!--<span class="account-title">My Account</span>--> <span class="caret"></span>
+                        <span class="user-info-image">my account<i class="fa fa-angle-down"></i></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right myaccount-menu">
+                        <li><a href="index5502.html?route=account/register">Register</a></li>
+                        <li><a href="indexe223.html?route=account/login">Login</a></li>
+                        <nav id="top">
+                            <!-- <div class="container"> -->
+                        </nav>
+                        <div class="nav pull-left">
+                            <div class="pull-left">
+                                <form action="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=common/language/language" method="post" enctype="multipart/form-data" id="form-language">
+                                    <div class="btn-group">
+                                        <button class="btn btn-link dropdown-toggle common-btn" data-toggle="dropdown" title="Language">
+
+                                            <img class="hidden-md hidden-lg" src="catalog/language/en-gb/en-gb.png" alt="English">
+                                            <span class="Language-text">Language</span>&nbsp;<!--<i class="fa fa-caret-down"></i>-->
+                                        </button>
+                                        <ul class="dropdown-menu language-menu">
+                                            <li class="current">
+                                                <button class="btn btn-link btn-block language-select" type="button" name="en-gb" title="English"><img src="catalog/language/en-gb/en-gb.png" alt="English" title="English" /> English</button>
+                                            </li>
+                                            <li>
+                                                <button class="btn btn-link btn-block language-select" type="button" name="ar" title="Arabic"><img src="catalog/language/ar/ar.png" alt="Arabic" title="Arabic" /> Arabic</button>
+                                            </li>
+                                            <li>
+                                                <button class="btn btn-link btn-block language-select" type="button" name="fr-Fr" title="Français"><img src="catalog/language/fr-Fr/fr-Fr.png" alt="Français" title="Français" /> Français</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <input type="hidden" name="code" value="" />
+                                    <input type="hidden" name="redirect" value="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=common/home" />
+                                </form>
+                            </div>
+
+                            <div class="pull-left">
+                                <form action="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=common/currency/currency" method="post" enctype="multipart/form-data" id="form-currency" title="Currency">
+                                    <div class="btn-group">
+                                        <button class="btn btn-link dropdown-toggle common-btn" data-toggle="dropdown">
+                                            <strong>$</strong>
+
+                                            <span class="currency-text">Currency</span>&nbsp;<!--<i class="fa fa-caret-down"></i>-->
+                                        </button>
+                                        <ul class="dropdown-menu currency-menu">
+                                            <li>
+                                                <button class="currency-select btn btn-link btn-block" type="button" name="EUR">€ Euro</button>
+                                            </li>
+                                            <li>
+                                                <button class="currency-select btn btn-link btn-block" type="button" name="GBP">£ Pound Sterling</button>
+                                            </li>
+                                            <li>
+                                                <button class="currency-select btn btn-link btn-block" type="button" name="USD">$ US Dollar</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <input type="hidden" name="code" value="" />
+                                    <input type="hidden" name="redirect" value="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=common/home" />
+                                </form>
+                            </div>
+
+                        </div>
+                    </ul>
+                </div>
+                <div class="header-logo">
+                    <div id="logo"><a href="index9328.html?route=common/home"><img src="image/catalog/demo/banners/Logo.png" title="Your Store" alt="Your Store" class="img-responsive" /></a></div>
+                </div>
+                <div class="header-cart">
+                    <div id="cart" class="btn-group btn-block">
+                        <!--<span class="cart-icon"></span>-->
+                        <button type="button" data-toggle="dropdown" data-loading-text="Loading..." class="btn btn-inverse btn-block btn-lg dropdown-toggle">
+                            <!-- <span class="heading-title">from the Blogs</span>-->
+                            <span id="cart-total">0</span>
+                            <span id="cart-title">your bag<i class="fa fa-angle-down"></i></span>
+                        </button>
+
+                        <ul class="dropdown-menu pull-right cart-menu">
+                            <li>
+                                <p class="text-center">Your shopping cart is empty!</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="dropdown search" title="Search item here">
+                    <div class="header-search dropdown-toggle " data-toggle="dropdown"></div>
+                    <div id="search" class="input-group dropdown-menu">
+                        <input type="text" name="search" value="" placeholder="Search item here" class="form-control input-lg" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default btn-lg">
+                                Search item here
+                                <span class="search_button"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content_headercms_bottom">
+                <div class="container">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <partial name="_CookieConsentPartial" />
+        <main role="main" class="pb-3">
+            @this.RenderBody()
+        </main>
     </div>
+    <footer>
+        <div id="footer">
+            <div class="content_footer_top">
+            </div>
+            <div class="content_footer_wrapper">
+                <div class="content_footer_inner">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3 col-lg-3 column common first">
+                                <h5>
+                                    Information
+                                </h5>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <a href="index8816.html?route=information/information&amp;information_id=4">
+                                            About Us
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="index1766.html?route=information/information&amp;information_id=6">
+                                            Delivery Information
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a asp-area="" asp-controller="Home" asp-action="Privacy">
+                                            Privacy Policy
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="index99e4.html?route=information/information&amp;information_id=5">
+                                            Terms &amp; Conditions
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <div class="footer-left column col-md-3 col-lg-3">
+                                <div id="contact">
+                                    <h5>Contact Us</h5>
+                                    <ul>
+                                        <li class="address">wined demo store</li>
+                                        <li>111, Puffin Street, New York, 12354</li>
+                                        <li class="fax">1-212-98765432</li>
+                                        <li class="email"><a href="#">support@company.com</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!--<div class="col-md-3 col-lg-3 column common second">
+                                <h5>My Account</h5>
+                                <ul class="list-unstyled">
+                                    <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/manufacturer">Brands</a></li>
+                                    <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=account/voucher">Gift Certificates</a></li>
+                                    <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=affiliate/login">Affiliates</a></li>
+                                    <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=information/sitemap">Site Map</a></li>
+                                    <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/special">Specials</a></li>
+                                </ul>
+                            </div>-->
+                            <!--<div class="col-md-3 col-lg-3 column common third">
+                                <h5>Extras</h5>
+                                <ul class="list-unstyled">
+                                    <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/special">Specials</a></li>
+                                    <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/manufacturer">Brands</a></li>
+                                    <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=affiliate/login">Affiliates</a></li>
+                                    <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=account/account">My Account</a></li>
+                                    <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=information/sitemap">Site Map</a></li>
+                                </ul>
+                            </div>-->
+
+                            <div class="footer-social column col-md-3 col-lg-3">
+                                <div class="social">
+                                    <h5>follow us</h5>
+                                    <ul>
+                                        <li class="social-item">
+                                            <div class="social-item-inner">
+                                                <div class="social-image"><span class="social-icon">&nbsp;</span></div>
+                                                <div class="social-right"><a href="#">Facebook</a></div>
+                                            </div>
+                                        </li>
+                                        <li class="social-item">
+                                            <div class="social-item-inner">
+                                                <div class="social-image"><span class="social-icon">&nbsp;</span></div>
+                                                <div class="social-right"><a href="#">instagram</a></div>
+                                            </div>
+                                        </li>
+                                        <li class="social-item">
+                                            <div class="social-item-inner">
+                                                <div class="social-image"><span class="social-icon">&nbsp;</span></div>
+                                                <div class="social-right"><a href="#">twitter</a></div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-md-3 col-lg-3 column fourth">
+                                <div class="footer-right-wrapper">
+                                    <script>
+                                        function subscribe()
+                                        {
+                                            @*var emailpattern = new RegExp(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");*@
+                                            var email = $('#txtemail').val();
+                                            if(email != "")
+                                            {
+                                                if(!emailpattern.test(email))
+                                                {
+                                                    $('.text-danger').remove();
+                                                    var str = '<span class="error">Invalid Email</span>';
+                                                    $('.form-group').after('<div class="text-danger">Invalid Email</div>');
+
+                                                    return false;
+                                                }
+                                                else
+                                                {
+                                                    $.ajax({
+                                                        url: 'index.php?route=extension/module/newsletters/news',
+                                                        type: 'post',
+                                                        data: 'email=' + $('#txtemail').val(),
+                                                        dataType: 'json',
+
+
+                                                        success: function(json) {
+
+                                                            $('.text-danger').remove();
+                                                            $('.form-group').after('<div class="text-danger">' + json.message + '</div>');
+
+                                                        }
+
+                                                    });
+                                                    return false;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                $('.text-danger').remove();
+                                                $('.form-group').after('<div class="text-danger">Email Is Require</div>');
+                                                $(email).focus();
+
+                                                return false;
+                                            }
+
+
+                                        }
+                                    </script>
+                                    <div class="newsletter">
+                                        <div class="newsletter-wrapper">
+                                            <!-- <div class="container">
+                                            <div class="row"> -->
+                                            <div class="newsletter-details col-md-12 col-xs-12 col-lg-12 ">
+                                                <div class="newsletter-desc box">
+                                                    <div class="title-wrapper">
+                                                        <div class="newsletter-title box-heading">newsletter</div>
+                                                    </div>
+                                                    <!--<div class="desc">subscribe now</div>-->
+                                                </div>
+                                            </div>
+                                            <div class="newsletter-block col-md-12 col-xs-12 col-lg-12">
+                                                <!--<span class="newsletter-image"></span>
+                                                <span class="newsletter-info">subscribe! new items.</span>-->
+                                                <form method="post">
+                                                    <div class="form-group required">
+                                                        <label class="col-sm-2 control-label" for="txtemail">Enter your e-mail</label>
+                                                        <div class="input-news">
+                                                            <input type="email" name="txtemail" id="txtemail" value="" placeholder="Enter your e-mail" class="form-control input-lg" />
+
+                                                        </div>
+
+
+
+                                                        <div class="subscribe-btn">
+                                                            <button type="submit" class="btn btn-default btn-lg" onclick="return subscribe();">subscribe</button>
+
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="footer-payment">
+                                        <div class="payment-block">
+                                            <h5>payment method</h5>
+                                            <ul>
+                                                <li class="visa"><a href="#"><img src="image/catalog/demo/banners/visa.svg" alt=""></a></li>
+                                                <li class="paypal"><a href="#"><img src="image/catalog/demo/banners/paypal.svg" alt=""></a></li>
+                                                <li class="discover"><a href="#"><img src="image/catalog/demo/banners/discover.svg" alt=""></a></li>
+                                                <li class="mastercard"><a href="#"><img src="image/catalog/demo/banners/mastercard.svg" alt=""></a></li>
+                                                <li class="american-express"><a href="#"><img src="image/catalog/demo/banners/american-express.svg" alt=""></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright-container text-muted">
+                    <div class="content_footer_bottom container">
+                                &copy; @DateTime.Now.Year - @GlobalConstants.SystemName
+                    </div>
+                    <div class="footer-container">
+                        <!-- <div id="bottomfooter">
+                            <ul>
+                                <li class="first"><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/special">Specials</a></li>
+                                <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=affiliate/login">Affiliates</a></li>
+                                <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=account/voucher">Gift Certificates</a></li>
+                                <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/manufacturer">Brands</a></li>
+                                <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=account/return/add">Returns</a></li>
+                                <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=information/sitemap">Site Map</a></li>
+                                <li class="last"><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=information/contact">Contact Us</a></li>
+                            </ul>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
     <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
     <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>

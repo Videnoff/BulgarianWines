@@ -1077,7 +1077,7 @@ body {
      position: relative;
 }
  .header-tele-cms .telephone {
-     background: url("../image/themeimage/call.png") no-repeat scroll 0 5px transparent;
+     background: url("../image/themeimage/call.html") no-repeat scroll 0 5px transparent;
      float: left;
      height: 40px;
      width: 31px;
@@ -2706,7 +2706,7 @@ body {
      vertical-align:middle;
 }
  .box .box-category-heading {
-     background: url("../image/themeimage/category.jpg") no-repeat scroll 0 0 #000000 ;
+     background: url("../image/themeimage/category.html") no-repeat scroll 0 0 #000000 ;
      color: #ffffff;
      font-size: 18px;
      padding: 10px 0;
@@ -2845,7 +2845,7 @@ body {
     padding: 100px 0 70px;
 }
 #serviceblock .service-item .image-icon{
-    background-image: url(../img/themeimage/service-customer.svg);
+    background-image: url(../img/themeimage/service-customer.html);
     background-repeat: no-repeat;
     background-size: 35px;
     background-position: center;

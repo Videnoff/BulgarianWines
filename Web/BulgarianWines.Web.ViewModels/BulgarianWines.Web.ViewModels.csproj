@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <Folder Include="Administration\Wines\" />
+    <Folder Include="HomePage\" />
   </ItemGroup>
 
 </Project>

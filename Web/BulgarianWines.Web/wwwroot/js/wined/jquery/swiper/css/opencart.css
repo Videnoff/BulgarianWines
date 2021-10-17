@@ -1,0 +1,125 @@
+/* CSS Document */
+
+.swiper-pager div {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    z-index: 10;
+    cursor: pointer;
+    -moz-background-size: 47px;
+    -webkit-background-size: 47px;
+    background-size: 47px;
+    background-position: center;
+    background-repeat: no-repeat;
+	transition: all 0.3s ease-out 0s;
+    -webkit-transition: all 0.3s ease-out 0s;
+    -moz-transition: all 0.3s ease-out 0s;
+    -ms-transition: all 0.3s ease-out 0s;
+    -o-transition: all 0.3s ease-out 0s;
+}
+.swiper-pager .swiper-button-prev {
+	left:100px;
+	background-image: url("../img/slider-prev.svg");
+}
+
+.swiper-pager .swiper-button-prev:hover{
+	background-image: url("../img/slider-prev-hover.svg");
+}
+.swiper-pager .swiper-button-next{
+	right:100px;
+	background-image: url("../img/slider-next.svg");
+}
+
+.swiper-pager .swiper-button-next:hover{
+	background-image: url("../img/slider-next-hover.svg");
+}
+
+
+.swiper-viewport {
+	margin: 0 0 60px;
+	background: #fff;
+	z-index: 1;
+	border: 4px solid #fff;
+	box-shadow: 0 1px 4px rgba(0,0,0,.2);
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+}
+/* OpenCart Code */
+.swiper-container {
+	direction: ltr !important;
+}
+
+
+/* Desktop */
+
+.swiper-viewport .swiper-pager {
+	opacity: 0;
+	-khtml-opacity: 0;
+	-webkit-opacity: 0;
+	-moz-opacity:0;
+}
+.swiper-viewport:hover .swiper-pager {
+	opacity:1;
+	-webkit-opacity:1;
+	-khtml-opacity:1;
+	-moz-opacity:1;
+}
+.swiper-viewport:hover .swiper-button-prev {
+	left:50px;
+}
+.swiper-viewport:hover .swiper-button-next {
+	right:50px;
+}
+
+/*.swiper-button-prev:before {
+    width: 40px;
+    height: 40px;
+    font-family: FontAwesome;
+    content: "\f104";
+    color: #ffffff;
+    font-size: 90px;
+}
+.swiper-button-prev:hover::before,
+.swiper-button-next:hover::before {
+    color: #bc8246;
+}
+.swiper-button-next:before {
+    width: 40px;
+    height: 40px;
+    font-family: FontAwesome;
+    content: "\f105";
+    color: #ffffff;
+    font-size: 90px;
+}*/
+.swiper-pagination {
+	bottom: -40px;
+	left: 0;
+	text-align: center;
+	width: 100%;
+}
+.swiper-pagination-bullet {
+    width: 13px;
+    height: 13px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+    margin: 0 5px;
+    opacity: 1;
+}
+.swiper-pagination-bullet:hover {
+	background: #F0A412;
+}
+.swiper-pagination-bullet-active {
+	background: #F0A412;
+}
+.swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled {
+    opacity: 0;
+    cursor: pointer;
+    pointer-events: auto;
+}
+@media (max-width: 979px) {
+.main-slider .swiper-pager div{display:none;}
+}
