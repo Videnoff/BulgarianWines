@@ -49,7 +49,7 @@
 
         public void CreateMappings(IProfileExpression configuration)
         {
-            configuration.CreateMap<Wine, AllWinesViewModel>()
+            configuration.CreateMap<Wine, ProductViewModel>()
                 .ForMember(x => x.ImageUrl, opt =>
                     opt.MapFrom(x =>
                         x.Images.FirstOrDefault().ImageUrl != null

@@ -1,6 +1,4 @@
-﻿using BulgarianWines.Web.ViewModels.Administration.Wines;
-
-namespace BulgarianWines.Web.Areas.Administration.Controllers
+﻿namespace BulgarianWines.Web.Areas.Administration.Controllers
 {
     using System.Linq;
     using System.Threading.Tasks;
@@ -10,6 +8,7 @@ namespace BulgarianWines.Web.Areas.Administration.Controllers
     using BulgarianWines.Data.Common.Repositories;
     using BulgarianWines.Data.Models;
     using BulgarianWines.Services.Data;
+    using BulgarianWines.Web.ViewModels.Administration.Wines;
     using BulgarianWines.Web.ViewModels.Wines;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;

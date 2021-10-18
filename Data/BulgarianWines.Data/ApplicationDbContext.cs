@@ -39,6 +39,8 @@
 
         public DbSet<Origin> Origins { get; set; }
 
+        public DbSet<HomePageSlide> HomePageSlides { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

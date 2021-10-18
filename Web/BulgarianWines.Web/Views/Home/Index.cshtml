@@ -1,3 +1,5 @@
+@model BulgarianWines.Web.ViewModels.HomePage.IndexViewModel
+
 @using BulgarianWines.Common
 @{
     this.ViewData["Title"] = "Home Page";
@@ -69,21 +71,25 @@
                     <div class="swiper-viewport">
                         <div id="slideshow0" class="swiper-container" style="opacity: 1;">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide text-center" style="width: 1085px; height: 391.8px;">
+                                @foreach (var image in Model.Slides)
+                                {
+                                    <div class="swiper-slide text-center" style="width: 100%; height: 100%;">
+                                        <a href="#">
+                                            <img src="@image.ImageUrl" alt="mainbanner1" class="img-responsive"/>
+                                        </a>
+                                    </div>
+                                }
+                                
+                                @*<div class="swiper-slide text-center" style="width: 100%; height: 100%;">
                                     <a href="#">
-                                        <img src="images/banners/1633362522901.jpg" alt="mainbanner1" class="img-responsive" />
+                                        <img src="images/banners/2Hnet.com-image.jpg" alt="mainbanner2" class="img-responsive"/>
                                     </a>
                                 </div>
-                                <div class="swiper-slide text-center" style="width: 1085px; height: 391.8px;">
+                                <div class="swiper-slide text-center" style="width: 100%; height: 100%;">
                                     <a href="#">
-                                        <img src="images/banners/1633362522910.jpg" alt="mainbanner2" class="img-responsive" />
+                                        <img src="images/banners/3Hnet.com-image.jpg" alt="mainbanner3" class="img-responsive"/>
                                     </a>
-                                </div>
-                                <div class="swiper-slide text-center" style="width: 1085px; height: 391.8px;">
-                                    <a href="#">
-                                        <img src="images/banners/1633362522914.jpg" alt="mainbanner3" class="img-responsive" />
-                                    </a>
-                                </div>
+                                </div>*@
                             </div>
                         </div>
                         <div class="swiper-pagination slideshow0"></div>

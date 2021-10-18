@@ -9,12 +9,17 @@
   <PropertyGroup>
     <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Areas\Administration\Views\HomePageSlides\Index.cshtml" />
+  </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Azure.Storage.Blobs" Version="12.10.0" />
+    <PackageReference Include="HtmlSanitizer" Version="6.0.441" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.9">
       <PrivateAssets>all</PrivateAssets>
@@ -43,5 +48,17 @@
     <ProjectReference Include="..\..\Services\BulgarianWines.Services\BulgarianWines.Services.csproj" />
     <ProjectReference Include="..\BulgarianWines.Web.Infrastructure\BulgarianWines.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\BulgarianWines.Web.ViewModels\BulgarianWines.Web.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Areas\Administration\Views\HomePageSlides\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Areas\Administration\Views\HomePageSlides\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Areas\Administration\Views\HomePageSlides\Index.cshtml" />
   </ItemGroup>
 </Project>
