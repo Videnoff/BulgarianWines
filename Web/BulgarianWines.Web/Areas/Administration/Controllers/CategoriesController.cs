@@ -84,7 +84,7 @@
                 return this.NotFound();
             }
 
-            return View(category);
+            return this.View(category);
         }
 
         // POST: Administration/Categories/Edit/5

@@ -1,20 +1,26 @@
 ﻿namespace BulgarianWines.Data.Models
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using BulgarianWines.Data.Common.Models;
+    using Microsoft.AspNetCore.Http;
 
-    public class HomePageSlide : BaseModel<int>
+    public class HomePageSlide : BaseDeletableModel<int>
     {
-        [Required]
+        public HomePageSlide()
+        {
+            this.SlideImages = new HashSet<SlideImage>();
+        }
+
         public string ImageUrl { get; set; }
 
-        [Required]
         public string Description { get; set; }
 
-        [Required]
         public string LinkUrl { get; set; }
 
         public int Position { get; set; }
+
+        public virtual ICollection<SlideImage> SlideImages { get; set; }
     }
 }

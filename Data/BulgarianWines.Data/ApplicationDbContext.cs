@@ -41,6 +41,8 @@
 
         public DbSet<HomePageSlide> HomePageSlides { get; set; }
 
+        public DbSet<SlideImage> SlideImages { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

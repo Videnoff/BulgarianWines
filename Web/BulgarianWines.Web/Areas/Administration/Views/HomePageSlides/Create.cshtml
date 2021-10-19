@@ -7,20 +7,20 @@
     <form asp-area="Administration" asp-controller="HomePageSlides" asp-action="Create" method="post" enctype="multipart/form-data">
         <div asp-validation-summary="All" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="Image" class="control-label"></label>
-            <input asp-for="Image" class="form-control" />
-            <span asp-validation-for="Image" class="text-danger"></span>
+            <label asp-for="UploadedImages" class="control-label"></label>
+            <input asp-for="UploadedImages" class="form-control" />
+            <span asp-validation-for="UploadedImages" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="Description" class="control-label"></label>
             <textarea asp-for="Description" class="form-control edit-with-tinymce" rows="3"></textarea>
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        @*<div class="form-group">
             <label asp-for="LinkUrl" class="control-label"></label>
             <input asp-for="LinkUrl" class="form-control" />
             <span asp-validation-for="LinkUrl" class="text-danger"></span>
-        </div>
+        </div>*@
         <div class="form-group text-center">
             <button type="submit" value="" class="btn btn-primary">Create Slide</button>
         </div>

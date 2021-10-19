@@ -71,25 +71,17 @@
                     <div class="swiper-viewport">
                         <div id="slideshow0" class="swiper-container" style="opacity: 1;">
                             <div class="swiper-wrapper">
-                                @foreach (var image in Model.Slides)
+                                @foreach (var slide in Model.Slides)
                                 {
-                                    <div class="swiper-slide text-center" style="width: 100%; height: 100%;">
-                                        <a href="#">
-                                            <img src="@image.ImageUrl" alt="mainbanner1" class="img-responsive"/>
-                                        </a>
-                                    </div>
+                                    @foreach (var image in slide.SlideImages)
+                                    {
+                                        <div class="swiper-slide text-center" style="width: 100%; height: 100%;">
+                                            <a href="#">
+                                                <img src="@image.ImageUrl" alt="mainbanner1" class="img-responsive"/>
+                                            </a>
+                                        </div>
+                                    }
                                 }
-                                
-                                @*<div class="swiper-slide text-center" style="width: 100%; height: 100%;">
-                                    <a href="#">
-                                        <img src="images/banners/2Hnet.com-image.jpg" alt="mainbanner2" class="img-responsive"/>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide text-center" style="width: 100%; height: 100%;">
-                                    <a href="#">
-                                        <img src="images/banners/3Hnet.com-image.jpg" alt="mainbanner3" class="img-responsive"/>
-                                    </a>
-                                </div>*@
                             </div>
                         </div>
                         <div class="swiper-pagination slideshow0"></div>

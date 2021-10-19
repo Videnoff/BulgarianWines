@@ -208,16 +208,19 @@ namespace BulgarianWines.Data.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LinkUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ModifiedOn")
@@ -227,6 +230,8 @@ namespace BulgarianWines.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
 
                     b.ToTable("HomePageSlides");
                 });
@@ -330,6 +335,38 @@ namespace BulgarianWines.Data.Migrations
                     b.HasIndex("IsDeleted");
 
                     b.ToTable("Settings");
+                });
+
+            modelBuilder.Entity("BulgarianWines.Data.Models.SlideImage", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("HomePageSlideId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HomePageSlideId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("SlideImages");
                 });
 
             modelBuilder.Entity("BulgarianWines.Data.Models.Variety", b =>
@@ -576,6 +613,17 @@ namespace BulgarianWines.Data.Migrations
                     b.Navigation("Wine");
                 });
 
+            modelBuilder.Entity("BulgarianWines.Data.Models.SlideImage", b =>
+                {
+                    b.HasOne("BulgarianWines.Data.Models.HomePageSlide", "HomePageSlide")
+                        .WithMany("SlideImages")
+                        .HasForeignKey("HomePageSlideId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("HomePageSlide");
+                });
+
             modelBuilder.Entity("BulgarianWines.Data.Models.Wine", b =>
                 {
                     b.HasOne("BulgarianWines.Data.Models.Category", "Category")
@@ -693,6 +741,11 @@ namespace BulgarianWines.Data.Migrations
             modelBuilder.Entity("BulgarianWines.Data.Models.Harvest", b =>
                 {
                     b.Navigation("Wines");
+                });
+
+            modelBuilder.Entity("BulgarianWines.Data.Models.HomePageSlide", b =>
+                {
+                    b.Navigation("SlideImages");
                 });
 
             modelBuilder.Entity("BulgarianWines.Data.Models.Origin", b =>

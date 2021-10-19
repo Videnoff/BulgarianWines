@@ -7,7 +7,7 @@
 
     public interface IHomePageSlidesService
     {
-        public Task CreateAsync<T>(T model, IFormFile image);
+        public Task CreateAsync<T>(T model, IEnumerable<IFormFile> images);
 
         public IEnumerable<T> GetAll<T>();
 
