@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace BulgarianWines.Services.Data
+﻿namespace BulgarianWines.Services.Data
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -10,6 +8,7 @@ namespace BulgarianWines.Services.Data
     using BulgarianWines.Data.Models;
     using BulgarianWines.Services.Mapping;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.EntityFrameworkCore;
 
     public class HomePageSlidesService : IHomePageSlidesService
     {
