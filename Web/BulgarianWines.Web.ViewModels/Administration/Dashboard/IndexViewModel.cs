@@ -1,7 +1,10 @@
 ﻿namespace BulgarianWines.Web.ViewModels.Administration.Dashboard
 {
-    public class IndexViewModel
+    using BulgarianWines.Data.Models;
+    using BulgarianWines.Services.Mapping;
+
+    public class IndexViewModel : IMapTo<ApplicationUser>
     {
-        public int SettingsCount { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

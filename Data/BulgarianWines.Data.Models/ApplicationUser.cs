@@ -15,6 +15,7 @@ namespace BulgarianWines.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
+            this.UserImages = new HashSet<UserImage>();
         }
 
         // Audit info
@@ -27,10 +28,14 @@ namespace BulgarianWines.Data.Models
 
         public DateTime? DeletedOn { get; set; }
 
+        public string ImageUrl { get; set; }
+
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
+
+        public virtual ICollection<UserImage> UserImages { get; set; }
     }
 }
