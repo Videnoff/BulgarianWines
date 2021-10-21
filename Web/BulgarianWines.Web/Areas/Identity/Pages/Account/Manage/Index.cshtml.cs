@@ -1,4 +1,8 @@
-﻿namespace BulgarianWines.Web.Areas.Identity.Pages.Account.Manage
+﻿using BulgarianWines.Data.Common.Repositories;
+using BulgarianWines.Services;
+using Microsoft.AspNetCore.Http;
+
+namespace BulgarianWines.Web.Areas.Identity.Pages.Account.Manage
 {
     using System;
     using System.Collections.Generic;
@@ -13,17 +17,27 @@
 
     public partial class IndexModel : PageModel
     {
+        private const string AzureContainerName = "publicimages";
+
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly IImagesService imagesService;
+
+        private readonly IDeletableEntityRepository<UserImage> imagesRepository;
 
         public IndexModel(
             UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager)
+            SignInManager<ApplicationUser> signInManager,
+            IImagesService imagesService,
+            IDeletableEntityRepository<UserImage> imagesRepository)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            this.imagesService = imagesService;
+            this.imagesRepository = imagesRepository;
         }
 
+        [Display(Name = "Profile Image")]
         public string ImagePath { get; set; }
 
         public string Username { get; set; }
@@ -36,6 +50,9 @@
 
         public class InputModel
         {
+            [Display(Name = "Profile Image")]
+            public IFormFile ProfileImage { get; set; }
+
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
@@ -58,6 +75,7 @@
         public async Task<IActionResult> OnGetAsync()
         {
             var user = await this.userManager.GetUserAsync(this.User);
+
             if (user == null)
             {
                 return this.NotFound($"Unable to load user with ID '{this.userManager.GetUserId(this.User)}'.");
@@ -67,7 +85,7 @@
             return this.Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(InputModel input)
         {
             var user = await this.userManager.GetUserAsync(this.User);
             if (user == null)
@@ -91,6 +109,16 @@
                     return this.RedirectToPage();
                 }
             }
+
+            user.ImageUrl = await this.imagesService.UploadAzureBlobImageAsync(input.ProfileImage, AzureContainerName);
+            var imageUrl = user.ImageUrl;
+
+            user.UserImages.Add(new UserImage
+            {
+                ImageUrl = imageUrl,
+            });
+
+            await this.userManager.UpdateAsync(user);
 
             await this.signInManager.RefreshSignInAsync(user);
             this.StatusMessage = "Your profile has been updated";
