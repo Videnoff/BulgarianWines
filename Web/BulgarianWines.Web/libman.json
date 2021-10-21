@@ -89,6 +89,33 @@
       ]
     },
     {
+      "library": "chart.js@2.9.4",
+      "destination": "wwwroot/lib/chart-js/",
+      "files": [
+        "dist/Chart.bundle.js",
+        "dist/Chart.bundle.min.js",
+        "dist/Chart.js",
+        "dist/Chart.min.js"
+      ]
+    },
+    {
+      "library": "jquery.easing@1.4.1",
+      "destination": "wwwroot/lib/jquery-easing/",
+      "files": [
+        "jquery.easing.compatibility.js",
+        "jquery.easing.compatibility.min.js",
+        "jquery.easing.js",
+        "jquery.easing.min.js"
+      ]
+    },
+    {
+      "library": "moment@2.29.1",
+      "destination": "wwwroot/lib/moment-js",
+      "files": [
+        "min/moment-with-locales.min.js"
+      ]
+    },
+    {
       "library": "popper.js@1.16.1",
       "destination": "wwwroot/lib/popper/",
       "files": [

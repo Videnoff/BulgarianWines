@@ -9,6 +9,18 @@
     ]
   },
   {
+    "outputFileName": "wwwroot/css/admin/sb-admin-2.min.css",
+    "inputFiles": [
+      "wwwroot/css/admin/sb-admin-2.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/admin/sb-admin-2.min.js",
+    "inputFiles": [
+      "wwwroot/js/admin/sb-admin-2.js"
+    ]
+  },
+  {
     "outputFileName": "wwwroot/js/site.min.js",
     "inputFiles": [
       "wwwroot/js/site.js"
