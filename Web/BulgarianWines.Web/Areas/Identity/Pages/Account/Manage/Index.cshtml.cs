@@ -1,16 +1,12 @@
-﻿using BulgarianWines.Data.Common.Repositories;
-using BulgarianWines.Services;
-using Microsoft.AspNetCore.Http;
-
-namespace BulgarianWines.Web.Areas.Identity.Pages.Account.Manage
+﻿namespace BulgarianWines.Web.Areas.Identity.Pages.Account.Manage
 {
-    using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using System.Threading.Tasks;
 
     using BulgarianWines.Data.Models;
+    using BulgarianWines.Services;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -23,18 +19,14 @@ namespace BulgarianWines.Web.Areas.Identity.Pages.Account.Manage
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly IImagesService imagesService;
 
-        private readonly IDeletableEntityRepository<UserImage> imagesRepository;
-
         public IndexModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            IImagesService imagesService,
-            IDeletableEntityRepository<UserImage> imagesRepository)
+            IImagesService imagesService)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.imagesService = imagesService;
-            this.imagesRepository = imagesRepository;
         }
 
         [Display(Name = "Profile Image")]

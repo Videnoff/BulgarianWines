@@ -6,6 +6,7 @@
     using BulgarianWines.Data.Common.Repositories;
     using BulgarianWines.Data.Models;
     using BulgarianWines.Services.Data;
+    using BulgarianWines.Web.ViewModels.Administration.Categories;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
 
@@ -170,6 +171,12 @@
             }
 
             return this.RedirectToAction(nameof(this.Index));
+        }
+
+        public IActionResult Deleted()
+        {
+            var categories = this.categoriesService.GetAllDeleted<DeletedCategoryViewModel>();
+            return this.View(categories);
         }
 
         private bool CategoryExists(int id)

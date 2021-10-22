@@ -15,6 +15,8 @@
         [Required]
         public string Name { get; set; }
 
+        public string Icon { get; set; }
+
         public virtual ICollection<Wine> Wines { get; set; }
     }
 }

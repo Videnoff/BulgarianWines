@@ -33,6 +33,12 @@
 
         public IEnumerable<T> GetAll<T>() => this.categoriesRepository.AllAsNoTracking().To<T>().ToList();
 
+        public IEnumerable<T> GetAllDeleted<T>() => this.categoriesRepository
+            .AllAsNoTrackingWithDeleted()
+            .Where(x => x.IsDeleted)
+            .To<T>()
+            .ToList();
+
         public IEnumerable<Category> GetAll() => this.categoriesRepository.AllAsNoTracking().ToList();
 
         public async Task<bool> RestoreAsync(int id)

@@ -1,5 +1,5 @@
 @using BulgarianWines.Common
-@model BulgarianWines.Web.ViewModels.Administration.Dashboard.IndexViewModel
+@*@model BulgarianWines.Web.ViewModels.Administration.Dashboard.IndexViewModel*@
 <!DOCTYPE html>
 <html>
 
@@ -12,7 +12,7 @@
     <title>@this.ViewData["Title"] - @GlobalConstants.SystemName</title>
 
     <!-- Bootstrap -->
-    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true"/>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
 
     <!-- Custom fonts for this template-->
     <link href="~/js/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -68,17 +68,22 @@
                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>
-                        Components
+                        Categories
                     </span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">
-                            Buttons
+                        <h6 class="collapse-header">
+                            Categories:
+                        </h6>
+                        <a class="collapse-item" asp-area="Administration" asp-controller="Categories" asp-action="Index">
+                            All
                         </a>
-                        <a class="collapse-item" href="cards.html">
-                            Cards
+                        <a class="collapse-item" asp-area="Administration" asp-controller="Categories" asp-action="Create">
+                            Create
+                        </a>
+                        <a class="collapse-item" asp-area="Administration" asp-controller="Categories" asp-action="Deleted">
+                            Deleted
                         </a>
                     </div>
                 </div>
@@ -360,7 +365,7 @@
                                     @GlobalConstants.AdministratorRoleName
                                 </span>
                                 <img class="img-profile rounded-circle"
-                                     src="@Model.ImageUrl">
+                                     @*src="@Model.ImageUrl">*@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\BulgarianWines.Common\BulgarianWines.Common.csproj" />
     <ProjectReference Include="..\..\Data\BulgarianWines.Data.Models\BulgarianWines.Data.Models.csproj" />
     <ProjectReference Include="..\..\Services\BulgarianWines.Services.Mapping\BulgarianWines.Services.Mapping.csproj" />
     <ProjectReference Include="..\..\Services\BulgarianWines.Services\BulgarianWines.Services.csproj" />
@@ -29,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Administration\Categories\" />
     <Folder Include="Administration\Wines\" />
   </ItemGroup>
 

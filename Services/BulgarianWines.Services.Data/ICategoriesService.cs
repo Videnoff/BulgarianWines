@@ -11,6 +11,8 @@
 
         public IEnumerable<T> GetAll<T>();
 
+        public IEnumerable<T> GetAllDeleted<T>();
+
         public IEnumerable<Category> GetAll();
 
         public Task<bool> RestoreAsync(int id);
