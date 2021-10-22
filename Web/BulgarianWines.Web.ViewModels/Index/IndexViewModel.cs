@@ -1,7 +1,9 @@
-﻿namespace BulgarianWines.Web.ViewModels.HomePage
+﻿namespace BulgarianWines.Web.ViewModels.Index
 {
     using System.Collections.Generic;
 
+    using BulgarianWines.Web.ViewModels.Administration.Categories;
+    using BulgarianWines.Web.ViewModels.HomePage;
     using BulgarianWines.Web.ViewModels.Wines;
 
     public class IndexViewModel
@@ -11,6 +13,8 @@
         public IEnumerable<ProductViewModel> NewestProducts { get; set; }
 
         public IEnumerable<ProductSidebarViewModel> TopRatedProducts { get; set; }
+
+        public IEnumerable<CategoryViewModel> AllCategories { get; set; }
 
         public IEnumerable<HomePageViewModel> Slides { get; set; }
     }

@@ -6,7 +6,9 @@
 
     using BulgarianWines.Services.Data;
     using BulgarianWines.Web.ViewModels;
+    using BulgarianWines.Web.ViewModels.Administration.Categories;
     using BulgarianWines.Web.ViewModels.HomePage;
+    using BulgarianWines.Web.ViewModels.Index;
     using BulgarianWines.Web.ViewModels.Wines;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Caching.Distributed;
@@ -17,12 +19,16 @@
         private readonly IHomePageSlidesService homePageSlidesService;
         private readonly IDistributedCache distributedCache;
 
+        private readonly ICategoriesService categoriesService;
+
         public HomeController(
             IHomePageSlidesService homePageSlidesService,
-            IDistributedCache distributedCache)
+            IDistributedCache distributedCache,
+            ICategoriesService categoriesService)
         {
             this.homePageSlidesService = homePageSlidesService;
             this.distributedCache = distributedCache;
+            this.categoriesService = categoriesService;
         }
 
         public async Task<IActionResult> Index()
@@ -32,6 +38,7 @@
 
             if (viewModelAsString == null)
             {
+                var allCategories = this.categoriesService.GetAll<CategoryViewModel>();
                 //var mostBoughtProducts = this.ordersService.GetMostBoughtProducts<ProductSidebarViewModel>(10);
                 //var newestProducts = this.win.GetNewest<ProductViewModel>(10);
                 //var topRatedProducts = this.productsService.GetTopRated<ProductSidebarViewModel>(4);
@@ -48,6 +55,7 @@
                     //MostBoughtProducts = mostBoughtProducts,
                     //NewestProducts = newestProducts,
                     //TopRatedProducts = topRatedProducts,
+                    AllCategories = allCategories,
                     Slides = slides,
                 };
 

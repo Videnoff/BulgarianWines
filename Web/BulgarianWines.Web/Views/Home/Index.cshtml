@@ -1,4 +1,4 @@
-@model BulgarianWines.Web.ViewModels.HomePage.IndexViewModel
+@model BulgarianWines.Web.ViewModels.Index.IndexViewModel
 
 @using BulgarianWines.Common
 @{
@@ -164,17 +164,14 @@
                         <div class="tabs">
                             <div class="etabs">
                                 <ul class="nav nav-tabs">
-
-                                    <li class="active"><a onclick="vlcazwfnuqloadAjaxData('18')" href="#gattinara" data-toggle="tab">
-                                        gattinara
-                                    </a></li>
-                                    <li><a onclick="vlcazwfnuqloadAjaxData('25')" href="#etruscan " data-toggle="tab">
-                                        etruscan
-                                    </a></li>
-                                    <li><a onclick="vlcazwfnuqloadAjaxData('61')" href="#cantaloupe" data-toggle="tab">
-                                        cantaloupe
-                                    </a></li>
-                                    <li><a onclick="vlcazwfnuqloadAjaxData('43')" href="#marsala wine" data-toggle="tab">marsala wine</a></li>
+                                    @foreach (var category in Model.AllCategories)
+                                    {
+                                        <li class="active">
+                                            <a onclick="vlcazwfnuqloadAjaxData('18')" asp-area="" asp-controller="Categories" asp-action="Index" data-toggle="tab">
+                                                @category.Name
+                                            </a>
+                                        </li>
+                                    }
                                 </ul>
                             </div>
                             <!-- <div class="customNavigation">

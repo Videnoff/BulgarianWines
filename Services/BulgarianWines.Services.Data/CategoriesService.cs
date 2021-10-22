@@ -41,6 +41,12 @@
 
         public IEnumerable<Category> GetAll() => this.categoriesRepository.AllAsNoTracking().ToList();
 
+        public T GetById<T>(int id) => 
+            this.categoriesRepository.AllAsNoTracking()
+                .Where(x => x.Id == id)
+                .To<T>()
+                .FirstOrDefault();
+
         public async Task<bool> RestoreAsync(int id)
         {
             var category = this.GetDeletedCategoryById(id);

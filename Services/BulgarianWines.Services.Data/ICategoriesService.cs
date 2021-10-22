@@ -15,6 +15,8 @@
 
         public IEnumerable<Category> GetAll();
 
+        public T GetById<T>(int id);
+
         public Task<bool> RestoreAsync(int id);
     }
 }
