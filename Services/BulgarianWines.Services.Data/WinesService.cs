@@ -7,6 +7,7 @@
     using BulgarianWines.Data.Common.Repositories;
     using BulgarianWines.Data.Models;
     using BulgarianWines.Services.Mapping;
+    using BulgarianWines.Web.Infrastructure.ExtensionMethods;
     using BulgarianWines.Web.ViewModels.Wines;
     using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
@@ -62,6 +63,14 @@
 
             return wines;
         }
+
+        public IEnumerable<T> GetAllByCategoryId<T>(int categoryId, int page, int productsToTake, string sorting) =>
+            this.winesRepository.AllAsNoTracking()
+                .Where(x => x.CategoryId == categoryId)
+                .OrderBy(x => x.Name)
+                .Skip((page - 1) * productsToTake)
+                .Take(productsToTake)
+                .To<T>().ToList();
 
         public int GetCount()
         {

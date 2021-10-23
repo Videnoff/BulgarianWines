@@ -9,6 +9,7 @@
     {
         public Category()
         {
+            this.CategoryImages = new HashSet<CategoryImage>();
             this.Wines = new HashSet<Wine>();
         }
 
@@ -17,6 +18,10 @@
 
         public string Icon { get; set; }
 
+        public string ImageUrl { get; set; }
+
         public virtual ICollection<Wine> Wines { get; set; }
+
+        public virtual ICollection<CategoryImage> CategoryImages { get; set; }
     }
 }

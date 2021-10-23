@@ -4,9 +4,12 @@
     using System.Threading.Tasks;
 
     using BulgarianWines.Data.Models;
+    using Microsoft.AspNetCore.Http;
 
     public interface ICategoriesService
     {
+        public Task CreateAsync<T>(T model, IFormFile image);
+
         IEnumerable<KeyValuePair<string, string>> GetAllAsKeyValuePairs();
 
         public IEnumerable<T> GetAll<T>();

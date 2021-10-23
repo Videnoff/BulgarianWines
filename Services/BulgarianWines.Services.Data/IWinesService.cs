@@ -11,6 +11,8 @@
 
         IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 12);
 
+        public IEnumerable<T> GetAllByCategoryId<T>(int categoryId, int page, int productsToTake, string sorting);
+
         int GetCount();
 
         T GetById<T>(int id);

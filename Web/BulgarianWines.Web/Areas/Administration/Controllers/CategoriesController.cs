@@ -58,17 +58,18 @@
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name,IsDeleted,DeletedOn,Id,CreatedOn,ModifiedOn")] Category category)
+        public async Task<IActionResult> Create(CreateCategoryInputModel input)
         {
-            if (this.ModelState.IsValid)
+            if (!this.ModelState.IsValid)
             {
-                await this.categoriesRepository.AddAsync(category);
-                await this.categoriesRepository.SaveChangesAsync();
-
-                return this.RedirectToAction(nameof(this.Index));
+                return this.View(input);
             }
 
-            return this.View(category);
+            await this.categoriesService.CreateAsync(input, input.UploadedImage);
+
+            this.TempData["Alert"] = "Successfully created slide.";
+
+            return this.RedirectToAction(nameof(this.Index));
         }
 
         // GET: Administration/Categories/Edit/5

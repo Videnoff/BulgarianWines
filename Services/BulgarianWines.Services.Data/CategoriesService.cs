@@ -7,14 +7,39 @@
     using BulgarianWines.Data.Common.Repositories;
     using BulgarianWines.Data.Models;
     using BulgarianWines.Services.Mapping;
+    using Microsoft.AspNetCore.Http;
 
     public class CategoriesService : ICategoriesService
     {
-        private readonly IDeletableEntityRepository<Category> categoriesRepository;
+        private const string AzureContainerName = "publicimages";
 
-        public CategoriesService(IDeletableEntityRepository<Category> categoriesRepository)
+        private readonly IDeletableEntityRepository<Category> categoriesRepository;
+        private readonly IImagesService imagesService;
+
+        public CategoriesService(
+            IDeletableEntityRepository<Category> categoriesRepository,
+            IImagesService imagesService)
         {
             this.categoriesRepository = categoriesRepository;
+            this.imagesService = imagesService;
+        }
+
+        public async Task CreateAsync<T>(T model, IFormFile image)
+        {
+            var category = AutoMapperConfig.MapperInstance.Map<Category>(model);
+
+            if (image != null)
+            {
+                    category.ImageUrl = await this.imagesService.UploadAzureBlobImageAsync(image, AzureContainerName);
+                    var imageUrl = category.ImageUrl;
+                    category.CategoryImages.Add(new CategoryImage
+                    {
+                        ImageUrl = imageUrl,
+                    });
+            }
+
+            await this.categoriesRepository.AddAsync(category);
+            await this.categoriesRepository.SaveChangesAsync();
         }
 
         public IEnumerable<KeyValuePair<string, string>> GetAllAsKeyValuePairs()
