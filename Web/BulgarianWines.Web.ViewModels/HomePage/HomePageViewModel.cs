@@ -1,4 +1,7 @@
-﻿namespace BulgarianWines.Web.ViewModels.HomePage
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace BulgarianWines.Web.ViewModels.HomePage
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -20,6 +23,18 @@
         public string LinkUrl { get; set; }
 
         public string SanitizedDescription => new HtmlSanitizer().Sanitize(this.Description);
+
+        [Display(Name = "Is Deleted?")]
+        public bool IsDeleted { get; set; }
+
+        [Display(Name = "Deleted on")]
+        public DateTime? DeletedOn { get; set; }
+
+        [Display(Name = "Created on")]
+        public DateTime? CreatedOn { get; set; }
+
+        [Display(Name = "Modified on")]
+        public DateTime? ModifiedOn { get; set; }
 
         public IEnumerable<SlideImage> SlideImages { get; set; }
     }

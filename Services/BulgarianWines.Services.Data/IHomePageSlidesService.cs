@@ -17,6 +17,8 @@
 
         public Task<bool> DeleteAsync(int id);
 
+        public Task<bool> RestoreAsync(int id);
+
         public Task<bool> DeleteImageAsync(string id);
     }
 }

@@ -1,4 +1,8 @@
-﻿namespace BulgarianWines.Web.Areas.Administration.Controllers
+﻿using BulgarianWines.Data.Common.Repositories;
+using BulgarianWines.Data.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace BulgarianWines.Web.Areas.Administration.Controllers
 {
     using System.Threading.Tasks;
 
@@ -10,10 +14,13 @@
     public class HomePageSlidesController : AdministrationController
     {
         private readonly IHomePageSlidesService homePageSlidesService;
+        private readonly IDeletableEntityRepository<HomePageSlide> homePageSlidesRepository;
 
-        public HomePageSlidesController(IHomePageSlidesService homePageSlidesService)
+        public HomePageSlidesController(IHomePageSlidesService homePageSlidesService,
+            IDeletableEntityRepository<HomePageSlide> homePageSlidesRepository)
         {
             this.homePageSlidesService = homePageSlidesService;
+            this.homePageSlidesRepository = homePageSlidesRepository;
         }
 
         public IActionResult Create()
@@ -40,6 +47,23 @@
         {
             var products = this.homePageSlidesService.GetAll<HomePageViewModel>();
             return this.View(products);
+        }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return this.NotFound();
+            }
+
+            var category = await this.homePageSlidesRepository.All()
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (category == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.View(category);
         }
 
         public IActionResult Edit(int id)
@@ -89,7 +113,24 @@
 
             return this.RedirectToAction(nameof(this.Index));
         }
-public async Task<IActionResult> DeleteImage(string id)
+
+        public async Task<IActionResult> Restore(int id)
+        {
+            var restoreResult = await this.homePageSlidesService.RestoreAsync(id);
+
+            if (restoreResult)
+            {
+                this.TempData["Alert"] = "Successfully restored slide";
+            }
+            else
+            {
+                this.TempData["Error"] = "There was a problem restoring the slide";
+            }
+
+            return this.RedirectToAction(nameof(this.Index));
+        }
+
+        public async Task<IActionResult> DeleteImage(string id)
         {
             var result = await this.homePageSlidesService.DeleteImageAsync(id);
 

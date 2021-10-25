@@ -95,7 +95,7 @@
                 .Select(x => new KeyValuePair<string, string>(x.Id.ToString(), x.Name));
         }
 
-        public IEnumerable<T> GetAll<T>() => this.categoriesRepository.AllAsNoTracking().To<T>().ToList();
+        public IEnumerable<T> GetAll<T>() => this.categoriesRepository.AllAsNoTrackingWithDeleted().To<T>().ToList();
 
         public IEnumerable<T> GetAllDeleted<T>() => this.categoriesRepository
             .AllAsNoTrackingWithDeleted()

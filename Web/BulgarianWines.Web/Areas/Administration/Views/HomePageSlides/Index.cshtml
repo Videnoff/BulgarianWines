@@ -1,67 +1,11 @@
 ﻿@model IEnumerable<BulgarianWines.Web.ViewModels.HomePage.HomePageViewModel>
 @{ ViewData["Title"] = "All Slides"; }
 
-<!--<div class="table-responsive">
-    <table class="table align-middle table-striped table-hover table-bordered">
-        <thead class="thead-light">
-            <tr class="row">
-                <th scope="col" class="col-1 d-flex justify-content-center">
-                    #
-                </th>
-                <th scope="col" class="col-3 d-flex justify-content-center">
-                    Image
-                </th>-->
-@*<th scope="col" class="col-2 d-flex justify-content-center">
-        LinkUrl
-    </th>*@
-<!--<th scope="col" class="col-4 d-flex justify-content-center">
-                    Actions
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @@if (!Model.Any())
-            {
-                <tr class="row">
-                    <td class="col-8 d-flex justify-content-center">
-                        <strong>
-                            No slides
-                        </strong>
-                    </td>
-                </tr>
-            }
-            @@foreach (var slide in Model)
-            {
-                <tr class="row">
-                    <td class="col-1 d-flex justify-content-center">
-                        @@slide.Id
-                    </td>
-                    @@foreach (var image in slide.SlideImages)
-                    {
-                        <td class="col-3 d-flex justify-content-center" style="text-align: center; vertical-align: auto">
-                            <img src="@@image.ImageUrl" style="max-height: 100%; max-width: 100%" alt="slider image" />
-                        </td>
-                    }
-                    <td class="col-2 d-flex justify-content-center">
-                            @@slide.LinkUrl
-                        </td>
-                    <td class="col-md-2 d-flex justify-content-around">
-                        <div class="mr-2">
-                            <a asp-controller="HomePageSlides" asp-action="Edit" asp-route-id="@@slide.Id" class="btn btn-success btn-sm">
-                                Edit
-                            </a>
-                        </div>
-                        <div class="mr-2">
-                            <a asp-controller="HomePageSlides" asp-action="Delete" asp-route-id="@@slide.Id" class="btn btn-danger btn-sm">
-                                Delete
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>-->
+<div>
+    <a asp-area="Administration" asp-controller="Dashboard" asp-action="Index" class="btn btn-primary">
+        Back to Administration
+    </a>
+</div>
 
 <div class="shadow card">
     <div class="card-header h3 text-center">
@@ -70,55 +14,72 @@
     <div class="card-body">
         <form asp-area="Administration" asp-controller="HomePageSlides" asp-action="Edit" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="All" class="text-danger"></div>
-            <table class="table align-middle table-striped table-hover table-bordered" style="margin-left: 100px;">
-                <thead>
-                    <tr>
-                        <th>
-                            #
-                        </th>
-                        <th>
-                            Image
-                        </th>
-                        <th>
-                            Actions
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (!Model.Any())
-                    {
-                        <tr class="row">
-                            <td class="col-8 d-flex justify-content-center">
-                                <strong>
-                                    No slides
-                                </strong>
-                            </td>
+            <div class="table-responsive" style="white-space: nowrap">
+                <table class="table align-middle table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                Image
+                            </th>
+                            <th>
+                                Actions
+                            </th>
                         </tr>
-                    }
-                    @foreach (var slide in Model)
-                    {
-                    <td class="col-1 d-flex justify-content-center">
-                        @slide.Id
-                    </td>
-                    @foreach (var image in slide.SlideImages)
-                    {
-                        <td class="col" style="width: 25%; height: 25%; text-align: center; vertical-align: top">
-                            <img src="@image.ImageUrl" style="max-height: 100%; max-width: 100%" alt="@image.ImageUrl" />
-                        </td>
-                    }
-                    <td>
-                        <div>
-                            <a asp-controller="HomePageSlides" asp-action="Edit" asp-route-id="@slide.Id" class="btn btn-warning btn-sm">
-                                Edit
-                            </a>
-                            <a asp-controller="HomePageSlides" asp-action="Delete" asp-route-id="@slide.Id" class="btn btn-danger btn-sm">
-                                Delete
-                            </a>
-                        </div>
-                    </td>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @if (!Model.Any())
+                        {
+                            <tr class="row">
+                                <td class="col-8 d-flex justify-content-center">
+                                    <strong>
+                                        No slides
+                                    </strong>
+                                </td>
+                            </tr>
+                        }
+                        @foreach (var slide in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @slide.Id
+                                </td>
+                                <td class="col" style="width: 25%; height: 25%; text-align: center; vertical-align: top">
+                                    @foreach (var image in slide.SlideImages)
+                                    {
+                                        <img src="@image.ImageUrl" style="max-height: 100%; max-width: 100%" alt="@image.ImageUrl" />
+                                        <hr />
+                                    }
+                                </td>
+                                <td>
+                                    <div>
+                                        <a asp-controller="HomePageSlides" asp-action="Edit" asp-route-id="@slide.Id" class="btn btn-warning">
+                                            Edit
+                                        </a>
+                                        <a asp-action="Details" asp-route-id="@slide.Id" class="btn btn-info">
+                                            Details
+                                        </a>
+                                        @if (slide.IsDeleted)
+                                        {
+                                            <a asp-controller="HomePageSlides" asp-action="Restore" asp-route-id="@slide.Id" class="btn btn-warning">
+                                                Restore
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a asp-controller="HomePageSlides" asp-action="Delete" asp-route-id="@slide.Id" class="btn btn-danger">
+                                                Delete
+                                            </a>
+                                        }
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </form>
     </div>
 </div>

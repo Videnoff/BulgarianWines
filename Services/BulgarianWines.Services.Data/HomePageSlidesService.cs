@@ -50,7 +50,7 @@
         }
 
         public IEnumerable<T> GetAll<T>() =>
-            this.homePageSlidesRepository.AllAsNoTracking()
+            this.homePageSlidesRepository.AllAsNoTrackingWithDeleted()
                 .OrderBy(x => x.Position)
                 .To<T>().ToList();
 
@@ -113,6 +113,21 @@
             return true;
         }
 
+        public async Task<bool> RestoreAsync(int id)
+        {
+            var slide = this.GetDeletedSlideById(id);
+
+            if (slide == null)
+            {
+                return false;
+            }
+
+            this.homePageSlidesRepository.Undelete(slide);
+            await this.homePageSlidesRepository.SaveChangesAsync();
+
+            return true;
+        }
+
         public async Task<bool> DeleteImageAsync(string id)
         {
             var image = this.GetImageById(id);
@@ -137,5 +152,10 @@
         private SlideImage GetImageById(string id) =>
             this.slideImagesRepository.All()
                 .FirstOrDefault(x => x.Id == id);
+
+        private HomePageSlide GetDeletedSlideById(int id) =>
+            this.homePageSlidesRepository
+                .AllAsNoTrackingWithDeleted()
+                .FirstOrDefault(x => x.IsDeleted && x.Id == id);
     }
 }

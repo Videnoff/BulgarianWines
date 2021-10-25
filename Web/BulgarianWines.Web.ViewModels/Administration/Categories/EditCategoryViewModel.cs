@@ -1,13 +1,10 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using AutoMapper;
-using BulgarianWines.Web.Infrastructure.ValidationAttributes;
-
-namespace BulgarianWines.Web.ViewModels.Administration.Categories
+﻿namespace BulgarianWines.Web.ViewModels.Administration.Categories
 {
+    using System.Collections.Generic;
+
+    using AutoMapper;
     using BulgarianWines.Data.Models;
     using BulgarianWines.Services.Mapping;
-    using Microsoft.AspNetCore.Http;
 
     public class EditCategoryViewModel : CreateCategoryInputModel, IMapFrom<Category>
     {

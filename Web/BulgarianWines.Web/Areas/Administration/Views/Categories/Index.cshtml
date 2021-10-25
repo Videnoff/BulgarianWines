@@ -1,91 +1,98 @@
 ﻿@model IEnumerable<BulgarianWines.Web.ViewModels.Administration.Categories.CategoryViewModel>
+@{ ViewData["Title"] = "All Categories"; }
 
-@{
-    ViewData["Title"] = "Index";
-}
-
-<h2>Index</h2>
-
-<p>
-    <a asp-action="Create">
-        Create New
+<div>
+    <a asp-area="Administration" asp-controller="Dashboard" asp-action="Index" class="btn btn-primary">
+        Back to Administration
     </a>
-</p>
-<table class="table table-striped table-bordered table-responsive">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Icon)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsDeleted)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedOn)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModifiedOn)
-            </th>
-            <th>
-                Actions
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                @foreach (var image in item.CategoryImages)
-                {
-                    <td>
-                        <img src="@image.ImageUrl" style="max-height: 10%; max-width: 10%" />
-                    </td>
+</div>
 
-                }
-                <td>
-                    @Html.DisplayFor(modelItem => item.Icon)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsDeleted)
-                    @Html.DisplayFor(modelItem => item.DeletedOn)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedOn)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ModifiedOn)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">
-                        Edit
-                    </a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">
-                        Details
-                    </a>
-                    @if (item.IsDeleted)
+<div class="shadow card">
+    <div class="card-header h3 text-center">
+        @ViewData["Title"]
+    </div>
+    <div class="card-body">
+        <div class="table-responsive" style="white-space: nowrap">
+            <table class="table align-middle table-striped table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Icon</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Is Deleted</th>
+                        <th>Created On</th>
+                        <th>Modified On</th>
+                        <th style="text-align: center;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Any())
                     {
-                        <a asp-action="Restore" asp-route-id="@item.Id">
-                            | Restore
-                        </a>
-                    }
-                    else
-                    {
-                        <a asp-action="Delete" asp-route-id="@item.Id">
-                            | Delete
-                        </a>
+                        <tr class="row">
+                            <td class="col-12 d-flex justify-content-center">
+                                <strong>
+                                    No categories
+                                </strong>
+                            </td>
+                        </tr>
                     }
 
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+                    @foreach (var item in this.Model)
+                    {
+                        <tr>
+                            
+                            <td style="width: 15%; height: 15%; text-align: left; vertical-align: auto">
+                                @foreach (var image in item.CategoryImages.Take(1))
+                                {
+                                    <img src="@image.ImageUrl" style="max-height: 30%; max-width: 40%" alt="category image" />
+                                }
+                            </td>
+                            <td>
+                                @item.Icon
+                            </td>
+                            <td>
+                                @item.Name
+                            </td>
+                            <td>
+                                <div class="comment more">
+                                    @item.Description
+                                </div>
+                            </td>
+                            <td>
+                                @item.IsDeleted
+                                @item.DeletedOn
+                            </td>
+                            <td>
+                                @item.CreatedOn
+                            </td>
+                            <td>
+                                @item.ModifiedOn
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">
+                                    Edit
+                                </a>
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">
+                                    Details
+                                </a>
+                                @if (item.IsDeleted)
+                                {
+                                    <a asp-controller="Categories" asp-action="Restore" asp-route-id="@item.Id" class="btn btn-warning">
+                                        Restore
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a asp-controller="Categories" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
+                                        Delete
+                                    </a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
