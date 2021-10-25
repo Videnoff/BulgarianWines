@@ -101,7 +101,7 @@
                         autoplay: 25000,
                         autoplayDisableOnInteraction: true,
                         loop: true/*,
-                                                                                                  paginationType: 'bullets'*/
+                                                                                                                  paginationType: 'bullets'*/
                     });
                     --></script>
 
@@ -166,7 +166,10 @@
                                     {
                                         <li class="active">
                                             <a onclick="vlcazwfnuqloadAjaxData('18')" asp-area="" asp-controller="Categories" asp-action="Products" asp-route-id="@category.Id" data-toggle="tab">
-                                                @category.Name
+                                                <div class="col">
+                                                    <img src="@category.ImageUrl" style="max-height: 10%; max-width: 10%" />
+                                                    @category.Name
+                                                </div>
                                             </a>
                                         </li>
                                     }

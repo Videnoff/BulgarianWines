@@ -62,7 +62,7 @@
                 return this.View();
             }
 
-            var editResult = await this.homePageSlidesService.EditAsync(model, model.Image);
+            var editResult = await this.homePageSlidesService.EditAsync(model, model.UploadedImages);
             if (editResult)
             {
                 this.TempData["Alert"] = "Successfully edited slide.";
@@ -85,6 +85,21 @@
             else
             {
                 this.TempData["Error"] = "There was a problem deleting the slide.";
+            }
+
+            return this.RedirectToAction(nameof(this.Index));
+        }
+public async Task<IActionResult> DeleteImage(string id)
+        {
+            var result = await this.homePageSlidesService.DeleteImageAsync(id);
+
+            if (result)
+            {
+                this.TempData["Alert"] = "Successfully deleted image!";
+            }
+            else
+            {
+                this.TempData["Error"] = "There was a problem deleting the image!";
             }
 
             return this.RedirectToAction(nameof(this.Index));

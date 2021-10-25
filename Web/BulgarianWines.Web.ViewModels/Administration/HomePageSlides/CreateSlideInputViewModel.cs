@@ -10,7 +10,6 @@
 
     public class CreateSlideInputViewModel : IMapTo<HomePageSlide>
     {
-        [Required]
         [Display(Name = "Add Images")]
         [ImageAttribute]
         public IEnumerable<IFormFile> UploadedImages { get; set; }

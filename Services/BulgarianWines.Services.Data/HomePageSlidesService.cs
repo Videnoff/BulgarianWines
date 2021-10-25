@@ -60,7 +60,7 @@
                 .To<T>()
                 .FirstOrDefault();
 
-        public async Task<bool> EditAsync<T>(T model, IFormFile image)
+        public async Task<bool> EditAsync<T>(T model, IEnumerable<IFormFile> images)
         {
             var newSlide = AutoMapperConfig.MapperInstance.Map<HomePageSlide>(model);
 
@@ -73,9 +73,16 @@
             foundSlide.Description = newSlide.Description;
             foundSlide.LinkUrl = newSlide.LinkUrl;
 
-            if (image != null)
+            if (images != null && images.Count() > 0)
             {
-                foundSlide.ImageUrl = await this.imagesService.UploadAzureBlobImageAsync(image, AzureContainerName);
+                foreach (var image in images)
+                {
+                    var imageUrl = await this.imagesService.UploadAzureBlobImageAsync(image, AzureContainerName);
+                    foundSlide.SlideImages.Add(new SlideImage
+                    {
+                        ImageUrl = imageUrl,
+                    });
+                }
             }
 
             this.homePageSlidesRepository.Update(foundSlide);
@@ -106,10 +113,29 @@
             return true;
         }
 
+        public async Task<bool> DeleteImageAsync(string id)
+        {
+            var image = this.GetImageById(id);
+
+            if (image == null)
+            {
+                return false;
+            }
+
+            this.slideImagesRepository.Delete(image);
+            await this.slideImagesRepository.SaveChangesAsync();
+
+            return true;
+        }
+
         private HomePageSlide GetById(int id) =>
             this.homePageSlidesRepository
                 .All()
                 .Include(x => x.SlideImages)
+                .FirstOrDefault(x => x.Id == id);
+
+        private SlideImage GetImageById(string id) =>
+            this.slideImagesRepository.All()
                 .FirstOrDefault(x => x.Id == id);
     }
 }

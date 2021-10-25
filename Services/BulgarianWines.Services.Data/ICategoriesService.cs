@@ -8,7 +8,9 @@
 
     public interface ICategoriesService
     {
-        public Task CreateAsync<T>(T model, IFormFile image);
+        public Task CreateAsync<T>(T model, IEnumerable<IFormFile> images);
+
+        public Task<bool> EditAsync<T>(T model, IEnumerable<IFormFile> images);
 
         IEnumerable<KeyValuePair<string, string>> GetAllAsKeyValuePairs();
 
@@ -21,5 +23,7 @@
         public T GetById<T>(int id);
 
         public Task<bool> RestoreAsync(int id);
+
+        public Task<bool> DeleteImageAsync(string id);
     }
 }

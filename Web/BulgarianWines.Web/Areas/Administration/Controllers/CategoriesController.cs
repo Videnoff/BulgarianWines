@@ -24,9 +24,10 @@
         }
 
         // GET: Administration/Categories
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return this.View(await this.categoriesRepository.AllWithDeleted().ToListAsync());
+            var categories = this.categoriesService.GetAll<CategoryViewModel>();
+            return this.View(categories);
         }
 
         // GET: Administration/Categories/Details/5
@@ -65,7 +66,7 @@
                 return this.View(input);
             }
 
-            await this.categoriesService.CreateAsync(input, input.UploadedImage);
+            await this.categoriesService.CreateAsync(input, input.UploadedImages);
 
             this.TempData["Alert"] = "Successfully created slide.";
 
@@ -73,17 +74,14 @@
         }
 
         // GET: Administration/Categories/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return this.NotFound();
-            }
+            var category = this.categoriesService.GetById<EditCategoryViewModel>(id);
 
-            var category = this.categoriesRepository.All().FirstOrDefault(x => x.Id == id);
             if (category == null)
             {
-                return this.NotFound();
+                this.TempData["Error"] = "Category not found.";
+                return this.RedirectToAction(nameof(this.Index));
             }
 
             return this.View(category);
@@ -94,36 +92,24 @@
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Name,IsDeleted,DeletedOn,Id,CreatedOn,ModifiedOn")] Category category)
+        public async Task<IActionResult> Edit(EditCategoryViewModel model)
         {
-            if (id != category.Id)
+            if (!this.ModelState.IsValid)
             {
-                return this.NotFound();
+                return this.View();
             }
 
-            if (this.ModelState.IsValid)
+            var editResult = await this.categoriesService.EditAsync(model, model.UploadedImages);
+            if (editResult)
             {
-                try
-                {
-                    this.categoriesRepository.Update(category);
-                    await this.categoriesRepository.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!this.CategoryExists(category.Id))
-                    {
-                        return this.NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-
-                return this.RedirectToAction(nameof(this.Index));
+                this.TempData["Alert"] = "Successfully edited slide.";
+            }
+            else
+            {
+                this.TempData["Error"] = "There was a problem editing the slide.";
             }
 
-            return this.View(category);
+            return this.RedirectToAction(nameof(this.Index));
         }
 
         // GET: Administration/Categories/Delete/5
@@ -178,6 +164,22 @@
         {
             var categories = this.categoriesService.GetAllDeleted<DeletedCategoryViewModel>();
             return this.View(categories);
+        }
+
+        public async Task<IActionResult> DeleteImage(string id)
+        {
+            var result = await this.categoriesService.DeleteImageAsync(id);
+
+            if (result)
+            {
+                this.TempData["Alert"] = "Successfully deleted image!";
+            }
+            else
+            {
+                this.TempData["Error"] = "There was a problem deleting the image!";
+            }
+
+            return this.RedirectToAction(nameof(this.Index));
         }
 
         private bool CategoryExists(int id)

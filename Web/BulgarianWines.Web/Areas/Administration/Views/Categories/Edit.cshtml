@@ -1,56 +1,161 @@
-﻿@model BulgarianWines.Data.Models.Category
+﻿@model BulgarianWines.Web.ViewModels.Administration.Categories.EditCategoryViewModel
 
-@{
-    ViewData["Title"] = "Edit";
-}
+@{ ViewData["Title"] = "Edit Category"; }
 
-<h2>Edit</h2>
+@*<div class="shadow card">
+        <div class="card-header h3 text-center">
+            @ViewData["Title"]
+        </div>
+        <div class="card-body">
+            <form asp-area="Administration" asp-controller="Categories" asp-action="Edit" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Image" class="control-label"></label>
+                    <input asp-for="Image" class="form-control" />
+                    <img src="@Model.Image" />
+                    <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <textarea asp-for="Description" class="form-control edit-with-tinymce"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="Icon" class="control-label"></label>
+                        <input asp-for="Icon" class="form-control icp-auto" data-input-search="true" />
+                    </div>
+                </div>
+                <input asp-for="Id" class="form-control" hidden />
+                <div class="form-group text-center">
+                    <button type="submit" value="" class="btn btn-primary">
+                        Edit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>*@
+<div>
+    <a asp-action="Index">
+        Back to List
+    </a>
+</div>
 
-<h4>Category</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="shadow card">
+    <div class="card-header h3 text-center">
+        @ViewData["Title"]
+    </div>
+    <div class="card-body">
+        <form asp-area="Administration" asp-controller="Categories" asp-action="Edit" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <table class="table align-middle table-striped table-hover table-bordered" style="margin-left: 100px;">
+                <thead>
+                    <tr>
+                        <th>
+                            Image
+                        </th>
+                        <th>
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var image in Model.CategoryImages)
+                    {
+                        <tr>
+                            <td style="width: 50%; height: 50%; text-align: center; vertical-align: auto">
+                                <img src="@image.ImageUrl" style="max-height: 25%; max-width: 25%" alt="@image.ImageUrl" />
+                            </td>
+                            <td>
+                                <div>
+
+                                    <a asp-controller="Categories" asp-action="DeleteImage" asp-route-id="@image.Id" class="btn btn-danger btn-sm">
+                                        Delete
+                                    </a>
+                                    <hr />
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label asp-for="UploadedImages" class="control-label"></label>
+                                            <input asp-for="UploadedImages" class="form-control" />
+                                            <span asp-validation-for="UploadedImages" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control edit-with-tinymce" rows="3"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="IsDeleted" /> @Html.DisplayNameFor(model => model.IsDeleted)
-                    </label>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="Icon" class="control-label"></label>
+                    <input asp-for="Icon" class="form-control icp-auto" data-input-search="true" />
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label asp-for="UploadedImages" class="control-label"></label>
+                        <input asp-for="UploadedImages" class="form-control" />
+                        <span asp-validation-for="UploadedImages" class="text-danger"></span>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label asp-for="DeletedOn" class="control-label"></label>
-                <input asp-for="DeletedOn" class="form-control" />
-                <span asp-validation-for="DeletedOn" class="text-danger"></span>
-            </div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="CreatedOn" class="control-label"></label>
-                <input asp-for="CreatedOn" class="form-control" />
-                <span asp-validation-for="CreatedOn" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ModifiedOn" class="control-label"></label>
-                <input asp-for="ModifiedOn" class="form-control" />
-                <span asp-validation-for="ModifiedOn" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <input asp-for="Id" hidden />
+            <div class="form-group text-center">
+                <button type="submit" value="" class="btn btn-primary">
+                    Edit
+                </button>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+@section Styles{
+    <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+    <link href="~/css/fontawesome-iconpicker.min.css" rel="stylesheet" asp-append-version="true" />
+    <style>
+        .fade:not(.show) {
+            opacity: unset;
+        }
+    </style>
+}
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="~/lib/tinymce/tinymce.min.js" asp-append-version="true"></script>
+    <script src="~/js/fontawesome-iconpicker.min.js" asp-append-version="true"></script>
+
+    <script type="text/javascript">
+        tinymce.init({
+            selector: "textarea.edit-with-tinymce",
+            relative_urls: false,
+            remove_script_host: false,
+            convert_urls: true,
+            plugins: [
+                "image paste table link code media fullscreen wordcount searchreplace lists"
+            ],
+            toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent"
+        });
+    </script>
+
+    <script>
+        (function () {
+            $('.icp-auto').iconpicker();
+        })()
+    </script>
 }

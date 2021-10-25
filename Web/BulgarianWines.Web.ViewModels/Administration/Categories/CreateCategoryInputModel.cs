@@ -11,17 +11,15 @@
 
     public class CreateCategoryInputModel : IMapTo<Category>
     {
-        [Required]
         [Display(Name = "Add Image")]
         [Image]
-        public IFormFile UploadedImage { get; set; }
+        public IEnumerable<IFormFile> UploadedImages { get; set; }
 
         public string Name { get; set; }
 
         [Display(Name = "Icon")]
         public string Icon { get; set; }
 
-        [Required]
         public string Description { get; set; }
 
         [Display(Name = "Is Deleted?")]

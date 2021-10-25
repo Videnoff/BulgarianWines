@@ -8,38 +8,77 @@
     using BulgarianWines.Data.Models;
     using BulgarianWines.Services.Mapping;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.EntityFrameworkCore;
 
     public class CategoriesService : ICategoriesService
     {
         private const string AzureContainerName = "publicimages";
 
         private readonly IDeletableEntityRepository<Category> categoriesRepository;
+        private readonly IDeletableEntityRepository<CategoryImage> categoryImagesRepository;
         private readonly IImagesService imagesService;
 
         public CategoriesService(
             IDeletableEntityRepository<Category> categoriesRepository,
-            IImagesService imagesService)
+            IImagesService imagesService,
+            IDeletableEntityRepository<CategoryImage> categoryImagesRepository)
         {
             this.categoriesRepository = categoriesRepository;
             this.imagesService = imagesService;
+            this.categoryImagesRepository = categoryImagesRepository;
         }
 
-        public async Task CreateAsync<T>(T model, IFormFile image)
+        public async Task CreateAsync<T>(T model, IEnumerable<IFormFile> images)
         {
             var category = AutoMapperConfig.MapperInstance.Map<Category>(model);
 
-            if (image != null)
+            if (images != null && images.Any())
             {
-                    category.ImageUrl = await this.imagesService.UploadAzureBlobImageAsync(image, AzureContainerName);
+                foreach (var formFile in images)
+                {
+                    category.ImageUrl = await this.imagesService.UploadAzureBlobImageAsync(formFile, AzureContainerName);
                     var imageUrl = category.ImageUrl;
                     category.CategoryImages.Add(new CategoryImage
                     {
                         ImageUrl = imageUrl,
                     });
+                }
             }
 
             await this.categoriesRepository.AddAsync(category);
             await this.categoriesRepository.SaveChangesAsync();
+        }
+
+        public async Task<bool> EditAsync<T>(T model, IEnumerable<IFormFile> images)
+        {
+            var newCategory = AutoMapperConfig.MapperInstance.Map<Category>(model);
+
+            var foundCategory = this.GetById(newCategory.Id);
+
+            if (foundCategory == null)
+            {
+                return false;
+            }
+
+            foundCategory.Description = newCategory.Description;
+            foundCategory.Icon = newCategory.Icon;
+
+            if (images != null && images.Count() > 0)
+            {
+                foreach (var image in images)
+                {
+                    var imageUrl = await this.imagesService.UploadAzureBlobImageAsync(image, AzureContainerName);
+                    foundCategory.CategoryImages.Add(new CategoryImage
+                    {
+                        ImageUrl = imageUrl,
+                    });
+                }
+            }
+
+            this.categoriesRepository.Update(foundCategory);
+            await this.categoriesRepository.SaveChangesAsync();
+
+            return true;
         }
 
         public IEnumerable<KeyValuePair<string, string>> GetAllAsKeyValuePairs()
@@ -87,9 +126,34 @@
             return true;
         }
 
+        public async Task<bool> DeleteImageAsync(string id)
+        {
+            var image = this.GetImageById(id);
+
+            if (image == null)
+            {
+                return false;
+            }
+
+            this.categoryImagesRepository.Delete(image);
+            await this.categoryImagesRepository.SaveChangesAsync();
+
+            return true;
+        }
+
         private Category GetDeletedCategoryById(int id) =>
             this.categoriesRepository
                 .AllAsNoTrackingWithDeleted()
                 .FirstOrDefault(x => x.IsDeleted && x.Id == id);
+
+        private Category GetById(int id) =>
+            this.categoriesRepository
+                .All()
+                .Include(x => x.CategoryImages)
+                .FirstOrDefault(x => x.Id == id);
+
+        private CategoryImage GetImageById(string id) =>
+            this.categoryImagesRepository.All()
+                .FirstOrDefault(x => x.Id == id);
     }
 }

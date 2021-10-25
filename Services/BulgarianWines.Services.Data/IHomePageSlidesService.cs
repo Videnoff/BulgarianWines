@@ -13,8 +13,10 @@
 
         public T GetById<T>(int id);
 
-        public Task<bool> EditAsync<T>(T model, IFormFile image);
+        public Task<bool> EditAsync<T>(T model, IEnumerable<IFormFile> images);
 
         public Task<bool> DeleteAsync(int id);
+
+        public Task<bool> DeleteImageAsync(string id);
     }
 }
