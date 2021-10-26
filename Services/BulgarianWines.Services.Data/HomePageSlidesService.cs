@@ -128,6 +128,12 @@
             return true;
         }
 
+        public IEnumerable<T> GetAllDeleted<T>() => this.homePageSlidesRepository
+            .AllAsNoTrackingWithDeleted()
+            .Where(x => x.IsDeleted)
+            .To<T>()
+            .ToList();
+
         public async Task<bool> DeleteImageAsync(string id)
         {
             var image = this.GetImageById(id);

@@ -1,15 +1,14 @@
-﻿using BulgarianWines.Data.Common.Repositories;
-using BulgarianWines.Data.Models;
-using Microsoft.EntityFrameworkCore;
-
-namespace BulgarianWines.Web.Areas.Administration.Controllers
+﻿namespace BulgarianWines.Web.Areas.Administration.Controllers
 {
     using System.Threading.Tasks;
 
+    using BulgarianWines.Data.Common.Repositories;
+    using BulgarianWines.Data.Models;
     using BulgarianWines.Services.Data;
     using BulgarianWines.Web.ViewModels.Administration.HomePageSlides;
     using BulgarianWines.Web.ViewModels.HomePage;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
 
     public class HomePageSlidesController : AdministrationController
     {
@@ -144,6 +143,12 @@ namespace BulgarianWines.Web.Areas.Administration.Controllers
             }
 
             return this.RedirectToAction(nameof(this.Index));
+        }
+
+        public IActionResult Deleted()
+        {
+            var categories = this.homePageSlidesService.GetAllDeleted<DeletedHomePageSlidesViewModel>();
+            return this.View(categories);
         }
     }
 }

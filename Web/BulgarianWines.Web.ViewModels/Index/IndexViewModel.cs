@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web.ViewModels.Index
+﻿using Microsoft.AspNetCore.Http;
+
+namespace BulgarianWines.Web.ViewModels.Index
 {
     using System.Collections.Generic;
 
@@ -17,5 +19,7 @@
         public IEnumerable<CategoryViewModel> AllCategories { get; set; }
 
         public IEnumerable<HomePageViewModel> Slides { get; set; }
+
+        public IFormFile LogoImage { get; set; }
     }
 }

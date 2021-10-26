@@ -160,6 +160,12 @@
             return true;
         }
 
+        public IEnumerable<T> GetAllDeleted<T>() => this.winesRepository
+            .AllAsNoTrackingWithDeleted()
+            .Where(x => x.IsDeleted)
+            .To<T>()
+            .ToList();
+
         public async Task<bool> DeleteImageAsync(string id)
         {
             var image = this.GetImageById(id);

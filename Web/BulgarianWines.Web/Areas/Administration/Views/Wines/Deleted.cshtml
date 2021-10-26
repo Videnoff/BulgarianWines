@@ -1,7 +1,7 @@
-﻿@model IEnumerable<BulgarianWines.Web.ViewModels.Administration.Categories.DeletedCategoryViewModel>
+﻿@model IEnumerable<BulgarianWines.Web.ViewModels.Administration.Wines.DeletedWineViewModel>
 
 @{
-    ViewData["Title"] = "Deleted Categories";
+    ViewData["Title"] = "Deleted Wines";
 }
 
 <div class="table-responsive">
@@ -10,7 +10,6 @@
         <tr>
             <th>#</th>
             <th>Name</th>
-            <th>Icon</th>
             <th>Deleted On</th>
             <th>Actions</th>
         </tr>
@@ -21,7 +20,7 @@
             <tr class="row">
                 <td class="col-12 d-flex justify-content-center">
                     <strong>
-                        No deleted categories
+                        No deleted wines
                     </strong>
                 </td>
             </tr>
@@ -35,14 +34,11 @@
                 <td>
                     @item.Name
                 </td>
-                <td style="width: 100%; height: 100%; text-align: center; vertical-align: auto">
-                    @item.Icon
-                </td>
                 <td>
                     @item.DeletedOn
                 </td>
                 <td>
-                <a asp-controller="Categories" asp-action="Restore" asp-route-id="@item.Id" class="btn btn-warning">
+                <a asp-controller="Wines" asp-action="Restore" asp-route-id="@item.Id" class="btn btn-warning">
                     Restore
                 </a>
             </tr>

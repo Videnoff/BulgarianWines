@@ -64,14 +64,41 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                   aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts"
+                   aria-expanded="true" aria-controls="collapseProducts">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>
+                        Wines
+                    </span>
+                </a>
+                <div id="collapseProducts" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">
+                            Wines:
+                        </h6>
+                        <a class="collapse-item" asp-area="Administration" asp-controller="Wines" asp-action="Index">
+                            All
+                        </a>
+                        <a class="collapse-item" asp-area="Administration" asp-controller="Wines" asp-action="Create">
+                            Create
+                        </a>
+                        <a class="collapse-item" asp-area="Administration" asp-controller="Wines" asp-action="Deleted">
+                            Deleted
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories"
+                   aria-expanded="true" aria-controls="collapseCategories">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>
                         Categories
                     </span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseCategories" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">
                             Categories:
@@ -83,6 +110,33 @@
                             Create
                         </a>
                         <a class="collapse-item" asp-area="Administration" asp-controller="Categories" asp-action="Deleted">
+                            Deleted
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSlides"
+                   aria-expanded="true" aria-controls="collapseSlides">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>
+                        Slides
+                    </span>
+                </a>
+                <div id="collapseSlides" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">
+                            Slides:
+                        </h6>
+                        <a class="collapse-item" asp-area="Administration" asp-controller="HomePageSlides" asp-action="Index">
+                            All
+                        </a>
+                        <a class="collapse-item" asp-area="Administration" asp-controller="HomePageSlides" asp-action="Create">
+                            Create
+                        </a>
+                        <a class="collapse-item" asp-area="Administration" asp-controller="HomePageSlides" asp-action="Deleted">
                             Deleted
                         </a>
                     </div>

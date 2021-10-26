@@ -23,6 +23,8 @@
 
         public Task<bool> RestoreAsync(int id);
 
+        public IEnumerable<T> GetAllDeleted<T>();
+
         public Task<bool> DeleteImageAsync(string id);
     }
 }

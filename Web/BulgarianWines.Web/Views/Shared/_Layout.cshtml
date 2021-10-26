@@ -3,6 +3,7 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +12,7 @@
     <title>
         @this.ViewData["Title"] - @GlobalConstants.SystemName
     </title>
-    <link href="~/css/wined/themecss/bootstrap.min.css" rel="stylesheet"  asp-append-version="true"/>
+    <link href="~/css/wined/themecss/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/lib/fontawesome/css/all.css" rel="stylesheet" asp-append-version="true" />
 
     <script src="~/lib/popper/dist/umd/popper.js" asp-append-version="true"></script>
@@ -51,24 +52,24 @@
 
     <!-- Theme Start -->
 
-    <script type="text/javascript" src="~/js/wined/themejs/custom.js"></script>
-    <script type="text/javascript" src="~/js/wined/themejs/jstree.min.js"></script>
-    <script type="text/javascript" src="~/js/wined/themejs/carousel.min.js"></script>
-    <script type="text/javascript" src="~/js/wined/themejs/productcarosel.min.js"></script>
-    <script type="text/javascript" src="~/js/wined/themejs/jquery.custom.min.js"></script>
-    <script type="text/javascript" src="~/js/wined/themejs/jquery.formalize.min.js"></script>
-    <script type="text/javascript" src="~/js/wined/themejs/jquery.elevatezoom.min.js"></script>
-    <script type="text/javascript" src="~/js/wined/themejs/bootstrap-notify.min.js"></script>
-    <script type="text/javascript" src="~/js/wined/jquery/magnific/jquery.magnific-popup.min.js"></script>
-    <script type="text/javascript" src="~/js/wined/jquery/owl-carousel/owl.carousel.min.js"></script>
-    <link href="~/js/wined/jquery/magnific/magnific-popup.css" rel="stylesheet" />
-    <script type="text/javascript" src="~/js/wined/themejs/tabs.js"></script>
-    <script type="text/javascript" src="~/js/wined/jquery.countdown.js"></script>
-    <script type="text/javascript" src="~/js/wined/jquery.countdown.min.js"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/custom.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jstree.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/carousel.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/productcarosel.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jquery.custom.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jquery.formalize.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jquery.elevatezoom.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/bootstrap-notify.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/jquery/magnific/jquery.magnific-popup.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/jquery/owl-carousel/owl.carousel.min.js" asp-append-version="true"></script>
+    <link href="~/js/wined/jquery/magnific/magnific-popup.css" rel="stylesheet" asp-append-version="true" />
+    <script type="text/javascript" src="~/js/wined/themejs/tabs.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/jquery.countdown.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/jquery.countdown.min.js" asp-append-version="true"></script>
     <!-- Theme End -->
 
-    <script src="~/js/wined/common.js"></script>
-    <script src="~/js/wined/themejs/parallax.js"></script>
+    <script src="~/js/wined/common.js" asp-append-version="true"></script>
+    <script src="~/js/wined/themejs/parallax.js" asp-append-version="true"></script>
 
     <link href="~/css/site.min.css" rel="stylesheet" asp-append-version="true" />
 </head>
@@ -143,8 +144,6 @@
                 <div id="main-menu" class="main-menu">
                     <nav class="nav-container" role="navigation">
                         <div class="nav-inner">
-                            <!-- ======= Menu Code START ========= -->
-                            <!-- Opencart 3 level Category Menu-->
                             <div id="menu" class="main-menu">
                                 <div class="nav-responsive">
                                     <span>
@@ -154,7 +153,7 @@
                                         <div class="expandable"></div>
                                     </div>
                                 </div>
-                                <div class="nav-mainmenu btn-modal hidden-sm hidden-xs">
+                                <div class="nav-mainmenu btn-modal" type="button" id="dropdownMenuButton1" data-toggle="dropdown">
                                     <span class="mainmenu-btn-wrapper">
                                         <span class="mainmenu-btn"></span>
                                     </span>
@@ -162,8 +161,18 @@
                                         menu
                                     </span>
                                 </div>
-                                <ul class="nav navbar-nav">
-                                    <li class="top_level home">
+                                @*<div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown">
+                Dropdown button
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+        </div>*@
+                                <ul class="dropdown-menu dropdown-menu-end nav navbar-nav" aria-labelledby="dropdownMenuButton1">
+                                    <li class="dropdown-item top_level home">
                                         <a href="index9328.html?route=common/home">
                                             Home
                                         </a>
@@ -181,7 +190,7 @@
                                         <div class="dropdown-menu megamenu column3">
                                             <div class="dropdown-inner">
                                                 <ul class="list-unstyled childs_1">
-                                                    <!-- 2 Level Sub Categories START -->
+                                                    2 Level Sub Categories START
                                                     <li class="dropdown">
                                                         <a href="index22d5.html?route=product/category&amp;path=34_43">
                                                             marsala wine
@@ -210,11 +219,11 @@
                                                         </div>
 
                                                     </li>
-                                                    <!-- 2 Level Sub Categories END -->
+                                                    2 Level Sub Categories END
 
                                                 </ul>
                                                 <ul class="list-unstyled childs_1">
-                                                    <!-- 2 Level Sub Categories START -->
+                                                    2 Level Sub Categories START
                                                     <li class="dropdown">
                                                         <a href="index0e62.html?route=product/category&amp;path=34_49">sagrantino</a>
 
@@ -230,11 +239,11 @@
                                                         </div>
 
                                                     </li>
-                                                    <!-- 2 Level Sub Categories END -->
+                                                    2 Level Sub Categories END
 
                                                 </ul>
                                                 <ul class="list-unstyled childs_1">
-                                                    <!-- 2 Level Sub Categories START -->
+                                                    2 Level Sub Categories START
                                                     <li class="dropdown">
                                                         <a href="index7e21.html?route=product/category&amp;path=34_48">vernaccia</a>
 
@@ -262,7 +271,7 @@
                                                         </div>
 
                                                     </li>
-                                                    <!-- 2 Level Sub Categories END -->
+                                                    2 Level Sub Categories END
 
                                                 </ul>
                                             </div>
@@ -278,20 +287,20 @@
                                         <div class="dropdown-menu megamenu column1">
                                             <div class="dropdown-inner">
                                                 <ul class="list-unstyled childs_1">
-                                                    <!-- 2 Level Sub Categories START -->
+                                                    2 Level Sub Categories START
                                                     <li>
                                                         <a href="indexd9fe.html?route=product/category&amp;path=20_26">
                                                             gravida
                                                         </a>
                                                     </li>
-                                                    <!-- 2 Level Sub Categories END -->
-                                                    <!-- 2 Level Sub Categories START -->
+                                                    2 Level Sub Categories END
+                                                    2 Level Sub Categories START
                                                     <li>
                                                         <a href="indexf345.html?route=product/category&amp;path=20_27">
                                                             lighting &amp; studio
                                                         </a>
                                                     </li>
-                                                    <!-- 2 Level Sub Categories END -->
+                                                    2 Level Sub Categories END
 
                                                 </ul>
                                             </div>
@@ -305,34 +314,34 @@
                                         <div class="dropdown-menu megamenu column1">
                                             <div class="dropdown-inner">
                                                 <ul class="list-unstyled childs_1">
-                                                    <!-- 2 Level Sub Categories START -->
+                                                    2 Level Sub Categories START
                                                     <li>
                                                         <a href="indexf3db.html?route=product/category&amp;path=25_31">
                                                             canonical adaptations
                                                         </a>
                                                     </li>
-                                                    <!-- 2 Level Sub Categories END -->
-                                                    <!-- 2 Level Sub Categories START -->
+                                                    2 Level Sub Categories END
+                                                    2 Level Sub Categories START
                                                     <li>
                                                         <a href="index68a7.html?route=product/category&amp;path=25_30">
                                                             moscato
                                                         </a>
                                                     </li>
-                                                    <!-- 2 Level Sub Categories END -->
-                                                    <!-- 2 Level Sub Categories START -->
+                                                    2 Level Sub Categories END
+                                                    2 Level Sub Categories START
                                                     <li>
                                                         <a href="indexc219.html?route=product/category&amp;path=25_29">
                                                             Safed chalwan
                                                         </a>
                                                     </li>
-                                                    <!-- 2 Level Sub Categories END -->
-                                                    <!-- 2 Level Sub Categories START -->
+                                                    2 Level Sub Categories END
+                                                    2 Level Sub Categories START
                                                     <li>
                                                         <a href="index955a.html?route=product/category&amp;path=25_32">
                                                             untrammelled owing
                                                         </a>
                                                     </li>
-                                                    <!-- 2 Level Sub Categories END -->
+                                                    2 Level Sub Categories END
 
                                                 </ul>
                                             </div>
@@ -348,20 +357,20 @@
                                         <div class="dropdown-menu megamenu column1">
                                             <div class="dropdown-inner">
                                                 <ul class="list-unstyled childs_1">
-                                                    <!-- 2 Level Sub Categories START -->
+                                                    2 Level Sub Categories START
                                                     <li>
                                                         <a href="index8470.html?route=product/category&amp;path=18_45">
                                                             ghemme docg
                                                         </a>
                                                     </li>
-                                                    <!-- 2 Level Sub Categories END -->
-                                                    <!-- 2 Level Sub Categories START -->
+                                                    2 Level Sub Categories END
+                                                    2 Level Sub Categories START
                                                     <li>
                                                         <a href="index9f41.html?route=product/category&amp;path=18_46">
                                                             Macs
                                                         </a>
                                                     </li>
-                                                    <!-- 2 Level Sub Categories END -->
+                                                    2 Level Sub Categories END
 
                                                 </ul>
                                             </div>
@@ -394,31 +403,15 @@
                                             gaming console
                                         </a>
                                     </li>
-
-
-
-
-
-                                    <!--<li class="level0" ><a href="">Sitemap</a></li>
-                                    <li class="level0" ><a href="">contact us</a></li>
-                                    <li class="level0" ><a href="">about us</a></li> -->
+                                    <li class="level0"><a href="">Sitemap</a></li>
+                                    <li class="level0"><a href="">contact us</a></li>
+                                    <li class="level0"><a href="">about us</a></li>
                                 </ul>
-
                             </div>
-
                         </div>
-
                     </nav>
-
                 </div>
-                <script type="text/javascript">
-                    function(event) {
-                        $('.content_headercms_top #main-menu .navbar-nav').toggleClass('active');
 
-                        event.stopPropagation();
-                        $('.content_headercms_top #main-menu .nav.navbar-nav').slideToggle("medium");
-                    }
-                </script>
                 <div class="dropdown myaccount">
                     @if (this.SignInManager.IsSignedIn(this.User))
                     {
@@ -531,7 +524,7 @@
                 <div class="header-logo">
                     <div id="logo">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">
-                            <img src="image/catalog/demo/banners/Logo.png" title="@GlobalConstants.SystemName" alt="@GlobalConstants.SystemName" class="img-responsive" />
+                            <img src="logo.png" title="@GlobalConstants.SystemName" alt="@GlobalConstants.SystemName" class="img-responsive" />
                         </a>
                     </div>
                 </div>
@@ -832,6 +825,7 @@
     <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
     <script src="~/js/site.min.js" asp-append-version="true"></script>
+
     @await this.RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

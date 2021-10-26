@@ -59,7 +59,7 @@
         }
 
         // GET: Administration/Wines
-        public async Task<IActionResult> Index(int id = 1)
+        public IActionResult Index(int id = 1)
         {
             if (id <= 0)
             {
@@ -306,6 +306,12 @@
             }
 
             return this.RedirectToAction(nameof(this.Index));
+        }
+
+        public IActionResult Deleted()
+        {
+            var wines = this.winesService.GetAllDeleted<DeletedWineViewModel>();
+            return this.View(wines);
         }
 
         public IActionResult SingleWine(int id)

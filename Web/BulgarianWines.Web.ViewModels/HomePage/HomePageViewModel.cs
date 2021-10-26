@@ -1,9 +1,8 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-
-namespace BulgarianWines.Web.ViewModels.HomePage
+﻿namespace BulgarianWines.Web.ViewModels.HomePage
 {
+    using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.Linq;
 
     using AutoMapper;

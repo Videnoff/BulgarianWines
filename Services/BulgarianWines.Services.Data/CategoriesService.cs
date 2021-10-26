@@ -67,7 +67,8 @@
             {
                 foreach (var image in images)
                 {
-                    var imageUrl = await this.imagesService.UploadAzureBlobImageAsync(image, AzureContainerName);
+                    foundCategory.ImageUrl = await this.imagesService.UploadAzureBlobImageAsync(image, AzureContainerName);
+                    var imageUrl = foundCategory.ImageUrl;
                     foundCategory.CategoryImages.Add(new CategoryImage
                     {
                         ImageUrl = imageUrl,
@@ -105,7 +106,7 @@
 
         public IEnumerable<Category> GetAll() => this.categoriesRepository.AllAsNoTracking().ToList();
 
-        public T GetById<T>(int id) => 
+        public T GetById<T>(int id) =>
             this.categoriesRepository.AllAsNoTracking()
                 .Where(x => x.Id == id)
                 .To<T>()

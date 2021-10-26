@@ -101,7 +101,7 @@
                         autoplay: 25000,
                         autoplayDisableOnInteraction: true,
                         loop: true/*,
-                                                                                                                  paginationType: 'bullets'*/
+                                                                                                                                                  paginationType: 'bullets'*/
                     });
                     --></script>
 
@@ -164,11 +164,23 @@
                                 <ul class="nav nav-tabs">
                                     @foreach (var category in Model.AllCategories)
                                     {
-                                        <li class="active">
+                                        @*<li class="active">
+                                                <a onclick="vlcazwfnuqloadAjaxData('18')" asp-area="" asp-controller="Categories" asp-action="Products" asp-route-id="@category.Id" data-toggle="tab">
+                                                    <div>
+                                                        <img src="@category.ImageUrl" style="max-height: 10%; max-width: 10%" />
+                                                        @category.Name
+                                                    </div>
+                                                </a>
+                                            </li>*@
+                                        <li class="active card-group">
                                             <a onclick="vlcazwfnuqloadAjaxData('18')" asp-area="" asp-controller="Categories" asp-action="Products" asp-route-id="@category.Id" data-toggle="tab">
-                                                <div class="col">
-                                                    <img src="@category.ImageUrl" style="max-height: 10%; max-width: 10%" />
-                                                    @category.Name
+                                                <div class="card">
+                                                    <img src="@category.ImageUrl" style="max-height: 10%; max-width: 10%" class="card-img-top">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">
+                                                            @category.Name
+                                                        </h5>
+                                                    </div>
                                                 </div>
                                             </a>
                                         </li>
@@ -179,9 +191,9 @@
                                 <a class="fa prev">&nbsp;</a>
                                 <a class="fa next">&nbsp;</a>
                             </div> -->
-                            <div class="tab-content home-products">
+                            @*<div class="tab-content home-products">
                                 <partial name="_ProductsFromCategoryPartial" />
-                            </div>
+                            </div>*@
                         </div>
                     </div>
                 </div>
