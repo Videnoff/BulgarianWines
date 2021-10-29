@@ -1,6 +1,7 @@
 ﻿@using BulgarianWines.Common
 @using BulgarianWines.Data.Models
 @using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity.UI.V4.Pages.Internal.Account.Manage
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
@@ -12,14 +13,14 @@
     <title>
         @this.ViewData["Title"] - @GlobalConstants.SystemName
     </title>
-    <link href="~/css/wined/themecss/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
+    @*<link href="~/css/wined/themecss/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />*@
     <link href="~/lib/fontawesome/css/all.css" rel="stylesheet" asp-append-version="true" />
 
     <script src="~/lib/popper/dist/umd/popper.js" asp-append-version="true"></script>
 
     <script src="~/js/wined/jquery/jquery-2.1.1.min.js"></script>
     <!-- <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" /> -->
-    <script src="~/js/wined/bootstrap/js/bootstrap.min.js"></script>
+    @*<script src="~/js/wined/bootstrap/js/bootstrap.min.js"></script>*@
     <link href="~/js/wined/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
     <link href="~/css/wined/stylesheet.css" rel="stylesheet" />
@@ -47,7 +48,7 @@
     <link href="~/js/wined/jquery/owl-carousel/owl.transitions.css" rel="stylesheet" media="screen" />
     <script src="~/js/wined/jquery/swiper/js/swiper.jquery.js"></script>
     <script src="~/js/wined/jquery/owl-carousel/owl.carousel.min.js"></script>
-    <script src="~/js/wined/common.js"></script>
+    @*<script src="~/js/wined/common.js"></script>*@
     <link href="~/images/wined/cart.png" />
 
     <!-- Theme Start -->
@@ -418,6 +419,7 @@
                         <a asp-area="Identity" asp-page="/Account/Manage/Index" title="My Account" class="dropdown-toggle" data-toggle="dropdown">
                             <!--<span class="account-title">My Account</span>--> <span class="caret"></span>
                             <span class="user-info-image">
+                                <img src="@this.UserManager.Users.Select(x => x.UserImages.Select(x => x.ImageUrl))"/>
                                 Hello @this.User.Identity.Name!
                                 <i class="fa fa-angle-down"></i>
                             </span>
@@ -524,7 +526,7 @@
                 <div class="header-logo">
                     <div id="logo">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">
-                            <img src="https://bulgarianwines.blob.core.windows.net/publicimages/logo.jpg" style="height: 35%; width: 35%; object-fit: contain" title="@GlobalConstants.SystemName" alt="@GlobalConstants.SystemName" class="img-responsive" />
+                            <img src="https://bulgarianwines.blob.core.windows.net/publicimages/logo.jpg" style="height: 100%; width: 100%; object-fit: contain" title="@GlobalConstants.SystemName" alt="@GlobalConstants.SystemName" class="img-responsive" />
                         </a>
                     </div>
                 </div>
@@ -572,12 +574,12 @@
         </div>
     </header>
 
-    <div class="container">
+    @*<div class="container">*@
         <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
+        @*<main role="main" class="pb-3">*@
             @this.RenderBody()
-        </main>
-    </div>
+        @*</main>*@
+    @*</div>*@
     <footer>
         <div id="footer">
             <div class="content_footer_top">
@@ -763,14 +765,34 @@
 
                                     <div class="footer-payment">
                                         <div class="payment-block">
-                                            <h5>payment method</h5>
+                                            @*<h5>payment method</h5>
                                             <ul>
-                                                <li class="visa"><a href="#"><img src="image/catalog/demo/banners/visa.svg" alt=""></a></li>
-                                                <li class="paypal"><a href="#"><img src="image/catalog/demo/banners/paypal.svg" alt=""></a></li>
-                                                <li class="discover"><a href="#"><img src="image/catalog/demo/banners/discover.svg" alt=""></a></li>
-                                                <li class="mastercard"><a href="#"><img src="image/catalog/demo/banners/mastercard.svg" alt=""></a></li>
-                                                <li class="american-express"><a href="#"><img src="image/catalog/demo/banners/american-express.svg" alt=""></a></li>
-                                            </ul>
+                                                <li class="visa">
+                                                    <a href="#">
+                                                        <img src="image/catalog/demo/banners/visa.svg" alt="">
+                                                    </a>
+                                                </li>
+                                                <li class="paypal">
+                                                    <a href="#">
+                                                        <img src="image/catalog/demo/banners/paypal.svg" alt="">
+                                                    </a>
+                                                </li>
+                                                <li class="discover">
+                                                    <a href="#">
+                                                        <img src="image/catalog/demo/banners/discover.svg" alt="">
+                                                    </a>
+                                                </li>
+                                                <li class="mastercard">
+                                                    <a href="#">
+                                                        <img src="image/catalog/demo/banners/mastercard.svg" alt="">
+                                                    </a>
+                                                </li>
+                                                <li class="american-express">
+                                                    <a href="#">
+                                                        <img src="image/catalog/demo/banners/american-express.svg" alt="">
+                                                    </a>
+                                                </li>
+                                            </ul>*@
                                         </div>
                                     </div>
                                 </div>
