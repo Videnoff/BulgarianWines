@@ -134,7 +134,7 @@
                 </ul>
             </div>
 
-            <div id="Tab_Category_Slider" class="category_tab box">
+            <div id="Tab_Category_Slider" class="category_tab box" style="padding-bottom: 150px;">
                 <div class="container">
                     <div class="title-wrapper">
                         <div class="box-heading">
@@ -149,7 +149,7 @@
 
                                     <li class="card" style="width: 10rem;">
                                         <a onclick="vlcazwfnuqloadAjaxData('18')" asp-area="" asp-controller="Categories" asp-action="Products" asp-route-id="@category.Id" data-toggle="tab">
-                                            <div class="card" style="justify-content: center; font-size: medium; margin-left: 30px;">
+                                            @*<div class="card" style="justify-content: center; font-size: medium; margin-left: 30px;">*@
                                                 @category.Name
                                                 @*<img class="card-img-top" src="@category.ImageUrl" style="object-fit: contain; height: 50%; width: 50%">*@
                                                 @foreach (var image in category.CategoryImages)
@@ -161,7 +161,7 @@
                                                         </h5>
                                                     </div>
                                                 }
-                                            </div>
+                                            @*</div>*@
                                         </a>
                                     </li>
                                 }

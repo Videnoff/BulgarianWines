@@ -163,15 +163,15 @@
                                     </span>
                                 </div>
                                 @*<div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown">
-                Dropdown button
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-        </div>*@
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown">
+                                            Dropdown button
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" href="#">Action</a></li>
+                                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        </ul>
+                                    </div>*@
                                 <ul class="dropdown-menu dropdown-menu-end nav navbar-nav" aria-labelledby="dropdownMenuButton1">
                                     <li class="dropdown-item top_level home">
                                         <a href="index9328.html?route=common/home">
@@ -419,7 +419,7 @@
                         <a asp-area="Identity" asp-page="/Account/Manage/Index" title="My Account" class="dropdown-toggle" data-toggle="dropdown">
                             <!--<span class="account-title">My Account</span>--> <span class="caret"></span>
                             <span class="user-info-image">
-                                <img src="@this.UserManager.Users.Select(x => x.UserImages.Select(x => x.ImageUrl))"/>
+                                <img src="@this.UserManager.Users.Select(x => x.UserImages.Select(x => x.ImageUrl))" />
                                 Hello @this.User.Identity.Name!
                                 <i class="fa fa-angle-down"></i>
                             </span>
@@ -472,21 +472,29 @@
                                 <form action="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=common/language/language" method="post" enctype="multipart/form-data" id="form-language">
                                     <div class="btn-group">
                                         <button class="btn btn-link dropdown-toggle common-btn" data-toggle="dropdown" title="Language">
-
-                                            <img class="hidden-md hidden-lg" src="catalog/language/en-gb/en-gb.png" alt="English">
+                                            <img class="hidden-md hidden-lg" src="~/images/wined/account/en-gb.png" alt="English">
                                             <span class="Language-text">
                                                 Language
                                             </span>&nbsp;<!--<i class="fa fa-caret-down"></i>-->
                                         </button>
                                         <ul class="dropdown-menu language-menu">
                                             <li class="current">
-                                                <button class="btn btn-link btn-block language-select" type="button" name="en-gb" title="English"><img src="catalog/language/en-gb/en-gb.png" alt="English" title="English" /> English</button>
+                                                <button class="btn btn-link btn-block language-select" type="button" name="en-gb" title="English">
+                                                    <img src="~/images/wined/account/en-gb.png" alt="English" title="English" />
+                                                    English
+                                                </button>
                                             </li>
                                             <li>
-                                                <button class="btn btn-link btn-block language-select" type="button" name="ar" title="Arabic"><img src="catalog/language/ar/ar.png" alt="Arabic" title="Arabic" /> Arabic</button>
+                                                <button class="btn btn-link btn-block language-select" type="button" name="ar" title="Arabic">
+                                                    <img src="~/images/wined/account/ar.png" alt="Arabic" title="Arabic" />
+                                                    Arabic
+                                                </button>
                                             </li>
                                             <li>
-                                                <button class="btn btn-link btn-block language-select" type="button" name="fr-Fr" title="Français"><img src="catalog/language/fr-Fr/fr-Fr.png" alt="Français" title="Français" /> Français</button>
+                                                <button class="btn btn-link btn-block language-select" type="button" name="fr-Fr" title="Français">
+                                                    <img src="~/images/wined/account/fr-Fr.png" alt="Français" title="Français" />
+                                                    Français
+                                                </button>
                                             </li>
                                         </ul>
                                     </div>
@@ -575,10 +583,10 @@
     </header>
 
     @*<div class="container">*@
-        <partial name="_CookieConsentPartial" />
-        @*<main role="main" class="pb-3">*@
-            @this.RenderBody()
-        @*</main>*@
+    <partial name="_CookieConsentPartial" />
+    @*<main role="main" class="pb-3">*@
+    @this.RenderBody()
+    @*</main>*@
     @*</div>*@
     <footer>
         <div id="footer">
@@ -675,8 +683,6 @@
                                 </div>
                             </div>
 
-
-
                             <div class="col-md-3 col-lg-3 column fourth">
                                 <div class="footer-right-wrapper">
                                     <script>
@@ -722,8 +728,6 @@
 
                                                 return false;
                                             }
-
-
                                         }
                                     </script>
                                     <div class="newsletter">
@@ -749,11 +753,8 @@
 
                                                         </div>
 
-
-
                                                         <div class="subscribe-btn">
                                                             <button type="submit" class="btn btn-default btn-lg" onclick="return subscribe();">subscribe</button>
-
                                                         </div>
                                                     </div>
                                                 </form>
@@ -761,38 +762,36 @@
                                         </div>
                                     </div>
 
-
-
                                     <div class="footer-payment">
                                         <div class="payment-block">
                                             @*<h5>payment method</h5>
-                                            <ul>
-                                                <li class="visa">
-                                                    <a href="#">
-                                                        <img src="image/catalog/demo/banners/visa.svg" alt="">
-                                                    </a>
-                                                </li>
-                                                <li class="paypal">
-                                                    <a href="#">
-                                                        <img src="image/catalog/demo/banners/paypal.svg" alt="">
-                                                    </a>
-                                                </li>
-                                                <li class="discover">
-                                                    <a href="#">
-                                                        <img src="image/catalog/demo/banners/discover.svg" alt="">
-                                                    </a>
-                                                </li>
-                                                <li class="mastercard">
-                                                    <a href="#">
-                                                        <img src="image/catalog/demo/banners/mastercard.svg" alt="">
-                                                    </a>
-                                                </li>
-                                                <li class="american-express">
-                                                    <a href="#">
-                                                        <img src="image/catalog/demo/banners/american-express.svg" alt="">
-                                                    </a>
-                                                </li>
-                                            </ul>*@
+                                                <ul>
+                                                    <li class="visa">
+                                                        <a href="#">
+                                                            <img src="image/catalog/demo/banners/visa.svg" alt="">
+                                                        </a>
+                                                    </li>
+                                                    <li class="paypal">
+                                                        <a href="#">
+                                                            <img src="image/catalog/demo/banners/paypal.svg" alt="">
+                                                        </a>
+                                                    </li>
+                                                    <li class="discover">
+                                                        <a href="#">
+                                                            <img src="image/catalog/demo/banners/discover.svg" alt="">
+                                                        </a>
+                                                    </li>
+                                                    <li class="mastercard">
+                                                        <a href="#">
+                                                            <img src="image/catalog/demo/banners/mastercard.svg" alt="">
+                                                        </a>
+                                                    </li>
+                                                    <li class="american-express">
+                                                        <a href="#">
+                                                            <img src="image/catalog/demo/banners/american-express.svg" alt="">
+                                                        </a>
+                                                    </li>
+                                                </ul>*@
                                         </div>
                                     </div>
                                 </div>

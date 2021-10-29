@@ -233,7 +233,7 @@
                 this.TempData["Error"] = "There was a problem editing the product.";
             }
 
-            return this.RedirectToAction(nameof(this.SingleWine), new {area = string.Empty, id});
+            return this.RedirectToAction(nameof(this.SingleWine), new { area = string.Empty, id });
         }
 
         // GET: Administration/Wines/Delete/5

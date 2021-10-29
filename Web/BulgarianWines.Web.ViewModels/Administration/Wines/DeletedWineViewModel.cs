@@ -1,6 +1,4 @@
-﻿using BulgarianWines.Web.ViewModels.Wines;
-
-namespace BulgarianWines.Web.ViewModels.Administration.Wines
+﻿namespace BulgarianWines.Web.ViewModels.Administration.Wines
 {
     using System.Globalization;
 
@@ -8,6 +6,7 @@ namespace BulgarianWines.Web.ViewModels.Administration.Wines
     using BulgarianWines.Common;
     using BulgarianWines.Data.Models;
     using BulgarianWines.Services.Mapping;
+    using BulgarianWines.Web.ViewModels.Wines;
 
     public class DeletedWineViewModel : ProductViewModel, IHaveCustomMappings
     {

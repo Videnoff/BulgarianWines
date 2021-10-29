@@ -50,7 +50,7 @@
         }
 
         public IEnumerable<T> GetAll<T>() =>
-            this.homePageSlidesRepository.AllAsNoTrackingWithDeleted()
+            this.homePageSlidesRepository.AllAsNoTracking()
                 .OrderBy(x => x.Position)
                 .To<T>().ToList();
 

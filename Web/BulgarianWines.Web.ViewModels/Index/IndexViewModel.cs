@@ -1,12 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
-
-namespace BulgarianWines.Web.ViewModels.Index
+﻿namespace BulgarianWines.Web.ViewModels.Index
 {
     using System.Collections.Generic;
 
     using BulgarianWines.Web.ViewModels.Administration.Categories;
     using BulgarianWines.Web.ViewModels.HomePage;
     using BulgarianWines.Web.ViewModels.Wines;
+    using Microsoft.AspNetCore.Http;
 
     public class IndexViewModel
     {
