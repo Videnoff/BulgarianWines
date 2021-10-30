@@ -1,4 +1,8 @@
-﻿<div class="tab-pane active" id="gattinara">
+﻿@model BulgarianWines.Web.ViewModels.Administration.Categories.CategoryProductsViewModel
+@{
+    this.ViewData["Title"] = Model.Name;
+}
+<!--<div class="tab-pane active" id="gattinara">
     <div class="product-block-wrapper">
         <div class="item text-center product-innerblock">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -8,672 +12,747 @@
                             <a href="index52a0.html?route=product/product&amp;product_id=51">
                                 <img src="image/cache/catalog/demo/product/1-380x384.jpg" title="aenean dignissim" alt="aenean dignissim" class="img-responsive reg-image" />
                                 <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/15-380x384.jpg" title="aenean dignissim" alt="aenean dignissim" />
-                            </a>
+                            </a>-->
+<!--
+-->
+<!--<div class="button-group">
+        <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('51 ');">Add to Cart</button>
+        <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('51 ');"></button>
+        <div class="quickview" data-placement="right" title="Quick view"><a href="index3cc7.html?route=product/quick_view&amp;product_id=51">Quick View</a></div>
+        <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('51 ');"></button>
+    </div>
+</div>-->
+<!-- <div class="product-details"> -->
+<!--<div class="caption">
+    <h4><a href="index52a0.html?route=product/product&amp;product_id=51">aenean dignissim </a></h4>
+    <p class="price">
+        $122.00
+        <span class="price-tax">Ex Tax: $100.00</span>
 
-                            <!--
-                            -->
-
-                            <div class="button-group">
-                                <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('51 ');">Add to Cart</button>
-                                <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('51 ');"></button>
-                                <div class="quickview" data-placement="right" title="Quick view"><a href="index3cc7.html?route=product/quick_view&amp;product_id=51">Quick View</a></div>
-                                <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('51 ');"></button>
-                            </div>
-                        </div>
-
-                        <!-- <div class="product-details"> -->
-
-                        <div class="caption">
-                            <h4><a href="index52a0.html?route=product/product&amp;product_id=51">aenean dignissim </a></h4>
-                            <p class="price">
-                                $122.00
-                                <span class="price-tax">Ex Tax: $100.00</span>
-
-                            </p>
+    </p>
 
 
-                            <div class="rating">
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                            </div>
-                        </div>
-
-                        <!-- </div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="item text-center product-innerblock">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="product-block product-thumb transition">
-                    <div class="product-block-inner">
-
-                        <div class="image">
-                            <a href="indexbb02.html?route=product/product&amp;product_id=42">
-                                <img src="image/cache/catalog/demo/product/15-380x384.jpg" title="consectetur adipiscing" alt="consectetur adipiscing" class="img-responsive reg-image" />
-                                <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/3-380x384.jpg" title="consectetur adipiscing" alt="consectetur adipiscing" />
-                            </a>
-
-                            <!--
-                            -->
-
-                            <div class="button-group">
-                                <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('42 ');">Add to Cart</button>
-                                <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('42 ');"></button>
-                                <div class="quickview" data-placement="right" title="Quick view"><a href="index6d6f.html?route=product/quick_view&amp;product_id=42">Quick View</a></div>
-                                <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('42 ');"></button>
-                            </div>
-                        </div>
-
-                        <!-- <div class="product-details"> -->
-
-                        <div class="caption">
-                            <h4><a href="indexbb02.html?route=product/product&amp;product_id=42">consectetur adipiscing </a></h4>
-                            <p class="price">
-                                $122.00
-                                <span class="price-tax">Ex Tax: $100.00</span>
-
-                            </p>
-
-
-                            <div class="rating">
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                            </div>
-                        </div>
-
-                        <!-- </div> -->
-                    </div>
-                </div>
-            </div>
+    <div class="rating">
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+    </div>
+</div>-->
+<!-- </div> -->
+<!--</div>
         </div>
     </div>
+</div>
+<div class="item text-center product-innerblock">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="product-block product-thumb transition">
+            <div class="product-block-inner">
 
-    <div class="product-block-wrapper">
-        <div class="item text-center product-innerblock">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="product-block product-thumb transition">
-                    <div class="product-block-inner">
-
-                        <div class="image">
-                            <a href="index9144.html?route=product/product&amp;product_id=40">
-                                <img src="image/cache/catalog/demo/product/4-380x384.jpg" title="consequat nibh" alt="consequat nibh" class="img-responsive reg-image" />
-                                <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/6-380x384.jpg" title="consequat nibh" alt="consequat nibh" />
-                            </a>
-
-                            <!--
-                            -->
-
-                            <div class="button-group">
-                                <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('40 ');">Add to Cart</button>
-                                <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('40 ');"></button>
-                                <div class="quickview" data-placement="right" title="Quick view"><a href="index9aba.html?route=product/quick_view&amp;product_id=40">Quick View</a></div>
-                                <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('40 ');"></button>
-                            </div>
-                        </div>
-
-                        <!-- <div class="product-details"> -->
-
-                        <div class="caption">
-                            <h4><a href="index9144.html?route=product/product&amp;product_id=40">consequat nibh </a></h4>
-                            <p class="price">
-                                $123.20
-                                <span class="price-tax">Ex Tax: $101.00</span>
-
-                            </p>
-
-
-                            <div class="rating">
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                            </div>
-                        </div>
-
-                        <!-- </div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="item text-center product-innerblock">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="product-block product-thumb transition">
-                    <div class="product-block-inner">
-
-                        <div class="image">
-                            <a href="indexd94c.html?route=product/product&amp;product_id=44">
-                                <img src="image/cache/catalog/demo/product/13-380x384.jpg" title="dapibus tortor" alt="dapibus tortor" class="img-responsive reg-image" />
-                                <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/15-380x384.jpg" title="dapibus tortor" alt="dapibus tortor" />
-                            </a>
-
-                            <!--
-                            -->
-
-                            <div class="button-group">
-                                <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('44 ');">Add to Cart</button>
-                                <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('44 ');"></button>
-                                <div class="quickview" data-placement="right" title="Quick view"><a href="index5b4c.html?route=product/quick_view&amp;product_id=44">Quick View</a></div>
-                                <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('44 ');"></button>
-                            </div>
-                        </div>
-
-                        <!-- <div class="product-details"> -->
-
-                        <div class="caption">
-                            <h4><a href="indexd94c.html?route=product/product&amp;product_id=44">dapibus tortor </a></h4>
-                            <p class="price">
-                                $1,202.00
-                                <span class="price-tax">Ex Tax: $1,000.00</span>
-
-                            </p>
-
-
-                            <div class="rating">
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                            </div>
-                        </div>
-
-                        <!-- </div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
+                <div class="image">
+                    <a href="indexbb02.html?route=product/product&amp;product_id=42">
+                        <img src="image/cache/catalog/demo/product/15-380x384.jpg" title="consectetur adipiscing" alt="consectetur adipiscing" class="img-responsive reg-image" />
+                        <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/3-380x384.jpg" title="consectetur adipiscing" alt="consectetur adipiscing" />
+                    </a>-->
+<!--
+-->
+<!--<div class="button-group">
+        <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('42 ');">Add to Cart</button>
+        <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('42 ');"></button>
+        <div class="quickview" data-placement="right" title="Quick view"><a href="index6d6f.html?route=product/quick_view&amp;product_id=42">Quick View</a></div>
+        <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('42 ');"></button>
     </div>
+</div>-->
+<!-- <div class="product-details"> -->
+<!--<div class="caption">
+    <h4><a href="indexbb02.html?route=product/product&amp;product_id=42">consectetur adipiscing </a></h4>
+    <p class="price">
+        $122.00
+        <span class="price-tax">Ex Tax: $100.00</span>
 
-    <div class="product-block-wrapper">
-        <div class="item text-center product-innerblock">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="product-block product-thumb transition">
-                    <div class="product-block-inner">
-
-                        <div class="image">
-                            <a href="indexcae8.html?route=product/product&amp;product_id=41">
-                                <img src="image/cache/catalog/demo/product/5-380x384.jpg" title="donec pulvinar" alt="donec pulvinar" class="img-responsive reg-image" />
-                                <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/4-380x384.jpg" title="donec pulvinar" alt="donec pulvinar" />
-                            </a>
-
-                            <!--
-                            -->
-
-                            <div class="button-group">
-                                <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('41 ');">Add to Cart</button>
-                                <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('41 ');"></button>
-                                <div class="quickview" data-placement="right" title="Quick view"><a href="index059b.html?route=product/quick_view&amp;product_id=41">Quick View</a></div>
-                                <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('41 ');"></button>
-                            </div>
-                        </div>
-
-                        <!-- <div class="product-details"> -->
-
-                        <div class="caption">
-                            <h4><a href="indexcae8.html?route=product/product&amp;product_id=41">donec pulvinar </a></h4>
-                            <p class="price">
-                                $122.00
-                                <span class="price-tax">Ex Tax: $100.00</span>
-
-                            </p>
+    </p>
 
 
-                            <div class="rating">
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                            </div>
-                        </div>
-
-                        <!-- </div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="item text-center product-innerblock">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="product-block product-thumb transition">
-                    <div class="product-block-inner">
-
-                        <div class="image">
-                            <a href="index75be.html?route=product/product&amp;product_id=50">
-                                <img src="image/cache/catalog/demo/product/20-380x384.jpg" title="mollis consequat" alt="mollis consequat" class="img-responsive reg-image" />
-                                <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/8-380x384.jpg" title="mollis consequat" alt="mollis consequat" />
-                            </a>
-
-                            <!--
-                            -->
-
-                            <div class="button-group">
-                                <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('50 ');">Add to Cart</button>
-                                <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('50 ');"></button>
-                                <div class="quickview" data-placement="right" title="Quick view"><a href="indexabd0.html?route=product/quick_view&amp;product_id=50">Quick View</a></div>
-                                <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('50 ');"></button>
-                            </div>
-                        </div>
-
-                        <!-- <div class="product-details"> -->
-
-                        <div class="caption">
-                            <h4><a href="index75be.html?route=product/product&amp;product_id=50">mollis consequat </a></h4>
-                            <p class="price">
-                                $122.00
-                                <span class="price-tax">Ex Tax: $100.00</span>
-
-                            </p>
-
-
-                            <div class="rating">
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                            </div>
-                        </div>
-
-                        <!-- </div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="rating">
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
     </div>
-
-    <div class="product-block-wrapper">
-        <div class="item text-center product-innerblock">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="product-block product-thumb transition">
-                    <div class="product-block-inner">
-
-                        <div class="image">
-                            <a href="index5adf.html?route=product/product&amp;product_id=53">
-                                <img src="image/cache/catalog/demo/product/5-380x384.jpg" title="nulla venenatis" alt="nulla venenatis" class="img-responsive reg-image" />
-                                <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/20-380x384.jpg" title="nulla venenatis" alt="nulla venenatis" />
-                            </a>
-
-                            <!--
-                            -->
-
-                            <div class="button-group">
-                                <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('53 ');">Add to Cart</button>
-                                <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('53 ');"></button>
-                                <div class="quickview" data-placement="right" title="Quick view"><a href="index1bc2.html?route=product/quick_view&amp;product_id=53">Quick View</a></div>
-                                <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('53 ');"></button>
-                            </div>
-                        </div>
-
-                        <!-- <div class="product-details"> -->
-
-                        <div class="caption">
-                            <h4><a href="index5adf.html?route=product/product&amp;product_id=53">nulla venenatis </a></h4>
-                            <p class="price">
-                                $122.00
-                                <span class="price-tax">Ex Tax: $100.00</span>
-
-                            </p>
-
-
-                            <div class="rating">
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                            </div>
-                        </div>
-
-                        <!-- </div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="item text-center product-innerblock">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="product-block product-thumb transition">
-                    <div class="product-block-inner">
-
-                        <div class="image">
-                            <a href="indexb77e.html?route=product/product&amp;product_id=48">
-                                <img src="image/cache/catalog/demo/product/5-380x384.jpg" title="pellentesque dolor" alt="pellentesque dolor" class="img-responsive reg-image" />
-                                <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/19-380x384.jpg" title="pellentesque dolor" alt="pellentesque dolor" />
-                            </a>
-
-                            <!--
-                            -->
-
-                            <div class="button-group">
-                                <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('48 ');">Add to Cart</button>
-                                <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('48 ');"></button>
-                                <div class="quickview" data-placement="right" title="Quick view"><a href="indexdd37.html?route=product/quick_view&amp;product_id=48">Quick View</a></div>
-                                <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('48 ');"></button>
-                            </div>
-                        </div>
-
-                        <!-- <div class="product-details"> -->
-
-                        <div class="caption">
-                            <h4><a href="indexb77e.html?route=product/product&amp;product_id=48">pellentesque dolor </a></h4>
-                            <p class="price">
-                                $122.00
-                                <span class="price-tax">Ex Tax: $100.00</span>
-
-                            </p>
-
-
-                            <div class="rating">
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                            </div>
-                        </div>
-
-                        <!-- </div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="product-block-wrapper">
-        <div class="item text-center product-innerblock">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="product-block product-thumb transition">
-                    <div class="product-block-inner">
-
-                        <div class="image">
-                            <a href="index2ebe.html?route=product/product&amp;product_id=46">
-                                <img src="image/cache/catalog/demo/product/4-380x384.jpg" title="phasellus maximus" alt="phasellus maximus" class="img-responsive reg-image" />
-                                <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/17-380x384.jpg" title="phasellus maximus" alt="phasellus maximus" />
-                            </a>
-
-                            <!--
-                            -->
-
-                            <div class="button-group">
-                                <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('46 ');">Add to Cart</button>
-                                <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('46 ');"></button>
-                                <div class="quickview" data-placement="right" title="Quick view"><a href="index30de.html?route=product/quick_view&amp;product_id=46">Quick View</a></div>
-                                <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('46 ');"></button>
-                            </div>
-                        </div>
-
-                        <!-- <div class="product-details"> -->
-
-                        <div class="caption">
-                            <h4><a href="index2ebe.html?route=product/product&amp;product_id=46">phasellus maximus </a></h4>
-                            <p class="price">
-                                $1,202.00
-                                <span class="price-tax">Ex Tax: $1,000.00</span>
-
-                            </p>
-
-
-                            <div class="rating">
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                            </div>
-                        </div>
-
-                        <!-- </div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="item text-center product-innerblock">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="product-block product-thumb transition">
-                    <div class="product-block-inner">
-
-                        <div class="image">
-                            <a href="index6320.html?route=product/product&amp;product_id=28">
-                                <img src="image/cache/catalog/demo/product/17-380x384.jpg" title="praesent viverra" alt="praesent viverra" class="img-responsive reg-image" />
-                                <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/13-380x384.jpg" title="praesent viverra" alt="praesent viverra" />
-                            </a>
-
-                            <!--
-                            -->
-
-                            <div class="button-group">
-                                <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('28 ');">Add to Cart</button>
-                                <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('28 ');"></button>
-                                <div class="quickview" data-placement="right" title="Quick view"><a href="index097a.html?route=product/quick_view&amp;product_id=28">Quick View</a></div>
-                                <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('28 ');"></button>
-                            </div>
-                        </div>
-
-                        <!-- <div class="product-details"> -->
-
-                        <div class="caption">
-                            <h4><a href="index6320.html?route=product/product&amp;product_id=28">praesent viverra </a></h4>
-                            <p class="price">
-                                $122.00
-                                <span class="price-tax">Ex Tax: $100.00</span>
-
-                            </p>
-
-
-                            <div class="rating">
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                            </div>
-                        </div>
-
-                        <!-- </div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="product-block-wrapper">
-        <div class="item text-center product-innerblock">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="product-block product-thumb transition">
-                    <div class="product-block-inner">
-
-                        <div class="image">
-                            <a href="indexd21c.html?route=product/product&amp;product_id=47">
-                                <img src="image/cache/catalog/demo/product/5-380x384.jpg" title="qui blanditiis" alt="qui blanditiis" class="img-responsive reg-image" />
-                                <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/11-380x384.jpg" title="qui blanditiis" alt="qui blanditiis" />
-                            </a>
-
-                            <!--
-                            -->
-
-                            <div class="button-group">
-                                <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('47 ');">Add to Cart</button>
-                                <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('47 ');"></button>
-                                <div class="quickview" data-placement="right" title="Quick view"><a href="index7f5a.html?route=product/quick_view&amp;product_id=47">Quick View</a></div>
-                                <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('47 ');"></button>
-                            </div>
-                        </div>
-
-                        <!-- <div class="product-details"> -->
-
-                        <div class="caption">
-                            <h4><a href="indexd21c.html?route=product/product&amp;product_id=47">qui blanditiis </a></h4>
-                            <p class="price">
-                                $122.00
-                                <span class="price-tax">Ex Tax: $100.00</span>
-
-                            </p>
-
-
-                            <div class="rating">
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                            </div>
-                        </div>
-
-                        <!-- </div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="item text-center product-innerblock">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="product-block product-thumb transition">
-                    <div class="product-block-inner">
-
-                        <div class="image">
-                            <a href="index531d.html?route=product/product&amp;product_id=45">
-                                <img src="image/cache/catalog/demo/product/9-380x384.jpg" title="scelerisque lacinia " alt="scelerisque lacinia " class="img-responsive reg-image" />
-                                <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/9-380x384.jpg" title="scelerisque lacinia " alt="scelerisque lacinia " />
-                            </a>
-
-                            <!--
-                            -->
-
-                            <div class="button-group">
-                                <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('45 ');">Add to Cart</button>
-                                <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('45 ');"></button>
-                                <div class="quickview" data-placement="right" title="Quick view"><a href="index63bb.html?route=product/quick_view&amp;product_id=45">Quick View</a></div>
-                                <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('45 ');"></button>
-                            </div>
-                        </div>
-
-                        <!-- <div class="product-details"> -->
-
-                        <div class="caption">
-                            <h4><a href="index531d.html?route=product/product&amp;product_id=45">scelerisque lacinia </a></h4>
-                            <p class="price">
-                                $2,000.00
-                                <span class="price-tax">Ex Tax: $2,000.00</span>
-
-                            </p>
-
-
-                            <div class="rating">
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                            </div>
-                        </div>
-
-                        <!-- </div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="product-block-wrapper">
-        <div class="item text-center product-innerblock">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="product-block product-thumb transition">
-                    <div class="product-block-inner">
-
-                        <div class="image">
-                            <a href="indexc21e.html?route=product/product&amp;product_id=34">
-                                <img src="image/cache/catalog/demo/product/3-380x384.jpg" title="tincidunt dolor" alt="tincidunt dolor" class="img-responsive reg-image" />
-                                <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/16-380x384.jpg" title="tincidunt dolor" alt="tincidunt dolor" />
-                            </a>
-
-                            <!--
-                            -->
-
-                            <div class="button-group">
-                                <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('34 ');">Add to Cart</button>
-                                <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('34 ');"></button>
-                                <div class="quickview" data-placement="right" title="Quick view"><a href="indexa341.html?route=product/quick_view&amp;product_id=34">Quick View</a></div>
-                                <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('34 ');"></button>
-                            </div>
-                        </div>
-
-                        <!-- <div class="product-details"> -->
-
-                        <div class="caption">
-                            <h4><a href="indexc21e.html?route=product/product&amp;product_id=34">tincidunt dolor </a></h4>
-                            <p class="price">
-                                $122.00
-                                <span class="price-tax">Ex Tax: $100.00</span>
-
-                            </p>
-
-
-                            <div class="rating">
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                            </div>
-                        </div>
-
-                        <!-- </div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="item text-center product-innerblock">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="product-block product-thumb transition">
-                    <div class="product-block-inner">
-
-                        <div class="image">
-                            <a href="index5e0b.html?route=product/product&amp;product_id=36">
-                                <img src="image/cache/catalog/demo/product/19-380x384.jpg" title="vestibu	lumporta " alt="vestibu	lumporta " class="img-responsive reg-image" />
-                                <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/12-380x384.jpg" title="vestibu	lumporta " alt="vestibu	lumporta " />
-                            </a>
-
-                            <!--
-                            -->
-
-                            <div class="button-group">
-                                <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('36 ');">Add to Cart</button>
-                                <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('36 ');"></button>
-                                <div class="quickview" data-placement="right" title="Quick view"><a href="index0d3e.html?route=product/quick_view&amp;product_id=36">Quick View</a></div>
-                                <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('36 ');"></button>
-                            </div>
-                        </div>
-
-                        <!-- <div class="product-details"> -->
-
-                        <div class="caption">
-                            <h4><a href="index5e0b.html?route=product/product&amp;product_id=36">vestibu lumporta </a></h4>
-                            <p class="price">
-                                $122.00
-                                <span class="price-tax">Ex Tax: $100.00</span>
-
-                            </p>
-
-
-                            <div class="rating">
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                            </div>
-                        </div>
-
-                        <!-- </div> -->
-                    </div>
-                </div>
+</div>-->
+<!-- </div> -->
+<!--</div>
             </div>
         </div>
     </div>
 </div>
+
+<div class="product-block-wrapper">
+    <div class="item text-center product-innerblock">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="product-block product-thumb transition">
+                <div class="product-block-inner">
+
+                    <div class="image">
+                        <a href="index9144.html?route=product/product&amp;product_id=40">
+                            <img src="image/cache/catalog/demo/product/4-380x384.jpg" title="consequat nibh" alt="consequat nibh" class="img-responsive reg-image" />
+                            <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/6-380x384.jpg" title="consequat nibh" alt="consequat nibh" />
+                        </a>-->
+<!--
+-->
+<!--<div class="button-group">
+        <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('40 ');">Add to Cart</button>
+        <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('40 ');"></button>
+        <div class="quickview" data-placement="right" title="Quick view"><a href="index9aba.html?route=product/quick_view&amp;product_id=40">Quick View</a></div>
+        <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('40 ');"></button>
+    </div>
+</div>-->
+<!-- <div class="product-details"> -->
+<!--<div class="caption">
+    <h4><a href="index9144.html?route=product/product&amp;product_id=40">consequat nibh </a></h4>
+    <p class="price">
+        $123.20
+        <span class="price-tax">Ex Tax: $101.00</span>
+
+    </p>
+
+
+    <div class="rating">
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+    </div>
+</div>-->
+<!-- </div> -->
+<!--</div>
+        </div>
+    </div>
+</div>
+<div class="item text-center product-innerblock">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="product-block product-thumb transition">
+            <div class="product-block-inner">
+
+                <div class="image">
+                    <a href="indexd94c.html?route=product/product&amp;product_id=44">
+                        <img src="image/cache/catalog/demo/product/13-380x384.jpg" title="dapibus tortor" alt="dapibus tortor" class="img-responsive reg-image" />
+                        <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/15-380x384.jpg" title="dapibus tortor" alt="dapibus tortor" />
+                    </a>-->
+<!--
+-->
+<!--<div class="button-group">
+        <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('44 ');">Add to Cart</button>
+        <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('44 ');"></button>
+        <div class="quickview" data-placement="right" title="Quick view"><a href="index5b4c.html?route=product/quick_view&amp;product_id=44">Quick View</a></div>
+        <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('44 ');"></button>
+    </div>
+</div>-->
+<!-- <div class="product-details"> -->
+<!--<div class="caption">
+    <h4><a href="indexd94c.html?route=product/product&amp;product_id=44">dapibus tortor </a></h4>
+    <p class="price">
+        $1,202.00
+        <span class="price-tax">Ex Tax: $1,000.00</span>
+
+    </p>
+
+
+    <div class="rating">
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+    </div>
+</div>-->
+<!-- </div> -->
+<!--</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="product-block-wrapper">
+    <div class="item text-center product-innerblock">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="product-block product-thumb transition">
+                <div class="product-block-inner">
+
+                    <div class="image">
+                        <a href="indexcae8.html?route=product/product&amp;product_id=41">
+                            <img src="image/cache/catalog/demo/product/5-380x384.jpg" title="donec pulvinar" alt="donec pulvinar" class="img-responsive reg-image" />
+                            <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/4-380x384.jpg" title="donec pulvinar" alt="donec pulvinar" />
+                        </a>-->
+<!--
+-->
+<!--<div class="button-group">
+        <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('41 ');">Add to Cart</button>
+        <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('41 ');"></button>
+        <div class="quickview" data-placement="right" title="Quick view"><a href="index059b.html?route=product/quick_view&amp;product_id=41">Quick View</a></div>
+        <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('41 ');"></button>
+    </div>
+</div>-->
+<!-- <div class="product-details"> -->
+<!--<div class="caption">
+    <h4><a href="indexcae8.html?route=product/product&amp;product_id=41">donec pulvinar </a></h4>
+    <p class="price">
+        $122.00
+        <span class="price-tax">Ex Tax: $100.00</span>
+
+    </p>
+
+
+    <div class="rating">
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+    </div>
+</div>-->
+<!-- </div> -->
+<!--</div>
+        </div>
+    </div>
+</div>
+<div class="item text-center product-innerblock">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="product-block product-thumb transition">
+            <div class="product-block-inner">
+
+                <div class="image">
+                    <a href="index75be.html?route=product/product&amp;product_id=50">
+                        <img src="image/cache/catalog/demo/product/20-380x384.jpg" title="mollis consequat" alt="mollis consequat" class="img-responsive reg-image" />
+                        <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/8-380x384.jpg" title="mollis consequat" alt="mollis consequat" />
+                    </a>-->
+<!--
+-->
+<!--<div class="button-group">
+        <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('50 ');">Add to Cart</button>
+        <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('50 ');"></button>
+        <div class="quickview" data-placement="right" title="Quick view"><a href="indexabd0.html?route=product/quick_view&amp;product_id=50">Quick View</a></div>
+        <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('50 ');"></button>
+    </div>
+</div>-->
+<!-- <div class="product-details"> -->
+<!--<div class="caption">
+    <h4><a href="index75be.html?route=product/product&amp;product_id=50">mollis consequat </a></h4>
+    <p class="price">
+        $122.00
+        <span class="price-tax">Ex Tax: $100.00</span>
+
+    </p>
+
+
+    <div class="rating">
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+    </div>
+</div>-->
+<!-- </div> -->
+<!--</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="product-block-wrapper">
+    <div class="item text-center product-innerblock">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="product-block product-thumb transition">
+                <div class="product-block-inner">
+
+                    <div class="image">
+                        <a href="index5adf.html?route=product/product&amp;product_id=53">
+                            <img src="image/cache/catalog/demo/product/5-380x384.jpg" title="nulla venenatis" alt="nulla venenatis" class="img-responsive reg-image" />
+                            <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/20-380x384.jpg" title="nulla venenatis" alt="nulla venenatis" />
+                        </a>-->
+<!--
+-->
+<!--<div class="button-group">
+        <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('53 ');">Add to Cart</button>
+        <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('53 ');"></button>
+        <div class="quickview" data-placement="right" title="Quick view"><a href="index1bc2.html?route=product/quick_view&amp;product_id=53">Quick View</a></div>
+        <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('53 ');"></button>
+    </div>
+</div>-->
+<!-- <div class="product-details"> -->
+<!--<div class="caption">
+    <h4><a href="index5adf.html?route=product/product&amp;product_id=53">nulla venenatis </a></h4>
+    <p class="price">
+        $122.00
+        <span class="price-tax">Ex Tax: $100.00</span>
+
+    </p>
+
+
+    <div class="rating">
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+    </div>
+</div>-->
+<!-- </div> -->
+<!--</div>
+        </div>
+    </div>
+</div>
+<div class="item text-center product-innerblock">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="product-block product-thumb transition">
+            <div class="product-block-inner">
+
+                <div class="image">
+                    <a href="indexb77e.html?route=product/product&amp;product_id=48">
+                        <img src="image/cache/catalog/demo/product/5-380x384.jpg" title="pellentesque dolor" alt="pellentesque dolor" class="img-responsive reg-image" />
+                        <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/19-380x384.jpg" title="pellentesque dolor" alt="pellentesque dolor" />
+                    </a>-->
+<!--
+-->
+<!--<div class="button-group">
+        <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('48 ');">Add to Cart</button>
+        <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('48 ');"></button>
+        <div class="quickview" data-placement="right" title="Quick view"><a href="indexdd37.html?route=product/quick_view&amp;product_id=48">Quick View</a></div>
+        <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('48 ');"></button>
+    </div>
+</div>-->
+<!-- <div class="product-details"> -->
+<!--<div class="caption">
+    <h4><a href="indexb77e.html?route=product/product&amp;product_id=48">pellentesque dolor </a></h4>
+    <p class="price">
+        $122.00
+        <span class="price-tax">Ex Tax: $100.00</span>
+
+    </p>
+
+
+    <div class="rating">
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+    </div>
+</div>-->
+<!-- </div> -->
+<!--</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="product-block-wrapper">
+    <div class="item text-center product-innerblock">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="product-block product-thumb transition">
+                <div class="product-block-inner">
+
+                    <div class="image">
+                        <a href="index2ebe.html?route=product/product&amp;product_id=46">
+                            <img src="image/cache/catalog/demo/product/4-380x384.jpg" title="phasellus maximus" alt="phasellus maximus" class="img-responsive reg-image" />
+                            <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/17-380x384.jpg" title="phasellus maximus" alt="phasellus maximus" />
+                        </a>-->
+<!--
+-->
+<!--<div class="button-group">
+        <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('46 ');">Add to Cart</button>
+        <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('46 ');"></button>
+        <div class="quickview" data-placement="right" title="Quick view"><a href="index30de.html?route=product/quick_view&amp;product_id=46">Quick View</a></div>
+        <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('46 ');"></button>
+    </div>
+</div>-->
+<!-- <div class="product-details"> -->
+<!--<div class="caption">
+    <h4><a href="index2ebe.html?route=product/product&amp;product_id=46">phasellus maximus </a></h4>
+    <p class="price">
+        $1,202.00
+        <span class="price-tax">Ex Tax: $1,000.00</span>
+
+    </p>
+
+
+    <div class="rating">
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+    </div>
+</div>-->
+<!-- </div> -->
+<!--</div>
+        </div>
+    </div>
+</div>
+<div class="item text-center product-innerblock">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="product-block product-thumb transition">
+            <div class="product-block-inner">
+
+                <div class="image">
+                    <a href="index6320.html?route=product/product&amp;product_id=28">
+                        <img src="image/cache/catalog/demo/product/17-380x384.jpg" title="praesent viverra" alt="praesent viverra" class="img-responsive reg-image" />
+                        <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/13-380x384.jpg" title="praesent viverra" alt="praesent viverra" />
+                    </a>-->
+<!--
+-->
+<!--<div class="button-group">
+        <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('28 ');">Add to Cart</button>
+        <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('28 ');"></button>
+        <div class="quickview" data-placement="right" title="Quick view"><a href="index097a.html?route=product/quick_view&amp;product_id=28">Quick View</a></div>
+        <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('28 ');"></button>
+    </div>
+</div>-->
+<!-- <div class="product-details"> -->
+<!--<div class="caption">
+    <h4><a href="index6320.html?route=product/product&amp;product_id=28">praesent viverra </a></h4>
+    <p class="price">
+        $122.00
+        <span class="price-tax">Ex Tax: $100.00</span>
+
+    </p>
+
+
+    <div class="rating">
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+    </div>
+</div>-->
+<!-- </div> -->
+<!--</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="product-block-wrapper">
+    <div class="item text-center product-innerblock">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="product-block product-thumb transition">
+                <div class="product-block-inner">
+
+                    <div class="image">
+                        <a href="indexd21c.html?route=product/product&amp;product_id=47">
+                            <img src="image/cache/catalog/demo/product/5-380x384.jpg" title="qui blanditiis" alt="qui blanditiis" class="img-responsive reg-image" />
+                            <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/11-380x384.jpg" title="qui blanditiis" alt="qui blanditiis" />
+                        </a>-->
+<!--
+-->
+<!--<div class="button-group">
+        <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('47 ');">Add to Cart</button>
+        <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('47 ');"></button>
+        <div class="quickview" data-placement="right" title="Quick view"><a href="index7f5a.html?route=product/quick_view&amp;product_id=47">Quick View</a></div>
+        <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('47 ');"></button>
+    </div>
+</div>-->
+<!-- <div class="product-details"> -->
+<!--<div class="caption">
+    <h4><a href="indexd21c.html?route=product/product&amp;product_id=47">qui blanditiis </a></h4>
+    <p class="price">
+        $122.00
+        <span class="price-tax">Ex Tax: $100.00</span>
+
+    </p>
+
+
+    <div class="rating">
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+    </div>
+</div>-->
+<!-- </div> -->
+<!--</div>
+        </div>
+    </div>
+</div>
+<div class="item text-center product-innerblock">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="product-block product-thumb transition">
+            <div class="product-block-inner">
+
+                <div class="image">
+                    <a href="index531d.html?route=product/product&amp;product_id=45">
+                        <img src="image/cache/catalog/demo/product/9-380x384.jpg" title="scelerisque lacinia " alt="scelerisque lacinia " class="img-responsive reg-image" />
+                        <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/9-380x384.jpg" title="scelerisque lacinia " alt="scelerisque lacinia " />
+                    </a>-->
+<!--
+-->
+<!--<div class="button-group">
+        <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('45 ');">Add to Cart</button>
+        <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('45 ');"></button>
+        <div class="quickview" data-placement="right" title="Quick view"><a href="index63bb.html?route=product/quick_view&amp;product_id=45">Quick View</a></div>
+        <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('45 ');"></button>
+    </div>
+</div>-->
+<!-- <div class="product-details"> -->
+<!--<div class="caption">
+    <h4><a href="index531d.html?route=product/product&amp;product_id=45">scelerisque lacinia </a></h4>
+    <p class="price">
+        $2,000.00
+        <span class="price-tax">Ex Tax: $2,000.00</span>
+
+    </p>
+
+
+    <div class="rating">
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+    </div>
+</div>-->
+<!-- </div> -->
+<!--</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="product-block-wrapper">
+    <div class="item text-center product-innerblock">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="product-block product-thumb transition">
+                <div class="product-block-inner">
+
+                    <div class="image">
+                        <a href="indexc21e.html?route=product/product&amp;product_id=34">
+                            <img src="image/cache/catalog/demo/product/3-380x384.jpg" title="tincidunt dolor" alt="tincidunt dolor" class="img-responsive reg-image" />
+                            <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/16-380x384.jpg" title="tincidunt dolor" alt="tincidunt dolor" />
+                        </a>-->
+<!--
+-->
+<!--<div class="button-group">
+        <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('34 ');">Add to Cart</button>
+        <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('34 ');"></button>
+        <div class="quickview" data-placement="right" title="Quick view"><a href="indexa341.html?route=product/quick_view&amp;product_id=34">Quick View</a></div>
+        <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('34 ');"></button>
+    </div>
+</div>-->
+<!-- <div class="product-details"> -->
+<!--<div class="caption">
+    <h4><a href="indexc21e.html?route=product/product&amp;product_id=34">tincidunt dolor </a></h4>
+    <p class="price">
+        $122.00
+        <span class="price-tax">Ex Tax: $100.00</span>
+
+    </p>
+
+
+    <div class="rating">
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+    </div>
+</div>-->
+<!-- </div> -->
+<!--</div>
+        </div>
+    </div>
+</div>
+<div class="item text-center product-innerblock">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="product-block product-thumb transition">
+            <div class="product-block-inner">
+
+                <div class="image">
+                    <a href="index5e0b.html?route=product/product&amp;product_id=36">
+                        <img src="image/cache/catalog/demo/product/19-380x384.jpg" title="vestibu	lumporta " alt="vestibu	lumporta " class="img-responsive reg-image" />
+                        <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/12-380x384.jpg" title="vestibu	lumporta " alt="vestibu	lumporta " />
+                    </a>-->
+<!--
+-->
+<!--<div class="button-group">
+        <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('36 ');">Add to Cart</button>
+        <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('36 ');"></button>
+        <div class="quickview" data-placement="right" title="Quick view"><a href="index0d3e.html?route=product/quick_view&amp;product_id=36">Quick View</a></div>
+        <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('36 ');"></button>
+    </div>
+</div>-->
+<!-- <div class="product-details"> -->
+<!--<div class="caption">
+    <h4><a href="index5e0b.html?route=product/product&amp;product_id=36">vestibu lumporta </a></h4>
+    <p class="price">
+        $122.00
+        <span class="price-tax">Ex Tax: $100.00</span>
+
+    </p>
+
+
+    <div class="rating">
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+    </div>
+</div>-->
+<!-- </div> -->
+<!--</div>
+</div>
+</div>
+</div>
+</div>
+<form method="get" id="hiddenForm" asp-controller="Categories" asp-action="Products" hidden>
+    <input asp-for="@Model.ItemsPerPage" />
+    <input asp-for="@Model.Sorting" />
+</form>
+</div>-->
+<!-- Category Area -->
+<section class="category">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <cache expires-after="TimeSpan.FromMinutes(1)">
+                    <vc:categories-sidebar></vc:categories-sidebar>
+                </cache>
+            </div>
+            <div class="col-md-9">
+                <div class="product-box">
+                    <div class="cat-box d-flex justify-content-between">
+                        <!-- Nav tabs -->
+                        <div class="view">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#grid"><i class="fa fa-th-large"></i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#list"><i class="fa fa-th-list"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="sortby">
+                            <span>Sort By</span>
+                            <select class="sort-box" onchange="submitForm()" asp-for="@Model.Sorting" asp-items="@Model.SortingValues.Select(x => new SelectListItem(x.ToString(), x.ToString().ToLower()))">
+                            </select>
+                        </div>
+                        <div class="show-item">
+                            <span>Show</span>
+                            <select class="show-box" onchange="submitForm()" asp-for="@Model.ItemsPerPage" asp-items="@Model.ItemsPerPageValues.Select(x => new SelectListItem(x.ToString(), x.ToString()))">
+                            </select>
+                        </div>
+                        <div class="page">
+                            <p>Page @Model.PageNumber of @Model.PagesCount</p>
+                        </div>
+                    </div>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="grid" role="tabpanel">
+                            <div class="row">
+                                @foreach (var product in Model.Products)
+                                {
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="tab-item">
+                                            <div class="tab-img">
+                                                <a asp-area="" asp-controller="Wines" asp-action="Details" asp-route-id="@product.Id"><img class="main-img img-fluid" src="@product.ImageUrl"></a>
+                                                <div class="layer-box">
+                                                    @*<a asp-area="" asp-controller="Favourites" asp-action="Add" asp-route-id="@product.Id" class="it-fav" data-toggle="tooltip" data-placement="left" title="Favourite"><i class="fas fa-heart mr-0 pt-1"></i></a>*@
+                                                </div>
+                                            </div>
+                                            <div class="tab-heading">
+                                                <p><a asp-area="" asp-controller="Wines" asp-action="Details" asp-route-id="@product.Id">@product.Name</a></p>
+                                            </div>
+                                            <div class="img-content d-flex justify-content-between">
+                                                @*<div>
+                                                    <partial name="_ProductRatingPartial" model="new XeMart.Web.ViewModels.Products.ProductRatingViewModel { AverageRating = product.AverageRating, ShowAverageRating = false }" />
+                                                    <ul class="list-unstyled list-inline price">
+                                                        <li class="list-inline-item">$@product.Price</li>
+                                                        <li class="list-inline-item"></li>
+                                                    </ul>
+                                                </div>*@
+                                                @*<div>
+                                                    <a asp-area="" asp-controller="ShoppingCart" asp-action="Add" asp-route-productId="@product.Id" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-shopping-cart"></i></a>
+                                                </div>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="list" role="tabpanel">
+                            <div class="row">
+                                @foreach (var product in Model.Products)
+                                {
+                                    <div class="col-lg-12 col-md-6">
+                                        <div class="tab-item2">
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-12">
+                                                    <div class="tab-img">
+                                                        <img class="main-img img-fluid" src="@product.ImageUrl">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8 col-md-12">
+                                                    <div class="item-heading d-flex justify-content-between">
+                                                        <div class="item-top">
+                                                            <ul class="list-unstyled list-inline cate">
+                                                                @*<li class="list-inline-item"><a asp-area="" asp-controller="MainCategories" asp-action="Subcategories" asp-route-mainCategoryId="@product.SubcategoryMaincategoryId">@product.SubcategoryMaincategoryName,</a></li>*@
+                                                                <li class="list-inline-item"><a asp-area="" asp-controller="Categories" asp-action="Products" asp-route-subcategoryId="@product.CategoryId">@product.CategoryName</a></li>
+                                                            </ul>
+                                                            <p><a asp-area="" asp-controller="Wines" asp-action="Details" asp-route-id="@product.Id">@product.Name</a></p>
+                                                            @*<partial name="_ProductRatingPartial" model="new XeMart.Web.ViewModels.Products.ProductRatingViewModel { AverageRating = product.AverageRating, ShowAverageRating = false }" />*@
+                                                        </div>
+                                                        <div class="item-price">
+                                                            <ul class="list-unstyled list-inline price">
+                                                                <li class="list-inline-item">$@product.Price</li>
+                                                                <li class="list-inline-item"></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    @*<div class="item-content">
+                                                        <p>@product.Description</p>
+                                                        <a asp-area="" asp-controller="ShoppingCart" asp-action="Add" asp-route-productId="@product.Id" class="it-cart mt-3 mb-3"><span class="it-img"><i class="fas fa-shopping-cart"></i></span><span class="it-title">Add To Cart</span></a>
+                                                        <a asp-area="" asp-controller="Favourites" asp-action="Add" asp-route-id="@product.Id" class="it-fav" data-toggle="tooltip" data-placement="top" title="Favourite"><i class="fas fa-heart mr-0 pt-1"></i></a>
+                                                    </div>*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <partial name="_PagingPartial" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <form method="get" id="hiddenForm" asp-controller="Categories" asp-action="Products" hidden>
+        <input asp-for="@Model.ItemsPerPage" />
+        <input asp-for="@Model.Sorting" />
+    </form>
+</section>
+<!-- End Category Area -->
+
+@section Scripts {
+    <script>
+        function submitForm() {
+            var form = this.document.getElementById("hiddenForm");
+            // Items per page
+            var itemsPerPageSelectBox = this.document.querySelector("select#ItemsPerPage");
+            var itemsPerPageInputField = this.document.querySelector("input#ItemsPerPage");
+            itemsPerPageInputField.setAttribute("value", itemsPerPageSelectBox.value);
+            // Sorting criteria
+            var sortingSelectBox = this.document.querySelector("select#Sorting");
+            var sortingInputField = this.document.querySelector("input#Sorting");
+            sortingInputField.setAttribute("value", sortingSelectBox.value);
+            form.submit();
+        }
+    </script>
+}

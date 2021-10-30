@@ -78,6 +78,7 @@
             services.AddTransient<IImagesService, ImagesService>();
             services.AddTransient<IHomePageSlidesService, HomePageSlidesService>();
             services.AddTransient<IUsersService, UsersService>();
+            services.AddTransient<IShortTextService, ShortTextService>();
             services.AddSingleton(x =>
                 new BlobServiceClient(this.configuration["BlobConnectionString"]));
         }

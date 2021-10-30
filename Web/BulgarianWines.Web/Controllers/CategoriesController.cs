@@ -65,7 +65,7 @@
             return this.View(category);
         }
 
-        [HttpGet("/Categories/{categoryId}")]
+        [HttpGet("/Categories/Products/{categoryId}")]
         public IActionResult Products(int categoryId, int pageNumber = 1, int itemsPerPage = 6, string sorting = "price asc")
         {
             if (pageNumber <= 0)

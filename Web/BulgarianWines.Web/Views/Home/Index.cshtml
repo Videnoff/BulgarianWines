@@ -83,7 +83,7 @@
                     autoplay: 25000,
                     autoplayDisableOnInteraction: true,
                     loop: true/*,
-                                                                                                                                                                                                  paginationType: 'bullets'*/
+                                                                                                                                                                                                                                                  paginationType: 'bullets'*/
                 });
             </script>
 
@@ -148,20 +148,16 @@
                                 {
 
                                     <li class="card" style="width: 10rem;">
-                                        <a onclick="vlcazwfnuqloadAjaxData('18')" asp-area="" asp-controller="Categories" asp-action="Products" asp-route-id="@category.Id" data-toggle="tab">
-                                            @*<div class="card" style="justify-content: center; font-size: medium; margin-left: 30px;">*@
-                                                @category.Name
-                                                @*<img class="card-img-top" src="@category.ImageUrl" style="object-fit: contain; height: 50%; width: 50%">*@
-                                                @foreach (var image in category.CategoryImages)
-                                                {
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">
-                                                            @*@category.Name*@
-                                                            <img class="card-img-top" src="@image.ImageUrl" style="height: 100%; width: 100%">
-                                                        </h5>
-                                                    </div>
-                                                }
-                                            @*</div>*@
+                                        <a asp-area="" asp-controller="Categories" asp-action="Products" asp-route-id="@category.Id">
+                                            @category.Name
+                                            @foreach (var image in category.CategoryImages)
+                                            {
+                                                <div class="card-body">
+                                                    <h5 class="card-title">
+                                                        <img class="card-img-top" src="@image.ImageUrl" style="height: 100%; width: 100%">
+                                                    </h5>
+                                                </div>
+                                            }
                                         </a>
                                     </li>
                                 }
@@ -179,45 +175,16 @@
             </div>
         </div>
 
-        <script type="text/javascript">
-<!--
-            $('#Tab_Category_Slider .owl-demo-tabcate').owlCarousel({
-                items: 4,
-                navigation: true,
-                navigationText: ['<span class="left"><a class="fa prev fa-angle-left"></a></span>', '<span class="right"><a class="fa next fa-angle-right"></a></span>'],
-                pagination: false,
-                transitionStyle: "fade",
-                slideSpeed: 1000,
-                rewindSpeed: 800,
-                itemsCustom: [
-                    [0, 1],
-                    [319, 1],
-                    [480, 1],
-                    [767, 2],
-                    [980, 3],
-                    [1300, 3],
-                ]
-
-            });
-            function vlcazwfnuqloadAjaxData(category_id) {
-                var unavailabledates = { "name": "Top Category", "heading": "", "category": "", "product_category": ["18", "25", "61", "43"], "category_limit": "5", "product_limit": "14", "width": "380", "height": "384", "status": "1" };
-                var dataToSend = { 'category_id': category_id, 'setting': unavailabledates };
-                $.ajax({
-                    type: 'POST',
-                    data: dataToSend,
-                    url: 'index.php?route=extension/module/category_tab/ajaxloaddata',
-                    beforeSend: function () {
-                        $("#vlcazwfnuq").html('<div style="text-align:center;"></div>');
-                        //http://www.bigtravelsghana.com/img/images/ajax-loader.gif
-                    },
-                    success: function (data) {
-                        $('#Tab_Category_Slider').replaceWith(data);
+        @*<script type="text/javascript">
+            <!--
                         $('#Tab_Category_Slider .owl-demo-tabcate').owlCarousel({
                             items: 4,
                             navigation: true,
-                            navigationText: ['<span class="left"></span>', '<span class="right"></span>'],
+                            navigationText: ['<span class="left"><a class="fa prev fa-angle-left"></a></span>', '<span class="right"><a class="fa next fa-angle-right"></a></span>'],
                             pagination: false,
                             transitionStyle: "fade",
+                            slideSpeed: 1000,
+                            rewindSpeed: 800,
                             itemsCustom: [
                                 [0, 1],
                                 [319, 1],
@@ -226,12 +193,41 @@
                                 [980, 3],
                                 [1300, 3],
                             ]
+
                         });
-                        //alert(data);
-                    }
-                });
-            }
-            --></script>
+                        function vlcazwfnuqloadAjaxData(category_id) {
+                            var unavailabledates = { "name": "Top Category", "heading": "", "category": "", "product_category": ["18", "25", "61", "43"], "category_limit": "5", "product_limit": "14", "width": "380", "height": "384", "status": "1" };
+                            var dataToSend = { 'category_id': category_id, 'setting': unavailabledates };
+                            $.ajax({
+                                type: 'POST',
+                                data: dataToSend,
+                                url: 'index.php?route=extension/module/category_tab/ajaxloaddata',
+                                beforeSend: function () {
+                                    $("#vlcazwfnuq").html('<div style="text-align:center;"></div>');
+                                    //http://www.bigtravelsghana.com/img/images/ajax-loader.gif
+                                },
+                                success: function (data) {
+                                    $('#Tab_Category_Slider').replaceWith(data);
+                                    $('#Tab_Category_Slider .owl-demo-tabcate').owlCarousel({
+                                        items: 4,
+                                        navigation: true,
+                                        navigationText: ['<span class="left"></span>', '<span class="right"></span>'],
+                                        pagination: false,
+                                        transitionStyle: "fade",
+                                        itemsCustom: [
+                                            [0, 1],
+                                            [319, 1],
+                                            [480, 1],
+                                            [767, 2],
+                                            [980, 3],
+                                            [1300, 3],
+                                        ]
+                                    });
+                                    //alert(data);
+                                }
+                            });
+                        }
+                        --></script>*@
         <script type="text/javascript">
             // Can also be used with $(document).ready()
             $(document).ready(function () {
@@ -239,269 +235,23 @@
             });
         </script>
         <div id="carousel-0" class="banners-slider-carousel">
-            @*<div class="container">*@
-            <div class="customNavigation">
-                <a class="prev fa fa-angle-left"></a>
-                <a class="next fa fa-angle-right"></a>
-            </div>
-            <div class="product-carousel" id="module-0-carousel">
-                <div class="slider-item">
-                    <div class="product-block">
-                        <div class="product-block-inner">
-                            <a href="#"><img src="image/cache/catalog/demo/manufacturer/7-90x90.png" alt="laboriosam" /></a>
-                        </div>
-                    </div>
+            <div class="container">
+                <div class="customNavigation">
+                    <a class="prev fa fa-angle-left"></a>
+                    <a class="next fa fa-angle-right"></a>
                 </div>
-                <div class="slider-item">
-                    <div class="product-block">
-                        <div class="product-block-inner">
-                            <a href="#"><img src="image/cache/catalog/demo/manufacturer/6-90x90.png" alt="praesentium" /></a>
+                <div class="product-carousel" id="module-0-carousel">
+                    <div class="slider-item">
+                        <div class="product-block">
+                            <div class="product-block-inner">
+                                <a href="#"><img src="image/cache/catalog/demo/manufacturer/7-90x90.png" alt="laboriosam" /></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="slider-item">
-                    <div class="product-block">
-                        <div class="product-block-inner">
-                            <a href="#"><img src="image/cache/catalog/demo/manufacturer/5-90x90.png" alt="randomised" /></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider-item">
-                    <div class="product-block">
-                        <div class="product-block-inner">
-                            <a href="#"><img src="image/cache/catalog/demo/manufacturer/4-90x90.png" alt="renaissance" /></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider-item">
-                    <div class="product-block">
-                        <div class="product-block-inner">
-                            <a href="#"><img src="image/cache/catalog/demo/manufacturer/3-90x90.png" alt="reprehenderit" /></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider-item">
-                    <div class="product-block">
-                        <div class="product-block-inner">
-                            <a href="#"><img src="image/cache/catalog/demo/manufacturer/2-90x90.png" alt="untrammelled" /></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider-item">
-                    <div class="product-block">
-                        <div class="product-block-inner">
-                            <a href="#"><img src="image/cache/catalog/demo/manufacturer/1-90x90.png" alt="adaptations" /></a>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
-            @*</div>*@
-        </div>
-        <span class="module_default_width" style="display:none; visibility:hidden"></span>
-    </div>
-</div>
-<div class="content-bottom">
-    <div id="content">
-        <div id="homeblog" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <div class="blog-module latest blog">
-                <div class="box">
-                    <!--<div class="title-wrapper">
-                    <div class="box-heading">from the Blogs</div>
-                    </div>-->
-                    <div class="box-content">
-
-                        <div class="box-product owl-carousel blog-carousel blog_grid_holder" id="blog-carousel">
-
-                            <div class="blog_item">
-                                <div class="product-block">
-                                    <div class="summary">
-
-                                        <div class="blog-left">
-
-                                            <div class="image">
-                                                <img src="image/cache/catalog/demo/blog/1-1200x977.jpg" alt="from the Blogs" title="from the Blogs" class="img-thumbnail" />
-                                                <p class="post_hover"><a class="icon zoom" title="Click to view Full Image " href="image/cache/catalog/demo/blog/1-1200x977.jpg" data-lightbox="example-set"><i class="fa fa-plus"></i> </a></p>
-                                            </div>
-                                        </div>
-
-                                        <div class="blog-desc">
-                                            <div class="blog_stats">
-                                                <div class="date-time"> <b class="hl"> 13th August 2018 </b></div>
-                                            </div>
-                                            <h2 class="blog_title"><a href="index2c9f.html?route=information/blogger&amp;blogger_id=6">Ipsum generators</a> </h2>
-
-                                            <div class="desc"><p>All the Lorem Ipsum generators on the Interne...</p></div> 	  <div class="readmore"><p class="btn_readmore"> <a href="index2c9f.html?route=information/blogger&amp;blogger_id=6"> read more</a> </p></div>
-                                            <!--<div class="view-blog">
-                                              <div class="write-comment"> <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=information/blogger&amp;blogger_id=6"> 943 - Comments</a> </div>
-                                            </div>-->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="blog_item">
-                                <div class="product-block">
-                                    <div class="summary">
-
-                                        <div class="blog-left">
-
-                                            <div class="image">
-                                                <img src="image/cache/catalog/demo/blog/5-1200x977.jpg" alt="from the Blogs" title="from the Blogs" class="img-thumbnail" />
-                                                <p class="post_hover"><a class="icon zoom" title="Click to view Full Image " href="image/cache/catalog/demo/blog/5-1200x977.jpg" data-lightbox="example-set"><i class="fa fa-plus"></i> </a></p>
-                                            </div>
-                                        </div>
-
-                                        <div class="blog-desc">
-                                            <div class="blog_stats">
-                                                <div class="date-time">
-                                                    <b class="hl">
-                                                        21st May 2018
-                                                    </b>
-                                                </div>
-                                            </div>
-                                            <h2 class="blog_title">
-                                                <a href="indexed5d.html?route=information/blogger&amp;blogger_id=5">
-                                                    At vero eos et accus
-                                                </a>
-                                            </h2>
-
-                                            <div class="desc">
-                                                <p>
-                                                    Lorem Ipsum which looks reasonable. The gener...
-                                                </p>
-                                            </div>
-                                            <div class="readmore">
-                                                <p class="btn_readmore">
-                                                    <a href="indexed5d.html?route=information/blogger&amp;blogger_id=5"> read more</a>
-                                                </p>
-                                            </div>
-                                            <!--<div class="view-blog">
-                                              <div class="write-comment"> <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=information/blogger&amp;blogger_id=5"> 985 - Comments</a> </div>
-                                            </div>-->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="blog_item">
-                                <div class="product-block">
-                                    <div class="summary">
-
-                                        <div class="blog-left">
-
-                                            <div class="image">
-                                                <img src="image/cache/catalog/demo/blog/4-1200x977.jpg" alt="from the Blogs" title="from the Blogs" class="img-thumbnail" />
-                                                <p class="post_hover"><a class="icon zoom" title="Click to view Full Image " href="image/cache/catalog/demo/blog/4-1200x977.jpg" data-lightbox="example-set"><i class="fa fa-plus"></i> </a></p>
-                                            </div>
-                                        </div>
-
-                                        <div class="blog-desc">
-                                            <div class="blog_stats">
-                                                <div class="date-time"> <b class="hl"> 21st May 2018 </b></div>
-                                            </div>
-                                            <h2 class="blog_title"><a href="index4b1d.html?route=information/blogger&amp;blogger_id=4">denouncing pleasure </a> </h2>
-
-                                            <div class="desc"><p>The standard chunk of Lorem Ipsum used since ...</p></div> 	  <div class="readmore"><p class="btn_readmore"> <a href="index4b1d.html?route=information/blogger&amp;blogger_id=4"> read more</a> </p></div>
-                                            <!--<div class="view-blog">
-                                              <div class="write-comment"> <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=information/blogger&amp;blogger_id=4"> 1,026 - Comments</a> </div>
-                                            </div>-->
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="blog_item">
-                                <div class="product-block">
-                                    <div class="summary">
-
-                                        <div class="blog-left">
-
-                                            <div class="image">
-                                                <img src="image/cache/catalog/demo/blog/3-1200x977.jpg" alt="from the Blogs" title="from the Blogs" class="img-thumbnail" />
-                                                <p class="post_hover"><a class="icon zoom" title="Click to view Full Image " href="image/cache/catalog/demo/blog/3-1200x977.jpg" data-lightbox="example-set"><i class="fa fa-plus"></i> </a></p>
-                                            </div>
-                                        </div>
-
-                                        <div class="blog-desc">
-                                            <div class="blog_stats">
-                                                <div class="date-time"> <b class="hl"> 21st May 2018 </b></div>
-                                            </div>
-                                            <h2 class="blog_title"><a href="indexaa69.html?route=information/blogger&amp;blogger_id=3">sed quia non numquam</a> </h2>
-
-                                            <div class="desc"><p>Contrary to popular belief, Lorem Ipsum is no...</p></div> 	  <div class="readmore"><p class="btn_readmore"> <a href="indexaa69.html?route=information/blogger&amp;blogger_id=3"> read more</a> </p></div>
-                                            <!--<div class="view-blog">
-                                              <div class="write-comment"> <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=information/blogger&amp;blogger_id=3"> 942 - Comments</a> </div>
-                                            </div>-->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="blog_item">
-                                <div class="product-block">
-                                    <div class="summary">
-
-                                        <div class="blog-left">
-
-                                            <div class="image">
-                                                <img src="image/cache/catalog/demo/blog/2-1200x977.jpg" alt="from the Blogs" title="from the Blogs" class="img-thumbnail" />
-                                                <p class="post_hover"><a class="icon zoom" title="Click to view Full Image " href="image/cache/catalog/demo/blog/2-1200x977.jpg" data-lightbox="example-set"><i class="fa fa-plus"></i> </a></p>
-                                            </div>
-                                        </div>
-
-                                        <div class="blog-desc">
-                                            <div class="blog_stats">
-                                                <div class="date-time"> <b class="hl"> 21st May 2018 </b></div>
-                                            </div>
-                                            <h2 class="blog_title"><a href="index5463.html?route=information/blogger&amp;blogger_id=2">Nemo enim ipsam volu</a> </h2>
-
-                                            <div class="desc"><p> It was popularised in the 1960s with the rel...</p></div> 	  <div class="readmore"><p class="btn_readmore"> <a href="index5463.html?route=information/blogger&amp;blogger_id=2"> read more</a> </p></div>
-                                            <!--<div class="view-blog">
-                                              <div class="write-comment"> <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=information/blogger&amp;blogger_id=2"> 995 - Comments</a> </div>
-                                            </div>-->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="blog_item">
-                                <div class="product-block">
-                                    <div class="summary">
-
-                                        <div class="blog-left">
-
-                                            <div class="image">
-                                                <img src="image/cache/catalog/demo/blog/1-1200x977.jpg" alt="from the Blogs" title="from the Blogs" class="img-thumbnail" />
-                                                <p class="post_hover"><a class="icon zoom" title="Click to view Full Image " href="image/cache/catalog/demo/blog/1-1200x977.jpg" data-lightbox="example-set"><i class="fa fa-plus"></i> </a></p>
-                                            </div>
-                                        </div>
-
-                                        <div class="blog-desc">
-                                            <div class="blog_stats">
-                                                <div class="date-time"> <b class="hl"> 21st May 2018 </b></div>
-                                            </div>
-                                            <h2 class="blog_title"><a href="index5a4b.html?route=information/blogger&amp;blogger_id=1">Urna pretium elit</a> </h2>
-
-                                            <div class="desc"><p>Lorem Ipsum has been the industry's standard ...</p></div> 	  <div class="readmore"><p class="btn_readmore"> <a href="index5a4b.html?route=information/blogger&amp;blogger_id=1"> read more</a> </p></div>
-                                            <!--<div class="view-blog">
-                                              <div class="write-comment"> <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=information/blogger&amp;blogger_id=1"> 1,006 - Comments</a> </div>
-                                            </div>-->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--<div class="buttons text-center">
-                           <button type="button" onclick="location='http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=information/blogger/blogs ';" class="btn btn-primary">See all Blogs</button>
-                         </div>-->
-                    </div>
-                </div>
-            </div>
+            <span class="module_default_width" style="display:none; visibility:hidden"></span>
         </div>
     </div>
 </div>

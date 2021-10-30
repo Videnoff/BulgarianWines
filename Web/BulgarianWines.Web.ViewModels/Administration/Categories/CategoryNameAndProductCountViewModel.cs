@@ -9,6 +9,6 @@
 
         public string Name { get; set; }
 
-        public int ProductsCount { get; set; }
+        public int WinesCount { get; set; }
     }
 }
