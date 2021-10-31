@@ -146,7 +146,6 @@
                             <ul class="nav nav-tabs">
                                 @foreach (var category in Model.AllCategories)
                                 {
-
                                     <li class="card" style="width: 10rem;">
                                         <a asp-area="" asp-controller="Categories" asp-action="Products" asp-route-id="@category.Id">
                                             @category.Name

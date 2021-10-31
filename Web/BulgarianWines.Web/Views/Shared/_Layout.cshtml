@@ -141,7 +141,7 @@
                 </div>
             </div>
 
-            <div class="content_headercms_top fixed">
+            <div class="content_headercms_top">
                 <div id="main-menu" class="main-menu">
                     <nav class="nav-container" role="navigation">
                         <div class="nav-inner">
@@ -565,6 +565,8 @@
                 </div>
             </div>
 
+            
+
             <div class="content_headercms_bottom">
                 <div class="container">
                 </div>
@@ -811,9 +813,47 @@
         </div>
     </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>>
+<script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>>
 
-    <script type="text/javascript">
+<script type="text/javascript">
+    function responsivecolumn() {
+        // ---------------- Fixed header responsive ----------------------
+        if ($(document).width() >= 980) {
+            $(window).bind('scroll', function () {
+                if ($(window).scrollTop() > 0) {
+                    $('.content_headercms_top').addClass('fixed');
+                } else {
+                    $('.content_headercms_top').removeClass('fixed');
+                }
+            });
+        }
+        else {
+            $('.content_headercms_top').removeClass('fixed');
+        }
+
+
+        if ($(document).width() <= 991) {
+
+            $(window).bind('scroll', function () {
+                if ($(window).scrollTop() > 0) {
+                    $('.content_headercms_top').addClass('fixed');
+                } else {
+                    $('.content_headercms_top').removeClass('fixed');
+                }
+            });
+        }
+
+
+    }
+    $(document).ready(function () {
+        responsivecolumn();
+    });
+    $(window).resize(function () {
+        responsivecolumn();
+    });
+</script>
+
+<script type="text/javascript">
         function(c) {
             if (/(38|40|27|32)/.test(c.which) && !/input|textarea/i.test(c.target.tagName)) {
                 var d = a(this);
