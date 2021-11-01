@@ -1,315 +1,77 @@
 ﻿@model BulgarianWines.Web.ViewModels.Wines.SingleProductViewModel
 @{
-    //this.ViewData["Title"] = Model.Name;
+    this.ViewData["Title"] = Model.Name;
 }
-
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>
-        @this.ViewData["Title"]
+        @ViewData["Title"]
     </title>
-    base href="http://demos.thementic.com/opencart/OPC01/OPC0100034/"
-    <script src="~/js/wined/index_data/jquery-2.js"></script>
-    <link href="~/css/wined/bootstrap.min.css" rel="stylesheet" media="screen" />
-    <script src="~/js/wined/index_data/bootstrap.js"></script>
-    <link href="/css/wined/font-awesome.css" rel="stylesheet" type="text/css">
+    <base />
+    <script src="~/js/wined/jquery/jquery-2.1.1.min.js" asp-append-version="true"></script>
+    <!-- <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" /> -->
+    <script src="~/js/wined/bootstrap/js/bootstrap.min.js" asp-append-version="true"></script>
+    <link href="~/js/wined/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" asp-append-version="true" />
 
-    <link href="/css/wined/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
 
-    <link href="/css/wined/stylesheet.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="~/css/wined/lightbox.css">
-    <link rel="stylesheet" type="text/css" href="~/css/wined/magnific-popup.css">
-    <link rel="stylesheet" type="text/css" href="~/css/wined/owl.css">
-    <link rel="stylesheet" type="text/css" href="~/css/wined/owl_002.css">
-    <link rel="stylesheet" type="text/css" href="~/css/wined/carousel.css">
-    <link rel="stylesheet" type="text/css" href="~/css/wined/custom.css">
-    <link rel="stylesheet" type="text/css" href="~/css/wined/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="~/css/wined/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/wined/singleProduct.css">
-    <link rel="stylesheet" type="text/css" href="~/css/wined/animate.css">
+    <link href="~/css/wined/stylesheet.css" rel="stylesheet" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/wined/themecss/lightbox.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/js/wined/jquery/magnific/magnific-popup.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/js/wined/jquery/owl-carousel/owl.carousel.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/js/wined/jquery/owl-carousel/owl.transitions.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/wined/themecss/carousel.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/wined/themecss/custom.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/wined/themecss/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/wined/themecss/animate.css" asp-append-version="true" />
+
+
+
+    <!-- <link href="style.href" type="text/css" rel="style.rel" media="style.media" />
     <link href="style.href" type="text/css" rel="style.rel" media="style.media" />
-    <link href="style.href" type="text/css" rel="style.rel" media="style.media" />
+     -->
 
-
-    <script src="~/js/wined/index_data/lightbox-2.js"></script>
-    <link href="/css/wined/magnific-popup.css" type="text/css" rel="stylesheet" media="screen">
-    <link href="/css/wined/bootstrap-datetimepicker.css" type="text/css" rel="stylesheet" media="screen">
-    <script src="/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/wined/index_data/moment.js"></script>
-    <script src="~/js/wined/index_data/moment-with-locales.js"></script>
-    <script src="~/js/wined/index_data/bootstrap-datetimepicker.js"></script>
-    <script src="~/js/wined/index_data/common.js"></script>
-    <link href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/product&amp;product_id=42" rel="canonical">
-    <link href="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/catalog/cart.png" rel="icon">
+    <script src="~/js/wined/lightbox/lightbox-2.6.min.js" asp-append-version="true"></script>
+    <link href="/js/wined/jquery/magnific/magnific-popup.css" type="text/css" rel="stylesheet" media="screen" asp-append-version="true"/>
+    <link href="~/js/wined/jquery/datetimepicker/bootstrap-datetimepicker.min.css" type="text/css" rel="stylesheet" media="screen" asp-append-version="true"/>
+    <script src="~/js/wined/jquery/magnific/jquery.magnific-popup.min.js" asp-append-version="true"></script>
+    <script src="~/js/wined/jquery/datetimepicker/moment/moment.min.js" asp-append-version="true"></script>
+    <script src="~/js/wined/jquery/datetimepicker/moment/moment-with-locales.min.js" asp-append-version="true"></script>
+    <script src="~/js/wined/jquery/datetimepicker/bootstrap-datetimepicker.min.js" asp-append-version="true"></script>
+    <script src="~/js/wined/common.js" asp-append-version="true"></script>
+    <link href="index52a0.html?route=product/product&amp;product_id=51" rel="canonical" />
+    <link href="~/images/wined/cart.png" rel="icon" />
     <!-- Theme Start -->
 
-    <script type="text/javascript" src="~/js/wined/index_data/custom.js"></script>
-    <script type="text/javascript" src="~/js/wined/index_data/jstree.js"></script>
-    <script type="text/javascript" src="~/js/wined/index_data/carousel.js"></script>
-    <script type="text/javascript" src="~/js/wined/index_data/productcarosel.js"></script>
-    <script type="text/javascript" src="~/js/wined/index_data/jquery_005.js"></script>
-    <script type="text/javascript" src="~/js/wined/index_data/jquery_006.js"></script>
-    <script type="text/javascript" src="~/js/wined/index_data/jquery.js"></script>
-    <script type="text/javascript" src="~/js/wined/index_data/bootstrap-notify.js"></script>
-    <script type="text/javascript" src="~/js/wined/index_data/jquery_002.js"></script>
-    <script type="text/javascript" src="~/js/wined/index_data/owl.js"></script>
-    <link rel="stylesheet" type="text/css" href="/css/wined/magnific-popup.css">
-    <script src="~/js/wined/index_data/tabs.js"></script>
-    <script type="text/javascript" src="~/js/wined/index_data/jquery_004.js"></script>
-    <script type="text/javascript" src="~/js/wined/index_data/jquery_003.js"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/custom.js"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jstree.min.js"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/carousel.min.js"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/productcarosel.min.js"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jquery.custom.min.js"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jquery.formalize.min.js"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jquery.elevatezoom.min.js"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/bootstrap-notify.min.js"></script>
+    <script type="text/javascript" src="~/js/wined/jquery/magnific/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/owl.carousel.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/js/wined/jquery/magnific/magnific-popup.css" />
+    <script src="~/js/wined/themejs/tabs.js"></script>
+    <script type="text/javascript" src="~/js/wined/jquery.countdown.js"></script>
+    <script type="text/javascript" src="~/js/wined/jquery.countdown.min.js"></script>
     <!-- Theme End -->
 
-    <script src="~/js/wined/index_data/common.js"></script>
-    <script src="~/js/wined/index_data/parallax.js"></script>
+    <script src="~/js/wined/common.js"></script>
+    <script src="~/js/wined/themejs/parallax.js"></script>
 
 
 </head>
 
 
-<body class="product-quick_view-42 layout-1">
-    <header>
-        <div class="header">
-            <div class="header-nav-wrapper">
-                <div class="container">
-                    <div class="header-nav-left">
-                        <div class="nav pull-left ">
-                        </div>
-                    </div>
-                    <div class="header-nav-right">
-                        <!--<div id="wish-list" class="wish-list hidden-md-down">
-                        <div class="wish-details">
-                        <span class="wish-image"></span>
-                        </div>
-
-                        <div class="wish-list-details dropdown-menu">
-                        <div class="header-wishlist"><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=account/wishlist" id="wishlist-total" title="Wish List (0)"><span class="wishlist">Wish List (0)</span></a></div>
-                        </div>
-                        </div>-->
-                    </div>
-                </div>
-            </div>
-
-            <div class="content_headercms_top fixed">
-                <div id="main-menu" class="main-menu">
-                    <nav class="nav-container" role="navigation">
-                        <div class="nav-inner">
-                            <!-- ======= Menu Code START ========= -->
-                            <!-- Opencart 3 level Category Menu-->
-                            <div id="menu" class="main-menu">
-                                <div class="nav-responsive" style="display: none;">
-                                    <span>Menu</span>
-                                    <div class="menu-expand-wrapper">
-                                        <div class="expandable"></div>
-                                    </div>
-                                </div>
-                                <div class="nav-mainmenu btn-modal hidden-sm hidden-xs">
-                                    <span class="mainmenu-btn-wrapper">
-                                        <span class="mainmenu-btn"></span>
-                                    </span>
-                                    <span class="mainmenu-text">
-                                        menu
-                                    </span>
-                                </div>
-
-                                <ul class="nav navbar-nav" style="display: none;">
-                                    <li class="top_level home home_first">
-                                        <a href="">
-                                            Home
-                                        </a>
-                                    </li>
-                                    <li class="top_level">
-                                        <a href="">
-                                            blog
-                                        </a>
-                                    </li>
-                                    <li class="top_level dropdown">
-                                        <a href="">
-                                            our store
-                                        </a>
-                                    </li>
-                                    <li class="top_level dropdown">
-                                        <a href="">
-                                            lambrusco
-                                        </a>
-                                    </li>
-
-                                    <li class="top_level dropdown">
-                                        <a href="">
-                                            etruscan
-                                        </a>
-                                    </li>
-
-                                    <li class="top_level dropdown">
-                                        <a href="">
-                                            gattinara
-                                        </a>
-                                    </li>
-
-                                    <li class="top_level">
-                                        <a href="">
-                                            grapefruits
-                                        </a>
-                                    </li>
-                                    <li class="top_level">
-                                        <a href="">
-                                            pomegranates
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-
-                <div class="dropdown myaccount">
-                    <a href="" title="My Account" class="dropdown-toggle" data-toggle="dropdown">
-                        <!--<span class="account-title">
-                            My Account
-                            </span>-->
-                        <span class="caret"></span>
-                        <span class="user-info-image">my account<i class="fa fa-angle-down"></i></span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-right myaccount-menu">
-                        <li>
-                            <a href="">
-                                Register
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                Login
-                            </a>
-                        </li>
-                        <nav id="top">
-                            <!-- <div class="container"> -->
-                        </nav>
-                        <div class="nav pull-left">
-                            <div class="pull-left">
-                                <form action="" method="post" enctype="multipart/form-data" id="form-language">
-                                    <div class="btn-group">
-                                        <button class="btn btn-link dropdown-toggle common-btn" data-toggle="dropdown" title="Language">
-
-                                            <img class="hidden-md hidden-lg" src="~/images/en-gb.png" /> alt="English">
-                                            <span class="Language-text">Language</span>&nbsp;<!--<i class="fa fa-caret-down"></i>-->
-                                        </button>
-                                        <ul class="dropdown-menu language-menu">
-                                            <li class="current">
-                                                <button class="btn btn-link btn-block language-select" type="button" name="en-gb" title="English">
-                                                    <img src="~/images/en-gb.png" alt="English" title="English">
-                                                    English
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button class="btn btn-link btn-block language-select" type="button" name="ar" title="Arabic">
-                                                    <img src="~/images/ar.png" alt="Arabic" title="Arabic">
-                                                    Arabic
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button class="btn btn-link btn-block language-select" type="button" name="fr-Fr" title="Français">
-                                                    <img src="/images/fr-Fr.png" alt="Français" title="Français">
-                                                    Français
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <input type="hidden" name="code" value="">
-                                    <input type="hidden" name="redirect" value="">
-                                </form>
-                            </div>
-                            <div class="pull-left">
-                                <form action="" method="post" enctype="multipart/form-data" id="form-currency" title="Currency">
-                                    <div class="btn-group">
-                                        <button class="btn btn-link dropdown-toggle common-btn" data-toggle="dropdown">
-                                            <strong>
-                                                $
-                                            </strong>
-                                            <span class="currency-text">
-                                                Currency
-                                            </span>&nbsp;<!--<i class="fa fa-caret-down"></i>-->
-                                        </button>
-                                        <ul class="dropdown-menu currency-menu">
-                                            <li>
-                                                <button class="currency-select btn btn-link btn-block" type="button" name="EUR">
-                                                    € Euro
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button class="currency-select btn btn-link btn-block" type="button" name="GBP">
-                                                    £ Pound Sterling
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button class="currency-select btn btn-link btn-block" type="button" name="USD">
-                                                    $ US Dollar
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <input type="hidden" name="code" value="">
-                                    <input type="hidden" name="redirect" value="">
-                                </form>
-                            </div>
-                        </div>
-                    </ul>
-                </div>
-                <div class="header-logo">
-                    <div id="logo">
-                        <a href="">
-                            <img src="~/images/Logo.png" title="@this.ViewData["Title"]" alt="Your Store" class="img-responsive">
-                        </a>
-                    </div>
-                </div>
-                <div class="header-cart">
-                    <div id="cart" class="btn-group btn-block">
-                        <!--<span class="cart-icon"></span>-->
-                        <button type="button" data-toggle="dropdown" data-loading-text="Loading..." class="btn btn-inverse btn-block btn-lg dropdown-toggle">
-                            <!-- <span class="heading-title"></span>-->
-                            <span id="cart-total">
-                                0
-                            </span>
-                            <span id="cart-title">your bag<i class="fa fa-angle-down"></i></span>
-                        </button>
-
-                        <ul class="dropdown-menu pull-right cart-menu">
-                            <li>
-                                <p class="text-center">
-                                    Your shopping cart is empty!
-                                </p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="dropdown search" title="Search item here">
-                    <div class="header-search dropdown-toggle " data-toggle="dropdown"></div>
-                    <div id="search" class="input-group dropdown-menu">
-                        <input type="text" name="search" placeholder="Search item here" class="form-control input-lg">
-                        <span class="input-group-btn">
-                            <button type="button" class="btn btn-default btn-lg">
-                                Search item here
-                                <span class="search_button"></span>
-                            </button>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </header>
-    <div class="nav-inner-cms">
-        <div class="header-bottom">
-
-        </div>
-    </div>
-
+<body class="product-product-51   layout-1">
     <div id="breadcrumb">
         <div class="container">
 
-            <ul class="breadcrumb">
-            </ul>
         </div>
     </div>
     <!-- ======= Quick view JS ========= -->
@@ -332,34 +94,102 @@
 
     <div class="productpage">
         <div id="product-product" class="container">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="index9328.html?route=common/home">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="index81d2.html?route=product/category&amp;path=49">
+                        sagrantino
+                    </a>
+                </li>
+                <li>
+                    <a href="index0a1a.html?route=product/product&amp;path=49&amp;product_id=51">
+                        aenean dignissim
+                    </a>
+                </li>
+            </ul>
             <div class="row">
                 <div id="content" class="col-sm-12 productpage">
                     <div class="row">
                         <div class="col-sm-8 product-left">
                             <div class="product-info">
                                 <div class="left product-image thumbnails">
+
+                                    <!-- Cloud-Zoom Image Effect Start -->
                                     <div class="image">
-                                        <a class="thumbnail">
-                                            <img class="img-fluid w-100" src="@Model.ImageUrl" data-zoom-image="@Model.ImageUrl" alt="@Model.Name"/> 
+                                        <a class="thumbnail" href="image/cache/catalog/demo/product/1-686x686.jpg" title="@Model.Name">
+                                            <img id="tmzoom" src="@Model.ImageUrl" data-zoom-image="@Model.ImageUrl" title="@Model.Name" alt="@Model.Name" />
                                         </a>
                                     </div>
-                                    <div id="additional-carousel" class="image-additional product-carousel" style="opacity: 1; display: block;">
 
-                                        <div class="slider-wrapper-outer">
-                                            <div class="slider-wrapper" style="width: 1204px; left: 0px; display: block; transform: translate3d(0px, 0px, 0px);">
-                                                <div class="slider-item first_item_tm" style="width: 86px;">
-                                                    <div class="product-block" style="height: 74px;">
+                                    <div class="additional-carousel">
+                                        <div class="customNavigation">
+                                            <span class="prev">&nbsp;</span>
+                                            <span class="next">&nbsp;</span>
+                                        </div>
 
-                                                    </div>
-                                                </div>
-                                                <div class="slider-item" style="width: 86px;">
+                                        <div id="additional-carousel" class="image-additional product-carousel">
+
+                                            <div class="slider-item">
+                                                <div class="product-block">
+                                                    <a href="image/cache/catalog/demo/product/1-686x686.jpg" title="aenean dignissim" class="elevatezoom-gallery" data-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/1-485x485.jpg" data-zoom-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/1-686x686.jpg">
+                                                        <img src="image/cache/catalog/demo/product/1-485x485.jpg" width="74" height="74" title="aenean dignissim" alt="aenean dignissim" />
+                                                    </a>
                                                 </div>
                                             </div>
 
+                                            <div class="slider-item">
+                                                <div class="product-block">
+                                                    <a href="image/cache/catalog/demo/product/15-686x686.jpg" title="aenean dignissim" class="elevatezoom-gallery" data-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/15-485x485.jpg" data-zoom-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/15-686x686.jpg">
+                                                        <img src="image/cache/catalog/demo/product/15-485x485.jpg" width="74" height="74" title="aenean dignissim" alt="aenean dignissim" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="slider-item">
+                                                <div class="product-block">
+                                                    <a href="image/cache/catalog/demo/product/14-686x686.jpg" title="aenean dignissim" class="elevatezoom-gallery" data-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/14-485x485.jpg" data-zoom-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/14-686x686.jpg">
+                                                        <img src="image/cache/catalog/demo/product/14-485x485.jpg" width="74" height="74" title="aenean dignissim" alt="aenean dignissim" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="slider-item">
+                                                <div class="product-block">
+                                                    <a href="image/cache/catalog/demo/product/13-686x686.jpg" title="aenean dignissim" class="elevatezoom-gallery" data-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/13-485x485.jpg" data-zoom-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/13-686x686.jpg">
+                                                        <img src="image/cache/catalog/demo/product/13-485x485.jpg" width="74" height="74" title="aenean dignissim" alt="aenean dignissim" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="slider-item">
+                                                <div class="product-block">
+                                                    <a href="image/cache/catalog/demo/product/10-686x686.jpg" title="aenean dignissim" class="elevatezoom-gallery" data-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/10-485x485.jpg" data-zoom-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/10-686x686.jpg">
+                                                        <img src="image/cache/catalog/demo/product/10-485x485.jpg" width="74" height="74" title="aenean dignissim" alt="aenean dignissim" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="slider-item">
+                                                <div class="product-block">
+                                                    <a href="image/cache/catalog/demo/product/11-686x686.jpg" title="aenean dignissim" class="elevatezoom-gallery" data-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/11-485x485.jpg" data-zoom-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/11-686x686.jpg">
+                                                        <img src="image/cache/catalog/demo/product/11-485x485.jpg" width="74" height="74" title="aenean dignissim" alt="aenean dignissim" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="slider-item">
+                                                <div class="product-block">
+                                                    <a href="image/cache/catalog/demo/product/12-686x686.jpg" title="aenean dignissim" class="elevatezoom-gallery" data-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/12-485x485.jpg" data-zoom-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/12-686x686.jpg">
+                                                        <img src="image/cache/catalog/demo/product/12-485x485.jpg" width="74" height="74" title="aenean dignissim" alt="aenean dignissim" />
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </div>
+                                        <span class="additional_default_width" style="display:none; visibility:hidden"></span>
                                     </div>
+                                    <!-- Cloud-Zoom Image Effect End-->
                                 </div>
                             </div>
+
                         </div>
                         <div class="col-sm-4 product-right">
                             <div class="product-right-inner">
@@ -377,45 +207,46 @@
                                         <i class="fa fa-star fa-stack-2x"></i>
                                     </span>
                                     <span class="fa fa-stack">
-                                        <i class="fa fa-star off fa-stack-2x"></i>
+                                        <i class="fa fa-star fa-stack-2x"></i>
                                     </span>
                                     <span class="fa fa-stack">
                                         <i class="fa fa-star off fa-stack-2x"></i>
                                     </span>
-                                    <a href="" class="review-count" onclick="$('a[href=\'#tab-review\']').trigger('click');return false;">
-                                        1 reviews
-                                    </a>
-                                    <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;" class="write-review">
+                                    <a href="#" class="review-count" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">1 reviews</a>  <a href="#" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;" class="write-review">
                                         <i class="fa fa-pencil"></i>
                                         Write a review
                                     </a>
+
+
                                 </div>
                                 <ul class="list-unstyled">
                                     <li>
                                         <span class="desc">
-                                            Category:
+                                            Category
                                         </span>
-                                        <a href="">
+                                        <a asp-controller="Categories" asp-action="Products" asp-route-categoryId="@Model.CategoryId">
                                             @Model.CategoryName
                                         </a>
                                     </li>
                                     <li>
                                         <span class="desc">
-                                            Variety:
-                                        </span>
-                                        @Model.Variety
+                                            Harvest:
+                                        </span> @Model.HarvestYear
                                     </li>
                                     <li>
                                         <span class="desc">
-                                            Harvest:
-                                        </span>
-                                        @Model.Harvest
+                                            Origin:
+                                        </span> @Model.OriginName
+                                    </li>
+                                    <li>
+                                        <span class="desc">
+                                            Variety:
+                                        </span> @Model.VarietyName
                                     </li>
                                     <li>
                                         <span class="desc">
                                             Availability:
-                                        </span>
-                                        In Stock
+                                        </span> In Stock
                                     </li>
                                 </ul>
                                 <ul class="list-unstyled price">
@@ -424,64 +255,68 @@
                                             $122.00
                                         </h2>
                                     </li>
+                                    <li class="price-tax">
+                                        Ex Tax: $100.00
+                                    </li>
+                                    <li class="points">
+                                        Price in reward points: 400
+                                    </li>
                                 </ul>
                                 <div id="product">
                                     <h3 class="product-option">
                                         Available Options
                                     </h3>
                                     <div class="form-group required">
-                                        <label class="control-label">
-                                            Radio
+                                        <label class="control-label" for="input-option228">
+                                            Delivery Date
                                         </label>
-                                        <div id="input-option218">
-                                            <div class="radio">
-                                                
-                                            </div>
+                                        <div class="input-group date">
+                                            <input type="text" name="option[228]" value="2011-04-22" data-date-format="YYYY-MM-DD" id="input-option228" class="form-control" />
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button">
+                                                    <i class="fa fa-calendar"></i>
+                                                </button>
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="form-group cart">
                                         <label class="control-label qty" for="input-quantity">
                                             Qty
                                         </label>
-                                        <input type="text" name="quantity" value="2" size="2" id="input-quantity" class="form-control">
+                                        <input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control" />
                                         <button type="button" id="button-cart" data-loading-text="Loading..." class="btn btn-primary btn-lg btn-block">
                                             Add to Cart
                                         </button>
-                                        <span>
-                                            - OR -
-                                        </span>
+                                        <span>  - OR -  </span>
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-default wishlist" title="Add to Wish List" onclick="wishlist.add('42');">
-                                                Add to Wish List
-                                            </button>
-                                            <button type="button" class="btn btn-default compare" title="Compare this Product" onclick="compare.add('42');">
-                                                Compare this Product
-                                            </button>
+
+                                            <button type="button" class="btn btn-default wishlist" title="Add to Wish List" onclick="wishlist.add('51');">Add to Wish List</button>
+                                            <button type="button" class="btn btn-default compare" title="Compare this Product" onclick="compare.add('51');">Compare this Product</button>
                                         </div>
+
                                     </div>
-                                    <input type="hidden" name="product_id" value="42">
+                                    <input type="hidden" name="product_id" value="51" />
+
                                     <hr>
+                                    <!-- AddThis Button BEGIN -->
+                                    <div class="addthis_toolbox addthis_default_style" data-url="index52a0.html?route=product/product&amp;product_id=51">
+                                        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a> <a class="addthis_button_tweet">
+                                        </a>
+                                        <a class="addthis_button_pinterest_pinit"></a>
+                                        <a class="addthis_counter addthis_pill_style"></a>
+                                    </div>
+                                    <script type="text/javascript" src="../../../../s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script>
+                                    <!-- AddThis Button END -->
                                 </div>
                             </div>
                         </div>
+
                         <!-- product page tab code start-->
                         <div id="tabs_info" class="product-tab col-sm-12">
                             <ul class="nav nav-tabs">
-                                <li class="active">
-                                    <a href="#tab-description" data-toggle="tab">
-                                        Description
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#tab-specification" data-toggle="tab">
-                                        Specification
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#tab-review" data-toggle="tab">
-                                        Reviews (1)
-                                    </a>
-                                </li>
+                                <li class="active"><a href="#tab-description" data-toggle="tab">Description</a></li>
+                                <li><a href="#tab-specification" data-toggle="tab">Specification</a></li>
+                                <li><a href="#tab-review" data-toggle="tab">Reviews (1)</a></li>
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab-description">
@@ -495,6 +330,21 @@
                                             <tr>
                                                 <td colspan="2">
                                                     <strong>
+                                                        Memory
+                                                    </strong>
+                                                </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>test 1</td>
+                                                <td>16GB</td>
+                                            </tr>
+                                        </tbody>
+                                        <thead>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <strong>
                                                         Processor
                                                     </strong>
                                                 </td>
@@ -502,28 +352,22 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Clockspeed</td>
-                                                <td>100mhz</td>
+                                                <td>No. of Cores</td>
+                                                <td>4</td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="tab-pane" id="tab-review">
                                     <form class="form-horizontal" id="form-review">
-                                        <div id="review">
-                                            <table class="table table-striped table-bordered">
-                                                <tbody>
-                                                </tbody>
-                                            </table>
-                                            <div class="text-right"></div>
-                                        </div>
+                                        <div id="review"></div>
                                         <h4>Write a review</h4>
                                         <div class="form-group required">
                                             <div class="col-sm-12">
                                                 <label class="control-label" for="input-name">
                                                     Your Name
                                                 </label>
-                                                <input type="text" name="name" id="input-name" class="form-control">
+                                                <input type="text" name="name" value="" id="input-name" class="form-control" />
                                             </div>
                                         </div>
                                         <div class="form-group required">
@@ -532,25 +376,22 @@
                                                     Your Review
                                                 </label>
                                                 <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
-                                                <div class="help-block">
-                                                    <span class="text-danger">Note:</span>
-                                                    HTML is not translated!
-                                                </div>
+                                                <div class="help-block"><span class="text-danger">Note:</span> HTML is not translated!</div>
                                             </div>
                                         </div>
                                         <div class="form-group required">
                                             <div class="col-sm-12">
                                                 <label class="control-label">Rating</label>
                                                 &nbsp;&nbsp;&nbsp; Bad&nbsp;
-                                                <input type="radio" name="rating" value="1">
+                                                <input type="radio" name="rating" value="1" />
                                                 &nbsp;
-                                                <input type="radio" name="rating" value="2">
+                                                <input type="radio" name="rating" value="2" />
                                                 &nbsp;
-                                                <input type="radio" name="rating" value="3">
+                                                <input type="radio" name="rating" value="3" />
                                                 &nbsp;
-                                                <input type="radio" name="rating" value="4">
+                                                <input type="radio" name="rating" value="4" />
                                                 &nbsp;
-                                                <input type="radio" name="rating" value="5">
+                                                <input type="radio" name="rating" value="5" />
                                                 &nbsp;Good
                                             </div>
                                         </div>
@@ -567,6 +408,8 @@
                             </div>
                         </div>
                     </div>
+
+
                     <div class="box related product-box">
                         <div class="container">
                             <div class="title-wrapper">
@@ -585,35 +428,64 @@
                                         </a>
                                     </div>
 
-                                    <div class="box-product product-carousel" id="related-carousel" style="opacity: 1; display: block;">
-                                        <div class="slider-wrapper-outer">
-                                            <div class="slider-wrapper" style="width: 7106px; left: 0px; display: block; transform: translate3d(0px, 0px, 0px);">
-                                                <div class="slider-item first_item_tm" style="width: 323px;">
-                                                    <div class="product-block product-thumb transition" style="height: 410px;">
-                                                        <div class="product-block-inner">
+                                    <div class="box-product product-carousel" id="related-carousel">
+                                        <div class="slider-item">
+                                            <div class="product-block product-thumb transition">
+                                                <div class="product-block-inner">
+                                                    <!-- <div class="image">
+                                                                    <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/product&amp;product_id=30 "><img src="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/16-380x384.jpg " alt="elementum urna " title="elementum urna " class="img-responsive" /></a>
+
+                                                                                                            </div> -->
+
+
+                                                    <div class="image">
+                                                        <a href="indexf073.html?route=product/product&amp;product_id=30">
+                                                            <img src="image/cache/catalog/demo/product/16-380x384.jpg" title="elementum urna" alt="elementum urna" class="img-responsive reg-image" />
+                                                            <img class="img-responsive hover-image" src="image/cache/catalog/demo/product/19-380x384.jpg" title="elementum urna" alt="elementum urna" />
+                                                        </a>
+
+                                                        <!--
+                                                         -->
+
+                                                        <div class="button-group">
+                                                            <button type="button" data-placement="right" title="Add to cart" class="addtocart" onclick="cart.add('30 ');">Add to Cart</button>
+                                                            <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('30 ');"></button>
+                                                            <div class="quickview" data-placement="right" title="Quickview"><a href="indexeca1.html?route=product/quick_view&amp;product_id=30">Quick View </a></div>
+                                                            <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('30 ');"></button>
                                                         </div>
-
-                                                        <!-- Related Products Start -->
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="slider-item first_item_tm" style="width: 323px;">
 
-                                        </div>
-                                        <div class="slider-controls clickable">
-                                            <div class="slider-pagination">
-                                                <div class="slider-page active">
-                                                    <span class=""></span>
-                                                </div>
-                                                <div class="slider-page">
-                                                    <span class=""></span>
-                                                </div>
-                                                <div class="slider-page">
-                                                    <span class=""></span>
-                                                </div>
-                                                <div class="slider-page">
-                                                    <span class=""></span>
+                                                    <div class="caption">
+                                                        <h4><a href="indexf073.html?route=product/product&amp;product_id=30">elementum urna </a></h4>
+
+
+
+
+                                                        <p class="price">
+                                                            $122.00
+                                                            <span class="price-tax">Ex Tax: $100.00</span>
+
+                                                        </p>
+
+
+
+                                                        <div class="rating">
+                                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                            <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="button-group">
+                                                        <!-- <button type="button" class="addtocart" onclick="cart.add('30 ');">Add to Cart </button>
+                                                        <button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List " onclick="wishlist.add('30 ');"></button>
+                                                        <button class="compare" type="button" data-toggle="tooltip" title="Compare this Product " onclick="compare.add('30 ');"></button> -->
+
+
+                                                    </div>
+
+                                                    <!-- Related Products Start -->
                                                 </div>
                                             </div>
                                         </div>
@@ -622,7 +494,8 @@
                             </div>
                         </div>
                     </div>
-                    <span class="related_default_width" style="display: none; visibility: hidden;"></span>
+                    <span class="related_default_width" style="display:none; visibility:hidden"></span>
+
                 </div>
             </div>
         </div>
@@ -732,7 +605,7 @@
 
                         //$('html, body').animate({ scrollTop: 0 }, 'slow');
 
-                        $('#cart > ul').load('index.php?route=common/cart/info ul li');
+                        $('#cart > ul').load('index1e1c.html?route=common/cart/info%20ul%20li');
                     }
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
@@ -811,68 +684,6 @@
             }, 500);
         });
         //--></script>
-    <div class="bootstrap-datetimepicker-widget dropdown-menu">
-        <div class="datepicker">
-            <div class="datepicker-days" style="display: block;">
-                <table class="table-condensed">
-                    <thead>
-                        <tr>
-                            <th class="prev">
-                                ‹
-                            </th>
-                            <th colspan="5" class="picker-switch">
-                                February 2011
-                            </th>
-                            <th class="next">›</th>
-                        </tr>
-                        <tr>
-                            <th class="dow">
-                                Mo
-                            </th>
-                            <th class="dow">
-                                Tu
-                            </th>
-                            <th class="dow">We</th>
-                            <th class="dow">
-                                Th
-                            </th>
-                            <th class="dow">
-                                Fr
-                            </th>
-                            <th class="dow">
-                                Sa
-                            </th>
-                            <th class="dow">
-                                Su
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="day old">
-                                31
-                            </td>
-                            <td class="day">
-                                1
-                            </td>
-                            <td class="day">2</td>
-                            <td class="day">3</td>
-                            <td class="day">4</td>
-                            <td class="day">5</td>
-                            <td class="day">6</td>
-                        </tr>
-                        <tr><td class="day">7</td><td class="day">8</td><td class="day">9</td><td class="day">10</td><td class="day">11</td><td class="day">12</td><td class="day">13</td></tr>
-                        <tr><td class="day">14</td><td class="day">15</td><td class="day">16</td><td class="day">17</td><td class="day">18</td><td class="day">19</td><td class="day active">20</td></tr>
-                        <tr><td class="day">21</td><td class="day">22</td><td class="day">23</td><td class="day">24</td><td class="day">25</td><td class="day">26</td><td class="day">27</td></tr>
-                        <tr><td class="day">28</td><td class="day new">1</td><td class="day new">2</td><td class="day new">3</td><td class="day new">4</td><td class="day new">5</td><td class="day new">6</td></tr>
-                        <tr><td class="day new">7</td><td class="day new">8</td><td class="day new">9</td><td class="day new">10</td><td class="day new">11</td><td class="day new">12</td><td class="day new">13</td></tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="datepicker-months" style="display: none;"><table class="table-condensed"><thead><tr><th class="prev">‹</th><th colspan="5" class="picker-switch">2011</th><th class="next">›</th></tr></thead><tbody><tr><td colspan="7"><span class="month">Jan</span><span class="month active">Feb</span><span class="month">Mar</span><span class="month">Apr</span><span class="month">May</span><span class="month">Jun</span><span class="month">Jul</span><span class="month">Aug</span><span class="month">Sep</span><span class="month">Oct</span><span class="month">Nov</span><span class="month">Dec</span></td></tr></tbody></table></div>
-            <div class="datepicker-years" style="display: none;"><table class="table-condensed"><thead><tr><th class="prev">‹</th><th colspan="5" class="picker-switch">2010-2019</th><th class="next">›</th></tr></thead><tbody><tr><td colspan="7"><span class="year old">2009</span><span class="year">2010</span><span class="year active">2011</span><span class="year">2012</span><span class="year">2013</span><span class="year">2014</span><span class="year">2015</span><span class="year">2016</span><span class="year">2017</span><span class="year">2018</span><span class="year">2019</span><span class="year old">2020</span></td></tr></tbody></table></div>
-        </div>
-    </div><div class="bootstrap-datetimepicker-widget usetwentyfour dropdown-menu" style="z-index:9999 !important;"><ul class="list-unstyled"><li class="collapse in"><div class="datepicker"><div class="datepicker-days" style="display: block;"><table class="table-condensed"><thead><tr><th class="prev">‹</th><th colspan="5" class="picker-switch">February 2011</th><th class="next">›</th></tr><tr><th class="dow">Mo</th><th class="dow">Tu</th><th class="dow">We</th><th class="dow">Th</th><th class="dow">Fr</th><th class="dow">Sa</th><th class="dow">Su</th></tr></thead><tbody><tr><td class="day old">31</td><td class="day">1</td><td class="day">2</td><td class="day">3</td><td class="day">4</td><td class="day">5</td><td class="day">6</td></tr><tr><td class="day">7</td><td class="day">8</td><td class="day">9</td><td class="day">10</td><td class="day">11</td><td class="day">12</td><td class="day">13</td></tr><tr><td class="day">14</td><td class="day">15</td><td class="day">16</td><td class="day">17</td><td class="day">18</td><td class="day">19</td><td class="day active">20</td></tr><tr><td class="day">21</td><td class="day">22</td><td class="day">23</td><td class="day">24</td><td class="day">25</td><td class="day">26</td><td class="day">27</td></tr><tr><td class="day">28</td><td class="day new">1</td><td class="day new">2</td><td class="day new">3</td><td class="day new">4</td><td class="day new">5</td><td class="day new">6</td></tr><tr><td class="day new">7</td><td class="day new">8</td><td class="day new">9</td><td class="day new">10</td><td class="day new">11</td><td class="day new">12</td><td class="day new">13</td></tr></tbody></table></div><div class="datepicker-months" style="display: none;"><table class="table-condensed"><thead><tr><th class="prev">‹</th><th colspan="5" class="picker-switch">2011</th><th class="next">›</th></tr></thead><tbody><tr><td colspan="7"><span class="month">Jan</span><span class="month active">Feb</span><span class="month">Mar</span><span class="month">Apr</span><span class="month">May</span><span class="month">Jun</span><span class="month">Jul</span><span class="month">Aug</span><span class="month">Sep</span><span class="month">Oct</span><span class="month">Nov</span><span class="month">Dec</span></td></tr></tbody></table></div><div class="datepicker-years" style="display: none;"><table class="table-condensed"><thead><tr><th class="prev">‹</th><th colspan="5" class="picker-switch">2010-2019</th><th class="next">›</th></tr></thead><tbody><tr><td colspan="7"><span class="year old">2009</span><span class="year">2010</span><span class="year active">2011</span><span class="year">2012</span><span class="year">2013</span><span class="year">2014</span><span class="year">2015</span><span class="year">2016</span><span class="year">2017</span><span class="year">2018</span><span class="year">2019</span><span class="year old">2020</span></td></tr></tbody></table></div></div></li><li class="picker-switch accordion-toggle"><a class="btn" style="width:100%"><span class="glyphicon glyphicon-time"></span></a></li><li class="collapse"><div class="timepicker"><div class="timepicker-picker"><table class="table-condensed"><tbody><tr><td><a href="#" class="btn" data-action="incrementHours"><span class="glyphicon glyphicon-chevron-up"></span></a></td><td class="separator"></td><td><a href="#" class="btn" data-action="incrementMinutes"><span class="glyphicon glyphicon-chevron-up"></span></a></td></tr><tr><td><span data-action="showHours" data-time-component="hours" class="timepicker-hour">22</span></td> <td class="separator">:</td><td><span data-action="showMinutes" data-time-component="minutes" class="timepicker-minute">25</span></td> </tr><tr><td><a href="#" class="btn" data-action="decrementHours"><span class="glyphicon glyphicon-chevron-down"></span></a></td><td class="separator"></td><td><a href="#" class="btn" data-action="decrementMinutes"><span class="glyphicon glyphicon-chevron-down"></span></a></td></tr></tbody></table></div><div class="timepicker-hours" data-action="selectHour" style="display: none;"><table class="table-condensed"><tbody><tr><td class="hour">00</td><td class="hour">01</td><td class="hour">02</td><td class="hour">03</td></tr><tr><td class="hour">04</td><td class="hour">05</td><td class="hour">06</td><td class="hour">07</td></tr><tr><td class="hour">08</td><td class="hour">09</td><td class="hour">10</td><td class="hour">11</td></tr><tr><td class="hour">12</td><td class="hour">13</td><td class="hour">14</td><td class="hour">15</td></tr><tr><td class="hour">16</td><td class="hour">17</td><td class="hour">18</td><td class="hour">19</td></tr><tr><td class="hour">20</td><td class="hour">21</td><td class="hour">22</td><td class="hour">23</td></tr></tbody></table></div><div class="timepicker-minutes" data-action="selectMinute" style="display: none;"><table class="table-condensed"><tbody><tr><td class="minute">00</td><td class="minute">05</td><td class="minute">10</td><td class="minute">15</td></tr><tr><td class="minute">20</td><td class="minute">25</td><td class="minute">30</td><td class="minute">35</td></tr><tr><td class="minute">40</td><td class="minute">45</td><td class="minute">50</td><td class="minute">55</td></tr></tbody></table></div></div></li></ul></div><div class="bootstrap-datetimepicker-widget dropdown-menu"><div class="timepicker"><div class="timepicker-picker"><table class="table-condensed"><tbody><tr><td><a href="#" class="btn" data-action="incrementHours"><span class="glyphicon glyphicon-chevron-up"></span></a></td><td class="separator"></td><td><a href="#" class="btn" data-action="incrementMinutes"><span class="glyphicon glyphicon-chevron-up"></span></a></td></tr><tr><td><span data-action="showHours" data-time-component="hours" class="timepicker-hour">22</span></td> <td class="separator">:</td><td><span data-action="showMinutes" data-time-component="minutes" class="timepicker-minute">25</span></td> </tr><tr><td><a href="#" class="btn" data-action="decrementHours"><span class="glyphicon glyphicon-chevron-down"></span></a></td><td class="separator"></td><td><a href="#" class="btn" data-action="decrementMinutes"><span class="glyphicon glyphicon-chevron-down"></span></a></td></tr></tbody></table></div><div class="timepicker-hours" data-action="selectHour" style="display: none;"><table class="table-condensed"><tbody><tr><td class="hour">00</td><td class="hour">01</td><td class="hour">02</td><td class="hour">03</td></tr><tr><td class="hour">04</td><td class="hour">05</td><td class="hour">06</td><td class="hour">07</td></tr><tr><td class="hour">08</td><td class="hour">09</td><td class="hour">10</td><td class="hour">11</td></tr><tr><td class="hour">12</td><td class="hour">13</td><td class="hour">14</td><td class="hour">15</td></tr><tr><td class="hour">16</td><td class="hour">17</td><td class="hour">18</td><td class="hour">19</td></tr><tr><td class="hour">20</td><td class="hour">21</td><td class="hour">22</td><td class="hour">23</td></tr></tbody></table></div><div class="timepicker-minutes" data-action="selectMinute" style="display: none;"><table class="table-condensed"><tbody><tr><td class="minute">00</td><td class="minute">05</td><td class="minute">10</td><td class="minute">15</td></tr><tr><td class="minute">20</td><td class="minute">25</td><td class="minute">30</td><td class="minute">35</td></tr><tr><td class="minute">40</td><td class="minute">45</td><td class="minute">50</td><td class="minute">55</td></tr></tbody></table></div></div></div>
     <script type="text/javascript">
 <!--
         $('#review').delegate('.pagination a', 'click', function (e) {
@@ -885,11 +696,11 @@
             $('#review').fadeIn('slow');
         });
 
-        $('#review').load('index.php?route=product/product/review&product_id=42');
+        $('#review').load('indexbe0f.html?route=product/product/review&amp;product_id=51');
 
         $('#button-review').on('click', function () {
             $.ajax({
-                url: 'index.php?route=product/product/write&product_id=42',
+                url: 'index.php?route=product/product/write&product_id=51',
                 type: 'post',
                 dataType: 'json',
                 data: $("#form-review").serialize(),
@@ -953,6 +764,8 @@
                     //Mousewheel zoom
 
                     scrollZoom : true*/
+
+
                 });
                 var z_index = 0;
 
@@ -997,236 +810,5 @@
                 }
             });
         });
-        //--></script>
-    <footer>
-        <div id="footer">
-            <div class="content_footer_top"></div>
-            <div class="content_footer_wrapper">
-                <div class="content_footer_inner">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-3 col-lg-3 column common first">
-                                <h5>Information</h5>
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <a href="">
-                                            About Us
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            Delivery Information
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            Privacy Policy
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            Terms &amp; Conditions
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="footer-left column col-md-3 col-lg-3">
-                                <div id="contact">
-                                    <h5>Contact Us</h5>
-                                    <ul>
-                                        <li class="address">wined demo store</li>
-                                        <li>111, Puffin Street, New York, 12354</li>
-                                        <li class="fax">1-212-98765432</li>
-                                        <li class="email"><a href="#">support@company.com</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <!--<div class="col-md-3 col-lg-3 column common second">
-                              <h5>My Account</h5>
-                              <ul class="list-unstyled">
-                                <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/manufacturer">Brands</a></li>
-                                <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=account/voucher">Gift Certificates</a></li>
-                                <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=affiliate/login">Affiliates</a></li>
-                                 <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=information/sitemap">Site Map</a></li>
-                                 <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/special">Specials</a></li>
-                              </ul>
-                            </div>-->
-                            <!--<div class="col-md-3 col-lg-3 column common third">
-                              <h5>Extras</h5>
-                              <ul class="list-unstyled">
-                                <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/special">Specials</a></li>
-                                <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/manufacturer">Brands</a></li>
-                                 <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=affiliate/login">Affiliates</a></li>
-                                <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=account/account">My Account</a></li>
-                                <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=information/sitemap">Site Map</a></li>
-                              </ul>
-                            </div>-->
-
-                            <div class="footer-social column col-md-3 col-lg-3">
-                                <div class="social">
-                                    <h5>follow us</h5>
-                                    <ul>
-                                        <li class="social-item">
-                                            <div class="social-item-inner">
-                                                <div class="social-image"><span class="social-icon">&nbsp;</span></div>
-                                                <div class="social-right"><a href="#">Facebook</a></div>
-                                            </div>
-                                        </li>
-                                        <li class="social-item">
-                                            <div class="social-item-inner">
-                                                <div class="social-image"><span class="social-icon">&nbsp;</span></div>
-                                                <div class="social-right"><a href="#">instagram</a></div>
-                                            </div>
-                                        </li>
-                                        <li class="social-item">
-                                            <div class="social-item-inner">
-                                                <div class="social-image"><span class="social-icon">&nbsp;</span></div>
-                                                <div class="social-right"><a href="#">twitter</a></div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-lg-3 column fourth">
-                                <div class="footer-right-wrapper">
-                                    <script>
-                                        function subscribe() {
-                                            var emailpattern = "";
-                                            var email = $('#txtemail').val();
-                                            if (email != "") {
-                                                if (!emailpattern.test(email)) {
-                                                    $('.text-danger').remove();
-                                                    var str = '<span class="error">Invalid Email</span>';
-                                                    $('.form-group').after('<div class="text-danger">Invalid Email</div>');
-
-                                                    return false;
-                                                }
-                                                else {
-                                                    $.ajax({
-                                                        url: 'index.php?route=extension/module/newsletters/news',
-                                                        type: 'post',
-                                                        data: 'email=' + $('#txtemail').val(),
-                                                        dataType: 'json',
-
-
-                                                        success: function (json) {
-
-                                                            $('.text-danger').remove();
-                                                            $('.form-group').after('<div class="text-danger">' + json.message + '</div>');
-
-                                                        }
-
-                                                    });
-                                                    return false;
-                                                }
-                                            }
-                                            else {
-                                                $('.text-danger').remove();
-                                                $('.form-group').after('<div class="text-danger">Email Is Require</div>');
-                                                $(email).focus();
-                                                return false;
-                                            }
-                                        }
-                                    </script>
-                                    <div class="newsletter">
-                                        <div class="newsletter-wrapper">
-                                            <!-- <div class="container">
-                                            <div class="row"> -->
-                                            <div class="newsletter-details col-md-12 col-xs-12 col-lg-12 ">
-                                                <div class="newsletter-desc box">
-                                                    <div class="title-wrapper">
-                                                        <div class="newsletter-title box-heading">newsletter</div>
-                                                    </div>
-                                                    <!--<div class="desc">subscribe now</div>-->
-                                                </div>
-                                            </div>
-                                            <div class="newsletter-block col-md-12 col-xs-12 col-lg-12">
-                                                <!--<span class="newsletter-image"></span>
-                                                <span class="newsletter-info">subscribe! new items.</span>-->
-                                                <form method="post">
-                                                    <div class="form-group required">
-                                                        <label class="col-sm-2 control-label" for="txtemail">Enter your e-mail</label>
-                                                        <div class="input-news">
-                                                            <input type="email" name="txtemail" id="txtemail" placeholder="Enter your e-mail" class="form-control input-lg">
-                                                        </div>
-                                                        <div class="subscribe-btn">
-                                                            <button type="submit" class="btn btn-default btn-lg" onclick="return subscribe();">subscribe</button>
-
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <!-- </div>
-                                            </div> -->
-                                        </div>
-                                    </div>
-                                    <div class="footer-payment">
-                                        <div class="payment-block">
-                                            <h5>payment method</h5>
-                                            <ul>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="copyright-container ">
-                        <div class="content_footer_bottom container">
-                        </div>
-                        <div class="footer-container">
-                            <!-- <div id="bottomfooter">
-                            <ul>
-                                <li class="first"><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/special">Specials</a></li>
-                                <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=affiliate/login">Affiliates</a></li>
-                                <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=account/voucher">Gift Certificates</a></li>
-                                <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/manufacturer">Brands</a></li>
-                                <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=account/return/add">Returns</a></li>
-                                <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=information/sitemap">Site Map</a></li>
-                                <li class="last"><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=information/contact">Contact Us</a></li>
-                            </ul>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <div id="lightboxOverlay" class="lightboxOverlay" style="display: none;"></div>
-    <div id="lightbox" class="lightbox" style="display: none;">
-        <div class="lb-outerContainer">
-            <div class="lb-container">
-                <img class="lb-image" src="">
-                <div class="lb-nav">
-                    <a class="lb-prev" href=""></a>
-                    <a class="lb-next" href=""></a>
-                </div>
-                <div class="lb-loader">
-                    <a class="lb-cancel"></a>
-                </div>
-            </div>
-        </div>
-        <div class="lb-dataContainer">
-            <div class="lb-data">
-                <div class="lb-details">
-                    <span class="lb-caption"></span>
-                    <span class="lb-number"></span>
-                </div>
-                <div class="lb-closeContainer">
-                    <a class="lb-close"></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a class="top_button" title="Back To Top" href="" style="display: inline;">
-        TOP
-    </a>
-    <div class="zoomContainer" style="-webkit-transform: translateZ(0); position: absolute; left: 122.5px; top: 259px; height: 407px; width: 407px;">
-        <div class="zoomWindowContainer" style="width: 450px;">
-            <div style="z-index: 999; overflow: hidden; margin-left: 0px; margin-top: 0px; background-position: 0px 0px; width: 407px; height: 407px; float: left; display: none; cursor: crosshair; background-repeat: no-repeat; position: absolute; background-image: url(&quot;http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/15-686x686.jpg&quot;);" class="zoomWindow">
-                &nbsp;
-            </div>
-        </div>
-    </div>
+    </script>
 </body>

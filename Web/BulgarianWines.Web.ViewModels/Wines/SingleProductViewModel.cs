@@ -13,13 +13,21 @@
 
         public string CategoryName { get; set; }
 
+        public int CategoryId { get; set; }
+
         public string ImageUrl { get; set; }
 
         public string Origin { get; set; }
 
+        public string OriginName { get; set; }
+
         public string Harvest { get; set; }
 
+        public string HarvestYear { get; set; }
+
         public string Variety { get; set; }
+
+        public string VarietyName { get; set; }
 
         public string Description { get; set; }
 
