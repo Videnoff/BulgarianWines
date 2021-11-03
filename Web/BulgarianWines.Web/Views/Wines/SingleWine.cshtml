@@ -34,8 +34,8 @@
      -->
 
     <script src="~/js/wined/lightbox/lightbox-2.6.min.js" asp-append-version="true"></script>
-    <link href="/js/wined/jquery/magnific/magnific-popup.css" type="text/css" rel="stylesheet" media="screen" asp-append-version="true"/>
-    <link href="~/js/wined/jquery/datetimepicker/bootstrap-datetimepicker.min.css" type="text/css" rel="stylesheet" media="screen" asp-append-version="true"/>
+    <link href="/js/wined/jquery/magnific/magnific-popup.css" type="text/css" rel="stylesheet" media="screen" asp-append-version="true" />
+    <link href="~/js/wined/jquery/datetimepicker/bootstrap-datetimepicker.min.css" type="text/css" rel="stylesheet" media="screen" asp-append-version="true" />
     <script src="~/js/wined/jquery/magnific/jquery.magnific-popup.min.js" asp-append-version="true"></script>
     <script src="~/js/wined/jquery/datetimepicker/moment/moment.min.js" asp-append-version="true"></script>
     <script src="~/js/wined/jquery/datetimepicker/moment/moment-with-locales.min.js" asp-append-version="true"></script>
@@ -96,18 +96,18 @@
         <div id="product-product" class="container">
             <ul class="breadcrumb">
                 <li>
-                    <a href="index9328.html?route=common/home">
+                    <a asp-area="" asp-controller="Home" asp-action="Index">
                         <i class="fa fa-home"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="index81d2.html?route=product/category&amp;path=49">
-                        sagrantino
+                    <a asp-area="" asp-controller="Categories" asp-action="Products" asp-route-categoryId="@Model.CategoryId">
+                        @Model.CategoryName
                     </a>
                 </li>
                 <li>
-                    <a href="index0a1a.html?route=product/product&amp;path=49&amp;product_id=51">
-                        aenean dignissim
+                    <a asp-area="" asp-controller="Wines" asp-action="SingleWine" asp-route-id="@Model.Id">
+                        @Model.Name
                     </a>
                 </li>
             </ul>
@@ -120,7 +120,7 @@
 
                                     <!-- Cloud-Zoom Image Effect Start -->
                                     <div class="image">
-                                        <a class="thumbnail" href="image/cache/catalog/demo/product/1-686x686.jpg" title="@Model.Name">
+                                        <a class="thumbnail" src="@Model.ImageUrl" data-zoom-image="@Model.ImageUrl" title="@Model.Name" alt="@Model.Name">
                                             <img id="tmzoom" src="@Model.ImageUrl" data-zoom-image="@Model.ImageUrl" title="@Model.Name" alt="@Model.Name" />
                                         </a>
                                     </div>

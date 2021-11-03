@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BulgarianWines.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211019193248_Initial")]
+    [Migration("20211103162050_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -87,6 +87,9 @@ namespace BulgarianWines.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -141,6 +144,27 @@ namespace BulgarianWines.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("BulgarianWines.Data.Models.Availability", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Availabilities");
+                });
+
             modelBuilder.Entity("BulgarianWines.Data.Models.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -153,6 +177,15 @@ namespace BulgarianWines.Data.Migrations
 
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Icon")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -169,6 +202,38 @@ namespace BulgarianWines.Data.Migrations
                     b.HasIndex("IsDeleted");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("BulgarianWines.Data.Models.CategoryImage", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("CategoryImages");
                 });
 
             modelBuilder.Entity("BulgarianWines.Data.Models.Harvest", b =>
@@ -371,6 +436,38 @@ namespace BulgarianWines.Data.Migrations
                     b.ToTable("SlideImages");
                 });
 
+            modelBuilder.Entity("BulgarianWines.Data.Models.UserImage", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserImages");
+                });
+
             modelBuilder.Entity("BulgarianWines.Data.Models.Variety", b =>
                 {
                     b.Property<int>("Id")
@@ -436,6 +533,9 @@ namespace BulgarianWines.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("AvailabilityId")
+                        .HasColumnType("int");
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -476,6 +576,8 @@ namespace BulgarianWines.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AvailabilityId");
 
                     b.HasIndex("CategoryId");
 
@@ -598,6 +700,17 @@ namespace BulgarianWines.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("BulgarianWines.Data.Models.CategoryImage", b =>
+                {
+                    b.HasOne("BulgarianWines.Data.Models.Category", "Category")
+                        .WithMany("CategoryImages")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("BulgarianWines.Data.Models.Image", b =>
                 {
                     b.HasOne("BulgarianWines.Data.Models.ApplicationUser", "User")
@@ -626,8 +739,23 @@ namespace BulgarianWines.Data.Migrations
                     b.Navigation("HomePageSlide");
                 });
 
+            modelBuilder.Entity("BulgarianWines.Data.Models.UserImage", b =>
+                {
+                    b.HasOne("BulgarianWines.Data.Models.ApplicationUser", "User")
+                        .WithMany("UserImages")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("BulgarianWines.Data.Models.Wine", b =>
                 {
+                    b.HasOne("BulgarianWines.Data.Models.Availability", "Availability")
+                        .WithMany("Wines")
+                        .HasForeignKey("AvailabilityId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("BulgarianWines.Data.Models.Category", "Category")
                         .WithMany("Wines")
                         .HasForeignKey("CategoryId")
@@ -661,6 +789,8 @@ namespace BulgarianWines.Data.Migrations
                         .HasForeignKey("VolumeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Availability");
 
                     b.Navigation("Category");
 
@@ -733,10 +863,19 @@ namespace BulgarianWines.Data.Migrations
                     b.Navigation("Logins");
 
                     b.Navigation("Roles");
+
+                    b.Navigation("UserImages");
+                });
+
+            modelBuilder.Entity("BulgarianWines.Data.Models.Availability", b =>
+                {
+                    b.Navigation("Wines");
                 });
 
             modelBuilder.Entity("BulgarianWines.Data.Models.Category", b =>
                 {
+                    b.Navigation("CategoryImages");
+
                     b.Navigation("Wines");
                 });
 

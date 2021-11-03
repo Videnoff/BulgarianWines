@@ -27,10 +27,12 @@ span.customSelect.changed {
 }
 
 .customSelectInner {
-	background:url('../../image/themeimage/select-arrow-down.gif') no-repeat center right;
+	background:url('~/images/wined/select-arrow-down.gif') no-repeat center right;
 	width:100% !important;
 }
-.customSelectOpen .customSelectInner{ background:url('../../image/themeimage/select-arrow-up.gif') no-repeat center right; }
+.customSelectOpen .customSelectInner {
+	background: url('~/images/wined/select-arrow-up.gif') no-repeat center right;
+}
 
 #input-sort , #input-limit, #product .form-group select { cursor:pointer;}
 

@@ -142,6 +142,27 @@ namespace BulgarianWines.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("BulgarianWines.Data.Models.Availability", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Availabilities");
+                });
+
             modelBuilder.Entity("BulgarianWines.Data.Models.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -510,6 +531,9 @@ namespace BulgarianWines.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("AvailabilityId")
+                        .HasColumnType("int");
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -550,6 +574,8 @@ namespace BulgarianWines.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AvailabilityId");
 
                     b.HasIndex("CategoryId");
 
@@ -722,6 +748,12 @@ namespace BulgarianWines.Data.Migrations
 
             modelBuilder.Entity("BulgarianWines.Data.Models.Wine", b =>
                 {
+                    b.HasOne("BulgarianWines.Data.Models.Availability", "Availability")
+                        .WithMany("Wines")
+                        .HasForeignKey("AvailabilityId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("BulgarianWines.Data.Models.Category", "Category")
                         .WithMany("Wines")
                         .HasForeignKey("CategoryId")
@@ -755,6 +787,8 @@ namespace BulgarianWines.Data.Migrations
                         .HasForeignKey("VolumeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Availability");
 
                     b.Navigation("Category");
 
@@ -829,6 +863,11 @@ namespace BulgarianWines.Data.Migrations
                     b.Navigation("Roles");
 
                     b.Navigation("UserImages");
+                });
+
+            modelBuilder.Entity("BulgarianWines.Data.Models.Availability", b =>
+                {
+                    b.Navigation("Wines");
                 });
 
             modelBuilder.Entity("BulgarianWines.Data.Models.Category", b =>

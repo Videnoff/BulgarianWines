@@ -40,6 +40,7 @@
                               new HarvestsSeeder(),
                               new VarietiesSeeder(),
                               new OriginsSeeder(),
+                              new ProductsAvailabilitySeeder(),
                               new AdminSeeder(this.adminCredentials),
                           };
 

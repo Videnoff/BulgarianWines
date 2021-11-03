@@ -1,4 +1,4 @@
-﻿namespace BulgarianWines.Web.ViewModels.Wines
+﻿namespace BulgarianWines.Web.ViewModels.Administration.Wines
 {
     using System;
     using System.Collections.Generic;
@@ -39,8 +39,12 @@
 
         public IEnumerable<Category> Categories { get; set; }
 
+        [Required]
+        [Display(Name = "Select Availability")]
+        public int AvailabilityId { get; set; }
+
         [Display(Name = "Add Images")]
-        [ImageAttribute]
+        [Image]
         public IEnumerable<IFormFile> UploadedImages { get; set; }
 
         [Display(Name = "Is Deleted?")]
@@ -64,5 +68,7 @@
         public IEnumerable<KeyValuePair<string, string>> VarietyItems { get; set; }
 
         public IEnumerable<KeyValuePair<string, string>> OriginsItems { get; set; }
+
+        public IEnumerable<KeyValuePair<string, string>> AvailabilityItems { get; set; }
     }
 }

@@ -37,6 +37,10 @@
 
         public virtual Harvest Harvest { get; set; }
 
+        public int AvailabilityId { get; set; }
+
+        public virtual Availability Availability { get; set; }
+
         public virtual ICollection<Image> Images { get; set; }
 
         public string UserId { get; set; }

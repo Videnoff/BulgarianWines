@@ -7,8 +7,6 @@
     using BulgarianWines.Data.Common.Repositories;
     using BulgarianWines.Data.Models;
     using BulgarianWines.Services.Mapping;
-    using BulgarianWines.Web.Infrastructure.ExtensionMethods;
-    using BulgarianWines.Web.ViewModels.Wines;
     using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
 

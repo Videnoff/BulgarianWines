@@ -25,6 +25,7 @@
         private readonly IHarvestsService harvestsService;
         private readonly IVarietiesService varietiesService;
         private readonly IOriginsService originsService;
+        private readonly IAvailabilityService availabilityService;
         private readonly BlobServiceClient blobServiceClient;
         private readonly IWebHostEnvironment webHostEnvironment;
         private readonly IDeletableEntityRepository<Wine> winesRepository;
@@ -42,7 +43,7 @@
             BlobServiceClient blobServiceClient,
             IWebHostEnvironment webHostEnvironment,
             IDeletableEntityRepository<Wine> winesRepository,
-            ApplicationDbContext db)
+            ApplicationDbContext db, IAvailabilityService availabilityService)
         {
             this.categoriesService = categoriesService;
             this.winesService = winesService;
@@ -54,6 +55,7 @@
             this.webHostEnvironment = webHostEnvironment;
             this.winesRepository = winesRepository;
             this.db = db;
+            this.availabilityService = availabilityService;
 
             this.fullDirectoryPath = this.webHostEnvironment.WebRootPath + ProductsDirectoryPath;
         }
@@ -108,34 +110,11 @@
                 HarvestsItems = this.harvestsService.GetAllAsKeyValuePairs(),
                 VarietyItems = this.varietiesService.GetAllAsKeyValuePairs(),
                 OriginsItems = this.originsService.GetAllAsKeyValuePairs(),
+                AvailabilityItems = this.availabilityService.GetAllAsKeyValuePairs(),
             };
 
             return this.View(viewModel);
         }
-
-        // POST: Administration/Wines/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create([Bind("Name,Description,OriginId,ImageUrl,VarietyId,CategoryId,VolumeId,HarvestId,UserId,IsDeleted,DeletedOn,Id,CreatedOn,ModifiedOn")] Wine wine)
-        //{
-        //    if (this.ModelState.IsValid)
-        //    {
-        //        this.db.Add(wine);
-        //        await this.db.SaveChangesAsync();
-        //        return this.RedirectToAction(nameof(this.Index));
-        //    }
-
-        //    this.ViewData["CategoryId"] = new SelectList(this.db.Categories, "Id", "Id", wine.CategoryId);
-        //    this.ViewData["HarvestId"] = new SelectList(this.db.Harvests, "Id", "Id", wine.HarvestId);
-        //    this.ViewData["OriginId"] = new SelectList(this.db.Origins, "Id", "Id", wine.OriginId);
-        //    this.ViewData["UserId"] = new SelectList(this.db.Users, "Id", "Id", wine.UserId);
-        //    this.ViewData["VarietyId"] = new SelectList(this.db.Varieties, "Id", "Id", wine.VarietyId);
-        //    this.ViewData["VolumeId"] = new SelectList(this.db.Volumes, "Id", "Id", wine.VolumeId);
-
-        //    return this.View(wine);
-        //}
 
         [HttpPost]
         public async Task<IActionResult> Create(CreateWineInputModel input)
@@ -147,6 +126,7 @@
                 input.HarvestsItems = this.harvestsService.GetAllAsKeyValuePairs();
                 input.VarietyItems = this.varietiesService.GetAllAsKeyValuePairs();
                 input.OriginsItems = this.originsService.GetAllAsKeyValuePairs();
+                input.AvailabilityItems = this.availabilityService.GetAllAsKeyValuePairs();
 
                 return this.View(input);
             }
@@ -161,38 +141,6 @@
         // GET: Administration/Wines/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
-            //if (id == null)
-            //{
-            //    return this.NotFound();
-            //}
-
-            //var wine = await this.db.Wines.FindAsync(id);
-
-            //if (wine == null)
-            //{
-            //    return this.NotFound();
-            //}
-
-            //this.ViewData["CategoryId"] = new SelectList(this.db.Categories, "Id", "Id", wine.CategoryId);
-            //this.ViewData["HarvestId"] = new SelectList(this.db.Harvests, "Id", "Id", wine.HarvestId);
-            //this.ViewData["OriginId"] = new SelectList(this.db.Origins, "Id", "Id", wine.OriginId);
-            //this.ViewData["UserId"] = new SelectList(this.db.Users, "Id", "Id", wine.UserId);
-            //this.ViewData["VarietyId"] = new SelectList(this.db.Varieties, "Id", "Id", wine.VarietyId);
-            //this.ViewData["VolumeId"] = new SelectList(this.db.Volumes, "Id", "Id", wine.VolumeId);
-
-            //var categories = this.categoriesService.GetAll();
-            //var inputModel = this.winesService.GetById<EditProductViewModel>(id);
-
-            //if (inputModel == null)
-            //{
-            //    this.TempData["Error"] = "Product not found.";
-            //    return this.RedirectToAction(nameof(this.Index));
-            //}
-
-            //inputModel.Categories = categories;
-
-            //return this.View(inputModel);
-
             var product = this.winesService.GetById<EditProductViewModel>(id);
 
             if (product == null)
@@ -206,6 +154,7 @@
             product.HarvestsItems = this.harvestsService.GetAllAsKeyValuePairs();
             product.VarietyItems = this.varietiesService.GetAllAsKeyValuePairs();
             product.OriginsItems = this.originsService.GetAllAsKeyValuePairs();
+            product.AvailabilityItems = this.availabilityService.GetAllAsKeyValuePairs();
 
             return this.View(product);
         }

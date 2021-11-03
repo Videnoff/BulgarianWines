@@ -39,6 +39,10 @@
 
         public string CategoryName { get; set; }
 
+        public int AvailabilityId { get; set; }
+
+        public string AvailabilityStatus { get; set; }
+
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
