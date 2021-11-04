@@ -821,7 +821,7 @@ header {
 }
 
 #search .search_button {
-    background: url(../image/themeimage/header-search.svg) no-repeat scroll center center transparent;
+    background: url(../../images/wined/header-search.svg) no-repeat scroll center center transparent;
     background-size: 17px;
     border: medium none;
     color: #ffffff;
@@ -843,7 +843,7 @@ header {
 }
 
     #search .search_button:hover {
-        background: url(../image/themeimage/header-search-hover.svg) no-repeat scroll center center transparent;
+        background: url(../../images/wined/header-search-hover.svg) no-repeat scroll center center transparent;
         background-size: 17px;
         transition-duration: 300ms;
         -webkit-transition-duration: 300ms;
@@ -885,7 +885,7 @@ header {
         }
 
         #search .search_button {
-            background: url(../image/themeimage/header-search-1.svg) no-repeat scroll center center #ffffff;
+            background: url(../../images/wined/header-search-1.svg) no-repeat scroll center center #ffffff;
             background-size: 16px;
             display: inline-block;
             vertical-align: top;
@@ -1080,7 +1080,7 @@ header {
     }
 
     #cart .cart-icon {
-        background-image: url(../image/themeimage/header-cart.svg);
+        background-image: url(../../images/wined/header-cart.svg);
         background-repeat: no-repeat;
         position: relative;
         transition: all 300ms ease;
@@ -1100,7 +1100,7 @@ header {
     }
 
 .header .header-cart:hover #cart .cart-icon {
-    background-image: url(../image/themeimage/header-cart-hover.svg);
+    background-image: url(../../images/wined/header-cart-hover.svg);
     background-repeat: no-repeat;
     transition: all 300ms ease;
     -webkit-transition: all 300ms ease;
@@ -1250,7 +1250,7 @@ header {
 }
 
     .header-tele-cms .telephone {
-        background: url("../image/themeimage/call.html") no-repeat scroll 0 5px transparent;
+        background: url(../../images/wined/call.html) no-repeat scroll 0 5px transparent;
         float: left;
         height: 40px;
         width: 31px;
@@ -1635,7 +1635,7 @@ ul {
 }
 
 .main-menu > ul > li ul > li > a.activSub {
-    background-image: url(../image/themeimage/cat_arrow_hover.png);
+    background-image: url(../../images/wined/cat_arrow_hover.png);
     background-repeat: no-repeat;
     background-position: right center;
 }
@@ -2146,7 +2146,7 @@ ul {
 
     .vertical-category .top_level a:before {
         content: "";
-        background-image: url(../image/themeimage/vertical-arrow.svg);
+        background-image: url(../../images/wined/vertical-arrow.svg);
         background-repeat: no-repeat;
         display: inline-block;
         vertical-align: top;
@@ -2164,7 +2164,7 @@ ul {
 
     .vertical-category .top_level a:hover:before {
         content: "";
-        background-image: url(../image/themeimage/vertical-arrow-hover.svg);
+        background-image: url(../../images/wined/vertical-arrow-hover.svg);
         background-repeat: no-repeat;
         margin: 6px 5px 0 0;
         transition-duration: 300ms;
@@ -2278,7 +2278,7 @@ ul {
     width: 100%;
     height: 100%;
     z-index: 9;
-    background: url(../image/themeimage/category_load.gif) 50% 50% no-repeat #fff;
+    background: url(../../images/wined/category_load.gif) 50% 50% no-repeat #fff;
 }
 
 .category_tab .nav-tabs {
@@ -3086,7 +3086,7 @@ ul.dropmenu {
 }
 
 .box .box-content ul li ul li:hover > a.activSub, .box .box-content ul li:hover > a.activSub {
-    background: rgba(0, 0, 0, 0) url("../image/themeimage/menu-hover-arrow.jpg") no-repeat scroll 209px 1px;
+    background: rgba(0, 0, 0, 0) url("../../images/wined/menu-hover-arrow.jpg") no-repeat scroll 209px 1px;
     margin-right: -12px;
 }
 
@@ -3779,7 +3779,7 @@ ul.dropmenu {
         display: inline-block;
         vertical-align: top;
         font-size: 0;
-        background-image: url(../image/themeimage/wish-list.svg);
+        background-image: url(../../images/wined/wish-list.svg);
         background-repeat: no-repeat;
         transition-duration: 300ms;
         -webkit-transition-duration: 300ms;
@@ -3794,7 +3794,7 @@ ul.dropmenu {
     }
 
     #wish-list:hover .wish-image {
-        background-image: url(../image/themeimage/wish-list-hover.svg);
+        background-image: url(../../images/wined/wish-list-hover.svg);
         background-repeat: no-repeat;
         -webkit-transition-duration: 300ms;
         -moz-transition-duration: 300ms;
@@ -5910,27 +5910,27 @@ ul.dropmenu {
 }
 
 .footer-social .social-item:nth-child(1) .social-icon {
-    background-image: url(../image/themeimage/social-1.svg);
+    background-image: url(../../images/wined/social-1.svg);
 }
 
 .footer-social .social-item:hover:nth-child(1) .social-icon {
-    background-image: url(../image/themeimage/social-1-hover.svg);
+    background-image: url(../../images/wined/social-1-hover.svg);
 }
 
 .footer-social .social-item:nth-child(2) .social-icon {
-    background-image: url(../image/themeimage/social-2.svg);
+    background-image: url(../../images/wined/social-2.svg);
 }
 
 .footer-social .social-item:hover:nth-child(2) .social-icon {
-    background-image: url(../image/themeimage/social-2-hover.svg);
+    background-image: url(../../images/wined/social-2-hover.svg);
 }
 
 .footer-social .social-item:nth-child(3) .social-icon {
-    background-image: url(../image/themeimage/social-3.svg);
+    background-image: url(../../images/wined/social-3.svg);
 }
 
 .footer-social .social-item:hover:nth-child(3) .social-icon {
-    background-image: url(../image/themeimage/social-3-hover.svg);
+    background-image: url(../../images/wined/social-3-hover.svg);
 }
 
 .social-right {
@@ -6403,7 +6403,7 @@ footer hr {
     }
 
         #bottomfooter > ul > li {
-            background: url("../image/themeimage/header_top_links_pipe.jpg") no-repeat scroll right 13px transparent;
+            background: url("../../images/wined/header_top_links_pipe.jpg") no-repeat scroll right 13px transparent;
             display: inline;
             font-size: 13px;
             padding: 10px 12px 3px 8px;
@@ -6509,7 +6509,7 @@ footer hr {
 }
 
 .newsletter .newsletter-image {
-    background-image: url(../image/themeimage/news-letter.svg);
+    background-image: url(../../images/wined/news-letter.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 50px;
@@ -6799,7 +6799,7 @@ footer hr {
 /* breadcrumb */
 #breadcrumb {
     margin: 0 0 40px;
-    background: url(../image/themeimage/breadcum.jpg);
+    background: url(../../images/wined/breadcum.jpg);
     background-position: center;
 }
 
@@ -7608,7 +7608,7 @@ h2.price {
 }
 
 .product-thumb .wishlist {
-    background-image: url(~/images/wined/product-wishlist.svg);
+    background-image: url(../../images/wined/product-wishlist.svg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 20px;
@@ -7659,7 +7659,7 @@ h2.price {
 }
 
 .product-thumb .compare {
-    background-image: url(~/images/wined/product-compare.svg);
+    background-image: url(../../images/wined/product-compare.svg);
     background-repeat: no-repeat;
     background-position: center;
     padding: 0;
@@ -11807,4 +11807,29 @@ html body.common-home.layout-1 div#gattinara.tab-pane.active div.product-block-w
 html body.common-home.layout-1 div#gattinara.tab-pane.active div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-12.col-md-12.col-sm-12.col-xs-12 div.product-block.product-thumb.transition div.product-block-inner {
     width: 290px;
     height: 392px;
+}
+
+html body.common-home.layout-1 div.productpage div#product-product.container div.row div#content.col-sm-12.productpage div.row div.col-sm-8.product-left {
+    width: 436.5px;
+    height: 508.5px;
+}
+
+html body.common-home.layout-1 div.productpage div#product-product.container div.row div#content.col-sm-12.productpage div.row div.col-sm-8.product-left div.product-info {
+    width: 406.5px;
+    height: 508.5px;
+}
+
+html body.product-product-40.layout-1 div.productpage div#product-product.container div.row div#content.col-sm-12.productpage div.row div.col-sm-8.product-left div.product-info div.left.product-image.thumbnails {
+    width: 406.5px;
+    height: 508.5px;
+}
+
+html body.common-home.layout-1 div.productpage div#product-product.container div.row div#content.col-sm-12.productpage div.row div.col-sm-8.product-left div.product-info div.left.product-image.thumbnails div.image {
+    width: 406.5px;
+    height: 406.5px;
+}
+
+html body.common-home.layout-1 div.productpage div#product-product.container div.row div#content.col-sm-12.productpage div.row div.col-sm-8.product-left div.product-info div.left.product-image.thumbnails div.image a.thumbnail img#tmzoom {
+    width: 406.5px;
+    height: 406.5px;
 }
