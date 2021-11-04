@@ -62,7 +62,18 @@
 <body class="product-product-51   layout-1">
     <div id="breadcrumb">
         <div class="container">
-
+            <ul class="breadcrumb">
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Index">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Categories" asp-action="Products" asp-route-categoryId="@Model.CategoryId">
+                        @Model.CategoryName.ToString().ToUpper()
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
     <!-- ======= Quick view JS ========= -->
