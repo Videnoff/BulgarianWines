@@ -462,7 +462,7 @@ div.required .control-label:before {
         font-size: 0;
         cursor: pointer;
         background: transparent;
-        background-image: url(../image/themeimage/user-info-icon.svg);
+        background-image: url(../../images/wined/user-info-icon.svg);
         background-repeat: no-repeat;
         transition-duration: 300ms;
         -webkit-transition-duration: 300ms;
@@ -477,7 +477,7 @@ div.required .control-label:before {
     }
 
         .user-info-image:hover {
-            background-image: url(../image/themeimage/user-info-icon-hover.svg);
+            background-image: url(../../images/wined/user-info-icon-hover.svg);
             background-repeat: no-repeat;
             transition-duration: 300ms;
             -webkit-transition-duration: 300ms;
@@ -600,7 +600,7 @@ header {
 }
 
 .header-search {
-    background-image: url(../image/themeimage/header-search.svg);
+    background-image: url(../../images/wined/header-search.svg);
     background-size: 20px auto;
     -webkit-background-size: 20px;
     -moz-background-size: 20px;
@@ -621,7 +621,7 @@ header {
 }
 
     .header-search:hover {
-        background-image: url("../image/themeimage/header-search-hover.svg");
+        background-image: url(../../images/wined/header-search-hover.svg);
         transition-duration: 300ms;
         -webkit-transition-duration: 300ms;
         -moz-transition-duration: 300ms;
@@ -630,7 +630,7 @@ header {
     }
 
     .header-search.active {
-        background-image: url(../image/themeimage/header-close.svg);
+        background-image: url(../../images/wined/header-close.svg);
         background-size: 15px auto;
         -webkit-background-size: 15px auto;
         -moz-background-size: 15px auto;
@@ -646,7 +646,7 @@ header {
     }
 
         .header-search.active:hover {
-            background-image: url("../image/themeimage/header-close-hover.svg");
+            background-image: url(../../images/wined/header-close-hover.svg);
             transition-duration: 300ms;
             -webkit-transition-duration: 300ms;
             -moz-transition-duration: 300ms;
@@ -7556,7 +7556,7 @@ h2.price {
 }
 
 .product-thumb .addtocart {
-    background-image: url(../image/themeimage/product-addtocart.svg);
+    background-image: url(../../images/wined/product-addtocart.svg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 20px;
@@ -7590,7 +7590,7 @@ h2.price {
 }
 
 .product-thumb .addtocart:hover {
-    background-image: url(../image/themeimage/product-addtocart-hover.svg);
+    background-image: url(../../images/wined/product-addtocart-hover.svg);
     background-repeat: no-repeat;
     background-position: center center;
     background-color: #BC4857;
@@ -7608,7 +7608,7 @@ h2.price {
 }
 
 .product-thumb .wishlist {
-    background-image: url(../image/themeimage/product-wishlist.svg);
+    background-image: url(~/images/wined/product-wishlist.svg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 20px;
@@ -7647,7 +7647,7 @@ h2.price {
 }
 
 .product-thumb .wishlist:hover {
-    background-image: url(../image/themeimage/product-wishlist-hover.svg);
+    background-image: url(../../images/wined/product-wishlist-hover.svg);
     background-repeat: no-repeat;
     background-position: center center;
     background-color: #BC4857;
@@ -7659,7 +7659,7 @@ h2.price {
 }
 
 .product-thumb .compare {
-    background-image: url(../image/themeimage/product-compare.svg);
+    background-image: url(~/images/wined/product-compare.svg);
     background-repeat: no-repeat;
     background-position: center;
     padding: 0;
@@ -7693,7 +7693,7 @@ h2.price {
 }
 
 .product-thumb .compare:hover {
-    background-image: url(../image/themeimage/product-compare-hover.svg);
+    background-image: url(../../images/wined/product-compare-hover.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-color: #BC4857;
@@ -7935,7 +7935,7 @@ h2.price {
 }
 
     .product-thumb .quickview a {
-        background-image: url(../image/themeimage/product-view.svg);
+        background-image: url(../../images/wined/product-view.svg);
         background-repeat: no-repeat;
         background-position: center center;
         background-size: 20px;
@@ -7967,7 +7967,7 @@ h2.price {
 }
 
 .product-thumb .quickview a:hover {
-    background-image: url(../image/themeimage/product-view-hover.svg);
+    background-image: url(../../images/wined/product-view-hover.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-color: #BC4857;
@@ -9121,28 +9121,27 @@ h2.price {
 }
 
 .image1 {
-    background: url("../image/themeimage/cms-sprite.png") no-repeat scroll 7px -165px;
+    background: url(../../images/wined/cms-sprite.png) no-repeat scroll 7px -165px;
     float: left;
     height: 50px;
     width: 60px;
 }
 
 .image2 {
-    background: url("../image/themeimage/cms-sprite.png") no-repeat scroll 7px -116px;
-    float: left;
+    background: url(../../images/wined/cms-sprite.png) no-repeat scroll 7px -116px; float: left;
     height: 50px;
     width: 60px;
 }
 
 .image3 {
-    background: url("../image/themeimage/cms-sprite.png") no-repeat scroll 7px -52px;
+    background: url(../../images/wined/cms-sprite.png) no-repeat scroll 7px -52px;
     float: left;
     height: 50px;
     width: 60px;
 }
 
 .image4 {
-    background: url("../image/themeimage/cms-sprite.png") no-repeat scroll 7px 6px;
+    background: url(../../images/wined/cms-sprite.png) no-repeat scroll 7px 6px;
     float: left;
     height: 50px;
     width: 60px;
@@ -9173,11 +9172,11 @@ h2.price {
 }
  */
 .category_filter .btn-list-grid .btn-group .grid:hover, .category_filter .btn-list-grid .btn-group .grid.active {
-    background: url("../image/themeimage/sprite.png") no-repeat scroll 5px -138px transparent;
+    background: url(../../images/wined/sprite.png) no-repeat scroll 5px -138px transparent;
 }
 
 .category_filter .btn-list-grid .btn-group .list {
-    background: url("../image/themeimage/sprite.png") no-repeat scroll -30px -173px transparent;
+    background: url(../../images/wined/sprite.png) no-repeat scroll -30px -173px transparent;
     border: medium none;
     box-shadow: none;
     -webkit-box-shadow: none;
@@ -9191,11 +9190,11 @@ h2.price {
 }
 
     .category_filter .btn-list-grid .btn-group .list:hover, .category_filter .btn-list-grid .btn-group .list.active {
-        background: url("../image/themeimage/sprite.png") no-repeat scroll -30px -138px transparent;
+        background: url(../../images/wined/sprite.png) no-repeat scroll -30px -138px transparent;
     }
 
 .category_filter .btn-list-grid .btn-group .grid {
-    background: url("../image/themeimage/sprite.png") no-repeat scroll 5px -173px transparent;
+    background: url(../../images/wined/sprite.png) no-repeat scroll 5px -173px transparent;
     border: medium none;
     box-shadow: none;
     -webkit-box-shadow: none;
@@ -10531,7 +10530,7 @@ h2.price {
     }
 
     .box .box-content ul li ul li:hover > a.activSub, .box .box-content ul li:hover > a.activSub {
-        background: url("../image/themeimage/menu-hover-arrow.jpg") no-repeat scroll 146px 1px transparent;
+        background: url(../../images/wined/menu-hover-arrow.jpg) no-repeat scroll 146px 1px transparent;
     }
 }
 
@@ -11783,4 +11782,29 @@ html body.common-home.layout-1 div#common-home div.content-top div#content1 div#
 li.card:nth-child(6) > a:nth-child(1) > div:nth-child(1) > div:nth-child(1) > h5:nth-child(1) {
     width: 200px;
     height: 200px;
+}
+
+.img.main-img.img-fluid {
+    width: 50px;
+    height: 50px;
+}
+
+html body.common-home.layout-1 div#gattinara.tab-pane.active div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-12.col-md-12.col-sm-12.col-xs-12 div.product-block.product-thumb.transition div.product-block-inner div.image {
+    width: 290px;
+    height: 293.05px;
+}
+
+    html body.common-home.layout-1 div#gattinara.tab-pane.active div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-12.col-md-12.col-sm-12.col-xs-12 div.product-block.product-thumb.transition div.product-block-inner div.image a img.img-responsive.reg-image {
+        width: 290px;
+        height: 293.05px;
+    }
+
+    html body.common-home.layout-1 div#gattinara.tab-pane.active div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-12.col-md-12.col-sm-12.col-xs-12 div.product-block.product-thumb.transition div.product-block-inner div.image a img.img-responsive.hover-image {
+        width: 290px;
+        height: 293.05px;
+    }
+
+html body.common-home.layout-1 div#gattinara.tab-pane.active div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-12.col-md-12.col-sm-12.col-xs-12 div.product-block.product-thumb.transition div.product-block-inner {
+    width: 290px;
+    height: 392px;
 }

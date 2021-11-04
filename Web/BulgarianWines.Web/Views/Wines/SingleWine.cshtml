@@ -3,16 +3,7 @@
     this.ViewData["Title"] = Model.Name;
 }
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>
-        @ViewData["Title"]
-    </title>
-    <base />
-    <script src="~/js/wined/jquery/jquery-2.1.1.min.js" asp-append-version="true"></script>
-    <!-- <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" /> -->
-    <script src="~/js/wined/bootstrap/js/bootstrap.min.js" asp-append-version="true"></script>
+    <link href="~/css/wined/themecss/bootstrap.min.css" rel="stylesheet" media="screen" />
     <link href="~/js/wined/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" asp-append-version="true" />
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
@@ -42,16 +33,16 @@
     <script src="~/js/wined/jquery/datetimepicker/bootstrap-datetimepicker.min.js" asp-append-version="true"></script>
     <script src="~/js/wined/common.js" asp-append-version="true"></script>
     <link href="index52a0.html?route=product/product&amp;product_id=51" rel="canonical" />
-    <link href="~/images/wined/cart.png" rel="icon" />
+    @*<link href="~/images/wined/cart.png" rel="icon" />*@
     <!-- Theme Start -->
 
-    <script type="text/javascript" src="~/js/wined/themejs/custom.js"></script>
-    <script type="text/javascript" src="~/js/wined/themejs/jstree.min.js"></script>
-    <script type="text/javascript" src="~/js/wined/themejs/carousel.min.js"></script>
-    <script type="text/javascript" src="~/js/wined/themejs/productcarosel.min.js"></script>
-    <script type="text/javascript" src="~/js/wined/themejs/jquery.custom.min.js"></script>
-    <script type="text/javascript" src="~/js/wined/themejs/jquery.formalize.min.js"></script>
-    <script type="text/javascript" src="~/js/wined/themejs/jquery.elevatezoom.min.js"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/custom.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jstree.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/carousel.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/productcarosel.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jquery.custom.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jquery.formalize.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jquery.elevatezoom.min.js" asp-append-version="true"></script>
     <script type="text/javascript" src="~/js/wined/themejs/bootstrap-notify.min.js"></script>
     <script type="text/javascript" src="~/js/wined/jquery/magnific/jquery.magnific-popup.min.js"></script>
     <script type="text/javascript" src="~/js/wined/themejs/owl.carousel.min.js"></script>
@@ -127,16 +118,20 @@
 
                                     <div class="additional-carousel">
                                         <div class="customNavigation">
-                                            <span class="prev">&nbsp;</span>
-                                            <span class="next">&nbsp;</span>
+                                            <span class="prev">
+                                                &nbsp;
+                                            </span>
+                                            <span class="next">
+                                                &nbsp;
+                                            </span>
                                         </div>
 
                                         <div id="additional-carousel" class="image-additional product-carousel">
 
                                             <div class="slider-item">
                                                 <div class="product-block">
-                                                    <a href="image/cache/catalog/demo/product/1-686x686.jpg" title="aenean dignissim" class="elevatezoom-gallery" data-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/1-485x485.jpg" data-zoom-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/1-686x686.jpg">
-                                                        <img src="image/cache/catalog/demo/product/1-485x485.jpg" width="74" height="74" title="aenean dignissim" alt="aenean dignissim" />
+                                                    <a title="@Model.Name" class="elevatezoom-gallery" data-image="@Model.ImageUrl" data-zoom-image="@Model.ImageUrl">
+                                                        <img src="@Model.ImageUrl" width="74" height="74" title="@Model.Name" alt="@Model.Name" />
                                                     </a>
                                                 </div>
                                             </div>
@@ -433,9 +428,9 @@
                                             <div class="product-block product-thumb transition">
                                                 <div class="product-block-inner">
                                                     <!-- <div class="image">
-                                                                    <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/product&amp;product_id=30 "><img src="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/16-380x384.jpg " alt="elementum urna " title="elementum urna " class="img-responsive" /></a>
+                                                        <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/product&amp;product_id=30 "><img src="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/16-380x384.jpg " alt="elementum urna " title="elementum urna " class="img-responsive" /></a>
 
-                                                                                                            </div> -->
+                                                    </div> -->
 
 
                                                     <div class="image">
@@ -445,7 +440,7 @@
                                                         </a>
 
                                                         <!--
-                                                         -->
+                                                        -->
 
                                                         <div class="button-group">
                                                             <button type="button" data-placement="right" title="Add to cart" class="addtocart" onclick="cart.add('30 ');">Add to Cart</button>
@@ -500,6 +495,15 @@
             </div>
         </div>
     </div>
+
+    <div class="zoomContainer" style="-webkit-transform: translateZ(0); position: absolute; left: 132px; top: 259px; height: 407px; width: 407px;">
+        <div class="zoomWindowContainer" style="width: 450px;">
+            <div style="z-index: 999; overflow: hidden; margin-left: 0px; margin-top: 0px; background-position: -279px -54.3821px; width: 407px; height: 407px; float: left; cursor: crosshair; background-repeat: no-repeat; position: absolute; background-image: url(&quot;@Model.ImageUrl&quot;); top: 0px; left: 0px; display: none;" class="zoomWindow">
+                &nbsp;
+            </div>
+        </div>
+    </div>
+
     <script type="text/javascript">
 <!--
         $('select[name=\'recurring_id\'], input[name="quantity"]').change(function () {
@@ -728,15 +732,15 @@
             });
         });
 
-        //$(document).ready(function() {
-        //	$('.thumbnails').magnificPopup({
-        //		type:'image',
-        //		delegate: 'a',
-        //		gallery: {
-        //			enabled: true
-        //		}
-        //	});
-        //});
+        $(document).ready(function () {
+            $('.thumbnails').magnificPopup({
+                type: 'image',
+                delegate: 'a',
+                gallery: {
+                    enabled: true
+                }
+            });
+        });
 
 
         $(document).ready(function () {
@@ -749,21 +753,21 @@
                     zoomType: "inner",
                     cursor: "crosshair"
 
-                    /*//tint
+                    //tint
 
-                    tint:true,
-                    tintColour:'#F90',
-                    tintOpacity:0.5
+                    tint: true,
+                    tintColour: '#F90',
+                    tintOpacity: 0.5
 
                     //lens zoom
 
-                    zoomType : "lens",
-                    lensShape : "round",
-                    lensSize : 200
+                    zoomType: "lens",
+                    lensShape: "round",
+                    lensSize: 200
 
                     //Mousewheel zoom
 
-                    scrollZoom : true*/
+                    scrollZoom: true
 
 
                 });
@@ -811,4 +815,5 @@
             });
         });
     </script>
+
 </body>
