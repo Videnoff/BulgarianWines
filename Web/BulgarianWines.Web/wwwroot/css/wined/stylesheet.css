@@ -11833,3 +11833,39 @@ html body.common-home.layout-1 div.productpage div#product-product.container div
     width: 406.5px;
     height: 406.5px;
 }
+
+html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div.tabs div.product-block-wrapper {
+    width: 320px;
+    height: 0px;
+}
+
+html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div.tabs div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
+    width: 320px;
+    height: 422.05px;
+}
+
+html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div.tabs div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-12.col-md-12.col-sm-12.col-xs-12 div.product-block.product-thumb.transition {
+    width: 320px;
+    height: 407.05px;
+}
+
+html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div.tabs div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-12.col-md-12.col-sm-12.col-xs-12 div.product-block.product-thumb.transition div.product-block-inner {
+    width: 290px;
+    height: 392.05px;
+}
+
+html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div.tabs div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-12.col-md-12.col-sm-12.col-xs-12 div.product-block.product-thumb.transition div.product-block-inner div.image {
+    width: 290px;
+    height: 293.05px;
+}
+
+
+html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div.tabs div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-12.col-md-12.col-sm-12.col-xs-12 div.product-block.product-thumb.transition div.product-block-inner div.image a {
+    width: 290px;
+    height: 293.05px;
+}
+
+html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div.tabs div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-12.col-md-12.col-sm-12.col-xs-12 div.product-block.product-thumb.transition div.product-block-inner div.image a img {
+    width: 290px;
+    height: 293.05px;
+}

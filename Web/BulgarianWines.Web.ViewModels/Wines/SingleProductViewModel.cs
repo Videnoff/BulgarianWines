@@ -1,6 +1,6 @@
 ﻿namespace BulgarianWines.Web.ViewModels.Wines
 {
-    using System;
+    using System.Collections.Generic;
     using System.Linq;
 
     using AutoMapper;
@@ -33,6 +33,8 @@
 
         public string Description { get; set; }
 
+        public IEnumerable<Image> WineImages { get; set; }
+
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Wine, SingleProductViewModel>()
@@ -40,7 +42,10 @@
                     opt.MapFrom(x =>
                         x.Images.FirstOrDefault().ImageUrl != null
                             ? x.Images.FirstOrDefault().ImageUrl
-                            : "/images/wines/" + x.Images.FirstOrDefault().Id + "." + x.Images.FirstOrDefault()));
+                            : "/images/wines/" + x.Images.FirstOrDefault().Id + "." + x.Images.FirstOrDefault()))
+                .ForMember(
+                    x => x.WineImages,
+                    opt => opt.MapFrom(x => x.Images));
         }
     }
 }

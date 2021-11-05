@@ -3,7 +3,7 @@
     this.ViewData["Title"] = Model.Name;
 }
 <head>
-    <link href="~/css/wined/themecss/bootstrap.min.css" rel="stylesheet" media="screen" />
+    <link href="~/css/wined/themecss/bootstrap.min.css" rel="stylesheet" media="screen" asp-append-version="true" />
     <link href="~/js/wined/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" asp-append-version="true" />
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
@@ -43,17 +43,17 @@
     <script type="text/javascript" src="~/js/wined/themejs/jquery.custom.min.js" asp-append-version="true"></script>
     <script type="text/javascript" src="~/js/wined/themejs/jquery.formalize.min.js" asp-append-version="true"></script>
     <script type="text/javascript" src="~/js/wined/themejs/jquery.elevatezoom.min.js" asp-append-version="true"></script>
-    <script type="text/javascript" src="~/js/wined/themejs/bootstrap-notify.min.js"></script>
-    <script type="text/javascript" src="~/js/wined/jquery/magnific/jquery.magnific-popup.min.js"></script>
-    <script type="text/javascript" src="~/js/wined/themejs/owl.carousel.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="~/js/wined/jquery/magnific/magnific-popup.css" />
-    <script src="~/js/wined/themejs/tabs.js"></script>
-    <script type="text/javascript" src="~/js/wined/jquery.countdown.js"></script>
-    <script type="text/javascript" src="~/js/wined/jquery.countdown.min.js"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/bootstrap-notify.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/jquery/magnific/jquery.magnific-popup.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/owl.carousel.min.js" asp-append-version="true"></script>
+    <link rel="stylesheet" type="text/css" href="~/js/wined/jquery/magnific/magnific-popup.css" asp-append-version="true" />
+    <script src="~/js/wined/themejs/tabs.js" asp-append-version="true" ></script>
+    <script type="text/javascript" src="~/js/wined/jquery.countdown.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/jquery.countdown.min.js" asp-append-version="true"></script>
     <!-- Theme End -->
 
-    <script src="~/js/wined/common.js"></script>
-    <script src="~/js/wined/themejs/parallax.js"></script>
+    <script src="~/js/wined/common.js" asp-append-version="true"></script>
+    <script src="~/js/wined/themejs/parallax.js" asp-append-version="true"></script>
 
 
 </head>
@@ -138,64 +138,22 @@
                                         </div>
 
                                         <div id="additional-carousel" class="image-additional product-carousel">
-
-                                            <div class="slider-item">
-                                                <div class="product-block">
-                                                    <a title="@Model.Name" class="elevatezoom-gallery" data-image="@Model.ImageUrl" data-zoom-image="@Model.ImageUrl">
-                                                        <img src="@Model.ImageUrl" width="74" height="74" title="@Model.Name" alt="@Model.Name" style="max-height: 100%; max-width: 100%" />
-                                                    </a>
+                                            @foreach (var image in @Model.WineImages)
+                                            {
+                                                <div class="slider-item">
+                                                    <div class="product-block">
+                                                        <a @image.ImageUrl title="@Model.Name" class="elevatezoom-gallery" data-image="@image.ImageUrl" data-zoom-image="@image.ImageUrl">
+                                                            <img src="@image.ImageUrl" width="74" height="74" title="@Model.Name" alt="@Model.Name"/>
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                            </div>
-
-                                            <div class="slider-item">
-                                                <div class="product-block">
-                                                    <a href="image/cache/catalog/demo/product/15-686x686.jpg" title="aenean dignissim" class="elevatezoom-gallery" data-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/15-485x485.jpg" data-zoom-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/15-686x686.jpg">
-                                                        <img src="image/cache/catalog/demo/product/15-485x485.jpg" width="74" height="74" title="aenean dignissim" alt="aenean dignissim" />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="slider-item">
-                                                <div class="product-block">
-                                                    <a href="image/cache/catalog/demo/product/14-686x686.jpg" title="aenean dignissim" class="elevatezoom-gallery" data-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/14-485x485.jpg" data-zoom-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/14-686x686.jpg">
-                                                        <img src="image/cache/catalog/demo/product/14-485x485.jpg" width="74" height="74" title="aenean dignissim" alt="aenean dignissim" />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="slider-item">
-                                                <div class="product-block">
-                                                    <a href="image/cache/catalog/demo/product/13-686x686.jpg" title="aenean dignissim" class="elevatezoom-gallery" data-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/13-485x485.jpg" data-zoom-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/13-686x686.jpg">
-                                                        <img src="image/cache/catalog/demo/product/13-485x485.jpg" width="74" height="74" title="aenean dignissim" alt="aenean dignissim" />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="slider-item">
-                                                <div class="product-block">
-                                                    <a href="image/cache/catalog/demo/product/10-686x686.jpg" title="aenean dignissim" class="elevatezoom-gallery" data-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/10-485x485.jpg" data-zoom-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/10-686x686.jpg">
-                                                        <img src="image/cache/catalog/demo/product/10-485x485.jpg" width="74" height="74" title="aenean dignissim" alt="aenean dignissim" />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="slider-item">
-                                                <div class="product-block">
-                                                    <a href="image/cache/catalog/demo/product/11-686x686.jpg" title="aenean dignissim" class="elevatezoom-gallery" data-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/11-485x485.jpg" data-zoom-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/11-686x686.jpg">
-                                                        <img src="image/cache/catalog/demo/product/11-485x485.jpg" width="74" height="74" title="aenean dignissim" alt="aenean dignissim" />
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="slider-item">
-                                                <div class="product-block">
-                                                    <a href="image/cache/catalog/demo/product/12-686x686.jpg" title="aenean dignissim" class="elevatezoom-gallery" data-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/12-485x485.jpg" data-zoom-image="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/12-686x686.jpg">
-                                                        <img src="image/cache/catalog/demo/product/12-485x485.jpg" width="74" height="74" title="aenean dignissim" alt="aenean dignissim" />
-                                                    </a>
-                                                </div>
-                                            </div>
+                                            }
                                         </div>
                                         <span class="additional_default_width" style="display:none; visibility:hidden"></span>
                                     </div>
                                     <!-- Cloud-Zoom Image Effect End-->
                                 </div>
                             </div>
-
                         </div>
                         <div class="col-sm-4 product-right">
                             <div class="product-right-inner">
@@ -507,9 +465,9 @@
         </div>
     </div>
 
-    <div class="zoomContainer" style="-webkit-transform: translateZ(0); position: absolute; left: 132px; top: 259px; height: 407px; width: 407px;">
+    <div class="zoomContainer" style="-webkit-transform: translateZ(0); position: absolute; left: 132px; top: 259px; height: 485px; width: 485px;">
         <div class="zoomWindowContainer" style="width: 450px;">
-            <div style="z-index: 999; overflow: hidden; margin-left: 0px; margin-top: 0px; background-position: -279px -54.3821px; width: 407px; height: 407px; float: left; cursor: crosshair; background-repeat: no-repeat; position: absolute; background-image: url(&quot;@Model.ImageUrl&quot;); top: 0px; left: 0px; display: none;" class="zoomWindow">
+            <div class="zoomWindow" style='z-index: 999; overflow: hidden; margin-left: 0px; margin-top: 0px; background-position: -201px -125.253px; width: 485px; height: 485px; float: left; cursor: crosshair; background-repeat: no-repeat; position: absolute; background-image: url(@Model.ImageUrl); top: 0px; left: 0px; display: none;'>
                 &nbsp;
             </div>
         </div>
@@ -711,11 +669,11 @@
             $('#review').fadeIn('slow');
         });
 
-        $('#review').load('indexbe0f.html?route=product/product/review&amp;product_id=51');
+        $('#review').load('indexbe0f.html?route=product/product/review&amp;@Model.Id');
 
         $('#button-review').on('click', function () {
             $.ajax({
-                url: 'index.php?route=product/product/write&product_id=51',
+                url: '@Model.Id',
                 type: 'post',
                 dataType: 'json',
                 data: $("#form-review").serialize(),
@@ -762,19 +720,19 @@
                     //inner zoom
 
                     zoomType: "inner",
-                    cursor: "crosshair"
+                    cursor: "crosshair",
 
                     //tint
 
                     tint: true,
                     tintColour: '#F90',
-                    tintOpacity: 0.5
+                    tintOpacity: 0.5,
 
                     //lens zoom
 
                     zoomType: "lens",
                     lensShape: "round",
-                    lensSize: 200
+                    lensSize: 200,
 
                     //Mousewheel zoom
 

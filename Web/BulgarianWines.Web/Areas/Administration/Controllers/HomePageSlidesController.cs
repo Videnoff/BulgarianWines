@@ -15,7 +15,8 @@
         private readonly IHomePageSlidesService homePageSlidesService;
         private readonly IDeletableEntityRepository<HomePageSlide> homePageSlidesRepository;
 
-        public HomePageSlidesController(IHomePageSlidesService homePageSlidesService,
+        public HomePageSlidesController(
+            IHomePageSlidesService homePageSlidesService,
             IDeletableEntityRepository<HomePageSlide> homePageSlidesRepository)
         {
             this.homePageSlidesService = homePageSlidesService;
