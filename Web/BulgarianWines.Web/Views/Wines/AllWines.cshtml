@@ -11,6 +11,23 @@
 
 <hr />
 
+<div id="breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li>
+                <a asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="fa fa-home"></i>
+                </a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="Wines" asp-action="AllWines">
+                    @this.ViewData["Title"].ToString().ToUpper()
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
 <div id="Tab_Category_Slider" class="category_tab box">
     <div class="container">
         <div class="title-wrapper">
@@ -18,77 +35,97 @@
                 @this.ViewData["Title"]
             </div>
         </div>
+        <div class="tab-pane active" id="gattinara">
+            <div class="owl-carousel owl-demo-tabcate owl-theme" style="opacity: 1; display: block">
+                <div class="owl-wrapper-outer">
+                    <div class="owl-wrapper" style="width: 4480px; left: 0px; display: block;">
+                        <div class="owl-item" style="width: 930px;">
+                            <div class="product-block-wrapper">
+                                <div class="item text-center product-innerblock">
+                                    @foreach (var product in @Model.Wines)
+                                    {
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                            <div class="product-block product-thumb transition">
+                                                <div class="product-block-inner">
+                                                    <div class="image">
+                                                        <a asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.Id">
+                                                            <img class="img-responsive reg-image" src="@product.ImageUrl." title="@product.Name" alt="@product.Name" style="max-height: 100%; max-width: 100%" />
+                                                            <img class="img-responsive hover-image" src="@product.ImageUrl" title="@product.Name" alt="@product.Name" style="max-height: 100%; max-width: 100%" />
+                                                        </a>
 
-        @foreach (var product in @Model.Wines)
-        {
-            <div class="tab-pane active" id="gattinara">
-                <div class="product-block-wrapper">
-                    <div class="item text-center product-innerblock">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="product-block product-thumb transition">
-                                <div class="product-block-inner">
-                                    <div class="image">
-                                        <a asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.Id">
-                                            <img class="img-responsive reg-image" src="@product.ImageUrl." title="@product.Name" alt="@product.Name" style="max-height: 100%; max-width: 100%" />
-                                            <img class="img-responsive hover-image" src="@product.ImageUrl" title="@product.Name" alt="@product.Name" style="max-height: 100%; max-width: 100%" />
-                                        </a>
+                                                        <div class="button-group">
+                                                            <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('51 ');">
+                                                                Add to Cart
+                                                            </button>
+                                                            <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('51 ');"></button>
+                                                            <div class="quickview" data-placement="right" title="Quick view">
+                                                                <a asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.Id">
+                                                                    Quick View
+                                                                </a>
+                                                            </div>
+                                                            <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('51 ');"></button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-details">
+                                                        <div class="caption">
+                                                            <h4>
+                                                                <a asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.Id">
+                                                                    @product.Name
+                                                                </a>
+                                                            </h4>
+                                                            <p class="price">
+                                                                $122.00
+                                                                <span class="price-tax">
+                                                                    Ex Tax: $100.00
+                                                                </span>
+                                                            </p>
 
-                                        <div class="button-group">
-                                            <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('51 ');">
-                                                Add to Cart
-                                            </button>
-                                            <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('51 ');"></button>
-                                            <div class="quickview" data-placement="right" title="Quick view">
-                                                <a asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.Id">
-                                                    Quick View
-                                                </a>
+                                                            <div class="rating">
+                                                                <span class="fa fa-stack">
+                                                                    <i class="fa fa-star fa-stack-2x"></i>
+                                                                </span>
+                                                                <span class="fa fa-stack">
+                                                                    <i class="fa fa-star fa-stack-2x"></i>
+                                                                </span>
+                                                                <span class="fa fa-stack">
+                                                                    <i class="fa fa-star fa-stack-2x"></i>
+                                                                </span>
+                                                                <span class="fa fa-stack">
+                                                                    <i class="fa fa-star fa-stack-2x"></i>
+                                                                </span>
+                                                                <span class="fa fa-stack">
+                                                                    <i class="fa fa-star off fa-stack-2x"></i>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('51 ');"></button>
                                         </div>
-                                    </div>
-                                    <div class="product-details">
-                                        <div class="caption">
-                                            <h4>
-                                                <a asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.Id">
-                                                    @product.Name
-                                                </a>
-                                            </h4>
-                                            <p class="price">
-                                                $122.00
-                                                <span class="price-tax">
-                                                    Ex Tax: $100.00
-                                                </span>
-                                            </p>
-
-                                            <div class="rating">
-                                                <span class="fa fa-stack">
-                                                    <i class="fa fa-star fa-stack-2x"></i>
-                                                </span>
-                                                <span class="fa fa-stack">
-                                                    <i class="fa fa-star fa-stack-2x"></i>
-                                                </span>
-                                                <span class="fa fa-stack">
-                                                    <i class="fa fa-star fa-stack-2x"></i>
-                                                </span>
-                                                <span class="fa fa-stack">
-                                                    <i class="fa fa-star fa-stack-2x"></i>
-                                                </span>
-                                                <span class="fa fa-stack">
-                                                    <i class="fa fa-star off fa-stack-2x"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    }
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="owl-controls clickable">
+                    <div class="owl-buttons">
+                        <div class="owl-prev">
+                            <span class="left">
+                                <a class="fa prev fa-angle-left"></a>
+                            </span>
+                        </div>
+                        <div class="owl-next">
+                            <span class="right">
+                                <a class="fa prev fa-angle-right"></a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
-        }
+            <hr />
+            <partial name="_PagingPartial" model="@Model" />
+        </div>
     </div>
 </div>
-<hr />
 
-
-<partial name="_PagingPartial" model="@Model" />
