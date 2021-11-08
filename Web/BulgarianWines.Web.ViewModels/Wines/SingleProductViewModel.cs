@@ -35,6 +35,8 @@
 
         public IEnumerable<Image> WineImages { get; set; }
 
+        public IEnumerable<Wine> Wines { get; set; }
+
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Wine, SingleProductViewModel>()

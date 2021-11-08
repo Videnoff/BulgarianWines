@@ -9128,7 +9128,8 @@ h2.price {
 }
 
 .image2 {
-    background: url(../../images/wined/cms-sprite.png) no-repeat scroll 7px -116px; float: left;
+    background: url(../../images/wined/cms-sprite.png) no-repeat scroll 7px -116px;
+    float: left;
     height: 50px;
     width: 60px;
 }
@@ -11789,6 +11790,10 @@ li.card:nth-child(6) > a:nth-child(1) > div:nth-child(1) > div:nth-child(1) > h5
     height: 50px;
 }
 
+/*
+    Products by Category
+*/
+
 html body.common-home.layout-1 div#gattinara.tab-pane.active div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-12.col-md-12.col-sm-12.col-xs-12 div.product-block.product-thumb.transition div.product-block-inner div.image {
     width: 290px;
     height: 293.05px;
@@ -11808,6 +11813,10 @@ html body.common-home.layout-1 div#gattinara.tab-pane.active div.product-block-w
     width: 290px;
     height: 392px;
 }
+
+/*
+    Single Product
+*/
 
 html body.common-home.layout-1 div.productpage div#product-product.container div.row div#content.col-sm-12.productpage div.row div.col-sm-8.product-left {
     width: 436.5px;
@@ -11833,6 +11842,10 @@ html body.common-home.layout-1 div.productpage div#product-product.container div
     width: 406.5px;
     height: 406.5px;
 }
+
+/*
+    All Wines
+*/
 
 html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div.tabs div.product-block-wrapper {
     width: 320px;
