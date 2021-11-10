@@ -4,7 +4,6 @@
 @{
     this.ViewData["Title"] = "Home Page";
 }
-
 <div class="nav-inner-cms">
     <div class="header-bottom">
         <!-- <div class="main-menu container" id="cms-menu">
@@ -93,19 +92,53 @@
                     $("#spinner").fadeOut("slow");
                 });
             </script>
-
+            @{
+                int i = 0;
+            }
             <div id="categorycmsblock" class="categorycms">
                 <ul class="categorycmsblock-inner row">
-                    <li class="category-item col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="category-item-inner">
-                            <a href="#" class="category-img"><img src="image/catalog/demo/banners/cat_img1.jpg" alt=""></a>
-                            <div class="category-item-content">
-                                <span class="category-title" href="#">prosecco wine</span>
-                                <span class="category-desc" href="#">There are many variations of passages of Lorem Ipsum available</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="category-item col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    @foreach (var product in @Model.NewestProducts)
+                    {
+                        @if (i % 2 == 0)
+                        {
+                            <li class="category-item col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="category-item-inner" style="width: 100%; height: 100%">
+                                    <a asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.Id" class="category-img">
+                                        <img src="@product.ImageUrl" alt="" style="width: 100%; height: 100%">
+                                    </a>
+                                    <div class="category-item-content">
+                                        <a class="category-title" asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.Id">
+                                            @product.Name
+                                        </a>
+                                        <span class="category-desc" asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.Id">
+                                            @product.Description
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="category-item col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="category-item-inner" style="width: 100%; height: 100%">
+                                    <div class="category-item-content">
+                                        <a class="category-title" asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.Id">
+                                            @product.Name
+                                        </a>
+                                        <span class="category-desc" asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.Id">
+                                            @product.Description
+                                        </span>
+                                    </div>
+                                    <a asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.Id" class="category-img">
+                                        <img src="@product.ImageUrl" alt="" style="width: 100%; height: 100%">
+                                    </a>
+                                </div>
+                            </li>
+                        }
+
+                        i++;
+                    }
+                    @*<li class="category-item col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <div class="category-item-inner">
                             <div class="category-item-content">
                                 <span class="category-title" href="#">
@@ -130,7 +163,7 @@
                                 </span>
                             </div>
                         </div>
-                    </li>
+                    </li>*@
                 </ul>
             </div>
 

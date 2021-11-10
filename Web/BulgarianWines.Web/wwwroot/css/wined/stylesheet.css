@@ -11882,3 +11882,25 @@ html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.cont
     width: 290px;
     height: 293.05px;
 }
+
+/*
+    Home page Newest products
+*/
+
+/*html body.common-home.layout-1 div#common-home div.content-top div#content1 div#categorycmsblock.categorycms ul.categorycmsblock-inner.row li.category-item.col-lg-4.col-md-4.col-sm-4.col-xs-12 {
+    width: 381.333px;
+    height: 508.317px;
+}*/
+
+html body.common-home.layout-1 div#common-home div.content-top div#content1 div#categorycmsblock.categorycms ul.categorycmsblock-inner.row li.category-item.col-lg-4.col-md-4.col-sm-4.col-xs-12 div.category-item-inner {
+    width: 341.333px;
+}
+
+html body.common-home.layout-1 div#common-home div.content-top div#content1 div#categorycmsblock.categorycms ul.categorycmsblock-inner.row li.category-item.col-lg-4.col-md-4.col-sm-4.col-xs-12 div.category-item-inner a.category-img {
+    height: 347.317px;
+}
+
+/*html body.common-home.layout-1 div#common-home div.content-top div#content1 div#categorycmsblock.categorycms ul.categorycmsblock-inner.row li.category-item.col-lg-4.col-md-4.col-sm-4.col-xs-12 div.category-item-inner a.category-img img {
+    width: 341.333px;
+    height: 347.317px;
+}*/

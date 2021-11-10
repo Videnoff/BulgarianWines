@@ -4,6 +4,7 @@
     using System.Diagnostics;
     using System.Threading.Tasks;
 
+    using BulgarianWines.Services;
     using BulgarianWines.Services.Data;
     using BulgarianWines.Web.ViewModels;
     using BulgarianWines.Web.ViewModels.Administration.Categories;
@@ -16,19 +17,27 @@
 
     public class HomeController : BaseController
     {
+        private const int DescriptionMaxLength = 40;
+
         private readonly IHomePageSlidesService homePageSlidesService;
         private readonly IDistributedCache distributedCache;
 
         private readonly ICategoriesService categoriesService;
+        private readonly IWinesService winesService;
+        private readonly IShortTextService shortTextService;
 
         public HomeController(
             IHomePageSlidesService homePageSlidesService,
             IDistributedCache distributedCache,
-            ICategoriesService categoriesService)
+            ICategoriesService categoriesService,
+            IWinesService winesService,
+            IShortTextService shortTextService)
         {
             this.homePageSlidesService = homePageSlidesService;
             this.distributedCache = distributedCache;
             this.categoriesService = categoriesService;
+            this.winesService = winesService;
+            this.shortTextService = shortTextService;
         }
 
         public async Task<IActionResult> Index()
@@ -40,7 +49,7 @@
             {
                 var allCategories = this.categoriesService.GetAll<CategoryViewModel>();
                 //var mostBoughtProducts = this.ordersService.GetMostBoughtProducts<ProductSidebarViewModel>(10);
-                //var newestProducts = this.win.GetNewest<ProductViewModel>(10);
+                var newestProducts = this.winesService.GetNewest<ProductViewModel>(3);
                 //var topRatedProducts = this.productsService.GetTopRated<ProductSidebarViewModel>(4);
 
                 var slides = this.homePageSlidesService.GetAll<HomePageViewModel>();
@@ -49,11 +58,15 @@
                 //{
                 //    product.Name = this.stringService.TruncateAtWord(product.Name, 30);
                 //}
+                foreach (var product in newestProducts)
+                {
+                    product.Description = this.shortTextService.ShortText(product.Description, DescriptionMaxLength);
+                }
 
                 viewModel = new IndexViewModel
                 {
                     //MostBoughtProducts = mostBoughtProducts,
-                    //NewestProducts = newestProducts,
+                    NewestProducts = newestProducts,
                     //TopRatedProducts = topRatedProducts,
                     AllCategories = allCategories,
                     Slides = slides,

@@ -1,16 +1,10 @@
-﻿@model BulgarianWines.Web.ViewModels.Wines.WinesListViewModel
+﻿@model BulgarianWines.Web.ViewModels.Search.SearchProductInputModel
+
 @{
-    this.ViewData["Title"] = "All Wines";
+    this.ViewData["Title"] = "Search";
 }
 
-<style>
-    h1 {
-        text-align: center;
-    }
-</style>
-
-<hr />
-
+<!-- Search -->
 <div id="breadcrumb">
     <div class="container">
         <ul class="breadcrumb">
@@ -20,8 +14,8 @@
                 </a>
             </li>
             <li>
-                <a asp-area="" asp-controller="Wines" asp-action="AllWines">
-                    @this.ViewData["Title"].ToString().ToUpper()
+                <a>
+                    Search Result:
                 </a>
             </li>
         </ul>
@@ -42,9 +36,9 @@
                         <div class="owl-item" style="width: 930px;">
                             <div class="product-block-wrapper">
                                 <div class="item text-center product-innerblock">
-                                    @foreach (var product in @Model.Wines)
+                                    @foreach (var product in @Model.Products)
                                     {
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                             <div class="product-block product-thumb transition">
                                                 <div class="product-block-inner">
                                                     <div class="image">
@@ -124,8 +118,34 @@
                 </div>
             </div>
             <hr />
-            <partial name="_PagingPartial" model="@Model" />
+            <partial name="_PagingPartial" />
         </div>
     </div>
 </div>
 
+<form method="get" id="hiddenForm" asp-controller="Search" asp-action="Index" hidden>
+    <input asp-for="@Model.SearchTerm" />
+    <input asp-for="@Model.CategoryId" />
+    <input asp-for="@Model.ItemsPerPage" />
+    <input asp-for="@Model.Sorting" />
+</form>
+
+
+<!-- End Search -->
+
+@section Scripts {
+    <script>
+        function submitForm() {
+            var form = this.document.getElementById("hiddenForm");
+            // Items per page
+            var itemsPerPageSelectBox = this.document.querySelector("select#ItemsPerPage");
+            var itemsPerPageInputField = this.document.querySelector("input#ItemsPerPage");
+            itemsPerPageInputField.setAttribute("value", itemsPerPageSelectBox.value);
+            // Sorting criteria
+            var sortingSelectBox = this.document.querySelector("select#Sorting");
+            var sortingInputField = this.document.querySelector("input#Sorting");
+            sortingInputField.setAttribute("value", sortingSelectBox.value);
+            form.submit();
+        }
+    </script>
+}

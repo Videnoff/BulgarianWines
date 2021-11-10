@@ -1,0 +1,17 @@
+﻿@model BulgarianWines.Web.ViewModels.Search.SearchInputViewModel
+
+<div class="dropdown search" title="Search item here">
+    <form method="get" asp-controller="Search" asp-action="Index">
+        <div class="header-search dropdown-toggle" data-toggle="dropdown"></div>
+        <span asp-validation-for="SearchTerm"></span>
+        <div id="search" class="input-group dropdown-menu">
+            <input asp-for="SearchTerm" placeholder="Search product here" class="form-control input-lg" />
+            <span class="input-group-btn">
+                <button type="submit" class="btn btn-default btn-lg">
+                    Search product here
+                    <span class="search_button"></span>
+                </button>
+            </span>
+        </div>
+    </form>
+</div>

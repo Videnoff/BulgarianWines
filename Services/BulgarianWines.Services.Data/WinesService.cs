@@ -1,7 +1,9 @@
 ﻿namespace BulgarianWines.Services.Data
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Linq.Expressions;
     using System.Threading.Tasks;
 
     using BulgarianWines.Data.Common.Repositories;
@@ -69,6 +71,49 @@
                 .Skip((page - 1) * productsToTake)
                 .Take(productsToTake)
                 .To<T>().ToList();
+
+        public IEnumerable<T> GetBySearchTerm<T>(string searchTerm, int? categoryId, int page, int productsToTake, string sorting)
+        {
+            var predicateExpression = this.BuildSearchPredicateExpression(searchTerm, categoryId);
+
+            var columnName = string.Empty;
+            var isAscending = true;
+
+            sorting = sorting.ToLower();
+
+            if (sorting == "price desc")
+            {
+                columnName = "Price";
+                isAscending = false;
+            }
+            else if (sorting == "price asc")
+            {
+                columnName = "Price";
+            }
+            else if (sorting == "newest")
+            {
+                columnName = "CreatedOn";
+                isAscending = false;
+            }
+            else if (sorting == "oldest")
+            {
+                columnName = "CreatedOn";
+            }
+
+            return this.winesRepository.AllAsNoTracking()
+                .Where(predicateExpression)
+                .Skip((page - 1) * productsToTake)
+                .Take(productsToTake)
+                .To<T>()
+                .ToList();
+        }
+
+        public IEnumerable<T> GetNewest<T>(int productsToTake) => this.winesRepository
+            .AllAsNoTracking()
+            .OrderByDescending(x => x.CreatedOn)
+            .Take(productsToTake)
+            .To<T>()
+            .ToList();
 
         public int GetCount()
         {
@@ -191,5 +236,21 @@
         private Image GetImageById(string id) =>
             this.imagesRepository.All()
                 .FirstOrDefault(x => x.Id == id);
+
+        private Expression<Func<Wine, bool>> BuildSearchPredicateExpression(string search, int? categoryId)
+        {
+            Expression<Func<Wine, bool>> predicateExpression = x => x.Name
+                .ToLower()
+                .Contains(search.ToLower());
+
+            if (categoryId != null)
+            {
+                predicateExpression = x => x.Name
+                    .ToLower()
+                    .Contains(search.ToLower()) && x.CategoryId == categoryId;
+            }
+
+            return predicateExpression;
+        }
     }
 }

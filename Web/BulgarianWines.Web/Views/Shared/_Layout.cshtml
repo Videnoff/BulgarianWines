@@ -1,5 +1,6 @@
 ﻿@using BulgarianWines.Common
 @using BulgarianWines.Data.Models
+@using BulgarianWines.Web.ViewModels.Index
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
@@ -17,7 +18,7 @@
 
     <script src="~/lib/popper/dist/umd/popper.js" asp-append-version="true"></script>
 
-    <script src="~/js/wined/jquery/jquery-2.1.1.min.js"></script>
+    <script src="~/js/wined/jquery/jquery-2.1.1.min.js" asp-append-version="true"></script>
     <!-- <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" /> -->
     @*<script src="~/js/wined/bootstrap/js/bootstrap.min.js"></script>*@
     <link href="~/js/wined/font-awesome/css/font-awesome.min.css" rel="stylesheet" asp-append-version="true" />
@@ -550,18 +551,19 @@
                         </ul>
                     </div>
                 </div>
-                <div class="dropdown search" title="Search item here">
-                    <div class="header-search dropdown-toggle " data-toggle="dropdown"></div>
-                    <div id="search" class="input-group dropdown-menu">
-                        <input type="text" name="search" value="" placeholder="Search product here" class="form-control input-lg" />
-                        <span class="input-group-btn">
-                            <button type="button" class="btn btn-default btn-lg">
-                                Search product here
-                                <span class="search_button"></span>
-                            </button>
-                        </span>
-                    </div>
-                </div>
+                @*<div class="dropdown search" title="Search item here">
+                        <div class="header-search dropdown-toggle " data-toggle="dropdown"></div>
+                        <div id="search" class="input-group dropdown-menu">
+                            <input type="text" name="search" value="" placeholder="Search product here" class="form-control input-lg" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default btn-lg">
+                                    Search product here
+                                    <span class="search_button"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>*@
+            <vc:search></vc:search>
             </div>
 
 

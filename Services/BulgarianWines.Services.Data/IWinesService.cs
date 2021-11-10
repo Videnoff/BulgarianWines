@@ -13,6 +13,11 @@
 
         public IEnumerable<T> GetAllByCategoryId<T>(int categoryId, int page, int productsToTake, string sorting);
 
+        public IEnumerable<T> GetBySearchTerm<T>(string searchTerm, int? categoryId, int page, int productsToTake,
+            string sorting);
+
+        public IEnumerable<T> GetNewest<T>(int productsToTake);
+
         int GetCount();
 
         T GetById<T>(int id);

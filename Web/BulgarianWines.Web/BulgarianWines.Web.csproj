@@ -1887,7 +1887,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewComponents\" />
     <Folder Include="wwwroot\images\admin\" />
   </ItemGroup>
 
