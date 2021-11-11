@@ -61,6 +61,17 @@
 
             services.AddSingleton(this.configuration);
 
+            services.AddAuthentication()
+#pragma warning disable SA1305 // Field names should not use Hungarian notation
+                .AddGoogle(gOptions =>
+#pragma warning restore SA1305 // Field names should not use Hungarian notation
+                {
+                    var googleAuthNSection = this.configuration.GetSection("Authentication:Google");
+
+                    gOptions.ClientId = googleAuthNSection["ClientId"];
+                    gOptions.ClientSecret = googleAuthNSection["ClientSecret"];
+                });
+
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
