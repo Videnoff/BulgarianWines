@@ -29,4 +29,8 @@
     <ProjectReference Include="..\BulgarianWines.Web.Infrastructure\BulgarianWines.Web.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Favorites\" />
+  </ItemGroup>
+
 </Project>

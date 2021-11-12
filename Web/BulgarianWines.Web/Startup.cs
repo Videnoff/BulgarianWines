@@ -91,6 +91,7 @@
             services.AddTransient<IUsersService, UsersService>();
             services.AddTransient<IShortTextService, ShortTextService>();
             services.AddTransient<IAvailabilityService, AvailabilityService>();
+            services.AddTransient<IFavoritesService, FavoritesService>();
             services.AddSingleton(x =>
                 new BlobServiceClient(this.configuration["BlobConnectionString"]));
         }

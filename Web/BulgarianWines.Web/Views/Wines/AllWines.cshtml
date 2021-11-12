@@ -57,7 +57,10 @@
                                                             <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('51 ');">
                                                                 Add to Cart
                                                             </button>
-                                                            <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('51 ');"></button>
+                                                            <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('51 ');">
+                                                                    <a href="" class="it-fav" data-toggle="tooltip" data-placement="left" title="Favorite"><i class="fas fa-heart mr-0 pt-1"></i></a>
+                                                                    <a asp-area="" asp-controller="Favorites" asp-action="Add" asp-route-id="@product.Id" class="it-fav" data-toggle="tooltip" data-placement="left" title="Favorite"><i class="fas fa-heart mr-0 pt-1"></i></a>
+                                                            </button>
                                                             <div class="quickview" data-placement="right" title="Quick view">
                                                                 <a asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.Id">
                                                                     Quick View
