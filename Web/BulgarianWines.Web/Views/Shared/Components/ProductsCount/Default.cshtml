@@ -1,0 +1,44 @@
+﻿@model BulgarianWines.Web.ViewModels.ShoppingBagAndFavorites.ShoppingBagAndFavoritesViewModel
+@*<div class="col-lg-3 col-md-2">
+        <div class="carts-area d-flex">
+            <div class="wsh-box ml-auto">
+                <a asp-area="" asp-controller="Favorites" asp-action="All" data-toggle="tooltip" data-placement="top" title="Favorites">
+                    <img src="~/images/heart.png" alt="favorite">
+                    <span>@Model.FavoriteProductsCount</span>
+                </a>
+            </div>
+        </div>
+    </div>*@
+
+<div class="header-cart">
+    <div id="cart" class="btn-group btn-block">
+        <!--<span class="cart-icon"></span>-->
+        <button type="button" data-toggle="dropdown" data-loading-text="Loading..." class="btn btn-inverse btn-block btn-lg dropdown-toggle">
+            <!-- <span class="heading-title">from the Blogs</span>-->
+            <span id="cart-total">
+                @Model.FavoriteProductsCount
+            </span>
+            <span id="cart-title">
+                your wishlist
+                <i class="fa fa-angle-down"></i>
+            </span>
+        </button>
+
+        <ul class="dropdown-menu pull-right cart-menu">
+            <li>
+                <p class="text-center">
+                    @if (@Model.FavoriteProductsCount > 0)
+                    {
+                        <a asp-controller="Favorites" asp-action="All"></a>
+                    }
+                    else
+                    {
+                        <span>
+                            Your wishlist is empty!
+                        </span>
+                    }
+                </p>
+            </li>
+        </ul>
+    </div>
+</div>

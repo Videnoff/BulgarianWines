@@ -9,6 +9,7 @@
         public Wine()
         {
             this.Images = new HashSet<Image>();
+            this.FavoriteProducts = new HashSet<FavoriteProduct>();
         }
 
         public string Name { get; set; }
@@ -46,5 +47,7 @@
         public string UserId { get; set; }
 
         public virtual ApplicationUser User { get; set; }
+
+        public virtual ICollection<FavoriteProduct> FavoriteProducts { get; set; }
     }
 }

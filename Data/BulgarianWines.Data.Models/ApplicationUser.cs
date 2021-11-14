@@ -16,6 +16,7 @@ namespace BulgarianWines.Data.Models
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
             this.UserImages = new HashSet<UserImage>();
+            this.FavoriteProducts = new HashSet<FavoriteProduct>();
         }
 
         // Audit info
@@ -37,5 +38,7 @@ namespace BulgarianWines.Data.Models
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
 
         public virtual ICollection<UserImage> UserImages { get; set; }
+
+        public virtual ICollection<FavoriteProduct> FavoriteProducts { get; set; }
     }
 }

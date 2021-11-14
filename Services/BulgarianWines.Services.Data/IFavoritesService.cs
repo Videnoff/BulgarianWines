@@ -10,5 +10,7 @@
         public Task<bool> DeleteAsync(int wineId, string userId);
 
         public IEnumerable<T> GetAll<T>(string userId);
+
+        public int GetCount(string userId);
     }
 }

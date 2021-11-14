@@ -1,9 +1,7 @@
 ﻿namespace BulgarianWines.Services.Data
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
 
     using BulgarianWines.Data.Common.Repositories;
@@ -35,6 +33,19 @@
             {
                 return false;
             }
+
+            var user = await this.userManger.FindByIdAsync(userId);
+
+            if (user == null)
+            {
+                return false;
+            }
+
+            await this.favoriteProductsRepository.AddAsync(new FavoriteProduct
+            {
+                WineId = wine.Id,
+                UserId = user.Id,
+            });
 
             await this.favoriteProductsRepository.SaveChangesAsync();
 
@@ -75,6 +86,11 @@
             .Where(x => x.UserId == userId)
             .To<T>()
             .ToList();
+
+        public int GetCount(string userId) =>
+            this.favoriteProductsRepository
+                .AllAsNoTracking()
+                .Count(x => x.UserId == userId);
 
         private Wine GetWineById(int id) =>
             this.winesRepository.AllAsNoTracking()
