@@ -10,6 +10,7 @@
     using BulgarianWines.Data.Models;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+    using NewsletterSub;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
@@ -50,6 +51,10 @@
         public DbSet<Availability> Availabilities { get; set; }
 
         public DbSet<FavoriteProduct> FavoriteProducts { get; set; }
+
+        public DbSet<Contact> Contacts { get; set; }
+
+        public DbSet<NewsletterSubscription> NewsletterSubscriptions { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
@@ -97,6 +102,9 @@
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
+
+            // Newsletter
+            builder.BuildNewsletterSubModels();
         }
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)
