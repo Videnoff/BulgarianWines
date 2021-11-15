@@ -13,6 +13,7 @@
 
     <!-- Bootstrap -->
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/lib/datatables-js/css/dataTables.bootstrap4.css" rel="stylesheet" asp-append-version="true" />
 
     <!-- Custom fonts for this template-->
     <link href="~/js/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -706,6 +707,11 @@
     <!-- Page level custom scripts -->
     <script src="~/js/admin/demo/chart-area-demo.js" asp-append-version="true"></script>
     <script src="~/js/admin/demo/chart-pie-demo.js" asp-append-version="true"></script>
+
+    <!-- Datatables -->
+    <script src="~/lib/datatables-js/js/dataTables.bootstrap4.js" asp-append-version="true"></script>
+    <script src="~/lib/datatables-js/js/jquery.dataTables.js" asp-append-version="true"></script>
+
 
     @await this.RenderSectionAsync("Scripts", required: false)
 </body>

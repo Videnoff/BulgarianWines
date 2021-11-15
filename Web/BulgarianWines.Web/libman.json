@@ -60,13 +60,6 @@
       ]
     },
     {
-      "library": "moment@2.29.1",
-      "destination": "wwwroot/lib/moment/",
-      "files": [
-        "min/moment-with-locales.min.js"
-      ]
-    },
-    {
       "library": "tinymce@5.7.1",
       "destination": "wwwroot/lib/tinymce/",
       "files": [
@@ -121,6 +114,24 @@
       "files": [
         "dist/umd/popper.js",
         "dist/umd/popper.min.js"
+      ]
+    },
+    {
+      "library": "datatables.net@1.10.22",
+      "destination": "wwwroot/lib/datatables-js",
+      "files": [
+        "js/jquery.dataTables.js",
+        "js/jquery.dataTables.min.js"
+      ]
+    },
+    {
+      "library": "datatables.net-bs4@1.10.22",
+      "destination": "wwwroot/lib/datatables-js",
+      "files": [
+        "css/dataTables.bootstrap4.css",
+        "css/dataTables.bootstrap4.min.css",
+        "js/dataTables.bootstrap4.js",
+        "js/dataTables.bootstrap4.min.js"
       ]
     }
   ]
