@@ -29,11 +29,11 @@
 
             if (result)
             {
-                this.TempData["Alert"] = "Successfully added product to favourites.";
+                this.TempData["Alert"] = "Successfully added product to favorites.";
             }
             else
             {
-                this.TempData["Error"] = "There was a problem adding the product to favourites.";
+                this.TempData["Error"] = "There was a problem adding the product to favorites.";
             }
 
             return this.RedirectToAction(nameof(this.All));
@@ -45,11 +45,11 @@
 
             if (result)
             {
-                this.TempData["Alert"] = "Successfully removed product from favourites.";
+                this.TempData["Alert"] = "Successfully removed product from favorites.";
             }
             else
             {
-                this.TempData["Error"] = "There was a problem removing the product from favourites.";
+                this.TempData["Error"] = "There was a problem removing the product from favorites.";
             }
 
             return this.RedirectToAction(nameof(this.All));

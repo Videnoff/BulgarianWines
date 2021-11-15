@@ -1,5 +1,6 @@
 ﻿namespace BulgarianWines.Web
 {
+    using System;
     using System.Reflection;
 
     using Azure.Storage.Blobs;
@@ -55,8 +56,8 @@
                 options =>
                     {
                         options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-                    }).AddRazorRuntimeCompilation();
-            services.AddRazorPages();
+                    }).AddRazorRuntimeCompilation().AddSessionStateTempDataProvider();
+            services.AddRazorPages().AddSessionStateTempDataProvider();
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddSingleton(this.configuration);
@@ -71,6 +72,13 @@
                     gOptions.ClientId = googleAuthNSection["ClientId"];
                     gOptions.ClientSecret = googleAuthNSection["ClientSecret"];
                 });
+
+            services.AddSession(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+                options.IdleTimeout = TimeSpan.FromMinutes(60);
+            });
 
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
@@ -134,6 +142,8 @@
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(
                 endpoints =>

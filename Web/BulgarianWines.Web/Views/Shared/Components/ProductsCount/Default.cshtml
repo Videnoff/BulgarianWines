@@ -1,14 +1,4 @@
 ﻿@model BulgarianWines.Web.ViewModels.ShoppingBagAndFavorites.ShoppingBagAndFavoritesViewModel
-@*<div class="col-lg-3 col-md-2">
-        <div class="carts-area d-flex">
-            <div class="wsh-box ml-auto">
-                <a asp-area="" asp-controller="Favorites" asp-action="All" data-toggle="tooltip" data-placement="top" title="Favorites">
-                    <img src="~/images/heart.png" alt="favorite">
-                    <span>@Model.FavoriteProductsCount</span>
-                </a>
-            </div>
-        </div>
-    </div>*@
 
 <div class="header-cart">
     <div id="cart" class="btn-group btn-block">
@@ -29,7 +19,9 @@
                 <p class="text-center">
                     @if (@Model.FavoriteProductsCount > 0)
                     {
-                        <a asp-controller="Favorites" asp-action="All"></a>
+                        <a asp-controller="Favorites" asp-action="All">
+                            You have @Model.FavoriteProductsCount @(Model.FavoriteProductsCount > 1 ? "items" : "item")
+                        </a>
                     }
                     else
                     {

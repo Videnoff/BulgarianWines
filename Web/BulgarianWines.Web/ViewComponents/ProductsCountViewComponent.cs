@@ -1,11 +1,12 @@
-﻿using System.Security.Claims;
-using System.Threading.Tasks;
-using BulgarianWines.Services.Data;
-using BulgarianWines.Web.ViewModels.ShoppingBagAndFavorites;
-using Microsoft.AspNetCore.Mvc;
-
-namespace BulgarianWines.Web.ViewComponents
+﻿namespace BulgarianWines.Web.ViewComponents
 {
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+
+    using BulgarianWines.Services.Data;
+    using BulgarianWines.Web.ViewModels.ShoppingBagAndFavorites;
+    using Microsoft.AspNetCore.Mvc;
+
     public class ProductsCountViewComponent : ViewComponent
     {
         private readonly IFavoritesService favoritesService;

@@ -11904,3 +11904,12 @@ html body.common-home.layout-1 div#common-home div.content-top div#content1 div#
     width: 341.333px;
     height: 347.317px;
 }*/
+
+/*
+    Favorites
+*/
+
+html body.common-home.layout-1 section.shopping-cart div.container div.row div.col-md-12 div.cart-table.wsh-list.table-responsive table.table tbody tr td.t-pro.d-flex div.t-img {
+    width: 150px;
+    height: 130px;
+}
