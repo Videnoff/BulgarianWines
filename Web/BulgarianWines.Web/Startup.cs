@@ -80,8 +80,6 @@
                 options.IdleTimeout = TimeSpan.FromMinutes(60);
             });
 
-            services.AddNewsletterService();
-
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
@@ -102,6 +100,7 @@
             services.AddTransient<IShortTextService, ShortTextService>();
             services.AddTransient<IAvailabilityService, AvailabilityService>();
             services.AddTransient<IFavoritesService, FavoritesService>();
+            //services.AddTransient<INewsletterService, NewsletterService>();
             services.AddSingleton(x =>
                 new BlobServiceClient(this.configuration["BlobConnectionString"]));
         }

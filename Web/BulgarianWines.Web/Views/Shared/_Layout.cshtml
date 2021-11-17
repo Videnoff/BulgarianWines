@@ -40,8 +40,8 @@
     <link href="style.href" type="text/css" rel="style.rel" media="style.media" />
     <link href="style.href" type="text/css" rel="style.rel" media="style.media" />
      -->
-    
-    <script src="~/lib/datatables.net/js/jquery.dataTables.js" asp-append-version="true"></script>
+
+    <script src="~/lib/datatables-js/js/jquery.dataTables.js" asp-append-version="true"></script>
     <script src="~/js/wined/lightbox/lightbox-2.6.min.js" asp-append-version="true"></script>
     <link href="~/js/wined/jquery/swiper/css/swiper.min.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/js/wined/jquery/swiper/css/opencart.css" rel="stylesheet" asp-append-version="true" />
@@ -76,48 +76,6 @@
     <link href="~/css/site.min.css" rel="stylesheet" asp-append-version="true" />
 </head>
 <body class="common-home   layout-1">
-    @*<header class="header" id="frame-panel">
-            <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <div class="container">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                        @GlobalConstants.SystemName
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                        <partial name="_LoginPartial" />
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">
-                                    Home
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Wines" asp-action="AllWines">
-                                    All
-                                </a>
-                            </li>
-                            @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="Administration" asp-controller="Categories" asp-action="Index">
-                                        Categories
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="Administration" asp-controller="Wines" asp-action="Index">
-                                        Products
-                                    </a>
-                                </li>
-                            }
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>*@
-
     <header>
         <div class="header">
             <div class="header-nav-wrapper">
@@ -142,477 +100,477 @@
                 </div>
             </div>
 
-        <div class="content_headercms_top">
-        <div id="main-menu" class="main-menu">
-        <nav class="nav-container" role="navigation">
-        <div class="nav-inner">
-        <div id="menu" class="main-menu">
-        <div class="nav-responsive">
-            <span>
-                Menu
-            </span>
-            <div class="menu-expand-wrapper">
-                <div class="expandable"></div>
-            </div>
-        </div>
-        <div class="nav-mainmenu btn-modal" type="button" id="dropdownMenuButton1" data-toggle="dropdown">
-            <span class="mainmenu-btn-wrapper">
-                <span class="mainmenu-btn"></span>
-            </span>
-            <span class="mainmenu-text">
-                menu
-            </span>
-        </div>
-        <ul class="dropdown-menu dropdown-menu-end nav navbar-nav" aria-labelledby="dropdownMenuButton1">
-        <li class="dropdown-item top_level home">
-            <a href="index9328.html?route=common/home">
-                Home
-            </a>
-        </li>
-        <li class="top_level">
-            <a asp-area="" asp-controller="Wines" asp-action="AllWines">
-                All Wines
-            </a>
-        </li>
-        <li class="top_level dropdown">
-            <a href="index8122.html?route=product/category&amp;path=34">
-                our store
-            </a>
-
-            <div class="dropdown-menu megamenu column3">
-                <div class="dropdown-inner">
-                    <ul class="list-unstyled childs_1">
-                        2 Level Sub Categories START
-                        <li class="dropdown">
-                            <a href="index22d5.html?route=product/category&amp;path=34_43">
-                                marsala wine
-                            </a>
-                            <div class="dropdown-menu">
-                                <div class="dropdown-inner">
-                                    <ul class="list-unstyled childs_2">
-                                        <li>
-                                            <a href="indexa84d.html?route=product/category&amp;path=34_43_50">
-                                                accusamus iusto
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="indexa249.html?route=product/category&amp;path=34_43_47">
-                                                nulla venenatis
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="indexd24f.html?route=product/category&amp;path=34_43_28">
-                                                Phasellus tempu
-                                            </a>
-                                        </li>
-
-                                    </ul>
+            <div class="content_headercms_top">
+                <div id="main-menu" class="main-menu">
+                    <nav class="nav-container" role="navigation">
+                        <div class="nav-inner">
+                            <div id="menu" class="main-menu">
+                                <div class="nav-responsive">
+                                    <span>
+                                        Menu
+                                    </span>
+                                    <div class="menu-expand-wrapper">
+                                        <div class="expandable"></div>
+                                    </div>
                                 </div>
-                            </div>
-
-                        </li>
-                        2 Level Sub Categories END
-
-                    </ul>
-                    <ul class="list-unstyled childs_1">
-                        2 Level Sub Categories START
-                        <li class="dropdown">
-                            <a href="index0e62.html?route=product/category&amp;path=34_49">sagrantino</a>
-
-                            <div class="dropdown-menu">
-                                <div class="dropdown-inner">
-                                    <ul class="list-unstyled childs_2">
-                                        <li><a href="index3286.html?route=product/category&amp;path=34_49_53">temporibus autem</a></li>
-                                        <li><a href="index5168.html?route=product/category&amp;path=34_49_55">ullamco laboris </a></li>
-                                        <li><a href="indexc614.html?route=product/category&amp;path=34_49_44">voluptatem sequi</a></li>
-
-                                    </ul>
+                                <div class="nav-mainmenu btn-modal" type="button" id="dropdownMenuButton1" data-toggle="dropdown">
+                                    <span class="mainmenu-btn-wrapper">
+                                        <span class="mainmenu-btn"></span>
+                                    </span>
+                                    <span class="mainmenu-text">
+                                        menu
+                                    </span>
                                 </div>
+                                <ul class="dropdown-menu dropdown-menu-end nav navbar-nav" aria-labelledby="dropdownMenuButton1">
+                                    <li class="dropdown-item top_level home">
+                                        <a href="index9328.html?route=common/home">
+                                            Home
+                                        </a>
+                                    </li>
+                                    <li class="top_level">
+                                        <a asp-area="" asp-controller="Wines" asp-action="AllWines">
+                                            All Wines
+                                        </a>
+                                    </li>
+                                    <li class="top_level dropdown">
+                                        <a href="index8122.html?route=product/category&amp;path=34">
+                                            our store
+                                        </a>
+
+                                        <div class="dropdown-menu megamenu column3">
+                                            <div class="dropdown-inner">
+                                                <ul class="list-unstyled childs_1">
+                                                    2 Level Sub Categories START
+                                                    <li class="dropdown">
+                                                        <a href="index22d5.html?route=product/category&amp;path=34_43">
+                                                            marsala wine
+                                                        </a>
+                                                        <div class="dropdown-menu">
+                                                            <div class="dropdown-inner">
+                                                                <ul class="list-unstyled childs_2">
+                                                                    <li>
+                                                                        <a href="indexa84d.html?route=product/category&amp;path=34_43_50">
+                                                                            accusamus iusto
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="indexa249.html?route=product/category&amp;path=34_43_47">
+                                                                            nulla venenatis
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="indexd24f.html?route=product/category&amp;path=34_43_28">
+                                                                            Phasellus tempu
+                                                                        </a>
+                                                                    </li>
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
+                                                    </li>
+                                                    2 Level Sub Categories END
+
+                                                </ul>
+                                                <ul class="list-unstyled childs_1">
+                                                    2 Level Sub Categories START
+                                                    <li class="dropdown">
+                                                        <a href="index0e62.html?route=product/category&amp;path=34_49">sagrantino</a>
+
+                                                        <div class="dropdown-menu">
+                                                            <div class="dropdown-inner">
+                                                                <ul class="list-unstyled childs_2">
+                                                                    <li><a href="index3286.html?route=product/category&amp;path=34_49_53">temporibus autem</a></li>
+                                                                    <li><a href="index5168.html?route=product/category&amp;path=34_49_55">ullamco laboris </a></li>
+                                                                    <li><a href="indexc614.html?route=product/category&amp;path=34_49_44">voluptatem sequi</a></li>
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
+                                                    </li>
+                                                    2 Level Sub Categories END
+
+                                                </ul>
+                                                <ul class="list-unstyled childs_1">
+                                                    2 Level Sub Categories START
+                                                    <li class="dropdown">
+                                                        <a href="index7e21.html?route=product/category&amp;path=34_48">vernaccia</a>
+
+                                                        <div class="dropdown-menu">
+                                                            <div class="dropdown-inner">
+                                                                <ul class="list-unstyled childs_2">
+                                                                    <li>
+                                                                        <a href="index893e.html?route=product/category&amp;path=34_48_52">
+                                                                            rem aperiam
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="indexc5f8.html?route=product/category&amp;path=34_48_51">
+                                                                            ridiculus mus
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="indexeae5.html?route=product/category&amp;path=34_48_24">
+                                                                            dictum gravida
+                                                                        </a>
+                                                                    </li>
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
+                                                    </li>
+                                                    2 Level Sub Categories END
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </li>
+
+                                    <li class="top_level dropdown">
+                                        <a href="index98dc.html?route=product/category&amp;path=20">
+                                            lambrusco
+                                        </a>
+
+                                        <div class="dropdown-menu megamenu column1">
+                                            <div class="dropdown-inner">
+                                                <ul class="list-unstyled childs_1">
+                                                    2 Level Sub Categories START
+                                                    <li>
+                                                        <a href="indexd9fe.html?route=product/category&amp;path=20_26">
+                                                            gravida
+                                                        </a>
+                                                    </li>
+                                                    2 Level Sub Categories END
+                                                    2 Level Sub Categories START
+                                                    <li>
+                                                        <a href="indexf345.html?route=product/category&amp;path=20_27">
+                                                            lighting &amp; studio
+                                                        </a>
+                                                    </li>
+                                                    2 Level Sub Categories END
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </li>
+
+                                    <li class="top_level dropdown">
+                                        <a href="index1647.html?route=product/category&amp;path=25">etruscan </a>
+
+                                        <div class="dropdown-menu megamenu column1">
+                                            <div class="dropdown-inner">
+                                                <ul class="list-unstyled childs_1">
+                                                    2 Level Sub Categories START
+                                                    <li>
+                                                        <a href="indexf3db.html?route=product/category&amp;path=25_31">
+                                                            canonical adaptations
+                                                        </a>
+                                                    </li>
+                                                    2 Level Sub Categories END
+                                                    2 Level Sub Categories START
+                                                    <li>
+                                                        <a href="index68a7.html?route=product/category&amp;path=25_30">
+                                                            moscato
+                                                        </a>
+                                                    </li>
+                                                    2 Level Sub Categories END
+                                                    2 Level Sub Categories START
+                                                    <li>
+                                                        <a href="indexc219.html?route=product/category&amp;path=25_29">
+                                                            Safed chalwan
+                                                        </a>
+                                                    </li>
+                                                    2 Level Sub Categories END
+                                                    2 Level Sub Categories START
+                                                    <li>
+                                                        <a href="index955a.html?route=product/category&amp;path=25_32">
+                                                            untrammelled owing
+                                                        </a>
+                                                    </li>
+                                                    2 Level Sub Categories END
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </li>
+
+                                    <li class="top_level dropdown">
+                                        <a href="index7fa3.html?route=product/category&amp;path=18">
+                                            gattinara
+                                        </a>
+
+                                        <div class="dropdown-menu megamenu column1">
+                                            <div class="dropdown-inner">
+                                                <ul class="list-unstyled childs_1">
+                                                    2 Level Sub Categories START
+                                                    <li>
+                                                        <a href="index8470.html?route=product/category&amp;path=18_45">
+                                                            ghemme docg
+                                                        </a>
+                                                    </li>
+                                                    2 Level Sub Categories END
+                                                    2 Level Sub Categories START
+                                                    <li>
+                                                        <a href="index9f41.html?route=product/category&amp;path=18_46">
+                                                            Macs
+                                                        </a>
+                                                    </li>
+                                                    2 Level Sub Categories END
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </li>
+
+                                    <li class="top_level">
+                                        <a href="index70a9.html?route=product/category&amp;path=57">
+                                            grapefruits
+                                        </a>
+                                    </li>
+                                    <li class="top_level">
+                                        <a href="indexb152.html?route=product/category&amp;path=17">
+                                            pomegranates
+                                        </a>
+                                    </li>
+                                    <li class="top_level">
+                                        <a href="index6067.html?route=product/category&amp;path=60">
+                                            tengelows
+                                        </a>
+                                    </li>
+                                    <li class="top_level">
+                                        <a href="index76bc.html?route=product/category&amp;path=61">
+                                            cantaloupe
+                                        </a>
+                                    </li>
+                                    <li class="top_level">
+                                        <a href="index0854.html?route=product/category&amp;path=62">
+                                            gaming console
+                                        </a>
+                                    </li>
+                                    <li class="level0"><a href="">Sitemap</a></li>
+                                    <li class="level0"><a href="">contact us</a></li>
+                                    <li class="level0"><a href="">about us</a></li>
+                                </ul>
                             </div>
-
-                        </li>
-                        2 Level Sub Categories END
-
-                    </ul>
-                    <ul class="list-unstyled childs_1">
-                        2 Level Sub Categories START
-                        <li class="dropdown">
-                            <a href="index7e21.html?route=product/category&amp;path=34_48">vernaccia</a>
-
-                            <div class="dropdown-menu">
-                                <div class="dropdown-inner">
-                                    <ul class="list-unstyled childs_2">
-                                        <li>
-                                            <a href="index893e.html?route=product/category&amp;path=34_48_52">
-                                                rem aperiam
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="indexc5f8.html?route=product/category&amp;path=34_48_51">
-                                                ridiculus mus
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="indexeae5.html?route=product/category&amp;path=34_48_24">
-                                                dictum gravida
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-
-                        </li>
-                        2 Level Sub Categories END
-
-                    </ul>
+                        </div>
+                    </nav>
                 </div>
-            </div>
 
-        </li>
-
-        <li class="top_level dropdown">
-            <a href="index98dc.html?route=product/category&amp;path=20">
-                lambrusco
-            </a>
-
-            <div class="dropdown-menu megamenu column1">
-                <div class="dropdown-inner">
-                    <ul class="list-unstyled childs_1">
-                        2 Level Sub Categories START
-                        <li>
-                            <a href="indexd9fe.html?route=product/category&amp;path=20_26">
-                                gravida
-                            </a>
-                        </li>
-                        2 Level Sub Categories END
-                        2 Level Sub Categories START
-                        <li>
-                            <a href="indexf345.html?route=product/category&amp;path=20_27">
-                                lighting &amp; studio
-                            </a>
-                        </li>
-                        2 Level Sub Categories END
-
-                    </ul>
-                </div>
-            </div>
-
-        </li>
-
-        <li class="top_level dropdown">
-            <a href="index1647.html?route=product/category&amp;path=25">etruscan </a>
-
-            <div class="dropdown-menu megamenu column1">
-                <div class="dropdown-inner">
-                    <ul class="list-unstyled childs_1">
-                        2 Level Sub Categories START
-                        <li>
-                            <a href="indexf3db.html?route=product/category&amp;path=25_31">
-                                canonical adaptations
-                            </a>
-                        </li>
-                        2 Level Sub Categories END
-                        2 Level Sub Categories START
-                        <li>
-                            <a href="index68a7.html?route=product/category&amp;path=25_30">
-                                moscato
-                            </a>
-                        </li>
-                        2 Level Sub Categories END
-                        2 Level Sub Categories START
-                        <li>
-                            <a href="indexc219.html?route=product/category&amp;path=25_29">
-                                Safed chalwan
-                            </a>
-                        </li>
-                        2 Level Sub Categories END
-                        2 Level Sub Categories START
-                        <li>
-                            <a href="index955a.html?route=product/category&amp;path=25_32">
-                                untrammelled owing
-                            </a>
-                        </li>
-                        2 Level Sub Categories END
-
-                    </ul>
-                </div>
-            </div>
-
-        </li>
-
-        <li class="top_level dropdown">
-            <a href="index7fa3.html?route=product/category&amp;path=18">
-                gattinara
-            </a>
-
-            <div class="dropdown-menu megamenu column1">
-                <div class="dropdown-inner">
-                    <ul class="list-unstyled childs_1">
-                        2 Level Sub Categories START
-                        <li>
-                            <a href="index8470.html?route=product/category&amp;path=18_45">
-                                ghemme docg
-                            </a>
-                        </li>
-                        2 Level Sub Categories END
-                        2 Level Sub Categories START
-                        <li>
-                            <a href="index9f41.html?route=product/category&amp;path=18_46">
-                                Macs
-                            </a>
-                        </li>
-                        2 Level Sub Categories END
-
-                    </ul>
-                </div>
-            </div>
-
-        </li>
-
-        <li class="top_level">
-            <a href="index70a9.html?route=product/category&amp;path=57">
-                grapefruits
-            </a>
-        </li>
-        <li class="top_level">
-            <a href="indexb152.html?route=product/category&amp;path=17">
-                pomegranates
-            </a>
-        </li>
-        <li class="top_level">
-            <a href="index6067.html?route=product/category&amp;path=60">
-                tengelows
-            </a>
-        </li>
-        <li class="top_level">
-            <a href="index76bc.html?route=product/category&amp;path=61">
-                cantaloupe
-            </a>
-        </li>
-        <li class="top_level">
-            <a href="index0854.html?route=product/category&amp;path=62">
-                gaming console
-            </a>
-        </li>
-        <li class="level0"><a href="">Sitemap</a></li>
-        <li class="level0"><a href="">contact us</a></li>
-        <li class="level0"><a href="">about us</a></li>
-        </ul>
-        </div>
-        </div>
-        </nav>
-        </div>
-
-        <div class="dropdown myaccount">
-            @if (this.SignInManager.IsSignedIn(this.User))
-            {
-                <a asp-area="Identity" asp-page="/Account/Manage/Index" title="My Account" class="dropdown-toggle" data-toggle="dropdown">
-                    <!--<span class="account-title">My Account</span>--> <span class="caret"></span>
-                    <span class="user-info-image">
-                        <img src="@this.UserManager.Users.Select(x => x.UserImages.Select(x => x.ImageUrl))" />
-                        Hello @this.User.Identity.Name!
-                        <i class="fa fa-angle-down"></i>
-                    </span>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-right myaccount-menu" data-display="static">
-                    @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+                <div class="dropdown myaccount">
+                    @if (this.SignInManager.IsSignedIn(this.User))
                     {
-                        <li>
-                            <a class="nav-link text-dark" asp-area="Administration" asp-controller="Dashboard" asp-action="Index" title="Admin">
-                                Admin
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@this.Url.Action("Index", "Home", new { area = string.Empty })">
-                                <button type="submit" class="nav-link btn btn-link text-dark">
-                                    Logout
-                                </button>
-                            </form>
-                        </li>
+                        <a asp-area="Identity" asp-page="/Account/Manage/Index" title="My Account" class="dropdown-toggle" data-toggle="dropdown">
+                            <!--<span class="account-title">My Account</span>--> <span class="caret"></span>
+                            <span class="user-info-image">
+                                <img src="@this.UserManager.Users.Select(x => x.UserImages.Select(x => x.ImageUrl))" />
+                                Hello @this.User.Identity.Name!
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right myaccount-menu" data-display="static">
+                            @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+                            {
+                                <li>
+                                    <a class="nav-link text-dark" asp-area="Administration" asp-controller="Dashboard" asp-action="Index" title="Admin">
+                                        Admin
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@this.Url.Action("Index", "Home", new { area = string.Empty })">
+                                        <button type="submit" class="nav-link btn btn-link text-dark">
+                                            Logout
+                                        </button>
+                                    </form>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                                        My Profile
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@this.Url.Action("Index", "Home", new { area = string.Empty })">
+                                        <button type="submit" class="nav-link btn btn-link text-dark">
+                                            Logout
+                                        </button>
+                                    </form>
+                                </li>
+                            }
+
+                            <div class="nav pull-left">
+                                <div class="pull-left">
+                                    <form action="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=common/language/language" method="post" enctype="multipart/form-data" id="form-language">
+                                        <div class="btn-group">
+                                            <button class="btn btn-link dropdown-toggle common-btn" data-toggle="dropdown" title="Language">
+                                                <img class="hidden-md hidden-lg" src="~/images/wined/account/en-gb.png" alt="English">
+                                                <span class="Language-text">
+                                                    Language
+                                                </span>&nbsp;<!--<i class="fa fa-caret-down"></i>-->
+                                            </button>
+                                            <ul class="dropdown-menu language-menu">
+                                                <li class="current">
+                                                    <button class="btn btn-link btn-block language-select" type="button" name="en-gb" title="English">
+                                                        <img src="~/images/wined/account/en-gb.png" alt="English" title="English" />
+                                                        English
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button class="btn btn-link btn-block language-select" type="button" name="ar" title="Arabic">
+                                                        <img src="~/images/wined/account/ar.png" alt="Arabic" title="Arabic" />
+                                                        Arabic
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button class="btn btn-link btn-block language-select" type="button" name="fr-Fr" title="Français">
+                                                        <img src="~/images/wined/account/fr-Fr.png" alt="Français" title="Français" />
+                                                        Français
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <input type="hidden" name="code" value="" />
+                                        <input type="hidden" name="redirect" value="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=common/home" />
+                                    </form>
+                                </div>
+
+                                <div class="pull-left">
+                                    <form action="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=common/currency/currency" method="post" enctype="multipart/form-data" id="form-currency" title="Currency">
+                                        <div class="btn-group">
+                                            <button class="btn btn-link dropdown-toggle common-btn" data-toggle="dropdown">
+                                                <strong>$</strong>
+
+                                                <span class="currency-text">Currency</span>&nbsp;<!--<i class="fa fa-caret-down"></i>-->
+                                            </button>
+                                            <ul class="dropdown-menu currency-menu">
+                                                <li>
+                                                    <button class="currency-select btn btn-link btn-block" type="button" name="EUR">€ Euro</button>
+                                                </li>
+                                                <li>
+                                                    <button class="currency-select btn btn-link btn-block" type="button" name="GBP">£ Pound Sterling</button>
+                                                </li>
+                                                <li>
+                                                    <button class="currency-select btn btn-link btn-block" type="button" name="USD">$ US Dollar</button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <input type="hidden" name="code" value="" />
+                                        <input type="hidden" name="redirect" value="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=common/home" />
+                                    </form>
+                                </div>
+
+                            </div>
+                        </ul>
                     }
                     else
                     {
-                        <li>
-                            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-                                My Profile
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@this.Url.Action("Index", "Home", new { area = string.Empty })">
-                                <button type="submit" class="nav-link btn btn-link text-dark">
-                                    Logout
-                                </button>
-                            </form>
-                        </li>
+                        <a asp-area="Identity" asp-page="/Account/Manage/Index" title="My Account" class="dropdown-toggle" data-toggle="dropdown">
+                            <!--<span class="account-title">My Account</span>--> <span class="caret"></span>
+                            <span class="user-info-image">
+                                my account
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-right myaccount-menu" data-display="static">
+                            <li>
+                                <a a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">
+                                    Register
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">
+                                    Login
+                                </a>
+                            </li>
+                            <nav id="top">
+                                <!-- <div class="container"> -->
+                            </nav>
+
+                            <div class="nav pull-left">
+                                <div class="pull-left">
+                                    <form action="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=common/language/language" method="post" enctype="multipart/form-data" id="form-language">
+                                        <div class="btn-group">
+                                            <button class="btn btn-link dropdown-toggle common-btn" data-toggle="dropdown" title="Language">
+                                                <img class="hidden-md hidden-lg" src="~/images/wined/account/en-gb.png" alt="English">
+                                                <span class="Language-text">
+                                                    Language
+                                                </span>&nbsp;<!--<i class="fa fa-caret-down"></i>-->
+                                            </button>
+                                            <ul class="dropdown-menu language-menu">
+                                                <li class="current">
+                                                    <button class="btn btn-link btn-block language-select" type="button" name="en-gb" title="English">
+                                                        <img src="~/images/wined/account/en-gb.png" alt="English" title="English" />
+                                                        English
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button class="btn btn-link btn-block language-select" type="button" name="ar" title="Arabic">
+                                                        <img src="~/images/wined/account/ar.png" alt="Arabic" title="Arabic" />
+                                                        Arabic
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button class="btn btn-link btn-block language-select" type="button" name="fr-Fr" title="Français">
+                                                        <img src="~/images/wined/account/fr-Fr.png" alt="Français" title="Français" />
+                                                        Français
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <input type="hidden" name="code" value="" />
+                                        <input type="hidden" name="redirect" value="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=common/home" />
+                                    </form>
+                                </div>
+
+                                <div class="pull-left">
+                                    <form action="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=common/currency/currency" method="post" enctype="multipart/form-data" id="form-currency" title="Currency">
+                                        <div class="btn-group">
+                                            <button class="btn btn-link dropdown-toggle common-btn" data-toggle="dropdown">
+                                                <strong>$</strong>
+
+                                                <span class="currency-text">Currency</span>&nbsp;<!--<i class="fa fa-caret-down"></i>-->
+                                            </button>
+                                            <ul class="dropdown-menu currency-menu">
+                                                <li>
+                                                    <button class="currency-select btn btn-link btn-block" type="button" name="EUR">€ Euro</button>
+                                                </li>
+                                                <li>
+                                                    <button class="currency-select btn btn-link btn-block" type="button" name="GBP">£ Pound Sterling</button>
+                                                </li>
+                                                <li>
+                                                    <button class="currency-select btn btn-link btn-block" type="button" name="USD">$ US Dollar</button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <input type="hidden" name="code" value="" />
+                                        <input type="hidden" name="redirect" value="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=common/home" />
+                                    </form>
+                                </div>
+
+                            </div>
+                        </ul>
                     }
 
-                    <div class="nav pull-left">
-                        <div class="pull-left">
-                            <form action="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=common/language/language" method="post" enctype="multipart/form-data" id="form-language">
-                                <div class="btn-group">
-                                    <button class="btn btn-link dropdown-toggle common-btn" data-toggle="dropdown" title="Language">
-                                        <img class="hidden-md hidden-lg" src="~/images/wined/account/en-gb.png" alt="English">
-                                        <span class="Language-text">
-                                            Language
-                                        </span>&nbsp;<!--<i class="fa fa-caret-down"></i>-->
-                                    </button>
-                                    <ul class="dropdown-menu language-menu">
-                                        <li class="current">
-                                            <button class="btn btn-link btn-block language-select" type="button" name="en-gb" title="English">
-                                                <img src="~/images/wined/account/en-gb.png" alt="English" title="English" />
-                                                English
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="btn btn-link btn-block language-select" type="button" name="ar" title="Arabic">
-                                                <img src="~/images/wined/account/ar.png" alt="Arabic" title="Arabic" />
-                                                Arabic
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="btn btn-link btn-block language-select" type="button" name="fr-Fr" title="Français">
-                                                <img src="~/images/wined/account/fr-Fr.png" alt="Français" title="Français" />
-                                                Français
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <input type="hidden" name="code" value="" />
-                                <input type="hidden" name="redirect" value="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=common/home" />
-                            </form>
-                        </div>
-
-                        <div class="pull-left">
-                            <form action="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=common/currency/currency" method="post" enctype="multipart/form-data" id="form-currency" title="Currency">
-                                <div class="btn-group">
-                                    <button class="btn btn-link dropdown-toggle common-btn" data-toggle="dropdown">
-                                        <strong>$</strong>
-
-                                        <span class="currency-text">Currency</span>&nbsp;<!--<i class="fa fa-caret-down"></i>-->
-                                    </button>
-                                    <ul class="dropdown-menu currency-menu">
-                                        <li>
-                                            <button class="currency-select btn btn-link btn-block" type="button" name="EUR">€ Euro</button>
-                                        </li>
-                                        <li>
-                                            <button class="currency-select btn btn-link btn-block" type="button" name="GBP">£ Pound Sterling</button>
-                                        </li>
-                                        <li>
-                                            <button class="currency-select btn btn-link btn-block" type="button" name="USD">$ US Dollar</button>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <input type="hidden" name="code" value="" />
-                                <input type="hidden" name="redirect" value="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=common/home" />
-                            </form>
-                        </div>
-
-                    </div>
-                </ul>
-            }
-            else
-            {
-                <a asp-area="Identity" asp-page="/Account/Manage/Index" title="My Account" class="dropdown-toggle" data-toggle="dropdown">
-                    <!--<span class="account-title">My Account</span>--> <span class="caret"></span>
-                    <span class="user-info-image">
-                        my account
-                        <i class="fa fa-angle-down"></i>
-                    </span>
-                </a>
-
-                <ul class="dropdown-menu dropdown-menu-right myaccount-menu" data-display="static">
-                    <li>
-                        <a a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">
-                            Register
+                </div>
+                <div class="header-logo">
+                    <div id="logo">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">
+                            <img src="https://bulgarianwines.blob.core.windows.net/publicimages/logo.jpg" style="height: 100%; width: 100%; object-fit: contain" title="@GlobalConstants.SystemName" alt="@GlobalConstants.SystemName" class="img-responsive" />
                         </a>
-                    </li>
-                    <li>
-                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">
-                            Login
-                        </a>
-                    </li>
-                    <nav id="top">
-                        <!-- <div class="container"> -->
-                    </nav>
-
-                    <div class="nav pull-left">
-                        <div class="pull-left">
-                            <form action="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=common/language/language" method="post" enctype="multipart/form-data" id="form-language">
-                                <div class="btn-group">
-                                    <button class="btn btn-link dropdown-toggle common-btn" data-toggle="dropdown" title="Language">
-                                        <img class="hidden-md hidden-lg" src="~/images/wined/account/en-gb.png" alt="English">
-                                        <span class="Language-text">
-                                            Language
-                                        </span>&nbsp;<!--<i class="fa fa-caret-down"></i>-->
-                                    </button>
-                                    <ul class="dropdown-menu language-menu">
-                                        <li class="current">
-                                            <button class="btn btn-link btn-block language-select" type="button" name="en-gb" title="English">
-                                                <img src="~/images/wined/account/en-gb.png" alt="English" title="English" />
-                                                English
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="btn btn-link btn-block language-select" type="button" name="ar" title="Arabic">
-                                                <img src="~/images/wined/account/ar.png" alt="Arabic" title="Arabic" />
-                                                Arabic
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="btn btn-link btn-block language-select" type="button" name="fr-Fr" title="Français">
-                                                <img src="~/images/wined/account/fr-Fr.png" alt="Français" title="Français" />
-                                                Français
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <input type="hidden" name="code" value="" />
-                                <input type="hidden" name="redirect" value="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=common/home" />
-                            </form>
-                        </div>
-
-                        <div class="pull-left">
-                            <form action="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=common/currency/currency" method="post" enctype="multipart/form-data" id="form-currency" title="Currency">
-                                <div class="btn-group">
-                                    <button class="btn btn-link dropdown-toggle common-btn" data-toggle="dropdown">
-                                        <strong>$</strong>
-
-                                        <span class="currency-text">Currency</span>&nbsp;<!--<i class="fa fa-caret-down"></i>-->
-                                    </button>
-                                    <ul class="dropdown-menu currency-menu">
-                                        <li>
-                                            <button class="currency-select btn btn-link btn-block" type="button" name="EUR">€ Euro</button>
-                                        </li>
-                                        <li>
-                                            <button class="currency-select btn btn-link btn-block" type="button" name="GBP">£ Pound Sterling</button>
-                                        </li>
-                                        <li>
-                                            <button class="currency-select btn btn-link btn-block" type="button" name="USD">$ US Dollar</button>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <input type="hidden" name="code" value="" />
-                                <input type="hidden" name="redirect" value="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=common/home" />
-                            </form>
-                        </div>
-
                     </div>
-                </ul>
-            }
+                </div>
 
-        </div>
-        <div class="header-logo">
-            <div id="logo">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">
-                    <img src="https://bulgarianwines.blob.core.windows.net/publicimages/logo.jpg" style="height: 100%; width: 100%; object-fit: contain" title="@GlobalConstants.SystemName" alt="@GlobalConstants.SystemName" class="img-responsive" />
-                </a>
+                <vc:products-count></vc:products-count>
+                <vc:search></vc:search>
             </div>
-        </div>
-
-        <vc:products-count></vc:products-count>
-        <vc:search></vc:search>
-        </div>
 
             <div class="content_headercms_bottom">
                 <div class="container">
@@ -727,7 +685,7 @@
                                     <script>
                                         function subscribe()
                                         {
-                                            @*var emailpattern = new RegExp(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");*@
+                                            var emailpattern = /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
                                             var email = $('#txtemail').val();
                                             if(email != "")
                                             {
@@ -762,7 +720,7 @@
                                             else
                                             {
                                                 $('.text-danger').remove();
-                                                $('.form-group').after('<div class="text-danger">Email Is Require</div>');
+                                                $('.form-group').after('<div class="text-danger">Email Is Required</div>');
                                                 $(email).focus();
 
                                                 return false;
@@ -786,14 +744,16 @@
                                                 <span class="newsletter-info">subscribe! new items.</span>-->
                                                 <form method="post">
                                                     <div class="form-group required">
-                                                        <label class="col-sm-2 control-label" for="txtemail">Enter your e-mail</label>
+                                                        <label class="col-sm-2 control-label" for="txtemail">
+                                                            Enter your e-mail
+                                                        </label>
                                                         <div class="input-news">
                                                             <input type="email" name="txtemail" id="txtemail" value="" placeholder="Enter your e-mail" class="form-control input-lg" />
-
                                                         </div>
-
                                                         <div class="subscribe-btn">
-                                                            <button type="submit" class="btn btn-default btn-lg" onclick="return subscribe();">subscribe</button>
+                                                            <button type="submit" class="btn btn-default btn-lg" onclick="return subscribe();">
+                                                                subscribe
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </form>

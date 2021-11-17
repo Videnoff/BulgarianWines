@@ -10,7 +10,6 @@
     using BulgarianWines.Data.Models;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
-    using NewsletterSub;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
@@ -104,7 +103,6 @@
             }
 
             // Newsletter
-            builder.BuildNewsletterSubModels();
         }
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)
