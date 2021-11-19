@@ -51,6 +51,8 @@
 
         public DateTime? ModifiedOn { get; set; }
 
+        public double AverageRating { get; set; }
+
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Wine, ProductViewModel>()
@@ -59,7 +61,10 @@
                         x.Images.FirstOrDefault().ImageUrl != null
                             ? x.Images.FirstOrDefault().ImageUrl
                             : "/images/wines/" + x.Images.FirstOrDefault().Id + "." +
-                              x.Images.FirstOrDefault().Extension));
+                              x.Images.FirstOrDefault().Extension))
+                .ForMember(
+                    x => x.AverageRating,
+                    opt => opt.MapFrom(x => (!x.Reviews.Any()) ? 0 : Math.Round(x.Reviews.Average(x => x.Rating), 2)));
         }
     }
 }

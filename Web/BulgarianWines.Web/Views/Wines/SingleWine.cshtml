@@ -1,4 +1,6 @@
-﻿@model BulgarianWines.Web.ViewModels.Wines.SingleProductViewModel
+﻿@using BulgarianWines.Web.ViewModels.Wines
+@using System.Security.Claims
+@model BulgarianWines.Web.ViewModels.Wines.SingleProductViewModel
 @{
     this.ViewData["Title"] = Model.Name;
 }
@@ -154,16 +156,7 @@
                                                 </div>
                                             }
                                         </div>
-                                        <div class="pro-btns mb-5 pl-3">
-                                            <a href="" class="cart">
-                                                <i class="fas fa-heart"></i>
-                                                Add To Favourites
-                                            </a>
-                                            <a asp-area="" asp-controller="Favorites" asp-action="Add" asp-route-id="@Model.Id" class="cart">
-                                                <i class="fas fa-heart"></i>
-                                                Add To Favourites
-                                            </a>
-                                        </div>
+                                       
                                         <span class="additional_default_width" style="display:none; visibility:hidden"></span>
                                     </div>
                                     <!-- Cloud-Zoom Image Effect End-->
@@ -175,6 +168,7 @@
                                 <h3 class="product-title">
                                     @Model.Name
                                 </h3>
+
                                 <div class="rating-wrapper">
                                     <span class="fa fa-stack">
                                         <i class="fa fa-star fa-stack-2x"></i>
@@ -191,11 +185,13 @@
                                     <span class="fa fa-stack">
                                         <i class="fa fa-star off fa-stack-2x"></i>
                                     </span>
-                                    <a href="#" class="review-count" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">1 reviews</a>  <a href="#" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;" class="write-review">
+                                    <a href="#" class="review-count" onclick="$('a[href=\'#tab-review\']').trigger('click');return false;">
+                                        @Model.Reviews.Count() reviews
+                                    </a>
+                                    <a href="#" onclick="$('a[href=\'#tab-review\']').trigger('click');return false;" class="write-review">
                                         <i class="fa fa-pencil"></i>
                                         Write a review
                                     </a>
-
 
                                 </div>
                                 <ul class="list-unstyled">
@@ -310,7 +306,7 @@
                                 </li>
                                 <li>
                                     <a href="#tab-review" data-toggle="tab">
-                                        Reviews (1)
+                                        Reviews (@Model.Reviews.Count())
                                     </a>
                                 </li>
                             </ul>
@@ -356,53 +352,41 @@
                                 </div>
                                 <div class="tab-pane" id="tab-review">
                                     <form class="form-horizontal" id="form-review">
-                                        <div id="review"></div>
-                                        <h4>
-                                            Write a review
-                                        </h4>
-                                        <div class="form-group required">
-                                            <div class="col-sm-12">
-                                                <label class="control-label" for="input-name">
-                                                    Your Name
-                                                </label>
-                                                <input type="text" name="name" value="" id="input-name" class="form-control" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group required">
-                                            <div class="col-sm-12">
-                                                <label class="control-label" for="input-review">
-                                                    Your Review
-                                                </label>
-                                                <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
-                                                <div class="help-block">
-                                                    <span class="text-danger">Note:</span> HTML is not translated!
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group required">
-                                            <div class="col-sm-12">
-                                                <label class="control-label">Rating</label>
-                                                &nbsp;&nbsp;&nbsp; Bad&nbsp;
-                                                <input type="radio" name="rating" value="1" />
-                                                &nbsp;
-                                                <input type="radio" name="rating" value="2" />
-                                                &nbsp;
-                                                <input type="radio" name="rating" value="3" />
-                                                &nbsp;
-                                                <input type="radio" name="rating" value="4" />
-                                                &nbsp;
-                                                <input type="radio" name="rating" value="5" />
-                                                &nbsp;Good
-                                            </div>
-                                        </div>
+                                        <div id="review">
+                                            @foreach (var review in Model.Reviews)
+                                            {
+                                                <table class="table table-striped table-bordered">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td style="width: 50%;">
+                                                                <strong>
+                                                                    @review.Name
+                                                                </strong>
+                                                            </td>
+                                                            <td class="text-right">
+                                                                @review.CreatedOn
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2">
+                                                                <p>
+                                                                    @review.Content
+                                                                </p>
+                                                                @for (int i = 0; i < review.Rating; i++)
+                                                                {
+                                                                    <span class="fa fa-stack">
+                                                                        <i class="fa fa-star fa-stack-2x"></i>
+                                                                        <i class="fa fa-star-o fa-stack-2x"></i>
+                                                                    </span>
+                                                                }
 
-                                        <div class="buttons clearfix">
-                                            <div class="pull-right">
-                                                <button type="button" id="button-review" data-loading-text="Loading..." class="btn btn-primary">
-                                                    Continue
-                                                </button>
-                                            </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            }
                                         </div>
+                                        <partial name="_WriteReviewPartial" model="new WineReviewInputModel {UserId = this.User.FindFirstValue(ClaimTypes.NameIdentifier), WineId = Model.Id}" />
                                     </form>
                                 </div>
                             </div>
@@ -425,9 +409,8 @@
             </div>
         </div>
     </div>
-
     <script type="text/javascript">
-<!--
+        <!--
         $('select[name=\'recurring_id\'], input[name="quantity"]').change(function () {
             $.ajax({
                 url: 'index.php?route=product/product/getRecurringDescription',

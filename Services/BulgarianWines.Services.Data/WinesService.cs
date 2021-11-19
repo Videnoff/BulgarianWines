@@ -19,15 +19,18 @@
         private readonly IDeletableEntityRepository<Wine> winesRepository;
         private readonly IDeletableEntityRepository<Image> imagesRepository;
         private readonly IImagesService imagesService;
+        private readonly IDeletableEntityRepository<Review> reviewsRepository;
 
         public WinesService(
             IDeletableEntityRepository<Wine> winesRepository,
             IDeletableEntityRepository<Image> imagesRepository,
-            IImagesService imagesService)
+            IImagesService imagesService,
+            IDeletableEntityRepository<Review> reviewsRepository)
         {
             this.winesRepository = winesRepository;
             this.imagesRepository = imagesRepository;
             this.imagesService = imagesService;
+            this.reviewsRepository = reviewsRepository;
         }
 
         public async Task CreateAsync<T>(T input, IEnumerable<IFormFile> images, string fullDirectoryPath, string webRootPath)
@@ -220,6 +223,22 @@
 
             this.imagesRepository.Delete(image);
             await this.imagesRepository.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<bool> CreateReviewAsync<T>(T model)
+        {
+            var wineReview = AutoMapperConfig.MapperInstance.Map<Review>(model);
+            var wine = this.GetById(wineReview.WineId);
+
+            if (wine == null || this.reviewsRepository.AllAsNoTracking().Any(x => x.UserId == wineReview.UserId))
+            {
+                return false;
+            }
+
+            await this.reviewsRepository.AddAsync(wineReview);
+            await this.reviewsRepository.SaveChangesAsync();
 
             return true;
         }

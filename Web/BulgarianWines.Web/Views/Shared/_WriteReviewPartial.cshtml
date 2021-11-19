@@ -1,0 +1,87 @@
+﻿@using BulgarianWines.Data.Models
+@using BulgarianWines.Web.ViewModels.Wines
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+
+@model WineReviewInputModel
+
+<div class="review-form">
+    <h4>
+        Write a review
+    </h4>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group required">
+        <div class="col-sm-12">
+            <label asp-for="Name" class="control-label">
+                Your Name
+            </label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group required">
+        <div class="col-sm-12">
+            <label asp-for="Content" class="control-label">
+                Your Review
+            </label>
+            <textarea asp-for="Content" rows="5" class="form-control"></textarea>
+            <span asp-validation-for="Content" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group required">
+        <div class="star-rating">
+            <label asp-for="Rating" class="control-label">
+                Rating
+            </label>
+            &nbsp;&nbsp;&nbsp; Bad&nbsp;
+            <input type="radio" class="fa fa-star-o" name="rating" data-rating="1" />
+            &nbsp;
+            <input type="radio" class="fa fa-star-o" name="rating" data-rating="2" />
+            &nbsp;
+            <input type="radio" class="fa fa-star-o" name="rating" data-rating="3" />
+            &nbsp;
+            <input type="radio" class="fa fa-star-o" name="rating" data-rating="4" />
+            &nbsp;
+            <input type="radio" class="fa fa-star-o" name="rating" data-rating="5" />
+            &nbsp;Good
+            @*<div class="star-rating">
+                    <label asp-for="Rating"></label>
+                    <span class="fa fa-star-o" data-rating="1"></span>
+                    <span class="fa fa-star-o" data-rating="2"></span>
+                    <span class="fa fa-star-o" data-rating="3"></span>
+                    <span class="fa fa-star-o" data-rating="4"></span>
+                    <span class="fa fa-star-o" data-rating="5"></span>
+                    <input asp-for="Rating" class="rating-value" style="visibility:hidden;height:0;" />
+                </div>*@
+            <input asp-for="Rating" class="rating-value" style="visibility: hidden" />
+        </div>
+    </div>
+
+    <div class="buttons clearfix">
+        <div class="pull-right">
+            @*<input asp-for="UserId" hidden />
+                <input asp-for="WineId" hidden />*@
+            <button asp-controller="Wines" asp-action="CreateReview" method="post" type="submit" id="button-review" data-loading-text="Loading..." class="btn btn-primary">
+                Continue
+            </button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    /***** Star Rating *****/
+    var $star_rating = $('.star-rating .fa');
+    var SetRatingStar = function () {
+        return $star_rating.each(function () {
+            if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
+                return $(this).removeClass('fa-star-o').addClass('fa-star');
+            } else {
+                return $(this).removeClass('fa-star').addClass('fa-star-o');
+            }
+        });
+    };
+    $star_rating.on('click', function () {
+        $star_rating.siblings('input.rating-value').val($(this).data('rating'));
+        return SetRatingStar();
+    });
+</script>

@@ -40,5 +40,27 @@
             var wine = this.winesService.GetById<SingleProductViewModel>(id);
             return this.View(wine);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateReview(WineReviewInputModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.RedirectToAction(nameof(this.SingleWine), new { id = model.WineId });
+            }
+
+            var result = await this.winesService.CreateReviewAsync<WineReviewInputModel>(model);
+
+            if (result)
+            {
+                this.TempData["Alert"] = "Successfully added wine review.";
+            }
+            else
+            {
+                this.TempData["Error"] = "There was a problem adding the product review.";
+            }
+
+            return this.RedirectToAction(nameof(this.SingleWine), new { id = model.WineId });
+        }
     }
 }

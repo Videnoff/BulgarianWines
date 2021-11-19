@@ -10,6 +10,7 @@
         {
             this.Images = new HashSet<Image>();
             this.FavoriteProducts = new HashSet<FavoriteProduct>();
+            this.Reviews = new HashSet<Review>();
         }
 
         public string Name { get; set; }
@@ -49,5 +50,7 @@
         public virtual ApplicationUser User { get; set; }
 
         public virtual ICollection<FavoriteProduct> FavoriteProducts { get; set; }
+
+        public virtual ICollection<Review> Reviews { get; set; }
     }
 }

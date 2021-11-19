@@ -13,8 +13,7 @@
 
         public IEnumerable<T> GetAllByCategoryId<T>(int categoryId, int page, int productsToTake, string sorting);
 
-        public IEnumerable<T> GetBySearchTerm<T>(string searchTerm, int? categoryId, int page, int productsToTake,
-            string sorting);
+        public IEnumerable<T> GetBySearchTerm<T>(string searchTerm, int? categoryId, int page, int productsToTake, string sorting);
 
         public IEnumerable<T> GetNewest<T>(int productsToTake);
 
@@ -31,5 +30,7 @@
         public IEnumerable<T> GetAllDeleted<T>();
 
         public Task<bool> DeleteImageAsync(string id);
+
+        public Task<bool> CreateReviewAsync<T>(T model);
     }
 }
