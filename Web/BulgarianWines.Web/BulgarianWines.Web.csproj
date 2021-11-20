@@ -71,7 +71,6 @@
     <None Include="Areas\Administration\Views\HomePageSlides\Index.cshtml" />
     <None Include="Areas\Administration\Views\Shared\_AdminLayout.cshtml" />
     <None Include="Views\Categories\Products.cshtml" />
-    <None Include="Views\Shared\_WriteReviewPartial.cshtml" />
     <None Include="wwwroot\js\admin\demo\chart-area-demo.js" />
     <None Include="wwwroot\js\admin\demo\chart-bar-demo.js" />
     <None Include="wwwroot\js\admin\demo\chart-pie-demo.js" />

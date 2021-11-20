@@ -1,0 +1,162 @@
+﻿
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>About Us</title>
+    <base />
+    <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js"></script>
+    <!-- <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" /> -->
+    <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js"></script>
+    <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
+
+    <link href="catalog/view/theme/wined/stylesheet/stylesheet.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="catalog/view/theme/wined/stylesheet/themecss/lightbox.css" />
+    <link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/magnific/magnific-popup.css" />
+    <link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/owl-carousel/owl.carousel.css" />
+    <link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/owl-carousel/owl.transitions.css" />
+    <link rel="stylesheet" type="text/css" href="catalog/view/theme/wined/stylesheet/themecss/carousel.css" />
+    <link rel="stylesheet" type="text/css" href="catalog/view/theme/wined/stylesheet/themecss/custom.css" />
+    <link rel="stylesheet" type="text/css" href="catalog/view/theme/wined/stylesheet/themecss/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="catalog/view/theme/wined/stylesheet/themecss/animate.css" />
+
+
+
+    <!--  -->
+
+    <script src="catalog/view/javascript/lightbox/lightbox-2.6.min.js"></script>
+    <script src="catalog/view/javascript/common.js"></script>
+    <link href="image/catalog/cart.png" rel="icon" />
+    <!-- Theme Start -->
+
+    <script type="text/javascript" src="catalog/view/javascript/themejs/custom.js"></script>
+    <script type="text/javascript" src="catalog/view/javascript/themejs/jstree.min.js"></script>
+    <script type="text/javascript" src="catalog/view/javascript/themejs/carousel.min.js"></script>
+    <script type="text/javascript" src="catalog/view/javascript/themejs/productcarosel.min.js"></script>
+    <script type="text/javascript" src="catalog/view/javascript/themejs/jquery.custom.min.js"></script>
+    <script type="text/javascript" src="catalog/view/javascript/themejs/jquery.formalize.min.js"></script>
+    <script type="text/javascript" src="catalog/view/javascript/themejs/jquery.elevatezoom.min.js"></script>
+    <script type="text/javascript" src="catalog/view/javascript/themejs/bootstrap-notify.min.js"></script>
+    <script type="text/javascript" src="catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript" src="catalog/view/javascript/themejs/owl.carousel.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/magnific/magnific-popup.css" />
+    <script src="catalog/view/javascript/themejs/tabs.js"></script>
+    <script type="text/javascript" src="catalog/view/javascript/jquery.countdown.js"></script>
+    <script type="text/javascript" src="catalog/view/javascript/jquery.countdown.min.js"></script>
+    <!-- Theme End -->
+
+    <script src="catalog/view/javascript/common.js"></script>
+    <script src="catalog/view/javascript/themejs/parallax.js"></script>
+
+
+</head>
+
+<div class="container">
+    <h1>
+        @this.ViewData["Title"]
+    </h1>
+
+    <div id="breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Index">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="About">
+                        About us
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ======= Quick view JS ========= -->
+    <script>
+    function quickbox() {
+        if ($(window).width() > 767) {
+            $('.quickview').magnificPopup({
+                type: 'iframe',
+                delegate: 'a',
+                preloader: true,
+                tLoading: 'Loading image #%curr%...',
+            });
+        }
+    }
+    jQuery(document).ready(function () { quickbox(); });
+    jQuery(window).resize(function () { quickbox(); });</script>
+
+    <div id="information-information" class="container">
+        <div class="row">
+            <div id="content" class="col-sm-12">
+                <h2 class="page-title page-info-title">
+                    About Us
+                </h2>
+
+                <div class="aboutus-block">
+                    <h3 class="page-subheading">
+                        <strong>
+                            Our company
+                        </strong>
+                    </h3>
+                    <p>
+                        <strong class="dark">
+                            Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididun.
+                        </strong>
+                    </p>
+                    <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet conse ctetur adipisicing elit.</p>
+                    <ul class="list-1">
+                        <li>
+                            <em class="icon-ok"></em>Top quality products
+                        </li>
+                        <li>
+                            <em class="icon-ok"></em>Best customer service
+                        </li>
+                        <li>
+                            <em class="icon-ok"></em>30-days money back guarantee
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="aboutus-block">
+                    <h3 class="page-subheading"><strong>
+                        Our team
+                    </strong></h3>
+
+                    <p>
+                        <strong class="dark">
+                            Lorem set sint occaecat cupidatat non
+                        </strong>
+                    </p>
+                    <p>Eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+                </div>
+
+                <div class="aboutus-block">
+                    <h3 class="page-subheading">
+                        <strong>
+                            Testimonials
+                        </strong>
+                    </h3>
+                    <div class="testimonials">
+                        <div class="inner"><span class="before">“</span>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.<span class="after">”</span></div>
+                    </div>
+                    <p><strong class="dark">Lorem ipsum dolor sit</strong></p>
+                    <div class="testimonials">
+                        <div class="inner">
+                            <span class="before">“</span>
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet conse ctetur adipisicing elit. Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod.
+                            <span class="after">”</span>
+                        </div>
+                    </div>
+                    <p><strong class="dark">
+                        Ipsum dolor sit
+                    </strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
