@@ -63,5 +63,11 @@
 
             return this.RedirectToAction(nameof(this.SingleWine), new { id = model.WineId });
         }
+
+        public IActionResult ProductsFromCategory(int categoryId)
+        {
+            this.ViewBag.category = this.winesService.GetNewestByCategory<ProductViewModel>(3, categoryId);
+            return this.PartialView("_ProductsFromCategoryPartial");
+        }
     }
 }

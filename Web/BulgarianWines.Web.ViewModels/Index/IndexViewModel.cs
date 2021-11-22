@@ -13,6 +13,8 @@
 
         public IEnumerable<ProductViewModel> NewestProducts { get; set; }
 
+        public IEnumerable<ProductViewModel> NewestProductsByCategory { get; set; }
+
         public IEnumerable<ProductSidebarViewModel> TopRatedProducts { get; set; }
 
         public IEnumerable<CategoryViewModel> AllCategories { get; set; }

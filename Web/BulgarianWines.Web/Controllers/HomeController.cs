@@ -50,6 +50,7 @@
                 var allCategories = this.categoriesService.GetAll<CategoryViewModel>();
                 //var mostBoughtProducts = this.ordersService.GetMostBoughtProducts<ProductSidebarViewModel>(10);
                 var newestProducts = this.winesService.GetNewest<ProductViewModel>(3);
+
                 //var topRatedProducts = this.productsService.GetTopRated<ProductSidebarViewModel>(4);
 
                 var slides = this.homePageSlidesService.GetAll<HomePageViewModel>();

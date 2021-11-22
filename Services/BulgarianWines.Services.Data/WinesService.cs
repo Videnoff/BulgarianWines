@@ -118,6 +118,14 @@
             .To<T>()
             .ToList();
 
+        public IEnumerable<T> GetNewestByCategory<T>(int productsToTake, int categoryId) => this.winesRepository
+            .AllAsNoTracking()
+            .OrderByDescending(x => x.CreatedOn)
+            .Take(productsToTake)
+            .Where(x => x.CategoryId == categoryId)
+            .To<T>()
+            .ToList();
+
         public int GetCount()
         {
             return this.winesRepository.All().Count();

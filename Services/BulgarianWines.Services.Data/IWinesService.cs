@@ -17,6 +17,8 @@
 
         public IEnumerable<T> GetNewest<T>(int productsToTake);
 
+        public IEnumerable<T> GetNewestByCategory<T>(int productsToTake, int categoryId);
+
         int GetCount();
 
         T GetById<T>(int id);
