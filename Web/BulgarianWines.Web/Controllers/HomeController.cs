@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web.Controllers
+﻿using BulgarianWines.Data.Models;
+
+namespace BulgarianWines.Web.Controllers
 {
     using System;
     using System.Diagnostics;
@@ -25,19 +27,22 @@
         private readonly ICategoriesService categoriesService;
         private readonly IWinesService winesService;
         private readonly IShortTextService shortTextService;
+        private readonly IUserMessagesService userMessagesService;
 
         public HomeController(
             IHomePageSlidesService homePageSlidesService,
             IDistributedCache distributedCache,
             ICategoriesService categoriesService,
             IWinesService winesService,
-            IShortTextService shortTextService)
+            IShortTextService shortTextService,
+            IUserMessagesService userMessagesService)
         {
             this.homePageSlidesService = homePageSlidesService;
             this.distributedCache = distributedCache;
             this.categoriesService = categoriesService;
             this.winesService = winesService;
             this.shortTextService = shortTextService;
+            this.userMessagesService = userMessagesService;
         }
 
         public async Task<IActionResult> Index()
@@ -115,7 +120,7 @@
         }
 
         [HttpPost]
-        public IActionResult Contact(ContactFormViewModel model)
+        public async Task<IActionResult> Contact(ContactFormViewModel model)
         {
             if (!this.ModelState.IsValid)
             {
@@ -123,6 +128,13 @@
             }
 
             this.TempData["Alert"] = "Thank you! Your request was sent successfully!";
+
+            await this.userMessagesService.Add(new UserMessage
+            {
+                Subject = model.Subject,
+                Email = model.Email,
+                Message = model.Message,
+            });
 
             return this.RedirectToAction(nameof(this.Index));
         }

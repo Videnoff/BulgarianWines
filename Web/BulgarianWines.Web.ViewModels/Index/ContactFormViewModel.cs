@@ -2,7 +2,10 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class ContactFormViewModel
+    using BulgarianWines.Data.Models;
+    using BulgarianWines.Services.Mapping;
+
+    public class ContactFormViewModel : IMapTo<UserMessage>
     {
         [Required]
         public string Subject { get; set; }
