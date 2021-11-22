@@ -99,6 +99,34 @@
             return this.View();
         }
 
+        public IActionResult Contact()
+        {
+            if (this.User.Identity.IsAuthenticated)
+            {
+                ContactFormViewModel model = new ContactFormViewModel()
+                {
+                    Email = this.User.Identity.Name,
+                };
+
+                return this.View(model);
+            }
+
+            return this.View();
+        }
+
+        [HttpPost]
+        public IActionResult Contact(ContactFormViewModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
+            this.TempData["Alert"] = "Thank you! Your request was sent successfully!";
+
+            return this.RedirectToAction(nameof(this.Index));
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace BulgarianWines.Data.Migrations
+﻿namespace BulgarianWines.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class UserReview : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

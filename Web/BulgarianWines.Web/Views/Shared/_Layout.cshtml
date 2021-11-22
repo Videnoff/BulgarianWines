@@ -234,7 +234,7 @@
                                             red wines
                                         </a>
 
-                                        <partial name="_ProductsFromCategoryPartial"/>
+                                        @*<partial name="_ProductsFromCategoryPartial"/>*@
 
                                     </li>
 
@@ -243,7 +243,7 @@
                                             white wines
                                         </a>
 
-                                        <partial name="_ProductsFromCategoryPartial" />
+                                        @*<partial name="_ProductsFromCategoryPartial" />*@
                                     </li>
 
                                     <li class="top_level dropdown">
@@ -251,7 +251,7 @@
                                             rose wines
                                         </a>
 
-                                        <partial name="_ProductsFromCategoryPartial" />
+                                        @*<partial name="_ProductsFromCategoryPartial" />*@
                                     </li>
 
                                     <li class="top_level dropdown">
@@ -259,18 +259,18 @@
                                             sparkling wines
                                         </a>
 
-                                        <partial name="_ProductsFromCategoryPartial" />
+                                        @*<partial name="_ProductsFromCategoryPartial" />*@
                                     </li>
                                     <li class="top_level dropdown">
                                         <a asp-controller="Categories" asp-action="Products" asp-route-categoryId="5">
                                             dessert wines
                                         </a>
 
-                                        <partial name="_ProductsFromCategoryPartial" />
+                                        @*<partial name="_ProductsFromCategoryPartial" />*@
                                     </li>
 
                                     <li class="level0">
-                                        <a href="">
+                                        <a asp-controller="Home" asp-action="Contact">
                                             contact us
                                         </a>
                                     </li>
