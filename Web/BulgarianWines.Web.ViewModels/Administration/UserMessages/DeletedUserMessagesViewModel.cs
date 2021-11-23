@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web.ViewModels.Administration.UserMessages
+﻿using System.Globalization;
+
+namespace BulgarianWines.Web.ViewModels.Administration.UserMessages
 {
     using AutoMapper;
     using BulgarianWines.Data.Models;
@@ -24,8 +26,11 @@
         {
             configuration.CreateMap<UserMessage, DeletedUserMessagesViewModel>()
                 .ForMember(
+                    x => x.CreatedOn,
+                    opt => opt.MapFrom(x => x.CreatedOn.ToString("f", CultureInfo.InvariantCulture)))
+                .ForMember(
                     x => x.DeletedOn,
-                    opt => opt.MapFrom(x => x.DeletedOn.Value.ToString("f")));
+                    opt => opt.MapFrom(x => x.DeletedOn.Value.ToString("f", CultureInfo.InvariantCulture)));
         }
     }
 }

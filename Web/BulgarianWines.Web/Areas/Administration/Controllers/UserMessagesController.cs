@@ -20,7 +20,10 @@
 
         public IActionResult Index(string id)
         {
-            var userMessage = this.userMessagesService.All().OrderByDescending(x => x.CreatedOn).ToList();
+            var userMessage = this.userMessagesService
+                .All()
+                .OrderByDescending(x => x.CreatedOn)
+                .ToList();
 
             if (userMessage.Count == 0)
             {
@@ -94,7 +97,7 @@
                 UserMessageViewModel = currentUserMessageViewModel,
             };
 
-            return this.RedirectToAction(nameof(this.Index));
+            return this.View(viewModel);
         }
 
         public async Task<IActionResult> Restore(string id)

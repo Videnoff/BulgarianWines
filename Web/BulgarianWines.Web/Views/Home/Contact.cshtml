@@ -71,19 +71,27 @@
                     <form asp-controller="Home" asp-action="Contact" method="post">
                         <div class="row">
                             <div class="col-md-6">
-                                <p><input asp-for="Subject" placeholder="Subject"></p>
+                                <p>
+                                    <input asp-for="Subject" placeholder="Subject">
+                                </p>
                                 <span asp-validation-for="Subject" class="text-danger"></span>
                             </div>
                             <div class="col-md-6">
-                                <p><input asp-for="Email" placeholder="Email"></p>
+                                <p>
+                                    <input asp-for="Email" placeholder="Email">
+                                </p>
                                 <span asp-validation-for="Email" class="text-danger"></span>
                             </div>
                             <div class="col-md-12">
-                                <p><textarea asp-for="Message" placeholder="Message" rows="3"></textarea></p>
+                                <p>
+                                    <textarea asp-for="Message" placeholder="Message" rows="3"></textarea>
+                                </p>
                                 <span asp-validation-for="Message" class="text-danger"></span>
                             </div>
                             <div class="col-md-12">
-                                <button type="submit">Send Message</button>
+                                <button type="submit">
+                                    Send Message
+                                </button>
                             </div>
                         </div>
                     </form>

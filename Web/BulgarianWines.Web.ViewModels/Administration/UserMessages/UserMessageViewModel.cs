@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Globalization;
+using AutoMapper;
 
 namespace BulgarianWines.Web.ViewModels.Administration.UserMessages
 {
@@ -24,7 +25,7 @@ namespace BulgarianWines.Web.ViewModels.Administration.UserMessages
             configuration.CreateMap<UserMessage, UserMessageViewModel>()
                 .ForMember(
                     x => x.CreatedOn,
-                    opt => opt.MapFrom(x => x.CreatedOn.ToString("f")));
+                    opt => opt.MapFrom(x => x.CreatedOn.ToString("f", CultureInfo.InvariantCulture)));
         }
     }
 }
