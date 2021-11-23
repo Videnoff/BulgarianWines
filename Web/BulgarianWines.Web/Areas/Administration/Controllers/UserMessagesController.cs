@@ -54,6 +54,7 @@
         public async Task<IActionResult> Delete(string id)
         {
             await this.userMessagesService.Delete(id);
+            this.TempData["Alert"] = "Successfully deleted message.";
 
             return this.RedirectToAction(nameof(this.Index));
         }
@@ -103,6 +104,7 @@
         public async Task<IActionResult> Restore(string id)
         {
             await this.userMessagesService.Restore(id);
+            this.TempData["Alert"] = "Successfully restored message.";
 
             return this.RedirectToAction(nameof(this.Deleted));
         }
