@@ -1,13 +1,13 @@
-﻿using BulgarianWines.Data.Models;
-
-namespace BulgarianWines.Web.Controllers
+﻿namespace BulgarianWines.Web.Controllers
 {
     using System;
     using System.Diagnostics;
     using System.Threading.Tasks;
 
+    using BulgarianWines.Data.Models;
     using BulgarianWines.Services;
     using BulgarianWines.Services.Data;
+    using BulgarianWines.Services.Mapping;
     using BulgarianWines.Web.ViewModels;
     using BulgarianWines.Web.ViewModels.Administration.Categories;
     using BulgarianWines.Web.ViewModels.HomePage;
@@ -129,12 +129,8 @@ namespace BulgarianWines.Web.Controllers
 
             this.TempData["Alert"] = "Thank you! Your request was sent successfully!";
 
-            await this.userMessagesService.Add(new UserMessage
-            {
-                Subject = model.Subject,
-                Email = model.Email,
-                Message = model.Message,
-            });
+            var userMessage = AutoMapperConfig.MapperInstance.Map<UserMessage>(model);
+            await this.userMessagesService.Add(userMessage);
 
             return this.RedirectToAction(nameof(this.Index));
         }
