@@ -1,11 +1,10 @@
-﻿using AutoMapper;
-
-namespace BulgarianWines.Web.ViewModels.Administration.UserMessages
+﻿namespace BulgarianWines.Web.ViewModels.Administration.UserMessages
 {
+    using AutoMapper;
     using BulgarianWines.Data.Models;
     using BulgarianWines.Services.Mapping;
 
-    public class UserMessageViewModel : IMapFrom<UserMessage>, IHaveCustomMappings
+    public class DeletedUserMessagesViewModel : IMapFrom<UserMessage>, IHaveCustomMappings
     {
         public string Id { get; set; }
 
@@ -19,12 +18,14 @@ namespace BulgarianWines.Web.ViewModels.Administration.UserMessages
 
         public bool IsRead { get; set; }
 
+        public string DeletedOn { get; set; }
+
         public void CreateMappings(IProfileExpression configuration)
         {
-            configuration.CreateMap<UserMessage, UserMessageViewModel>()
+            configuration.CreateMap<UserMessage, DeletedUserMessagesViewModel>()
                 .ForMember(
-                    x => x.CreatedOn,
-                    opt => opt.MapFrom(x => x.CreatedOn.ToString("f")));
+                    x => x.DeletedOn,
+                    opt => opt.MapFrom(x => x.DeletedOn.Value.ToString("f")));
         }
     }
 }

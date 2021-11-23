@@ -1,9 +1,8 @@
-﻿using System.Threading.Tasks;
-
-namespace BulgarianWines.Web.Areas.Administration.Controllers
+﻿namespace BulgarianWines.Web.Areas.Administration.Controllers
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
 
     using BulgarianWines.Services.Data;
     using BulgarianWines.Services.Mapping;
@@ -25,7 +24,7 @@ namespace BulgarianWines.Web.Areas.Administration.Controllers
 
             if (userMessage.Count == 0)
             {
-                return this.View(new AllUserMessagesViewModel());
+                return this.View(new AllUserMessagesViewModel<UserMessageViewModel>());
             }
 
             var currentMessage = this.userMessagesService.GetById(id);
@@ -40,7 +39,7 @@ namespace BulgarianWines.Web.Areas.Administration.Controllers
             var userMessageViewModelCollection = AutoMapperConfig.MapperInstance.Map<IEnumerable<UserMessageViewModel>>(userMessage);
             var currentUserMessageViewModel = AutoMapperConfig.MapperInstance.Map<UserMessageViewModel>(currentMessage);
 
-            var viewModel = new AllUserMessagesViewModel
+            var viewModel = new AllUserMessagesViewModel<UserMessageViewModel>
             {
                 UserMessageViewModelCollection = userMessageViewModelCollection,
                 UserMessageViewModel = currentUserMessageViewModel,
@@ -61,6 +60,48 @@ namespace BulgarianWines.Web.Areas.Administration.Controllers
             await this.userMessagesService.SetToRead(id, false);
 
             return this.RedirectToAction(nameof(this.Index));
+        }
+
+        public IActionResult Deleted(string id)
+        {
+            var userMessages = this.userMessagesService
+                .AllWithDeleted()
+                .Where(x => x.IsDeleted)
+                .OrderByDescending(x => x.DeletedOn)
+                .ToList();
+
+            if (userMessages.Count == 0)
+            {
+                return this.View(new AllUserMessagesViewModel<DeletedUserMessagesViewModel>());
+            }
+
+            var currentUserMessage = this.userMessagesService.GetById(id);
+
+            if (currentUserMessage == null)
+            {
+                currentUserMessage = userMessages.FirstOrDefault();
+            }
+
+            this.userMessagesService.SetToRead(id, true);
+
+            var userMessageViewModelCollection = AutoMapperConfig.MapperInstance.Map<IEnumerable<DeletedUserMessagesViewModel>>(userMessages);
+            var currentUserMessageViewModel =
+                AutoMapperConfig.MapperInstance.Map<DeletedUserMessagesViewModel>(currentUserMessage);
+
+            var viewModel = new AllUserMessagesViewModel<DeletedUserMessagesViewModel>
+            {
+                UserMessageViewModelCollection = userMessageViewModelCollection,
+                UserMessageViewModel = currentUserMessageViewModel,
+            };
+
+            return this.RedirectToAction(nameof(this.Index));
+        }
+
+        public async Task<IActionResult> Restore(string id)
+        {
+            await this.userMessagesService.Restore(id);
+
+            return this.RedirectToAction(nameof(this.Deleted));
         }
     }
 }
