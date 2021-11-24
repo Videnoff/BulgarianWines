@@ -4,6 +4,7 @@
 
     using BulgarianWines.Data.Models;
     using BulgarianWines.Services.Mapping;
+    using BulgarianWines.Web.Infrastructure.ValidationAttributes;
 
     public class ContactFormViewModel : IMapTo<UserMessage>
     {
@@ -16,5 +17,8 @@
 
         [Required]
         public string Message { get; set; }
+
+        [GoogleReCaptcha]
+        public string RecaptchaValue { get; set; }
     }
 }

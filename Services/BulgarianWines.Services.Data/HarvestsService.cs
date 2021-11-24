@@ -17,7 +17,6 @@
 
         public IEnumerable<KeyValuePair<string, string>> GetAllAsKeyValuePairs()
         {
-
             return this.harvestsRepository
                 .AllAsNoTracking()
                 .Select(x => new

@@ -1,8 +1,8 @@
-﻿using System.Globalization;
-using AutoMapper;
-
-namespace BulgarianWines.Web.ViewModels.Administration.UserMessages
+﻿namespace BulgarianWines.Web.ViewModels.Administration.UserMessages
 {
+    using System.Globalization;
+
+    using AutoMapper;
     using BulgarianWines.Data.Models;
     using BulgarianWines.Services.Mapping;
 

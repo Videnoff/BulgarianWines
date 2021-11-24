@@ -1,4 +1,6 @@
-﻿@model BulgarianWines.Web.ViewModels.Index.ContactFormViewModel
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@model BulgarianWines.Web.ViewModels.Index.ContactFormViewModel
 
 @{
     this.ViewData["Title"] = "Contact Us";
@@ -88,6 +90,7 @@
                                 </p>
                                 <span asp-validation-for="Message" class="text-danger"></span>
                             </div>
+                            <input type="hidden" id="RecaptchaValue" name="RecaptchaValue" />
                             <div class="col-md-12">
                                 <button type="submit">
                                     Send Message
@@ -100,3 +103,15 @@
         </div>
     </div>
 </section>
+
+@section Scripts
+{
+    <script src="https://www.google.com/recaptcha/api.js?render=@this.Configuration["GoogleReCaptcha:Key"]"></script>
+    <script>
+        grecaptcha.ready(function() {
+            grecaptcha.execute('@this.Configuration["GoogleReCaptcha:Key"]', {action: 'contact_form'}).then(function(token) {
+                document.getElementById("RecaptchaValue").value = token;
+            });
+        });
+    </script>
+}
