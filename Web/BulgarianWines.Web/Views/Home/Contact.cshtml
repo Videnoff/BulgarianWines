@@ -10,7 +10,7 @@
     <div class="container mb-4">
         <div class="row">
             <div class="col-md-12">
-                <iframe src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ1WxMlW8Z2jERlkpUYbEJYFw&key=AIzaSyCaCRvkFejcumHEpmDhZSJVmNZe32WTLQw" height="350" style="width:100%; border:0;" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ1WxMlW8Z2jERlkpUYbEJYFw&key=@this.Configuration["GoogleMaps:ApiKey"]" height="350" style="width:100%; border:0;" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
     </div>
@@ -18,7 +18,9 @@
         <div class="row">
             <div class="col-lg-4 col-md-5">
                 <div class="contact-box-tp">
-                    <h4>Contact Info</h4>
+                    <h4>
+                        Contact Info
+                    </h4>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
@@ -27,8 +29,12 @@
                                 <i class="fa fa-map-marker"></i>
                             </div>
                             <div class="contact-content">
-                                <h6>Our Location</h6>
-                                <p>795 South Park Avenue, Long Island, Newyork, NY 94107.</p>
+                                <h6>
+                                    Our Location
+                                </h6>
+                                <p>
+                                    Singapore
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -39,7 +45,7 @@
                             </div>
                             <div class="contact-content">
                                 <h6>Email Address</h6>
-                                <p>enquery@domain.com <br>help@yourdomain.com</p>
+                                <p>bulsing@domain.com <br>office@bulsing.com</p>
                             </div>
                         </div>
                     </div>
@@ -49,57 +55,96 @@
                                 <i class="fa fa-phone"></i>
                             </div>
                             <div class="contact-content">
-                                <h6>Phone Number</h6>
-                                <p>+1 908 875 7678 <br>+1 908 875 7637</p>
+                                <h6>
+                                    Phone Number
+                                </h6>
+                                <p>
+                                    +1 234 56 78 90 <br>+1 234 56 78 90
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="social-link">
                     <ul class="list-unstyled list-inline">
-                        <li class="list-inline-item"><a href=""><i class="fa fa-facebook"></i></a></li>
-                        <li class="list-inline-item"><a href=""><i class="fa fa-twitter"></i></a></li>
-                        <li class="list-inline-item"><a href=""><i class="fa fa-linkedin"></i></a></li>
-                        <li class="list-inline-item"><a href=""><i class="fa fa-youtube"></i></a></li>
-                        <li class="list-inline-item"><a href=""><i class="fa fa-pinterest"></i></a></li>
+                        <li class="list-inline-item">
+                            <a href="">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="">
+                                <i class="fa fa-youtube"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="">
+                                <i class="fa fa-pinterest"></i>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
             <div class="col-lg-8 col-md-7">
-                <div class="contact-form">
-                    <h4>
+                <div class="panel panel-default" id="add-comment" style="margin-bottom: 10px; padding: 0px 10px;">
+                    <h4 style="text-align: center">
                         Get In Touch
                     </h4>
                     <form asp-controller="Home" asp-action="Contact" method="post">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p>
-                                    <input asp-for="Subject" placeholder="Subject">
-                                </p>
-                                <span asp-validation-for="Subject" class="text-danger"></span>
+                        <div class="form-group required" style="margin-top: 10px;">
+                            <label class="col-sm-3 control-label" for="input-author">
+                                <b>
+                                    Subject
+                                </b>
+                            </label>
+                            <div class="col-sm-8">
+                                <input asp-for="Subject" placeholder="Subject" class="form-control">
                             </div>
-                            <div class="col-md-6">
-                                <p>
-                                    <input asp-for="Email" placeholder="Email">
-                                </p>
-                                <span asp-validation-for="Email" class="text-danger"></span>
-                            </div>
-                            <div class="col-md-12">
-                                <p>
-                                    <textarea asp-for="Message" placeholder="Message" rows="3"></textarea>
-                                </p>
-                                <span asp-validation-for="Message" class="text-danger"></span>
-                            </div>
-                            <input type="hidden" id="RecaptchaValue" name="RecaptchaValue" />
-                            <div class="col-md-12">
-                                <button type="submit">
-                                    Send Message
-                                </button>
+                            <span asp-validation-for="Subject" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" style="margin-top: 10px;">
+                            <label class="col-sm-3 control-label">
+                                <b>
+                                    E-Mail Address
+                                </b>
+                            </label>
+                            <div class="col-sm-8">
+                                <input input asp-for="Email" placeholder="Email" class="form-control" readonly="readonly">
+
                             </div>
                         </div>
+                        <div class="form-group required" style="margin-top: 10px;">
+                            <label class="col-sm-3 control-label">
+                                <b>
+                                    Message
+                                </b>
+                            </label>
+                            <div class="col-sm-8">
+                                <textarea asp-for="Message" placeholder="Message" rows="10" class="form-control"></textarea>
+                            </div>
+                        </div>
+
+                        <input type="hidden" id="RecaptchaValue" name="RecaptchaValue" />
+                        <div class="buttons text-right">
+                            <button type="submit" class="btn btn-primary">
+                                Send Message
+                            </button>
+                        </div>
+
                     </form>
                 </div>
             </div>
+            @*</div>*@
         </div>
     </div>
 </section>
