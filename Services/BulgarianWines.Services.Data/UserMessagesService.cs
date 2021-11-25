@@ -8,6 +8,7 @@
 
     using BulgarianWines.Data.Common.Repositories;
     using BulgarianWines.Data.Models;
+    using BulgarianWines.Services.Mapping;
 
     public class UserMessagesService : IUserMessagesService
     {
@@ -18,55 +19,79 @@
             this.userMessagesRepository = userMessagesRepository;
         }
 
-        public IEnumerable<UserMessage> All() => this.userMessagesRepository.AllWithDeleted();
+        public IEnumerable<T> All<T>() => this.userMessagesRepository
+            .AllAsNoTracking()
+            .OrderByDescending(x => x.CreatedOn)
+            .To<T>()
+            .ToList();
 
-        public IEnumerable<UserMessage> AllWithDeleted() => this.userMessagesRepository.AllAsNoTrackingWithDeleted();
+        public IEnumerable<T> AllDeleted<T>() => this.userMessagesRepository
+            .AllAsNoTrackingWithDeleted()
+            .Where(x => x.IsDeleted)
+            .OrderByDescending(x => x.DeletedOn)
+            .To<T>()
+            .ToList();
 
-        public async Task Add(UserMessage userMessage)
+        public async Task CreateAsync<T>(T model)
         {
+            var userMessage = AutoMapperConfig.MapperInstance.Map<UserMessage>(model);
+
             await this.userMessagesRepository.AddAsync(userMessage);
             await this.userMessagesRepository.SaveChangesAsync();
         }
 
-        public async Task Delete(string id)
+        public async Task<bool> DeleteAsync(string id)
         {
             var userMessage = this.GetById(id);
             if (userMessage == null)
             {
-                return;
+                return false;
             }
 
             this.userMessagesRepository.Delete(userMessage);
             await this.userMessagesRepository.SaveChangesAsync();
+
+            return true;
         }
 
-        public async Task Restore(string id)
+        public async Task<bool> RestoreAsync(string id)
         {
             var userMessage = this.GetById(id);
 
             if (userMessage == null)
             {
-                return;
+                return false;
             }
 
             this.userMessagesRepository.Undelete(userMessage);
             await this.userMessagesRepository.SaveChangesAsync();
+
+            return true;
         }
 
-        public async Task SetToRead(string id, bool isRead)
+        public async Task<bool> SetToReadAsync(string id, bool isRead)
         {
             var userMessage = this.GetById(id);
             if (userMessage == null)
             {
-                return;
+                return false;
             }
 
             userMessage.IsRead = isRead;
             await this.userMessagesRepository.SaveChangesAsync();
+
+            return true;
         }
 
-        public UserMessage GetById(string id) => this.userMessagesRepository
-            .AllWithDeleted()
-            .FirstOrDefault(x => x.Id == id);
+        public T GetById<T>(string id) => this.userMessagesRepository
+            .AllAsNoTrackingWithDeleted()
+            .Where(x => x.Id == id)
+            .To<T>()
+            .FirstOrDefault();
+
+        private UserMessage GetById(string id) =>
+            this.userMessagesRepository
+                .AllAsNoTrackingWithDeleted()
+                .FirstOrDefault(x => x.Id == id);
     }
 }

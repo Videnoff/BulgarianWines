@@ -20,32 +20,28 @@
 
         public IActionResult Index(string id)
         {
-            var userMessage = this.userMessagesService
-                .All()
-                .OrderByDescending(x => x.CreatedOn)
+            var userMessages = this.userMessagesService
+                .All<UserMessageViewModel>()
                 .ToList();
 
-            if (userMessage.Count == 0)
+            if (userMessages.Count == 0)
             {
                 return this.View(new AllUserMessagesViewModel<UserMessageViewModel>());
             }
 
-            var currentMessage = this.userMessagesService.GetById(id);
+            var currentMessage = this.userMessagesService.GetById<UserMessageViewModel>(id);
 
             if (currentMessage == null)
             {
-                currentMessage = userMessage.FirstOrDefault();
+                currentMessage = userMessages.FirstOrDefault();
             }
 
-            this.userMessagesService.SetToRead(id, true);
-
-            var userMessageViewModelCollection = AutoMapperConfig.MapperInstance.Map<IEnumerable<UserMessageViewModel>>(userMessage);
-            var currentUserMessageViewModel = AutoMapperConfig.MapperInstance.Map<UserMessageViewModel>(currentMessage);
+            this.userMessagesService.SetToReadAsync(id, true);
 
             var viewModel = new AllUserMessagesViewModel<UserMessageViewModel>
             {
-                UserMessageViewModelCollection = userMessageViewModelCollection,
-                UserMessageViewModel = currentUserMessageViewModel,
+                UserMessageViewModelCollection = userMessages,
+                UserMessageViewModel = currentMessage,
             };
 
             return this.View(viewModel);
@@ -53,15 +49,32 @@
 
         public async Task<IActionResult> Delete(string id)
         {
-            await this.userMessagesService.Delete(id);
-            this.TempData["Alert"] = "Successfully deleted message.";
+            var result = await this.userMessagesService.DeleteAsync(id);
+
+            if (result)
+            {
+                this.TempData["Alert"] = "Successfully deleted message.";
+            }
+            else
+            {
+                this.TempData["Error"] = "There was a problem deleting the message.";
+            }
 
             return this.RedirectToAction(nameof(this.Index));
         }
 
         public async Task<IActionResult> Unread(string id)
         {
-            await this.userMessagesService.SetToRead(id, false);
+            var result = await this.userMessagesService.SetToReadAsync(id, false);
+
+            if (result)
+            {
+                this.TempData["Alert"] = "Successfully marked message as unread";
+            }
+            else
+            {
+                this.TempData["Error"] = "There was a problem marking the message as unread.";
+            }
 
             return this.RedirectToAction(nameof(this.Index));
         }
@@ -69,9 +82,7 @@
         public IActionResult Deleted(string id)
         {
             var userMessages = this.userMessagesService
-                .AllWithDeleted()
-                .Where(x => x.IsDeleted)
-                .OrderByDescending(x => x.DeletedOn)
+                .AllDeleted<DeletedUserMessagesViewModel>()
                 .ToList();
 
             if (userMessages.Count == 0)
@@ -79,23 +90,19 @@
                 return this.View(new AllUserMessagesViewModel<DeletedUserMessagesViewModel>());
             }
 
-            var currentUserMessage = this.userMessagesService.GetById(id);
+            var currentUserMessage = this.userMessagesService.GetById<DeletedUserMessagesViewModel>(id);
 
             if (currentUserMessage == null)
             {
                 currentUserMessage = userMessages.FirstOrDefault();
             }
 
-            this.userMessagesService.SetToRead(id, true);
-
-            var userMessageViewModelCollection = AutoMapperConfig.MapperInstance.Map<IEnumerable<DeletedUserMessagesViewModel>>(userMessages);
-            var currentUserMessageViewModel =
-                AutoMapperConfig.MapperInstance.Map<DeletedUserMessagesViewModel>(currentUserMessage);
+            this.userMessagesService.SetToReadAsync(id, true);
 
             var viewModel = new AllUserMessagesViewModel<DeletedUserMessagesViewModel>
             {
-                UserMessageViewModelCollection = userMessageViewModelCollection,
-                UserMessageViewModel = currentUserMessageViewModel,
+                UserMessageViewModelCollection = userMessages,
+                UserMessageViewModel = currentUserMessage,
             };
 
             return this.View(viewModel);
@@ -103,8 +110,16 @@
 
         public async Task<IActionResult> Restore(string id)
         {
-            await this.userMessagesService.Restore(id);
-            this.TempData["Alert"] = "Successfully restored message.";
+            var result = await this.userMessagesService.RestoreAsync(id);
+
+            if (result)
+            {
+                this.TempData["Alert"] = "Successfully restored message.";
+            }
+            else
+            {
+                this.TempData["Error"] = "There was a problem restoring the message.";
+            }
 
             return this.RedirectToAction(nameof(this.Deleted));
         }

@@ -129,8 +129,7 @@
 
             this.TempData["Alert"] = "Thank you! Your request was sent successfully!";
 
-            var userMessage = AutoMapperConfig.MapperInstance.Map<UserMessage>(model);
-            await this.userMessagesService.Add(userMessage);
+            await this.userMessagesService.CreateAsync<ContactFormViewModel>(model);
 
             return this.RedirectToAction(nameof(this.Index));
         }

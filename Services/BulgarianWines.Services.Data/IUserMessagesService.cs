@@ -7,18 +7,18 @@
 
     public interface IUserMessagesService
     {
-        public IEnumerable<UserMessage> All();
+        public IEnumerable<T> All<T>();
 
-        public IEnumerable<UserMessage> AllWithDeleted();
+        public IEnumerable<T> AllDeleted<T>();
 
-        public Task Add(UserMessage userMessage);
+        public Task CreateAsync<T>(T model);
 
-        public Task Delete(string id);
+        public Task<bool> DeleteAsync(string id);
 
-        public Task Restore(string id);
+        public Task<bool> RestoreAsync(string id);
 
-        public Task SetToRead(string id, bool isRead);
+        public Task<bool> SetToReadAsync(string id, bool isRead);
 
-        public UserMessage GetById(string id);
+        public T GetById<T>(string id);
     }
 }
