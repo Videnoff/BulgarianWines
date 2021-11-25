@@ -121,7 +121,16 @@
                     AdminPassword = this.configuration["AdminCredentials:AdminPassword"],
                 };
 
-                new ApplicationDbContextSeeder(adminCredentials).SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
+                var superAdminCredentials = new SuperAdminCredentials
+                {
+                    SuperAdminUsername = this.configuration["SuperAdminCredentials:SuperAdminUsername"],
+                    SuperAdminPassword = this.configuration["SuperAdminCredentials:SuperAdminPassword"],
+                };
+
+                new ApplicationDbContextSeeder(adminCredentials, superAdminCredentials)
+                    .SeedAsync(dbContext, serviceScope.ServiceProvider)
+                    .GetAwaiter()
+                    .GetResult();
             }
 
             if (env.IsDevelopment())

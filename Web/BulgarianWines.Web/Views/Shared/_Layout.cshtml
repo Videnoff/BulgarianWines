@@ -297,7 +297,7 @@
                             </span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-right myaccount-menu" data-display="static">
-                            @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+                            @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName) || this.User.IsInRole(GlobalConstants.SuperAdministratorRoleName))
                             {
                                 <li>
                                     <a class="nav-link text-dark" asp-area="Administration" asp-controller="Dashboard" asp-action="Index" title="Admin">

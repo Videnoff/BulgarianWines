@@ -11,10 +11,14 @@
     public class ApplicationDbContextSeeder : ISeeder
     {
         private readonly AdminCredentials adminCredentials;
+        private readonly SuperAdminCredentials superAdminCredentials;
 
-        public ApplicationDbContextSeeder(AdminCredentials adminCredentials)
+        public ApplicationDbContextSeeder(
+            AdminCredentials adminCredentials,
+            SuperAdminCredentials superAdminCredentials)
         {
             this.adminCredentials = adminCredentials;
+            this.superAdminCredentials = superAdminCredentials;
         }
 
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
@@ -42,6 +46,7 @@
                               new OriginsSeeder(),
                               new ProductsAvailabilitySeeder(),
                               new AdminSeeder(this.adminCredentials),
+                              new SuperAdminSeeder(this.superAdminCredentials),
                           };
 
             foreach (var seeder in seeders)

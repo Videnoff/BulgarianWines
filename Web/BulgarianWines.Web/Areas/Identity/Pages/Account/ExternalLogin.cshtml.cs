@@ -71,7 +71,7 @@
             if (remoteError != null)
             {
                 this.ErrorMessage = $"Error from external provider: {remoteError}";
-                return this.RedirectToPage("./Login", new {ReturnUrl = returnUrl });
+                return this.RedirectToPage("./Login", new { ReturnUrl = returnUrl });
             }
 
             var info = await this.signInManager.GetExternalLoginInfoAsync();
@@ -82,7 +82,7 @@
             }
 
             // Sign in the user with this external login provider if the user already has a login.
-            var result = await this.signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor : true);
+            var result = await this.signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor: true);
             if (result.Succeeded)
             {
                 this.logger.LogInformation("{Name} logged in with {LoginProvider} provider.", info.Principal.Identity.Name, info.LoginProvider);
