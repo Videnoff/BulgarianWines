@@ -1,11 +1,10 @@
-﻿using System;
-using System.Net.Mail;
-
-namespace BulgarianWines.Web.Areas.Identity.Pages.Account
+﻿namespace BulgarianWines.Web.Areas.Identity.Pages.Account
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
+    using System.Net.Mail;
     using System.Threading.Tasks;
 
     using BulgarianWines.Data.Models;

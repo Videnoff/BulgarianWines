@@ -1,11 +1,10 @@
-﻿using System.Net.Mail;
-
-namespace BulgarianWines.Web.Areas.Identity.Pages.Account
+﻿namespace BulgarianWines.Web.Areas.Identity.Pages.Account
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
+    using System.Net.Mail;
     using System.Text;
     using System.Text.Encodings.Web;
     using System.Threading.Tasks;
@@ -100,13 +99,13 @@ namespace BulgarianWines.Web.Areas.Identity.Pages.Account
             if (this.ModelState.IsValid)
             {
                 MailAddress address = new MailAddress(this.Input.Email);
-                var username = address.User;
+                var userName = address.User;
 
                 //await this.imagesService.UploadAzureBlobImageAsync(file, AzureContainerName);
 
                 var user = new ApplicationUser
                 {
-                    UserName = username,
+                    UserName = userName,
                     Email = this.Input.Email,
                     FirstName = this.Input.FirstName,
                     LastName = this.Input.LastName,

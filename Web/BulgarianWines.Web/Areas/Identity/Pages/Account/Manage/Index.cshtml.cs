@@ -1,8 +1,7 @@
-﻿using System.IO;
-
-namespace BulgarianWines.Web.Areas.Identity.Pages.Account.Manage
+﻿namespace BulgarianWines.Web.Areas.Identity.Pages.Account.Manage
 {
     using System.ComponentModel.DataAnnotations;
+    using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -39,6 +38,9 @@ namespace BulgarianWines.Web.Areas.Identity.Pages.Account.Manage
         [TempData]
         public string StatusMessage { get; set; }
 
+        [TempData]
+        public string UserNameChangeLimitMessage { get; set; }
+
         [BindProperty]
         public InputModel Input { get; set; }
 
@@ -54,6 +56,7 @@ namespace BulgarianWines.Web.Areas.Identity.Pages.Account.Manage
             public string LastName { get; set; }
 
             [Display(Name = "Username")]
+            [StringLength(10, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
             public string Username { get; set; }
 
             [Display(Name = "Profile Picture")]
@@ -93,6 +96,8 @@ namespace BulgarianWines.Web.Areas.Identity.Pages.Account.Manage
             {
                 return this.NotFound($"Unable to load user with ID '{this.userManager.GetUserId(this.User)}'.");
             }
+
+            this.UserNameChangeLimitMessage = $"You can change your username {user.UsernameChangeLimit} more time(s).";
 
             await this.LoadAsync(user);
             return this.Page();
@@ -137,7 +142,33 @@ namespace BulgarianWines.Web.Areas.Identity.Pages.Account.Manage
                     await file.CopyToAsync(dataStream);
                     user.ProfilePicture = dataStream.ToArray();
                 }
+
                 await this.userManager.UpdateAsync(user);
+            }
+
+            if (user.UsernameChangeLimit > 0)
+            {
+                if (this.Input.Username != user.UserName)
+                {
+                    var userNameExists = await this.userManager.FindByNameAsync(this.Input.Username);
+                    if (userNameExists != null)
+                    {
+                        this.StatusMessage = "User name already taken. Select a different username.";
+                        return this.RedirectToPage();
+                    }
+
+                    var setUserName = await this.userManager.SetUserNameAsync(user, this.Input.Username);
+                    if (!setUserName.Succeeded)
+                    {
+                        this.StatusMessage = "Unexpected error when trying to set user name.";
+                        return this.RedirectToPage();
+                    }
+                    else
+                    {
+                        user.UsernameChangeLimit -= 1;
+                        await this.userManager.UpdateAsync(user);
+                    }
+                }
             }
 
             if (this.Input.PhoneNumber != phoneNumber)
