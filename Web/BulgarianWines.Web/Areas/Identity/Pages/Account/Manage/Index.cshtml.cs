@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web.Areas.Identity.Pages.Account.Manage
+﻿using System.IO;
+
+namespace BulgarianWines.Web.Areas.Identity.Pages.Account.Manage
 {
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
@@ -45,6 +47,18 @@
             //[Display(Name = "Profile Image")]
             //public IFormFile ProfileImage { get; set; }
 
+            [Display(Name = "First Name")]
+            public string FirstName { get; set; }
+
+            [Display(Name = "Last Name")]
+            public string LastName { get; set; }
+
+            [Display(Name = "Username")]
+            public string Username { get; set; }
+
+            [Display(Name = "Profile Picture")]
+            public byte[] ProfilePicture { get; set; }
+
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
@@ -54,6 +68,9 @@
         {
             var userName = await this.userManager.GetUserNameAsync(user);
             var phoneNumber = await this.userManager.GetPhoneNumberAsync(user);
+            var firstName = user.FirstName;
+            var lastName = user.LastName;
+            var profilePicture = user.ProfilePicture;
 
             this.Username = userName;
             //this.ImagePath = user.ImageUrl;
@@ -61,6 +78,10 @@
             this.Input = new InputModel
             {
                 PhoneNumber = phoneNumber,
+                Username = userName,
+                FirstName = firstName,
+                LastName = lastName,
+                ProfilePicture = profilePicture,
             };
         }
 
@@ -92,6 +113,33 @@
             }
 
             var phoneNumber = await this.userManager.GetPhoneNumberAsync(user);
+            var firstName = user.FirstName;
+            var lastName = user.LastName;
+
+            if (this.Input.FirstName != firstName)
+            {
+                user.FirstName = input.FirstName;
+                await this.userManager.UpdateAsync(user);
+            }
+
+            if (this.Input.LastName != lastName)
+            {
+                user.LastName = this.Input.LastName;
+                await this.userManager.UpdateAsync(user);
+            }
+
+            if (this.Request.Form.Files.Count > 0)
+            {
+                IFormFile file = this.Request.Form.Files.FirstOrDefault();
+
+                using (var dataStream = new MemoryStream())
+                {
+                    await file.CopyToAsync(dataStream);
+                    user.ProfilePicture = dataStream.ToArray();
+                }
+                await this.userManager.UpdateAsync(user);
+            }
+
             if (this.Input.PhoneNumber != phoneNumber)
             {
                 var setPhoneResult = await this.userManager.SetPhoneNumberAsync(user, this.Input.PhoneNumber);

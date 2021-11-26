@@ -96,6 +96,7 @@ namespace BulgarianWines.Web.Areas.Identity.Pages.Account
         {
             returnUrl ??= this.Url.Content("~/");
             this.ExternalLogins = (await this.signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
             if (this.ModelState.IsValid)
             {
                 MailAddress address = new MailAddress(this.Input.Email);
