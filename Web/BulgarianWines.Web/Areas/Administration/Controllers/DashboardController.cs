@@ -18,14 +18,14 @@
             this.usersService = usersService;
         }
 
-        public IActionResult Index()
-        {
-            var viewModel = new IndexViewModel
-            {
-                ImageUrl = this.usersService.GetImage(),
-            };
+        //public IActionResult Index()
+        //{
+        //    //var viewModel = new IndexViewModel
+        //    //{
+        //    //    ImageUrl = this.usersService.GetImage(),
+        //    //};
 
-            return this.View(viewModel);
-        }
+        //    //return this.View(viewModel);
+        //}
     }
 }

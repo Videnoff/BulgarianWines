@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace BulgarianWines.Web
 {
     using System;
     using System.Reflection;
@@ -42,7 +44,9 @@
 
             services.AddDefaultIdentity<ApplicationUser>(IdentityOptionsProvider.GetIdentityOptions)
                 .AddRoles<ApplicationRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultUI()
+                .AddDefaultTokenProviders();
 
             services.Configure<CookiePolicyOptions>(
                 options =>

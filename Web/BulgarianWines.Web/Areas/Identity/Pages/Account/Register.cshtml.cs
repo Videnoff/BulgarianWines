@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web.Areas.Identity.Pages.Account
+﻿using System.Net.Mail;
+
+namespace BulgarianWines.Web.Areas.Identity.Pages.Account
 {
     using System;
     using System.Collections.Generic;
@@ -56,6 +58,14 @@
         public class InputModel
         {
             [Required]
+            [Display(Name = "First Name")]
+            public string FirstName { get; set; }
+
+            [Required]
+            [Display(Name = "Last Name")]
+            public string LastName { get; set; }
+
+            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -71,9 +81,9 @@
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
 
-            [Display(Name = "Select Profile Image")]
-            [ImageAttribute]
-            public IFormFile ImagePath { get; set; }
+            //[Display(Name = "Select Profile Image")]
+            //[ImageAttribute]
+            //public IFormFile ImagePath { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -88,13 +98,18 @@
             this.ExternalLogins = (await this.signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (this.ModelState.IsValid)
             {
-                await this.imagesService.UploadAzureBlobImageAsync(file, AzureContainerName);
+                MailAddress address = new MailAddress(Input.Email);
+                var username = address.User;
+
+                //await this.imagesService.UploadAzureBlobImageAsync(file, AzureContainerName);
 
                 var user = new ApplicationUser
                 {
-                    UserName = this.Input.Email,
+                    UserName = username,
                     Email = this.Input.Email,
-                    ImageUrl = file.FileName,
+                    FirstName = this.Input.FirstName,
+                    LastName = this.Input.LastName,
+                    //ImageUrl = file.FileName,
                 };
 
                 var result = await this.userManager.CreateAsync(user, this.Input.Password);

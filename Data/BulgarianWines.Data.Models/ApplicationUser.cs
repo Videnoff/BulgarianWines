@@ -30,7 +30,13 @@ namespace BulgarianWines.Data.Models
 
         public DateTime? DeletedOn { get; set; }
 
-        public string ImageUrl { get; set; }
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public byte[] ProfilePicture { get; set; }
+
+        public int UsernameChangeLimit { get; set; } = 10;
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 

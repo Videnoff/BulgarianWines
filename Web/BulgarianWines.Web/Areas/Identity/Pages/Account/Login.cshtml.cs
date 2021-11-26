@@ -1,4 +1,7 @@
-﻿namespace BulgarianWines.Web.Areas.Identity.Pages.Account
+﻿using System;
+using System.Net.Mail;
+
+namespace BulgarianWines.Web.Areas.Identity.Pages.Account
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -107,6 +110,19 @@
 
             // If we got this far, something failed, redisplay form
             return this.Page();
+        }
+
+        public bool IsValidEmail(string emailaddress)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(emailaddress);
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
         }
     }
 }
