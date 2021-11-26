@@ -98,7 +98,7 @@ namespace BulgarianWines.Web.Areas.Identity.Pages.Account
             this.ExternalLogins = (await this.signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (this.ModelState.IsValid)
             {
-                MailAddress address = new MailAddress(Input.Email);
+                MailAddress address = new MailAddress(this.Input.Email);
                 var username = address.User;
 
                 //await this.imagesService.UploadAzureBlobImageAsync(file, AzureContainerName);

@@ -46,7 +46,7 @@ namespace BulgarianWines.Web.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [EmailAddress]
+            [Display(Name = "Email / Username")]
             public string Email { get; set; }
 
             [Required]
@@ -82,9 +82,20 @@ namespace BulgarianWines.Web.Areas.Identity.Pages.Account
 
             if (this.ModelState.IsValid)
             {
+                var userName = this.Input.Email;
+
+                if (this.IsValidEmail(this.Input.Email))
+                {
+                    var user = await this.userManager.FindByEmailAsync(this.Input.Email);
+                    if (user != null)
+                    {
+                        userName = user.UserName;
+                    }
+                }
+
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await this.signInManager.PasswordSignInAsync(this.Input.Email, this.Input.Password, this.Input.RememberMe, lockoutOnFailure: false);
+                var result = await this.signInManager.PasswordSignInAsync(userName, this.Input.Password, this.Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
                     this.logger.LogInformation("User logged in.");
