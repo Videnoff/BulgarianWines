@@ -103,6 +103,7 @@
             services.AddTransient<IAvailabilityService, AvailabilityService>();
             services.AddTransient<IFavoritesService, FavoritesService>();
             services.AddTransient<IUserMessagesService, UserMessagesService>();
+            services.AddTransient<ITimeService, TimeService>();
             //services.AddTransient<INewsletterService, NewsletterService>();
             services.AddSingleton(x =>
                 new BlobServiceClient(this.configuration["BlobConnectionString"]));

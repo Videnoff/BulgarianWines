@@ -1898,6 +1898,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Administration\Components\" />
     <Folder Include="wwwroot\images\admin\" />
   </ItemGroup>
 

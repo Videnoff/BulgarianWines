@@ -32,6 +32,13 @@
             .To<T>()
             .ToList();
 
+        public IEnumerable<T> GetUnreadMessages<T>() => this.userMessagesRepository
+            .AllAsNoTracking()
+            .Where(x => !x.IsRead)
+            .OrderByDescending(x => x.CreatedOn)
+            .To<T>()
+            .ToList();
+
         public async Task CreateAsync<T>(T model)
         {
             var userMessage = AutoMapperConfig.MapperInstance.Map<UserMessage>(model);

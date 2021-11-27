@@ -11,6 +11,8 @@
 
         public IEnumerable<T> AllDeleted<T>();
 
+        public IEnumerable<T> GetUnreadMessages<T>();
+
         public Task CreateAsync<T>(T model);
 
         public Task<bool> DeleteAsync(string id);
