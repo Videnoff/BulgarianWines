@@ -110,6 +110,11 @@
             return this.View();
         }
 
+        public IActionResult DeliveryInformation()
+        {
+            return this.View();
+        }
+
         public IActionResult Contact()
         {
             if (this.User.Identity.IsAuthenticated)

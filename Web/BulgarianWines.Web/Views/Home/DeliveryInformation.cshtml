@@ -1,10 +1,9 @@
-﻿
-<head>
+﻿<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     @{
-        this.ViewData["Title"] = "About Us";
+        this.ViewData["Title"] = "Delivery Information";
     }
     <base />
     <script src="~/js/wined/jquery/jquery-2.1.1.min.js" asp-append-version="true"></script>
@@ -46,7 +45,6 @@
     <script type="text/javascript" src="catalog/view/javascript/jquery.countdown.js"></script>
     <script type="text/javascript" src="catalog/view/javascript/jquery.countdown.min.js"></script>
     <!-- Theme End -->
-
     @*<script src="~/js/wined/common.js" asp-append-version="true"></script>*@
     <script src="~/js/wined/themejs/parallax.js" asp-append-version="true"></script>
 
@@ -62,7 +60,7 @@
                 </a>
             </li>
             <li>
-                <a asp-area="" asp-controller="Home" asp-action="About">
+                <a asp-area="" asp-controller="Home" asp-action="DeliveryInformation">
                     @this.ViewData["Title"]
                 </a>
             </li>
@@ -85,86 +83,24 @@
     jQuery(document).ready(function () { quickbox(); });
     jQuery(window).resize(function () { quickbox(); });</script>
 
-<div class="container">
-    <div id="information-information" class="container">
-        <div class="row">
-            <div id="content" class="col-sm-12">
-                <h2 class="page-title page-info-title">
-                    @this.ViewData["Title"]
-                </h2>
-
-                <div class="aboutus-block">
-                    <h3 class="page-subheading">
-                        <strong>
-                            Our company
-                        </strong>
-                    </h3>
-                    <p>
-                        <strong class="dark">
-                            Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididun.
-                        </strong>
-                    </p>
-                    <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet conse ctetur adipisicing elit.</p>
-                    <ul class="list-1">
-                        <li>
-                            <em class="icon-ok"></em>Top quality products
-                        </li>
-                        <li>
-                            <em class="icon-ok"></em>Best customer service
-                        </li>
-                        <li>
-                            <em class="icon-ok"></em>30-days money back guarantee
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="aboutus-block">
-                    <h3 class="page-subheading">
-                        <strong>
-                            Our team
-                        </strong>
-                    </h3>
-
-                    <p>
-                        <strong class="dark">
-                            Lorem set sint occaecat cupidatat non
-                        </strong>
-                    </p>
-                    <p>
-                        Eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
-                    </p>
-                </div>
-
-                <div class="aboutus-block">
-                    <h3 class="page-subheading">
-                        <strong>
-                            Testimonials
-                        </strong>
-                    </h3>
-                    <div class="testimonials">
-                        <div class="inner">
-                            <span class="before">“</span>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.<span class="after">”</span>
-                        </div>
-                    </div>
-                    <p>
-                        <strong class="dark">
-                            Lorem ipsum dolor sit
-                        </strong>
-                    </p>
-                    <div class="testimonials">
-                        <div class="inner">
-                            <span class="before">“</span>
-                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet conse ctetur adipisicing elit. Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod.
-                            <span class="after">”</span>
-                        </div>
-                    </div>
-                    <p>
-                        <strong class="dark">
-                            Ipsum dolor sit
-                        </strong>
-                    </p>
-                </div>
-            </div>
+<div id="information-information" class="container">
+    <div class="row">
+        <div id="content" class="col-sm-12">
+            <h2 class="page-title page-info-title">
+                @this.ViewData["Title"]
+            </h2>
+            <h2>
+                Shipments and returns
+            </h2>
+            <h3>
+                Your pack shipment
+            </h3>
+            <p>
+                Packages are generally dispatched within 2 days after receipt of payment and are shipped via UPS with tracking and drop-off without signature. If you prefer delivery by UPS Extra with required signature, an additional cost will be applied, so please contact us before choosing this method. Whichever shipment choice you make, we will provide you with a link to track your package online.
+            </p>
+            <p>
+                Shipping fees include handling and packing fees as well as postage costs. Handling fees are fixed, whereas transport fees vary according to total weight of the shipment. We advise you to group your items in one order. We cannot group two distinct orders placed separately, and shipping fees will apply to each of them. Your package will be dispatched at your own risk, but special care is taken to protect fragile objects.<br><br>Boxes are amply sized and your items are well-protected.
+            </p>
         </div>
     </div>
 </div>
