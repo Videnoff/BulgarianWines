@@ -13,6 +13,7 @@
     using BulgarianWines.Web.ViewModels.HomePage;
     using BulgarianWines.Web.ViewModels.Index;
     using BulgarianWines.Web.ViewModels.Wines;
+    using Microsoft.AspNetCore.Diagnostics;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Caching.Distributed;
     using Newtonsoft.Json;
@@ -137,6 +138,25 @@
             await this.userMessagesService.CreateAsync<ContactFormViewModel>(model);
 
             return this.RedirectToAction(nameof(this.Index));
+        }
+
+        public IActionResult StatusCodePage(int code)
+        {
+            this.ViewData["StatusCode"] = code;
+            var statusCodeFeature = this.HttpContext.Features.Get<IStatusCodeReExecuteFeature>();
+
+            if (statusCodeFeature.OriginalPath.Contains("/Administration"))
+            {
+                return this.RedirectToAction("StatusCodePage", "Dashboard", new
+                {
+                    code,
+                    Area = "Administration",
+                });
+            }
+            else
+            {
+                return this.View();
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

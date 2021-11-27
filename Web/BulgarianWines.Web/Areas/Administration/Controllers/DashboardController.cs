@@ -19,5 +19,11 @@
         {
             return this.View();
         }
+
+        public IActionResult StatusCodePage(int code)
+        {
+            this.ViewData["StatusCode"] = code;
+            return this.View();
+        }
     }
 }

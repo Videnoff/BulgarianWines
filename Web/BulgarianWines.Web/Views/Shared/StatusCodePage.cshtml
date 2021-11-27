@@ -1,0 +1,461 @@
+﻿@using Microsoft.AspNetCore.WebUtilities;
+@model IEnumerable<BulgarianWines.Web.ViewModels.Category.AllCategoriesViewModel>
+@{
+    int statusCode = (int)this.ViewData["StatusCode"];
+    this.ViewData["Title"] = statusCode;
+}
+
+<div id="breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li>
+                <a asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="fa fa-home"></i>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    The page you requested cannot be found!
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<script>
+
+    function quickbox() {
+        if ($(window).width() > 767) {
+            $('.quickview').magnificPopup({
+                type: 'iframe',
+                delegate: 'a',
+                preloader: true,
+                tLoading: 'Loading image #%curr%...',
+            });
+        }
+    }
+    jQuery(document).ready(function () { quickbox(); });
+    jQuery(window).resize(function () { quickbox(); });
+
+</script>
+<div id="error-not-found" class="container">
+
+    <div class="row">
+
+        <aside id="column-left" class="col-sm-3 hidden-xs">
+            <div class="box">
+                <div class="title-wrapper">
+                    <div class="box-heading">
+                        Categories
+                    </div>
+                </div>
+                <div class="box-content">
+                    <ul class="box-category treeview-list treeview">
+                        <li>
+                            <a asp-area="" asp-controller="Wines" asp-action="AllWines">
+                                all wines
+                            </a>
+                        </li>
+                        @*@foreach (var category in Model)
+                        {
+                            <li>
+                                <a asp-area="" asp-controller="Wines" asp-action="ProductsFromCategory" asp-route-categoryId="@category.Id">
+                                    @category.Name
+                                </a>
+                            </li>
+                        }*@
+                        
+                        @*<li>
+                            <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/category&amp;path=25">etruscan </a>
+                        </li>
+                        <li>
+                            <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/category&amp;path=18">gattinara</a>
+                        </li>
+                        <li>
+                            <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/category&amp;path=57">grapefruits</a>
+                        </li>
+                        <li>
+                            <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/category&amp;path=17">pomegranates</a>
+                        </li>
+                        <li>
+                            <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/category&amp;path=60">tengelows</a>
+                        </li>
+                        <li>
+                            <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/category&amp;path=61">cantaloupe</a>
+                        </li>
+                        <li class="last">
+                            <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/category&amp;path=62">gaming console</a>
+                        </li>*@
+                    </ul>
+                </div>
+            </div>
+
+            <div class="box featured product-box">
+                <div class="container">
+                    <div class="title-wrapper">
+                        <div class="box-heading">Featured Products</div>
+                    </div>
+                    <div class="box-content">
+
+                        <div class="featured-products home-products">
+                            <div class="box-product productbox-grid" id="featured-grid">
+                                <div class="product-items">
+                                    <div class="product-block product-thumb transition">
+                                        <div class="product-block-inner">
+
+                                            <div class="image">
+                                                <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/product&amp;product_id=42">
+                                                    <img src="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/15-79x79.jpg" title="consectetur adipiscing" alt="consectetur adipiscing" class="img-responsive reg-image">
+                                                    <img class="img-responsive hover-image" src="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/3-79x79.jpg" title="consectetur adipiscing" alt="consectetur adipiscing">
+                                                </a>
+
+                                                <!--
+                                                -->
+                                                <div class="button-group">
+                                                    <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('42 ');">Add to Cart</button>
+                                                    <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('42 ');"></button>
+                                                    <div class="quickview" data-placement="right" title="Quick view"><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/quick_view&amp;product_id=42">Quick View</a></div>
+                                                    <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('42 ');"></button>
+                                                </div>
+
+                                            </div>
+
+
+
+                                            <div class="caption">
+                                                <h4><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/product&amp;product_id=42 ">consectetur adipiscing </a></h4>
+
+
+                                                <p class="price">
+                                                    $122.00
+                                                    <span class="price-tax">Ex Tax: $100.00</span>
+
+
+                                                </p>
+
+                                                <div class="rating">
+                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                    <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                                                    <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="button-group">
+                                                <!-- <button type="button" data-toggle="tooltip" data-placement="left" title="Add to cart" class="addtocart" onclick="cart.add('42 ');">Add to Cart </button>
+                                                <button class="wishlist" type="button" data-toggle="tooltip" data-placement="left" title="Add to Wish List " onclick="wishlist.add('42 ');"></button>
+                                                <button class="compare" type="button" data-toggle="tooltip" data-placement="left" title="Compare this Product " onclick="compare.add('42 ');"></button>
+                                                <div class="quickview" data-toggle="tooltip" data-placement="left" title="Quickview" ><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/quick_view&amp;product_id=42">Quick View</a></div>
+                                                <div class="quickview" data-placement="right" title="Quick view" ><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/quick_view&amp;product_id=42">Quick View<i class="fa fa-eye" aria-hidden="true"></i></a></div> -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="product-items">
+                                    <div class="product-block product-thumb transition">
+                                        <div class="product-block-inner">
+
+                                            <div class="image">
+                                                <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/product&amp;product_id=44">
+                                                    <img src="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/13-79x79.jpg" title="dapibus tortor" alt="dapibus tortor" class="img-responsive reg-image">
+                                                    <img class="img-responsive hover-image" src="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/15-79x79.jpg" title="dapibus tortor" alt="dapibus tortor">
+                                                </a>
+
+                                                <!--
+                                                -->
+                                                <div class="button-group">
+                                                    <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('44 ');">Add to Cart</button>
+                                                    <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('44 ');"></button>
+                                                    <div class="quickview" data-placement="right" title="Quick view"><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/quick_view&amp;product_id=44">Quick View</a></div>
+                                                    <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('44 ');"></button>
+                                                </div>
+
+                                            </div>
+
+
+
+                                            <div class="caption">
+                                                <h4><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/product&amp;product_id=44 ">dapibus tortor </a></h4>
+
+
+                                                <p class="price">
+                                                    $1,202.00
+                                                    <span class="price-tax">Ex Tax: $1,000.00</span>
+
+
+                                                </p>
+
+                                                <div class="rating">
+                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                    <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="button-group">
+                                                <!-- <button type="button" data-toggle="tooltip" data-placement="left" title="Add to cart" class="addtocart" onclick="cart.add('44 ');">Add to Cart </button>
+                                                <button class="wishlist" type="button" data-toggle="tooltip" data-placement="left" title="Add to Wish List " onclick="wishlist.add('44 ');"></button>
+                                                <button class="compare" type="button" data-toggle="tooltip" data-placement="left" title="Compare this Product " onclick="compare.add('44 ');"></button>
+                                                <div class="quickview" data-toggle="tooltip" data-placement="left" title="Quickview" ><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/quick_view&amp;product_id=44">Quick View</a></div>
+                                                <div class="quickview" data-placement="right" title="Quick view" ><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/quick_view&amp;product_id=44">Quick View<i class="fa fa-eye" aria-hidden="true"></i></a></div> -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="product-items">
+                                    <div class="product-block product-thumb transition">
+                                        <div class="product-block-inner">
+
+                                            <div class="image">
+                                                <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/product&amp;product_id=41">
+                                                    <img src="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/5-79x79.jpg" title="donec pulvinar" alt="donec pulvinar" class="img-responsive reg-image">
+                                                    <img class="img-responsive hover-image" src="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/4-79x79.jpg" title="donec pulvinar" alt="donec pulvinar">
+                                                </a>
+
+                                                <!--
+                                                -->
+                                                <div class="button-group">
+                                                    <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('41 ');">Add to Cart</button>
+                                                    <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('41 ');"></button>
+                                                    <div class="quickview" data-placement="right" title="Quick view"><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/quick_view&amp;product_id=41">Quick View</a></div>
+                                                    <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('41 ');"></button>
+                                                </div>
+
+                                            </div>
+
+
+
+                                            <div class="caption">
+                                                <h4><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/product&amp;product_id=41 ">donec pulvinar </a></h4>
+
+
+                                                <p class="price">
+                                                    $122.00
+                                                    <span class="price-tax">Ex Tax: $100.00</span>
+
+
+                                                </p>
+
+                                                <div class="rating">
+                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                    <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="button-group">
+                                                <!-- <button type="button" data-toggle="tooltip" data-placement="left" title="Add to cart" class="addtocart" onclick="cart.add('41 ');">Add to Cart </button>
+                                                <button class="wishlist" type="button" data-toggle="tooltip" data-placement="left" title="Add to Wish List " onclick="wishlist.add('41 ');"></button>
+                                                <button class="compare" type="button" data-toggle="tooltip" data-placement="left" title="Compare this Product " onclick="compare.add('41 ');"></button>
+                                                <div class="quickview" data-toggle="tooltip" data-placement="left" title="Quickview" ><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/quick_view&amp;product_id=41">Quick View</a></div>
+                                                <div class="quickview" data-placement="right" title="Quick view" ><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/quick_view&amp;product_id=41">Quick View<i class="fa fa-eye" aria-hidden="true"></i></a></div> -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span class="featured_default_width" style="display:none; visibility:hidden"></span>
+
+            <div class="swiper-viewport">
+                <div id="banner0" class="swiper-container  single-banner  swiper-container-horizontal swiper-container-fade">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide swiper-slide-active" style="width: 213px; opacity: 1; transform: translate3d(0px, 0px, 0px);"><a href="#"><img src="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/banners/left-banner-277x368.jpg" alt="left-banner" class="img-responsive"></a></div>
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination swiper-pagination-bullets"><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span></div>
+                </div>
+            </div>
+            <script type="text/javascript">
+    <!--
+                $('#banner0').swiper({
+                    effect: 'fade',
+                    autoplay: 2500,
+                    pagination: '.swiper-pagination',  // If we need pagination
+                    autoplayDisableOnInteraction: false
+                });
+                --></script>
+            <div class="box latest product-box">
+                <div class="title-wrapper">
+                    <div class="box-heading">new arrivals</div>
+                </div>
+                <div class="box-content">
+
+                    <div class="latest-products home-products">
+                        <div class="box-product productbox-grid" id="latest-grid">
+                            <div class="product-items">
+                                <div class="product-block product-thumb transition">
+                                    <div class="product-block-inner">
+
+                                        <div class="image">
+                                            <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/product&amp;product_id=54">
+                                                <img src="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/19-79x79.jpg" title="Vivamus fringilla" alt="Vivamus fringilla" class="img-responsive reg-image">
+                                                <img class="img-responsive hover-image" src="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/7-79x79.jpg" title="Vivamus fringilla" alt="Vivamus fringilla">
+                                            </a>
+
+                                            <!--
+                                            -->
+
+                                            <div class="button-group">
+                                                <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('54 ');">Add to Cart</button>
+                                                <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('54 ');"></button>
+                                                <div class="quickview" data-placement="right" title="Quick view"><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/quick_view&amp;product_id=54">Quick View</a></div>
+                                                <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('54 ');"></button>
+                                            </div>
+                                        </div>
+                                        <div class="caption">
+                                            <h4><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/product&amp;product_id=54 ">Vivamus fringilla </a></h4>
+                                            <p class="price">
+                                                $122.00
+                                                <span class="price-tax">Ex Tax: $100.00</span>
+
+                                            </p>
+                                            <div class="rating">
+                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="button-group">
+                                            <!-- <button type="button" data-toggle="tooltip" data-placement="left" title="Add to cart" class="addtocart" onclick="cart.add('54 ');">Add to Cart </button>
+                                            <button class="wishlist" type="button" data-toggle="tooltip" data-placement="left" title="Add to Wish List " onclick="wishlist.add('54 ');"></button>
+                                            <button class="compare" type="button" data-toggle="tooltip" data-placement="left" title="Compare this Product " onclick="compare.add('54 ');"></button>
+                                            <div class="quickview" data-toggle="tooltip" data-placement="left" title="Quickview" ><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/quick_view&amp;product_id=54">Quick View</a></div>
+                                            <div class="quickview" data-placement="right" title="Quick view" ><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/quick_view&amp;product_id=54">Quick View<i class="fa fa-eye" aria-hidden="true"></i></a></div> -->
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="product-items">
+                                <div class="product-block product-thumb transition">
+                                    <div class="product-block-inner">
+
+                                        <div class="image">
+                                            <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/product&amp;product_id=53">
+                                                <img src="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/5-79x79.jpg" title="nulla venenatis" alt="nulla venenatis" class="img-responsive reg-image">
+                                                <img class="img-responsive hover-image" src="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/20-79x79.jpg" title="nulla venenatis" alt="nulla venenatis">
+                                            </a>
+
+                                            <!--
+                                            -->
+
+                                            <div class="button-group">
+                                                <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('53 ');">Add to Cart</button>
+                                                <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('53 ');"></button>
+                                                <div class="quickview" data-placement="right" title="Quick view"><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/quick_view&amp;product_id=53">Quick View</a></div>
+                                                <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('53 ');"></button>
+                                            </div>
+                                        </div>
+                                        <div class="caption">
+                                            <h4><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/product&amp;product_id=53 ">nulla venenatis </a></h4>
+                                            <p class="price">
+                                                $122.00
+                                                <span class="price-tax">Ex Tax: $100.00</span>
+                                            </p>
+                                            <div class="rating">
+                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="button-group">
+                                            <!-- <button type="button" data-toggle="tooltip" data-placement="left" title="Add to cart" class="addtocart" onclick="cart.add('53 ');">Add to Cart </button>
+                                            <button class="wishlist" type="button" data-toggle="tooltip" data-placement="left" title="Add to Wish List " onclick="wishlist.add('53 ');"></button>
+                                            <button class="compare" type="button" data-toggle="tooltip" data-placement="left" title="Compare this Product " onclick="compare.add('53 ');"></button>
+                                            <div class="quickview" data-toggle="tooltip" data-placement="left" title="Quickview" ><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/quick_view&amp;product_id=53">Quick View</a></div>
+                                            <div class="quickview" data-placement="right" title="Quick view" ><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/quick_view&amp;product_id=53">Quick View<i class="fa fa-eye" aria-hidden="true"></i></a></div> -->
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="product-items">
+                                <div class="product-block product-thumb transition">
+                                    <div class="product-block-inner">
+
+                                        <div class="image">
+                                            <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/product&amp;product_id=51">
+                                                <img src="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/1-79x79.jpg" title="aenean dignissim" alt="aenean dignissim" class="img-responsive reg-image">
+                                                <img class="img-responsive hover-image" src="http://demos.thementic.com/opencart/OPC01/OPC0100034/image/cache/catalog/demo/product/15-79x79.jpg" title="aenean dignissim" alt="aenean dignissim">
+                                            </a>
+
+                                            <!--
+                                            -->
+
+                                            <div class="button-group">
+                                                <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('51 ');">Add to Cart</button>
+                                                <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('51 ');"></button>
+                                                <div class="quickview" data-placement="right" title="Quick view"><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/quick_view&amp;product_id=51">Quick View</a></div>
+                                                <button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('51 ');"></button>
+                                            </div>
+                                        </div>
+                                        <div class="caption">
+                                            <h4><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/product&amp;product_id=51 ">
+                                                aenean dignissim
+                                            </a></h4>
+                                            <p class="price">
+                                                $122.00
+                                                <span class="price-tax">Ex Tax: $100.00</span>
+                                            </p>
+                                            <div class="rating">
+                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
+                                                <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="button-group">
+                                            <!-- <button type="button" data-toggle="tooltip" data-placement="left" title="Add to cart" class="addtocart" onclick="cart.add('51 ');">Add to Cart </button>
+                                            <button class="wishlist" type="button" data-toggle="tooltip" data-placement="left" title="Add to Wish List " onclick="wishlist.add('51 ');"></button>
+                                            <button class="compare" type="button" data-toggle="tooltip" data-placement="left" title="Compare this Product " onclick="compare.add('51 ');"></button>
+                                            <div class="quickview" data-toggle="tooltip" data-placement="left" title="Quickview" ><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/quick_view&amp;product_id=51">Quick View</a></div>
+                                            <div class="quickview" data-placement="right" title="Quick view" ><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/quick_view&amp;product_id=51">Quick View<i class="fa fa-eye" aria-hidden="true"></i></a></div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span class="latest_default_width" style="display:none; visibility:hidden"></span>
+        </aside>
+        <div id="content" class="col-sm-9">
+            <h1>
+                new arrivals
+            </h1>
+            <p>
+                The page you requested cannot be found.
+            </p>
+            <div class="buttons clearfix">
+                <div class="pull-right">
+                    <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-primary">
+                        Continue
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
