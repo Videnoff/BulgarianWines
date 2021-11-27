@@ -20,6 +20,7 @@
             return this.View();
         }
 
+        [HttpGet("/Administration/StatusCodePage/{code}")]
         public IActionResult StatusCodePage(int code)
         {
             this.ViewData["StatusCode"] = code;

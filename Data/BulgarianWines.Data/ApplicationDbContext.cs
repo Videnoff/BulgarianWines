@@ -59,6 +59,14 @@
 
         public DbSet<UserMessage> UserMessages { get; set; }
 
+        public DbSet<City> Cities { get; set; }
+
+        public DbSet<Address> Addresses { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<ProductOrder> ProductOrders { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
