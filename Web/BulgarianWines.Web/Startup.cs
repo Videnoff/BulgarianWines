@@ -123,12 +123,14 @@
                 {
                     AdminUsername = this.configuration["AdminCredentials:AdminUsername"],
                     AdminPassword = this.configuration["AdminCredentials:AdminPassword"],
+                    AdminEmail = this.configuration["AdminCredentials:AdminEmail"],
                 };
 
                 var superAdminCredentials = new SuperAdminCredentials
                 {
                     SuperAdminUsername = this.configuration["SuperAdminCredentials:SuperAdminUsername"],
                     SuperAdminPassword = this.configuration["SuperAdminCredentials:SuperAdminPassword"],
+                    SuperAdminEmail = this.configuration["SuperAdminCredentials:SuperAdminEmail"],
                 };
 
                 new ApplicationDbContextSeeder(adminCredentials, superAdminCredentials)

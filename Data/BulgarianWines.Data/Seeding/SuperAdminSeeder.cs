@@ -25,12 +25,12 @@
 
         private async Task SeedRoleAsync(UserManager<ApplicationUser> userManager, SuperAdminCredentials superAdminCredentials)
         {
-            if (userManager.FindByNameAsync(this.superAdminCredentials.SuperAdminUsername).Result == null)
+            if (userManager.FindByEmailAsync(this.superAdminCredentials.SuperAdminEmail).Result == null)
             {
                 var superadmin = new ApplicationUser
                 {
                     UserName = this.superAdminCredentials.SuperAdminUsername,
-                    Email = this.superAdminCredentials.SuperAdminUsername,
+                    Email = this.superAdminCredentials.SuperAdminEmail,
                     EmailConfirmed = true,
                 };
 

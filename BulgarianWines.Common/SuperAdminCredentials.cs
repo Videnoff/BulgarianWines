@@ -5,5 +5,7 @@
         public string SuperAdminUsername { get; set; }
 
         public string SuperAdminPassword { get; set; }
+
+        public string SuperAdminEmail { get; set; }
     }
 }
