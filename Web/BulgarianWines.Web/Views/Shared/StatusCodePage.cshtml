@@ -50,41 +50,7 @@
                 </div>
                 <div class="box-content">
                     <ul class="box-category treeview-list treeview">
-                        <li>
-                            <a asp-area="" asp-controller="Wines" asp-action="AllWines">
-                                all wines
-                            </a>
-                        </li>
-                        @*@foreach (var category in Model)
-                        {
-                            <li>
-                                <a asp-area="" asp-controller="Wines" asp-action="ProductsFromCategory" asp-route-categoryId="@category.Id">
-                                    @category.Name
-                                </a>
-                            </li>
-                        }*@
-                        
-                        @*<li>
-                            <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/category&amp;path=25">etruscan </a>
-                        </li>
-                        <li>
-                            <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/category&amp;path=18">gattinara</a>
-                        </li>
-                        <li>
-                            <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/category&amp;path=57">grapefruits</a>
-                        </li>
-                        <li>
-                            <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/category&amp;path=17">pomegranates</a>
-                        </li>
-                        <li>
-                            <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/category&amp;path=60">tengelows</a>
-                        </li>
-                        <li>
-                            <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/category&amp;path=61">cantaloupe</a>
-                        </li>
-                        <li class="last">
-                            <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/category&amp;path=62">gaming console</a>
-                        </li>*@
+                        <vc:categories></vc:categories>
                     </ul>
                 </div>
             </div>
@@ -92,7 +58,9 @@
             <div class="box featured product-box">
                 <div class="container">
                     <div class="title-wrapper">
-                        <div class="box-heading">Featured Products</div>
+                        <div class="box-heading">
+                            Featured Products
+                        </div>
                     </div>
                     <div class="box-content">
 

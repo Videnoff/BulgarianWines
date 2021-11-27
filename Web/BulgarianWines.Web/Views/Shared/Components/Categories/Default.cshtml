@@ -1,0 +1,29 @@
+﻿@model IEnumerable<BulgarianWines.Web.ViewModels.Category.CategoryViewModel>
+
+
+<div class="category-box">
+    <div class="sec-title">
+        @*<h6>
+            Categories
+        </h6>*@
+    </div>
+    <!-- accordion -->
+    <div id="accordion">
+        @{ var categoryCount = 1; }
+
+        @foreach (var mainCategory in Model)
+        {
+            <div class="card">
+                <div class="card-header">
+                    <a asp-area="" asp-controller="Categories" asp-action="Products" asp-route-categoryId="@(categoryCount)">
+                        <span>
+                            @mainCategory.Name
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            categoryCount++;
+        }
+    </div>
+</div>
