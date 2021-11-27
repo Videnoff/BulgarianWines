@@ -3,8 +3,8 @@ Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,Bli
 Chart.defaults.global.defaultFontColor = '#858796';
 
 // Pie Chart Example
-var ctx = document.getElementById("myPieChart");
-var myPieChart = new Chart(ctx, {
+var ctx = document.getElementById("usersInRolesChart");
+var usersInRolesChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
         labels: [],
@@ -35,14 +35,13 @@ var myPieChart = new Chart(ctx, {
 });
 
 (async () => {
-    removeData(myPieChart);
+    removeData(usersInRolesChart);
     var userRoles = await getDataAsync();
-    userRoles.forEach((userRole) => addData(myPieChart, userRole.roleName, userRole.percentage));
-    console.log(userRoles);
+    userRoles.forEach((userRole) => addData(usersInRolesChart, userRole.roleName, userRole.percentage));
 })();
 
 async function getDataAsync() {
-    var response = await fetch("api/statistics");
+    var response = await fetch("api/statistics/userroles");
     var data = await response.json();
     return data;
 }

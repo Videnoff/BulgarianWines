@@ -77,9 +77,9 @@
     <None Include="Areas\Administration\Views\Shared\_AdminLayout.cshtml" />
     <None Include="Views\Categories\Products.cshtml" />
     <None Include="Views\Home\Contact.cshtml" />
-    <None Include="wwwroot\js\admin\demo\chart-area-demo.js" />
+    <None Include="wwwroot\js\admin\demo\registered-users-area-chart.js" />
     <None Include="wwwroot\js\admin\demo\chart-bar-demo.js" />
-    <None Include="wwwroot\js\admin\demo\chart-pie-demo.js" />
+    <None Include="wwwroot\js\admin\demo\users-in-roles-pie-chart.js" />
     <None Include="wwwroot\js\admin\demo\datatables-demo.js" />
     <None Include="wwwroot\js\admin\vendor\bootstrap\js\bootstrap.bundle.js" />
     <None Include="wwwroot\js\admin\vendor\bootstrap\js\bootstrap.bundle.js.map" />

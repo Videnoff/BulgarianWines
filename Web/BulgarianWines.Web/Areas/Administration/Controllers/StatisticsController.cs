@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web.Areas.Administration.Controllers
+﻿using System.Globalization;
+
+namespace BulgarianWines.Web.Areas.Administration.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -24,6 +26,7 @@
             this.roleManager = roleManager;
         }
 
+        [HttpGet("UserRoles")]
         public IActionResult UserRoles()
         {
             var userRoles = new List<UserRolesViewModel>();
@@ -36,6 +39,7 @@
             foreach (var role in roles)
             {
                 var usersInRoleCount = users.Where(x => x.Roles.Any(y => y.RoleId == role.Id)).Count();
+
                 userRoles.Add(new UserRolesViewModel
                 {
                     RoleName = role.Name,
@@ -51,6 +55,32 @@
             });
 
             return this.Json(userRoles);
+        }
+
+        [HttpGet("RegisteredUsers")]
+        public IActionResult RegisteredUsers()
+        {
+            var registeredUsers = new List<RegisteredUsersViewModel>();
+
+            var userDates = this.userManager
+                .Users
+                .OrderBy(x => x.CreatedOn)
+                .ToList()
+                .GroupBy(x => x.CreatedOn.ToString("dd-MM-yyyy", CultureInfo.InvariantCulture));
+
+            var totalusers = 0;
+
+            foreach (var user in userDates)
+            {
+                totalusers += user.Count();
+                registeredUsers.Add(new RegisteredUsersViewModel
+                {
+                    RegistrationDate = user.Key,
+                    UsersCount = totalusers,
+                });
+            }
+
+            return this.Json(registeredUsers);
         }
     }
 }

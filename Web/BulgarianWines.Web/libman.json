@@ -133,6 +133,22 @@
         "js/dataTables.bootstrap4.js",
         "js/dataTables.bootstrap4.min.js"
       ]
+    },
+    {
+      "library": "owl.carousel@2.3.4",
+      "destination": "wwwroot/lib/owl-carousel/",
+      "files": [
+        "dist/owl.carousel.js",
+        "dist/owl.carousel.min.js"
+      ]
+    },
+    {
+      "library": "wow.js@1.2.2",
+      "destination": "wwwroot/lib/wow-js/",
+      "files": [
+        "dist/wow.js",
+        "dist/wow.min.js"
+      ]
     }
   ]
 }
