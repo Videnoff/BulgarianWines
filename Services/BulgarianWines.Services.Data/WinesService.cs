@@ -251,6 +251,21 @@
             return true;
         }
 
+        public async Task<bool> DeleteReviewAsync(string id)
+        {
+            var review = this.GetReviewById(id);
+
+            if (review == null)
+            {
+                return false;
+            }
+
+            this.reviewsRepository.Delete(review);
+            await this.reviewsRepository.SaveChangesAsync();
+
+            return true;
+        }
+
         private Wine GetDeletedProductById(int id) =>
             this.winesRepository
                 .AllAsNoTrackingWithDeleted()
@@ -279,5 +294,9 @@
 
             return predicateExpression;
         }
+
+        private Review GetReviewById(string id) => this.reviewsRepository
+            .All()
+            .FirstOrDefault(x => x.Id == id);
     }
 }

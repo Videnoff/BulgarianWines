@@ -285,6 +285,22 @@
             return this.RedirectToAction(nameof(this.Index));
         }
 
+        public async Task<IActionResult> DeleteReview(string id, string returnUrl)
+        {
+            var result = await this.winesService.DeleteReviewAsync(id);
+
+            if (result)
+            {
+                this.TempData["Alert"] = "Successfully deleted review.";
+            }
+            else
+            {
+                this.TempData["Error"] = "There was a problem deleting the review.";
+            }
+
+            return this.LocalRedirect(returnUrl);
+        }
+
         private bool WineExists(int id)
         {
             return this.db.Wines.Any(e => e.Id == id);

@@ -1,5 +1,6 @@
 ﻿@using BulgarianWines.Web.ViewModels.Wines
 @using System.Security.Claims
+@using BulgarianWines.Common
 @model BulgarianWines.Web.ViewModels.Wines.SingleProductViewModel
 @{
     this.ViewData["Title"] = Model.Name;
@@ -156,7 +157,7 @@
                                                 </div>
                                             }
                                         </div>
-                                       
+
                                         <span class="additional_default_width" style="display:none; visibility:hidden"></span>
                                     </div>
                                     <!-- Cloud-Zoom Image Effect End-->
@@ -239,21 +240,21 @@
                                 </ul>
                                 <div id="product">
                                     @*<h3 class="product-option">
-                                        Available Options
-                                    </h3>
-                                    <div class="form-group required">
-                                        <label class="control-label" for="input-option228">
-                                            Delivery Date
-                                        </label>
-                                        <div class="input-group date">
-                                            <input type="text" name="option[228]" value="2011-04-22" data-date-format="YYYY-MM-DD" id="input-option228" class="form-control" />
-                                            <span class="input-group-btn">
-                                                <button class="btn btn-default" type="button">
-                                                    <i class="fa fa-calendar"></i>
-                                                </button>
-                                            </span>
-                                        </div>
-                                    </div>*@
+                                            Available Options
+                                        </h3>
+                                        <div class="form-group required">
+                                            <label class="control-label" for="input-option228">
+                                                Delivery Date
+                                            </label>
+                                            <div class="input-group date">
+                                                <input type="text" name="option[228]" value="2011-04-22" data-date-format="YYYY-MM-DD" id="input-option228" class="form-control" />
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default" type="button">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>*@
                                     <div class="form-group cart">
                                         <label class="control-label qty" for="input-quantity">
                                             Qty
@@ -265,16 +266,16 @@
                                             </button>
                                         </a>
                                         @*<span>
-                                            - OR -
-                                        </span>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-default wishlist" title="Add to Wish List" onclick="wishlist.add('51');">
-                                                Add to Wish List
-                                            </button>
-                                            <button type="button" class="btn btn-default compare" title="Compare this Product" onclick="compare.add('51');">
-                                                Compare this Product
-                                            </button>
-                                        </div>*@
+                                                - OR -
+                                            </span>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-default wishlist" title="Add to Wish List" onclick="wishlist.add('51');">
+                                                    Add to Wish List
+                                                </button>
+                                                <button type="button" class="btn btn-default compare" title="Compare this Product" onclick="compare.add('51');">
+                                                    Compare this Product
+                                                </button>
+                                            </div>*@
 
                                     </div>
                                     <input type="hidden" name="@Model.Id" value="@Model.Id" />
@@ -319,7 +320,7 @@
                                     </p>
                                 </div>
                                 <div class="tab-pane" id="tab-specification">
-                                    
+
                                 </div>
                                 <div class="tab-pane" id="tab-review">
                                     <form class="form-horizontal" id="form-review">
@@ -353,11 +354,17 @@
 
                                                             </td>
                                                         </tr>
+                                                        @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+                                                        {
+                                                            <a asp-area="Administration" asp-controller="Wines" asp-action="DeleteReview" asp-route-id="@review.Id" asp-route-returnUrl="@string.Format("{0}{1}", this.Context.Request.Path, this.Context.Request.QueryString)" class="btn btn-danger float-right">
+                                                                Delete
+                                                            </a>
+                                                        }
                                                     </tbody>
                                                 </table>
                                             }
+                                            <partial name="_WriteReviewPartial" model="new WineReviewInputModel { UserId = this.User.FindFirstValue(ClaimTypes.NameIdentifier), WineId = Model.Id }" />
                                         </div>
-                                        <partial name="_WriteReviewPartial" model="new WineReviewInputModel {UserId = this.User.FindFirstValue(ClaimTypes.NameIdentifier), WineId = Model.Id}" />
                                     </form>
                                 </div>
                             </div>
@@ -373,338 +380,338 @@
         </div>
     </div>
 
-<div class="zoomContainer" style="-webkit-transform: translateZ(0); position: absolute; left: 132px; top: 259px; height: 485px; width: 485px;">
-    <div class="zoomWindowContainer" style="width: 450px;">
-        <div class="zoomWindow" style='z-index: 999; overflow: hidden; margin-left: 0px; margin-top: 0px; background-position: -201px -125.253px; width: 485px; height: 485px; float: left; cursor: crosshair; background-repeat: no-repeat; position: absolute; background-image: url(@Model.ImageUrl); top: 0px; left: 0px; display: none;'>
-            &nbsp;
+    <div class="zoomContainer" style="-webkit-transform: translateZ(0); position: absolute; left: 132px; top: 259px; height: 485px; width: 485px;">
+        <div class="zoomWindowContainer" style="width: 450px;">
+            <div class="zoomWindow" style='z-index: 999; overflow: hidden; margin-left: 0px; margin-top: 0px; background-position: -201px -125.253px; width: 485px; height: 485px; float: left; cursor: crosshair; background-repeat: no-repeat; position: absolute; background-image: url(@Model.ImageUrl); top: 0px; left: 0px; display: none;'>
+                &nbsp;
+            </div>
         </div>
     </div>
-</div>
 
-@*<script type="text/javascript">
-    function() {
-        $('html, body').animate({
-            scrollTop: $('#tabs_info').offset().top
-        }, 'slow');
-    }
-</script>
-<script type="text/javascript">
-    function onclick(event) {
-        $('a[href=\'#tab-review\']').trigger('click');
-        return false;
-    }
-</script>*@
-<script type="text/javascript">
-    <!--
-    $('select[name=\'recurring_id\'], input[name="quantity"]').change(function () {
-        $.ajax({
-            url: 'index.php?route=product/product/getRecurringDescription',
-            type: 'post',
-            data: $('input[name=\'product_id\'], input[name=\'quantity\'], select[name=\'recurring_id\']'),
-            dataType: 'json',
-            beforeSend: function () {
-                $('#recurring-description').html('');
-            },
-            success: function (json) {
-                $('.alert-dismissible, .text-danger').remove();
-
-                if (json['success']) {
-                    $('#recurring-description').html(json['success']);
-                }
+    @*<script type="text/javascript">
+            function() {
+                $('html, body').animate({
+                    scrollTop: $('#tabs_info').offset().top
+                }, 'slow');
             }
-        });
-    });
-    //--></script>
+        </script>
+        <script type="text/javascript">
+            function onclick(event) {
+                $('a[href=\'#tab-review\']').trigger('click');
+                return false;
+            }
+        </script>*@
     <script type="text/javascript">
-<!--
-    //$('#button-cart').on('click', function () {
-    //    $.ajax({
-    //        /*url: 'index.php?route=checkout/cart/add',*/
-    //        url: 'Favorites/Add',
-    //        type: 'post',
-    //        data: $(''#product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
-    //        dataType: 'json',
-    //        beforeSend: function () {
-    //            $('#button-cart').button('loading');
-    //        },
-    //        complete: function () {
-    //            $('#button-cart').button('reset');
-    //        },
-    //        success: function (json) {
-    //            $('.alert-dismissible, .text-danger').remove();
-    //            $('.form-group').removeClass('has-error');
+    <!--
+        $('select[name=\'recurring_id\'], input[name="quantity"]').change(function () {
+            $.ajax({
+                url: 'index.php?route=product/product/getRecurringDescription',
+                type: 'post',
+                data: $('input[name=\'product_id\'], input[name=\'quantity\'], select[name=\'recurring_id\']'),
+                dataType: 'json',
+                beforeSend: function () {
+                    $('#recurring-description').html('');
+                },
+                success: function (json) {
+                    $('.alert-dismissible, .text-danger').remove();
 
-    //            if (json['error']) {
-    //                if (json['error']['option']) {
-    //                    for (i in json['error']['option']) {
-    //                        var element = $('#input-option' + i.replace('_', '-'));
-
-    //                        if (element.parent().hasClass('input-group')) {
-    //                            element.parent().before('<div class="text-danger">' + json['error']['option'][i] + '</div>');
-    //                        } else {
-    //                            element.before('<div class="text-danger">' + json['error']['option'][i] + '</div>');
-    //                        }
-    //                    }
-    //                }
-
-    //                if (json['error']['recurring']) {
-    //                    $('select[name=\'recurring_id\']').after('<div class="text-danger">' + json['error']['recurring'] + '</div>');
-    //                }
-
-    //                // Highlight any found errors
-    //                $('.text-danger').parent().addClass('has-error');
-    //            }
-
-    //            if (json['success']) {
-    //                $.notify({
-    //                    message: json['success'],
-    //                    target: '_blank'
-    //                }, {
-    //                    // settings
-    //                    element: 'body',
-    //                    position: null,
-    //                    type: "info",
-    //                    allow_dismiss: true,
-    //                    newest_on_top: false,
-    //                    placement: {
-    //                        from: "top",
-    //                        align: "center"
-    //                    },
-    //                    offset: 0,
-    //                    spacing: 10,
-    //                    z_index: 2031,
-    //                    delay: 5000,
-    //                    timer: 1000,
-    //                    url_target: '_blank',
-    //                    mouse_over: null,
-    //                    animate: {
-    //                        enter: 'animated fadeInDown',
-    //                        exit: 'animated fadeOutUp'
-    //                    },
-    //                    onShow: null,
-    //                    onShown: null,
-    //                    onClose: null,
-    //                    onClosed: null,
-    //                    icon_type: 'class',
-    //                    template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-success" role="alert">' +
-    //                        '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">&nbsp;&times;</button>' +
-    //                        '<span data-notify="message"><i class="fa fa-check-circle"></i>&nbsp; {2}</span>' +
-    //                        '<div class="progress" data-notify="progressbar">' +
-    //                        '<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
-    //                        '</div>' +
-    //                        '<a href="{3}" target="{4}" data-notify="url"></a>' +
-    //                        '</div>'
-    //                });
-
-    //                $('#cart > button').html('<span id="cart-total">' + json['total'] + '</span>' + '<span id="cart-title">' + json['headingtitle'] + '</span>');
-
-    //                //$('html, body').animate({ scrollTop: 0 }, 'slow');
-
-    //                $('#cart > ul').load('index1e1c.html?route=common/cart/info%20ul%20li');
-    //            }
-    //        },
-    //        error: function (xhr, ajaxOptions, thrownError) {
-    //            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-    //        }
-    //    });
-    //});
-    //--></script>
-    <script type="text/javascript">
-<!--
-    $('.date').datetimepicker({
-        language: 'en-gb',
-        pickTime: false
-    });
-
-    $('.datetime').datetimepicker({
-        language: 'en-gb',
-        pickDate: true,
-        pickTime: true
-    });
-
-    $('.time').datetimepicker({
-        language: 'en-gb',
-        pickDate: false
-    });
-
-    $('button[id^=\'button-upload\']').on('click', function () {
-        var node = this;
-
-        $('#form-upload').remove();
-
-        $('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>');
-
-        $('#form-upload input[name=\'file\']').trigger('click');
-
-        if (typeof timer != 'undefined') {
-            clearInterval(timer);
-        }
-
-        timer = setInterval(function () {
-            if ($('#form-upload input[name=\'file\']').val() != '') {
-                clearInterval(timer);
-
-                $.ajax({
-                    url: 'index.php?route=tool/upload',
-                    type: 'post',
-                    dataType: 'json',
-                    data: new FormData($('#form-upload')[0]),
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    beforeSend: function () {
-                        $(node).button('loading');
-                    },
-                    complete: function () {
-                        $(node).button('reset');
-                    },
-                    success: function (json) {
-                        $('.text-danger').remove();
-
-                        if (json['error']) {
-                            $(node).parent().find('input').after('<div class="text-danger">' + json['error'] + '</div>');
-                        }
-
-                        if (json['success']) {
-                            alert(json['success']);
-
-                            $(node).parent().find('input').val(json['code']);
-                        }
-                    },
-                    error: function (xhr, ajaxOptions, thrownError) {
-                        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                    if (json['success']) {
+                        $('#recurring-description').html(json['success']);
                     }
+                }
+            });
+        });
+        //--></script>
+    <script type="text/javascript">
+<!--
+        //$('#button-cart').on('click', function () {
+        //    $.ajax({
+        //        /*url: 'index.php?route=checkout/cart/add',*/
+        //        url: 'Favorites/Add',
+        //        type: 'post',
+        //        data: $(''#product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
+        //        dataType: 'json',
+        //        beforeSend: function () {
+        //            $('#button-cart').button('loading');
+        //        },
+        //        complete: function () {
+        //            $('#button-cart').button('reset');
+        //        },
+        //        success: function (json) {
+        //            $('.alert-dismissible, .text-danger').remove();
+        //            $('.form-group').removeClass('has-error');
+
+        //            if (json['error']) {
+        //                if (json['error']['option']) {
+        //                    for (i in json['error']['option']) {
+        //                        var element = $('#input-option' + i.replace('_', '-'));
+
+        //                        if (element.parent().hasClass('input-group')) {
+        //                            element.parent().before('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+        //                        } else {
+        //                            element.before('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+        //                        }
+        //                    }
+        //                }
+
+        //                if (json['error']['recurring']) {
+        //                    $('select[name=\'recurring_id\']').after('<div class="text-danger">' + json['error']['recurring'] + '</div>');
+        //                }
+
+        //                // Highlight any found errors
+        //                $('.text-danger').parent().addClass('has-error');
+        //            }
+
+        //            if (json['success']) {
+        //                $.notify({
+        //                    message: json['success'],
+        //                    target: '_blank'
+        //                }, {
+        //                    // settings
+        //                    element: 'body',
+        //                    position: null,
+        //                    type: "info",
+        //                    allow_dismiss: true,
+        //                    newest_on_top: false,
+        //                    placement: {
+        //                        from: "top",
+        //                        align: "center"
+        //                    },
+        //                    offset: 0,
+        //                    spacing: 10,
+        //                    z_index: 2031,
+        //                    delay: 5000,
+        //                    timer: 1000,
+        //                    url_target: '_blank',
+        //                    mouse_over: null,
+        //                    animate: {
+        //                        enter: 'animated fadeInDown',
+        //                        exit: 'animated fadeOutUp'
+        //                    },
+        //                    onShow: null,
+        //                    onShown: null,
+        //                    onClose: null,
+        //                    onClosed: null,
+        //                    icon_type: 'class',
+        //                    template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-success" role="alert">' +
+        //                        '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">&nbsp;&times;</button>' +
+        //                        '<span data-notify="message"><i class="fa fa-check-circle"></i>&nbsp; {2}</span>' +
+        //                        '<div class="progress" data-notify="progressbar">' +
+        //                        '<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+        //                        '</div>' +
+        //                        '<a href="{3}" target="{4}" data-notify="url"></a>' +
+        //                        '</div>'
+        //                });
+
+        //                $('#cart > button').html('<span id="cart-total">' + json['total'] + '</span>' + '<span id="cart-title">' + json['headingtitle'] + '</span>');
+
+        //                //$('html, body').animate({ scrollTop: 0 }, 'slow');
+
+        //                $('#cart > ul').load('index1e1c.html?route=common/cart/info%20ul%20li');
+        //            }
+        //        },
+        //        error: function (xhr, ajaxOptions, thrownError) {
+        //            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        //        }
+        //    });
+        //});
+        //--></script>
+    <script type="text/javascript">
+<!--
+        $('.date').datetimepicker({
+            language: 'en-gb',
+            pickTime: false
+        });
+
+        $('.datetime').datetimepicker({
+            language: 'en-gb',
+            pickDate: true,
+            pickTime: true
+        });
+
+        $('.time').datetimepicker({
+            language: 'en-gb',
+            pickDate: false
+        });
+
+        $('button[id^=\'button-upload\']').on('click', function () {
+            var node = this;
+
+            $('#form-upload').remove();
+
+            $('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>');
+
+            $('#form-upload input[name=\'file\']').trigger('click');
+
+            if (typeof timer != 'undefined') {
+                clearInterval(timer);
+            }
+
+            timer = setInterval(function () {
+                if ($('#form-upload input[name=\'file\']').val() != '') {
+                    clearInterval(timer);
+
+                    $.ajax({
+                        url: 'index.php?route=tool/upload',
+                        type: 'post',
+                        dataType: 'json',
+                        data: new FormData($('#form-upload')[0]),
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        beforeSend: function () {
+                            $(node).button('loading');
+                        },
+                        complete: function () {
+                            $(node).button('reset');
+                        },
+                        success: function (json) {
+                            $('.text-danger').remove();
+
+                            if (json['error']) {
+                                $(node).parent().find('input').after('<div class="text-danger">' + json['error'] + '</div>');
+                            }
+
+                            if (json['success']) {
+                                alert(json['success']);
+
+                                $(node).parent().find('input').val(json['code']);
+                            }
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                        }
+                    });
+                }
+            }, 500);
+        });
+        //--></script>
+    <script type="text/javascript">
+<!--
+        $('#review').delegate('.pagination a', 'click', function (e) {
+            e.preventDefault();
+
+            $('#review').fadeOut('slow');
+
+            $('#review').load(this.href);
+
+            $('#review').fadeIn('slow');
+        });
+
+        $('#review').load('indexbe0f.html?route=product/product/review&amp;product_id=51');
+
+        $('#button-review').on('click', function () {
+            $.ajax({
+                url: 'index.php?route=product/product/write&product_id=51',
+                type: 'post',
+                dataType: 'json',
+                data: $("#form-review").serialize(),
+                beforeSend: function () {
+                    $('#button-review').button('loading');
+                },
+                complete: function () {
+                    $('#button-review').button('reset');
+                },
+                success: function (json) {
+                    $('.alert-dismissible').remove();
+
+                    if (json['error']) {
+                        $('#review').after('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+                    }
+
+                    if (json['success']) {
+                        $('#review').after('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+
+                        $('input[name=\'name\']').val('');
+                        $('textarea[name=\'text\']').val('');
+                        $('input[name=\'rating\']:checked').prop('checked', false);
+                    }
+                }
+            });
+        });
+
+        $(document).ready(function () {
+            $('.thumbnails').magnificPopup({
+                type: 'image',
+                delegate: 'a',
+                gallery: {
+                    enabled: true
+                }
+            });
+        });
+
+
+        $(document).ready(function () {
+            if ($(window).width() > 767) {
+                $("#tmzoom").elevateZoom({
+
+                    gallery: 'additional-carousel',
+                    //inner zoom
+
+                    zoomType: "inner",
+                    cursor: "crosshair",
+
+                    //tint
+
+                    tint: true,
+                    tintColour: '#F90',
+                    tintOpacity: 0.5,
+
+                    //lens zoom
+
+                    zoomType: "lens",
+                    lensShape: "round",
+                    lensSize: 200,
+
+                    //Mousewheel zoom
+
+                    scrollZoom: true
+
+
+                });
+                var z_index = 0;
+
+                $(document).on('click', '.thumbnail', function () {
+                    $('.thumbnails').magnificPopup('open', z_index);
+                    return false;
+                });
+
+                $('.additional-carousel a').click(function () {
+                    var smallImage = $(this).attr('data-image');
+                    var largeImage = $(this).attr('data-zoom-image');
+                    var ez = $('#tmzoom').data('elevateZoom');
+                    $('.thumbnail').attr('href', largeImage);
+                    ez.swaptheimage(smallImage, largeImage);
+                    z_index = $(this).index('.additional-carousel a');
+                    return false;
+                });
+
+            } else {
+                $(document).on('click', '.thumbnail', function () {
+                    $('.thumbnails').magnificPopup('open', 0);
+                    return false;
                 });
             }
-        }, 500);
-    });
-    //--></script>
-    <script type="text/javascript">
-<!--
-    $('#review').delegate('.pagination a', 'click', function (e) {
-        e.preventDefault();
-
-        $('#review').fadeOut('slow');
-
-        $('#review').load(this.href);
-
-        $('#review').fadeIn('slow');
-    });
-
-    $('#review').load('indexbe0f.html?route=product/product/review&amp;product_id=51');
-
-    $('#button-review').on('click', function () {
-        $.ajax({
-            url: 'index.php?route=product/product/write&product_id=51',
-            type: 'post',
-            dataType: 'json',
-            data: $("#form-review").serialize(),
-            beforeSend: function () {
-                $('#button-review').button('loading');
-            },
-            complete: function () {
-                $('#button-review').button('reset');
-            },
-            success: function (json) {
-                $('.alert-dismissible').remove();
-
-                if (json['error']) {
-                    $('#review').after('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
-                }
-
-                if (json['success']) {
-                    $('#review').after('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
-
-                    $('input[name=\'name\']').val('');
-                    $('textarea[name=\'text\']').val('');
-                    $('input[name=\'rating\']:checked').prop('checked', false);
-                }
-            }
         });
-    });
-
-    $(document).ready(function () {
-        $('.thumbnails').magnificPopup({
-            type: 'image',
-            delegate: 'a',
-            gallery: {
-                enabled: true
-            }
-        });
-    });
-
-
-    $(document).ready(function () {
-        if ($(window).width() > 767) {
-            $("#tmzoom").elevateZoom({
-
-                gallery: 'additional-carousel',
-                //inner zoom
-
-                zoomType: "inner",
-                cursor: "crosshair",
-
-                //tint
-
-                tint: true,
-                tintColour: '#F90',
-                tintOpacity: 0.5,
-
-                //lens zoom
-
-                zoomType: "lens",
-                lensShape: "round",
-                lensSize: 200,
-
-                //Mousewheel zoom
-
-                scrollZoom: true
-
-
-            });
-            var z_index = 0;
-
-            $(document).on('click', '.thumbnail', function () {
-                $('.thumbnails').magnificPopup('open', z_index);
-                return false;
-            });
-
-            $('.additional-carousel a').click(function () {
-                var smallImage = $(this).attr('data-image');
-                var largeImage = $(this).attr('data-zoom-image');
-                var ez = $('#tmzoom').data('elevateZoom');
-                $('.thumbnail').attr('href', largeImage);
-                ez.swaptheimage(smallImage, largeImage);
-                z_index = $(this).index('.additional-carousel a');
-                return false;
-            });
-
-        } else {
-            $(document).on('click', '.thumbnail', function () {
-                $('.thumbnails').magnificPopup('open', 0);
-                return false;
-            });
-        }
-    });
-    $(document).ready(function () {
-        $('.thumbnails').magnificPopup({
-            delegate: 'a.elevatezoom-gallery',
-            type: 'image',
-            tLoading: 'Loading image #%curr%...',
-            mainClass: 'mfp-with-zoom',
-            gallery: {
-                enabled: true,
-                navigateByImgClick: true,
-                preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
-            },
-            image: {
-                tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
-                titleSrc: function (item) {
-                    return item.el.attr('title');
+        $(document).ready(function () {
+            $('.thumbnails').magnificPopup({
+                delegate: 'a.elevatezoom-gallery',
+                type: 'image',
+                tLoading: 'Loading image #%curr%...',
+                mainClass: 'mfp-with-zoom',
+                gallery: {
+                    enabled: true,
+                    navigateByImgClick: true,
+                    preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
+                },
+                image: {
+                    tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+                    titleSrc: function (item) {
+                        return item.el.attr('title');
+                    }
                 }
-            }
+            });
         });
-    });
     </script>
 
 </body>

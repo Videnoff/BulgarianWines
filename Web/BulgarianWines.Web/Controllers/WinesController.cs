@@ -42,7 +42,6 @@
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateReview(WineReviewInputModel model)
         {
             if (!this.ModelState.IsValid)
