@@ -43,6 +43,10 @@
 
         public string Description { get; set; }
 
+        public string Availability { get; set; }
+
+        public string AvailabilityStatus { get; set; }
+
         public string SanitizedDescription => this.sanitizer.Sanitize(this.Description);
 
         public IEnumerable<WineReviewViewModel> Reviews { get; set; }

@@ -1,6 +1,27 @@
 @{
     this.ViewData["Title"] = "Privacy Policy";
 }
+
+<div id="breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li>
+                <a asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="fa fa-home"></i>
+                </a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="Home" asp-action="About">
+                    @this.ViewData["Title"]
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<br />
+<br />
+
 <div class="container">
     <h1>
         @this.ViewData["Title"]

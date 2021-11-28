@@ -21,34 +21,6 @@
     <link href="~/css/wined/themecss/custom.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/css/wined/themecss/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/css/wined/themecss/animate.css" rel="stylesheet" asp-append-version="true" />
-
-
-
-    <!--  -->
-
-    <script src="catalog/view/javascript/lightbox/lightbox-2.6.min.js"></script>
-    <script src="catalog/view/javascript/common.js"></script>
-    <!-- Theme Start -->
-
-    <script type="text/javascript" src="catalog/view/javascript/themejs/custom.js"></script>
-    <script type="text/javascript" src="catalog/view/javascript/themejs/jstree.min.js"></script>
-    <script type="text/javascript" src="catalog/view/javascript/themejs/carousel.min.js"></script>
-    <script type="text/javascript" src="catalog/view/javascript/themejs/productcarosel.min.js"></script>
-    <script type="text/javascript" src="catalog/view/javascript/themejs/jquery.custom.min.js"></script>
-    <script type="text/javascript" src="catalog/view/javascript/themejs/jquery.formalize.min.js"></script>
-    <script type="text/javascript" src="catalog/view/javascript/themejs/jquery.elevatezoom.min.js"></script>
-    <script type="text/javascript" src="catalog/view/javascript/themejs/bootstrap-notify.min.js"></script>
-    <script type="text/javascript" src="catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js"></script>
-    <script type="text/javascript" src="catalog/view/javascript/themejs/owl.carousel.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/magnific/magnific-popup.css" />
-    <script src="catalog/view/javascript/themejs/tabs.js"></script>
-    <script type="text/javascript" src="catalog/view/javascript/jquery.countdown.js"></script>
-    <script type="text/javascript" src="catalog/view/javascript/jquery.countdown.min.js"></script>
-    <!-- Theme End -->
-    @*<script src="~/js/wined/common.js" asp-append-version="true"></script>*@
-    <script src="~/js/wined/themejs/parallax.js" asp-append-version="true"></script>
-
-
 </head>
 
 
@@ -69,20 +41,8 @@
     </div>
 </div>
 
-<!-- ======= Quick view JS ========= -->
-<script>
-    function quickbox() {
-        if ($(window).width() > 767) {
-            $('.quickview').magnificPopup({
-                type: 'iframe',
-                delegate: 'a',
-                preloader: true,
-                tLoading: 'Loading image #%curr%...',
-            });
-        }
-    }
-    jQuery(document).ready(function () { quickbox(); });
-    jQuery(window).resize(function () { quickbox(); });</script>
+<br />
+<br />
 
 <div class="container">
     <div id="information-information" class="container">
@@ -91,6 +51,7 @@
                 <h2 class="page-title page-info-title">
                     @this.ViewData["Title"]
                 </h2>
+                <br />
 
                 <div class="aboutus-block">
                     <h3 class="page-subheading">
@@ -118,7 +79,11 @@
                     <p><strong>Security</strong> <br>We take precautions to protect your information. When you submit sensitive information via the website, your information is protected both online and offline.</p>
                     <p>Wherever we collect sensitive information (such as credit card data), that information is encrypted and transmitted to us in a secure way. You can verify this by looking for a lock icon in the address bar and looking for "https" at the beginning of the address of the Web page.</p>
                     <p>While we use encryption to protect sensitive information transmitted online, we also protect your information offline. Only employees who need the information to perform a specific job (for example, billing or customer service) are granted access to personally identifiable information. The computers/servers in which we store personally identifiable information are kept in a secure environment.</p>
-                    <p><strong>If you feel that we are not abiding by this privacy policy, you should contact us immediately via telephone at <span style="text-decoration: underline;">XXX YYY-ZZZZ</span> or <span style="text-decoration: underline;">via email</span>.</strong></p>
+                    <p><strong>If you feel that we are not abiding by this privacy policy, you should contact us immediately via telephone at <span style="text-decoration: underline;">
+                        XXX YYY-ZZZZ
+                    </span> or <span style="text-decoration: underline;">
+                        via email
+                    </span>.</strong></p>
                 </div>
             </div>
         </div>
