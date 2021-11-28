@@ -296,25 +296,25 @@ $('.row #content .category_list .filterbox').appendTo('#column-right .sidebarFil
 $(document).ready(function(){leftFilter();});
 $(window).resize(function(){leftFilter();});
 */
-function mobileToggleMenu() {
-    //alert($(window).width());
-    if ($(window).width() < 980) {
-        $("#footer .mobile_togglemenu").remove();
-        $("#footer .column h5").append("<a class='mobile_togglemenu'>&nbsp;</a>");
-        $("#footer .column h5").addClass('toggle');
-        $("#footer .mobile_togglemenu").click(function () {
-            $(this).parent().toggleClass('active').parent().find('ul').toggle('slow');
-        });
+//function mobileToggleMenu() {
+//    //alert($(window).width());
+//    if ($(window).width() < 980) {
+//        $("#footer .mobile_togglemenu").remove();
+//        $("#footer .column h5").append("<a class='mobile_togglemenu'>&nbsp;</a>");
+//        $("#footer .column h5").addClass('toggle');
+//        $("#footer .mobile_togglemenu").click(function () {
+//            $(this).parent().toggleClass('active').parent().find('ul').toggle('slow');
+//        });
 
-    } else {
-        $("#footer .column h5").parent().find('ul').removeAttr('style');
-        $("#footer .column h5").removeClass('active');
-        $("#footer .column h5").removeClass('toggle');
-        $("#footer .mobile_togglemenu").remove();
-    }
-}
-$(document).ready(function () { mobileToggleMenu(); });
-$(window).resize(function () { mobileToggleMenu(); });
+//    } else {
+//        $("#footer .column h5").parent().find('ul').removeAttr('style');
+//        $("#footer .column h5").removeClass('active');
+//        $("#footer .column h5").removeClass('toggle');
+//        $("#footer .mobile_togglemenu").remove();
+//    }
+//}
+//$(document).ready(function () { mobileToggleMenu(); });
+//$(window).resize(function () { mobileToggleMenu(); });
 
 
 function menuResponsive() {
@@ -325,7 +325,7 @@ function menuResponsive() {
         $("#menu").removeClass("main-menu");
         $(".nav-responsive").css("display", "block");
         $("#menu .mobile_togglemenu").remove();
-        $("#menu ul li.dropdown").append("<a class='mobile_togglemenu'>&nbsp;</a>");
+        //$("#menu ul li.dropdown").append("<a class='mobile_togglemenu'>&nbsp;</a>");
         $("#menu ul li.dropdown").addClass("toggle");
 
         $("#menu .nav > li.dropdown .mobile_togglemenu").click(function () {

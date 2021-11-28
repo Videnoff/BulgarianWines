@@ -38,6 +38,13 @@
         public IActionResult SingleWine(int id)
         {
             var wine = this.winesService.GetById<SingleProductViewModel>(id);
+
+            if (wine == null)
+            {
+                this.TempData["Error"] = "Product not found.";
+                return this.RedirectToAction("Index", "Home");
+            }
+
             return this.View(wine);
         }
 

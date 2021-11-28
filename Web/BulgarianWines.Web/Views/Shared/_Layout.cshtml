@@ -135,7 +135,7 @@
                                             All Wines
                                         </a>
                                     </li>
-                                    <li class="top_level dropdown">
+                                    @*<li class="top_level dropdown">
                                         <a href="index8122.html?route=product/category&amp;path=34">
                                             our store
                                         </a>
@@ -230,7 +230,7 @@
                                             </div>
                                         </div>
 
-                                    </li>
+                                    </li>*@
 
                                     <li class="top_level dropdown">
                                         <a asp-controller="Categories" asp-action="Products" asp-route-categoryId="1">
@@ -293,7 +293,7 @@
                 </div>
                 <div class="header-logo">
                     <div id="logo">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">
+                        <a asp-area="" asp-controller="Home" asp-action="Index">
                             <img src="https://bulgarianwines.blob.core.windows.net/publicimages/logo.jpg" style="height: 100%; width: 100%; object-fit: contain" title="@GlobalConstants.SystemName" alt="@GlobalConstants.SystemName" class="img-responsive" />
                         </a>
                     </div>
@@ -357,34 +357,21 @@
                                 <div id="contact">
                                     <h5>Contact Us</h5>
                                     <ul>
-                                        <li class="address">wined demo store</li>
-                                        <li>111, Puffin Street, New York, 12354</li>
-                                        <li class="fax">1-212-98765432</li>
-                                        <li class="email"><a href="#">support@company.com</a></li>
+                                        <li class="address">
+                                            wined demo store
+                                        </li>
+                                        <li>
+                                            111, Puffin Street, New York, 12354
+                                        </li>
+                                        <li class="fax">
+                                            1-212-98765432
+                                        </li>
+                                        <li class="email">
+                                            <a href="#">support@company.com</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
-
-                            <!--<div class="col-md-3 col-lg-3 column common second">
-                                <h5>My Account</h5>
-                                <ul class="list-unstyled">
-                                    <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/manufacturer">Brands</a></li>
-                                    <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=account/voucher">Gift Certificates</a></li>
-                                    <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=affiliate/login">Affiliates</a></li>
-                                    <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=information/sitemap">Site Map</a></li>
-                                    <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/special">Specials</a></li>
-                                </ul>
-                            </div>-->
-                            <!--<div class="col-md-3 col-lg-3 column common third">
-                                <h5>Extras</h5>
-                                <ul class="list-unstyled">
-                                    <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/special">Specials</a></li>
-                                    <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=product/manufacturer">Brands</a></li>
-                                    <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=affiliate/login">Affiliates</a></li>
-                                    <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=account/account">My Account</a></li>
-                                    <li><a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=information/sitemap">Site Map</a></li>
-                                </ul>
-                            </div>-->
 
                             <div class="footer-social column col-md-3 col-lg-3">
                                 <div class="social">
@@ -527,7 +514,7 @@
                 </div>
                 <div class="copyright-container text-muted">
                     <div class="content_footer_bottom container">
-                        &copy; @DateTime.Now.Year - @GlobalConstants.SystemName
+                        &copy; @DateTime.Now.Year - Bulsing
                     </div>
                     <div class="footer-container">
                         <!-- <div id="bottomfooter">
@@ -549,63 +536,63 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
 
-    <script type="text/javascript">
-        function responsivecolumn() {
-            // ---------------- Fixed header responsive ----------------------
-            if ($(document).width() >= 980) {
-                $(window).bind('scroll', function () {
-                    if ($(window).scrollTop() > 0) {
-                        $('.content_headercms_top').addClass('fixed');
-                    } else {
-                        $('.content_headercms_top').removeClass('fixed');
-                    }
-                });
-            }
-            else {
-                $('.content_headercms_top').removeClass('fixed');
-            }
-
-
-            if ($(document).width() <= 991) {
-
-                $(window).bind('scroll', function () {
-                    if ($(window).scrollTop() > 0) {
-                        $('.content_headercms_top').addClass('fixed');
-                    } else {
-                        $('.content_headercms_top').removeClass('fixed');
-                    }
-                });
-            }
-
-
+<script type="text/javascript">
+    function responsivecolumn() {
+        // ---------------- Fixed header responsive ----------------------
+        if ($(document).width() >= 980) {
+            $(window).bind('scroll', function () {
+                if ($(window).scrollTop() > 0) {
+                    $('.content_headercms_top').addClass('fixed');
+                } else {
+                    $('.content_headercms_top').removeClass('fixed');
+                }
+            });
         }
-        $(document).ready(function () {
-            responsivecolumn();
-        });
-        $(window).resize(function () {
-            responsivecolumn();
-        });
-    </script>
+        else {
+            $('.content_headercms_top').removeClass('fixed');
+        }
 
-    <script type="text/javascript">
-        function(c) {
-            if (/(38|40|27|32)/.test(c.which) && !/input|textarea/i.test(c.target.tagName)) {
-                var d = a(this);
-                if (c.preventDefault(), c.stopPropagation(), !d.is(".disabled, :disabled")) {
-                    var e = b(d),
-                        g = e.hasClass("open");
-                    if (!g && 27 != c.which || g && 27 == c.which) return 27 == c.which && e.find(f).trigger("focus"), d.trigger("click");
-                    var h = " li:not(.disabled):visible a",
-                        i = e.find(".dropdown-menu" + h);
-                    if (i.length) {
-                        var j = i.index(c.target);
-                        38 == c.which && j > 0 && j--, 40 == c.which && j < i.length - 1 && j++, ~j || (j = 0), i.eq(j).trigger("focus")
-                    }
+
+        if ($(document).width() <= 991) {
+
+            $(window).bind('scroll', function () {
+                if ($(window).scrollTop() > 0) {
+                    $('.content_headercms_top').addClass('fixed');
+                } else {
+                    $('.content_headercms_top').removeClass('fixed');
+                }
+            });
+        }
+
+
+    }
+    $(document).ready(function () {
+        responsivecolumn();
+    });
+    $(window).resize(function () {
+        responsivecolumn();
+    });
+</script>
+
+<script type="text/javascript">
+    function(c) {
+        if (/(38|40|27|32)/.test(c.which) && !/input|textarea/i.test(c.target.tagName)) {
+            var d = a(this);
+            if (c.preventDefault(), c.stopPropagation(), !d.is(".disabled, :disabled")) {
+                var e = b(d),
+                    g = e.hasClass("open");
+                if (!g && 27 != c.which || g && 27 == c.which) return 27 == c.which && e.find(f).trigger("focus"), d.trigger("click");
+                var h = " li:not(.disabled):visible a",
+                    i = e.find(".dropdown-menu" + h);
+                if (i.length) {
+                    var j = i.index(c.target);
+                    38 == c.which && j > 0 && j--, 40 == c.which && j < i.length - 1 && j++, ~j || (j = 0), i.eq(j).trigger("focus")
                 }
             }
         }
+    }
 
-    </script>
+</script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
     <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>

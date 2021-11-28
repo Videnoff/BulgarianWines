@@ -11,10 +11,10 @@
             <!--<span class="account-title">My Account</span>--> <span class="caret"></span>
             <span class="user-info-image">
                 @*<img src="@this.UserManager.Users.Select(x => x.UserImages.Select(x => x.ImageUrl))" />*@
-                @if (UserManager.GetUserAsync(User).Result.ProfilePicture != null)
+                @*@if (UserManager.GetUserAsync(User).Result.ProfilePicture != null)
                 {
                     <img style="width:40px;height:40px; object-fit:cover; border-radius:30px" src="data:image/*;base64,@(Convert.ToBase64String(UserManager.GetUserAsync(User).Result.ProfilePicture))">
-                }
+                }*@
 
                 Hello @this.User.Identity.Name!
                 <i class="fa fa-angle-down"></i>
