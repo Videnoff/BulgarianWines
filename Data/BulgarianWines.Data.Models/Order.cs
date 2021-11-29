@@ -22,6 +22,6 @@
 
         public DateTime? DeliveredOn { get; set; }
 
-        public virtual ICollection<ProductOrder> ProductOrders { get; set; }
+        public virtual ICollection<WineOrder> ProductOrders { get; set; }
     }
 }

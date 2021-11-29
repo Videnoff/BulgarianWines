@@ -65,7 +65,7 @@
 
         public DbSet<Order> Orders { get; set; }
 
-        public DbSet<ProductOrder> ProductOrders { get; set; }
+        public DbSet<WineOrder> WineOrders { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 

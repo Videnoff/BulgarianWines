@@ -30,6 +30,7 @@
 
 <div id="Tab_Category_Slider" class="category_tab box">
     <div class="container">
+        <br/>
         <div class="title-wrapper">
             <div class="box-heading">
                 @this.ViewData["Title"]
@@ -38,19 +39,19 @@
         <div class="tab-pane active" id="gattinara">
             <div class="owl-carousel owl-demo-tabcate owl-theme" style="opacity: 1; display: block">
                 <div class="owl-wrapper-outer">
-                    <div class="owl-wrapper">
+                    <div class="owl-wrapper" style="left: 0px; display: block;">
                         <div class="owl-item">
                             <div class="product-block-wrapper">
                                 <div class="item text-center product-innerblock">
                                     @foreach (var product in @Model.Wines)
                                     {
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <div class="col-md-3 col-6">
                                             <div class="product-block product-thumb transition">
                                                 <div class="product-block-inner">
                                                     <div class="image">
                                                         <a asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.Id">
-                                                            <img class="img-responsive reg-image" src="@product.ImageUrl." title="@product.Name" alt="@product.Name" style="max-height: 100%; max-width: 100%" />
-                                                            <img class="img-responsive hover-image" src="@product.ImageUrl" title="@product.Name" alt="@product.Name" style="max-height: 100%; max-width: 100%" />
+                                                            <img class="img-responsive reg-image" src="@product.ImageUrl." title="@product.Name" alt="@product.Name" style="max-height: 100%; max-width: 100%"/>
+                                                            <img class="img-responsive hover-image" src="@product.ImageUrl" title="@product.Name" alt="@product.Name" style="max-height: 100%; max-width: 100%"/>
                                                         </a>
 
                                                         <div class="button-group">
@@ -127,8 +128,8 @@
                     </div>
                 </div>
             </div>
-            <hr />
-            <partial name="_PagingPartial" model="@Model" />
+            <hr/>
+            <partial name="_PagingPartial" model="@Model"/>
         </div>
     </div>
 </div>

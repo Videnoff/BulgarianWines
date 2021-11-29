@@ -22,7 +22,7 @@
                 return this.NotFound();
             }
 
-            const int itemsPerPage = 12;
+            const int itemsPerPage = 8;
 
             var viewModel = new WinesListViewModel
             {

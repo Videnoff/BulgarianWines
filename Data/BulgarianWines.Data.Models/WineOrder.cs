@@ -4,7 +4,7 @@
 
     using BulgarianWines.Data.Common.Models;
 
-    public class ProductOrder : BaseDeletableModel<int>
+    public class WineOrder : BaseDeletableModel<int>
     {
         [Required]
         public string OrderId { get; set; }
