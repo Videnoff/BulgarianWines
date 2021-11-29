@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web.ViewModels
+﻿using System.Collections.Generic;
+
+namespace BulgarianWines.Web.ViewModels
 {
     using System;
 
@@ -27,5 +29,17 @@
         public string Controller { get; set; }
 
         public string Action { get; set; }
+
+        public virtual Dictionary<string, string> GetPageQuery(int pageNumber)
+        {
+            var routes = new Dictionary<string, string>();
+
+            if (pageNumber > 1)
+            {
+                routes.Add("PageNumber", pageNumber.ToString());
+            }
+
+            return routes;
+        }
     }
 }

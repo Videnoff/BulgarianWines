@@ -42,28 +42,28 @@
         }
 
         // GET: Categories
-        public async Task<IActionResult> Index()
-        {
-            return this.View(await this.context.Categories.ToListAsync());
-        }
+        //public async Task<IActionResult> Index()
+        //{
+        //    return this.View(await this.context.Categories.ToListAsync());
+        //}
 
         // GET: Categories/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return this.NotFound();
-            }
+        //public async Task<IActionResult> Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return this.NotFound();
+        //    }
 
-            var category = await this.context.Categories
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (category == null)
-            {
-                return this.NotFound();
-            }
+        //    var category = await this.context.Categories
+        //        .FirstOrDefaultAsync(m => m.Id == id);
+        //    if (category == null)
+        //    {
+        //        return this.NotFound();
+        //    }
 
-            return this.View(category);
-        }
+        //    return this.View(category);
+        //}
 
         [HttpGet("/Categories/Products/{categoryId}")]
         public IActionResult Products(int categoryId, int pageNumber = 1, int itemsPerPage = 6, string sorting = "price asc")

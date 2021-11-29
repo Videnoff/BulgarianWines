@@ -22,6 +22,7 @@
 
 <div id="Tab_Category_Slider" class="category_tab box">
     <div class="container">
+        <br/>
         <div class="title-wrapper">
             <div class="box-heading">
                 @this.ViewData["Title"]
@@ -36,13 +37,13 @@
                                 <div class="item text-center product-innerblock">
                                     @foreach (var product in @Model.Products)
                                     {
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <div class="col-md-3 col-6">
                                             <div class="product-block product-thumb transition">
                                                 <div class="product-block-inner">
                                                     <div class="image">
                                                         <a asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.Id">
-                                                            <img class="img-responsive reg-image" src="@product.ImageUrl." title="@product.Name" alt="@product.Name" style="max-height: 100%; max-width: 100%" />
-                                                            <img class="img-responsive hover-image" src="@product.ImageUrl" title="@product.Name" alt="@product.Name" style="max-height: 100%; max-width: 100%" />
+                                                            <img class="img-responsive reg-image" src="@product.ImageUrl." title="@product.Name" alt="@product.Name" style="max-height: 100%; max-width: 100%"/>
+                                                            <img class="img-responsive hover-image" src="@product.ImageUrl" title="@product.Name" alt="@product.Name" style="max-height: 100%; max-width: 100%"/>
                                                         </a>
 
                                                         <div class="button-group">
@@ -119,8 +120,8 @@
                     </div>
                 </div>
             </div>
-            <hr />
-            <partial name="_PagingPartial" />
+            <hr/>
+            <partial name="_PagingPartial"/>
         </div>
     </div>
 </div>
