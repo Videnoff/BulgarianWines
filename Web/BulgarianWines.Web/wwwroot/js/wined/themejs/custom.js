@@ -1,44 +1,44 @@
-function gridResize() {
-    if ($('#grid-view').hasClass('active')) {
-        // What a shame bootstrap does not take into account dynamically loaded columns
-        cols = $('#column-right, #column-left').length;
-        //alert('ready');
-        if (cols == 2) {
-            $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-4 col-md-4 col-sm-4 col-xs-12');
-            $('#content .product-layout:nth-child(3n+1)').addClass('first-item');
-            $('#content .product-layout:nth-child(3n+3)').addClass('last-item');
-        } else if (cols == 1) {
-            $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-4 col-md-4 col-sm-4 col-xs-12');
-            $('#content .product-layout:nth-child(3n+1)').addClass('first-item');
-            $('#content .product-layout:nth-child(3n+3)').addClass('last-item');
-            if (document.documentElement.clientWidth < 1200 && document.documentElement.clientWidth > 979) {
-                $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-4 col-md-4 col-sm-4 col-xs-12');
-                $('#content .product-layout:nth-child(2n+1)').addClass('first-item');
-                $('#content .product-layout:nth-child(2n+2)').addClass('last-item');
-            }
-            if (document.documentElement.clientWidth < 980 && document.documentElement.clientWidth > 767) {
-                $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-4 col-md-4 col-sm-4 col-xs-12');
-                $('#content .product-layout:nth-child(2n+1)').addClass('first-item');
-                $('#content .product-layout:nth-child(2n+2)').addClass('last-item');
-            }
-            if (document.documentElement.clientWidth < 768) {
-                $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-4 col-md-4 col-sm-4 col-xs-12');
-                $('#content .product-layout:nth-child(2n+1)').addClass('first-item');
-                $('#content .product-layout:nth-child(2n+2)').addClass('last-item');
-            }
-            if (document.documentElement.clientWidth < 479) {
-                $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-4 col-md-4 col-sm-4 col-xs-12 last-item');
-                $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-4 col-md-4 col-sm-4 col-xs-12 last-item');
-            }
-        } else {
-            $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-4 col-md-4 col-sm-4 col-xs-12');
-            $('#content .product-layout:nth-child(3n+1)').addClass('first-item');
-            $('#content .product-layout:nth-child(3n+3)').addClass('last-item');
-        }
-    }
-}
-$(document).ready(function () { gridResize(); });
-$(window).resize(function () { gridResize(); });
+//function gridResize() {
+//    if ($('#grid-view').hasClass('active')) {
+//        // What a shame bootstrap does not take into account dynamically loaded columns
+//        cols = $('#column-right, #column-left').length;
+//        //alert('ready');
+//        if (cols == 2) {
+//            $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-4 col-md-4 col-sm-4 col-xs-12');
+//            $('#content .product-layout:nth-child(3n+1)').addClass('first-item');
+//            $('#content .product-layout:nth-child(3n+3)').addClass('last-item');
+//        } else if (cols == 1) {
+//            $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-4 col-md-4 col-sm-4 col-xs-12');
+//            $('#content .product-layout:nth-child(3n+1)').addClass('first-item');
+//            $('#content .product-layout:nth-child(3n+3)').addClass('last-item');
+//            if (document.documentElement.clientWidth < 1200 && document.documentElement.clientWidth > 979) {
+//                $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-4 col-md-4 col-sm-4 col-xs-12');
+//                $('#content .product-layout:nth-child(2n+1)').addClass('first-item');
+//                $('#content .product-layout:nth-child(2n+2)').addClass('last-item');
+//            }
+//            if (document.documentElement.clientWidth < 980 && document.documentElement.clientWidth > 767) {
+//                $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-4 col-md-4 col-sm-4 col-xs-12');
+//                $('#content .product-layout:nth-child(2n+1)').addClass('first-item');
+//                $('#content .product-layout:nth-child(2n+2)').addClass('last-item');
+//            }
+//            if (document.documentElement.clientWidth < 768) {
+//                $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-4 col-md-4 col-sm-4 col-xs-12');
+//                $('#content .product-layout:nth-child(2n+1)').addClass('first-item');
+//                $('#content .product-layout:nth-child(2n+2)').addClass('last-item');
+//            }
+//            if (document.documentElement.clientWidth < 479) {
+//                $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-4 col-md-4 col-sm-4 col-xs-12 last-item');
+//                $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-4 col-md-4 col-sm-4 col-xs-12 last-item');
+//            }
+//        } else {
+//            $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-4 col-md-4 col-sm-4 col-xs-12');
+//            $('#content .product-layout:nth-child(3n+1)').addClass('first-item');
+//            $('#content .product-layout:nth-child(3n+3)').addClass('last-item');
+//        }
+//    }
+//}
+//$(document).ready(function () { gridResize(); });
+//$(window).resize(function () { gridResize(); });
 
 
 var widthClassOptions = [];

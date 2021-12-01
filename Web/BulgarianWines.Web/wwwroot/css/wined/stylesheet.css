@@ -2314,7 +2314,7 @@ ul {
     position: relative;
 }
 
-.category_tab .owl-item .col-lg-12 {
+.category_tab .owl-item .col-lg-3 {
     padding: 0;
 }
 
@@ -11794,7 +11794,7 @@ li.card:nth-child(6) > a:nth-child(1) > div:nth-child(1) > div:nth-child(1) > h5
     Products by Category
 */
 
-html body.common-home.layout-1 div#gattinara.tab-pane.active div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-12.col-md-12.col-sm-12.col-xs-12 div.product-block.product-thumb.transition div.product-block-inner div.image {
+/*html body.common-home.layout-1 div#gattinara.tab-pane.active div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-12.col-md-12.col-sm-12.col-xs-12 div.product-block.product-thumb.transition div.product-block-inner div.image {
     width: 330px;
     height: 333px;
 }
@@ -11813,13 +11813,13 @@ html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.cont
     height: 333px;
 }
 
-html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div#gattinara.tab-pane.active div.owl-carousel.owl-demo-tabcate.owl-theme div.owl-wrapper-outer div.owl-wrapper div.owl-item div.product-block-wrapper div.item.text-center.product-innerblock div.col-md-3.col-6 div.product-block.product-thumb.transition div.product-block-inner div.image a img.img-responsive.reg-image {
-    height: 333px;
-}
+    html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div#gattinara.tab-pane.active div.owl-carousel.owl-demo-tabcate.owl-theme div.owl-wrapper-outer div.owl-wrapper div.owl-item div.product-block-wrapper div.item.text-center.product-innerblock div.col-md-3.col-6 div.product-block.product-thumb.transition div.product-block-inner div.image a img.img-responsive.reg-image {
+        height: 334.383px;
+    }
 
 html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div#gattinara.tab-pane.active div.owl-carousel.owl-demo-tabcate.owl-theme div.owl-wrapper-outer div.owl-wrapper div.owl-item div.product-block-wrapper div.item.text-center.product-innerblock div.col-md-3.col-6 div.product-block.product-thumb.transition div.product-block-inner div.image a img.img-responsive.hover-image {
-    height: 333px;
-}
+    height: 334.383px;
+}*/
 
     /*html body.common-home.layout-1 div#gattinara.tab-pane.active div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-12.col-md-12.col-sm-12.col-xs-12 div.product-block.product-thumb.transition div.product-block-inner {
     width: 290px;
@@ -11929,10 +11929,10 @@ html body.common-home.layout-1 div#common-home div.content-top div#content1 div#
 }
 
 html body.common-home.layout-1 div.productpage div#product-product.container div.row div#content.col-sm-12.productpage div.row div.col-sm-8.product-left div.product-info div.left.product-image.thumbnails div.image a.thumbnail {
-    height: 587px;
+    height: 485px;
 }
 
-html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div#gattinara.tab-pane.active div.owl-carousel.owl-demo-tabcate.owl-theme div.owl-wrapper-outer div.owl-wrapper div.owl-item div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-4.col-md-4.col-sm-4.col-xs-4 div.product-block.product-thumb.transition div.product-block-inner div.image {
+/*html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div#gattinara.tab-pane.active div.owl-carousel.owl-demo-tabcate.owl-theme div.owl-wrapper-outer div.owl-wrapper div.owl-item div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-4.col-md-4.col-sm-4.col-xs-4 div.product-block.product-thumb.transition div.product-block-inner div.image {
     height: 473px;
 }
 
@@ -11942,4 +11942,13 @@ html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.cont
 
 html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div#gattinara.tab-pane.active div.owl-carousel.owl-demo-tabcate.owl-theme div.owl-wrapper-outer div.owl-wrapper div.owl-item div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-4.col-md-4.col-sm-4.col-xs-4 div.product-block.product-thumb.transition div.product-block-inner div.image a img.img-responsive.hover-image {
     height: 473px;
+}*/
+
+html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div#gattinara.tab-pane.active div.owl-carousel.owl-demo-tabcate.owl-theme div.owl-wrapper-outer div.owl-wrapper div.owl-item div.product-block-wrapper div.item.text-center.product-innerblock {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
 }
