@@ -10657,7 +10657,7 @@ h2.price {
         border: none;
     }
 
-        /*#menu.responsive-menu ul li a.mobile_togglemenu, #menu.responsive-menu ul.nav li .megamenu ul.list-unstyled li > a.mobile_togglemenu {
+    /*#menu.responsive-menu ul li a.mobile_togglemenu, #menu.responsive-menu ul.nav li .megamenu ul.list-unstyled li > a.mobile_togglemenu {
             right: 0;
             background: none;
             margin-top: 0;
@@ -11794,126 +11794,19 @@ li.card:nth-child(6) > a:nth-child(1) > div:nth-child(1) > div:nth-child(1) > h5
     Products by Category
 */
 
-/*html body.common-home.layout-1 div#gattinara.tab-pane.active div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-12.col-md-12.col-sm-12.col-xs-12 div.product-block.product-thumb.transition div.product-block-inner div.image {
-    width: 330px;
-    height: 333px;
-}
-
-    html body.common-home.layout-1 div#gattinara.tab-pane.active div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-12.col-md-12.col-sm-12.col-xs-12 div.product-block.product-thumb.transition div.product-block-inner div.image a img.img-responsive.reg-image {
-        width: 330px;
-        height: 333px;
-    }
-
-    html body.common-home.layout-1 div#gattinara.tab-pane.active div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-12.col-md-12.col-sm-12.col-xs-12 div.product-block.product-thumb.transition div.product-block-inner div.image a img.img-responsive.hover-image {
-        width: 330px;
-        height: 333px;
-    }
-
-html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div#gattinara.tab-pane.active div.owl-carousel.owl-demo-tabcate.owl-theme div.owl-wrapper-outer div.owl-wrapper div.owl-item div.product-block-wrapper div.item.text-center.product-innerblock div.col-md-3.col-6 div.product-block.product-thumb.transition div.product-block-inner div.image {
-    height: 333px;
-}
-
-    html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div#gattinara.tab-pane.active div.owl-carousel.owl-demo-tabcate.owl-theme div.owl-wrapper-outer div.owl-wrapper div.owl-item div.product-block-wrapper div.item.text-center.product-innerblock div.col-md-3.col-6 div.product-block.product-thumb.transition div.product-block-inner div.image a img.img-responsive.reg-image {
-        height: 334.383px;
-    }
-
-html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div#gattinara.tab-pane.active div.owl-carousel.owl-demo-tabcate.owl-theme div.owl-wrapper-outer div.owl-wrapper div.owl-item div.product-block-wrapper div.item.text-center.product-innerblock div.col-md-3.col-6 div.product-block.product-thumb.transition div.product-block-inner div.image a img.img-responsive.hover-image {
-    height: 334.383px;
-}*/
-
-    /*html body.common-home.layout-1 div#gattinara.tab-pane.active div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-12.col-md-12.col-sm-12.col-xs-12 div.product-block.product-thumb.transition div.product-block-inner {
-    width: 290px;
-    height: 392px;
-}*/
-    /*
-    Single Product
-*/
-    /*
-html body.common-home.layout-1 div.productpage div#product-product.container div.row div#content.col-sm-12.productpage div.row div.col-sm-8.product-left {
-    width: 436.5px;
-    height: 508.5px;
-}
-
-html body.common-home.layout-1 div.productpage div#product-product.container div.row div#content.col-sm-12.productpage div.row div.col-sm-8.product-left div.product-info {
-    width: 406.5px;
-    height: 508.5px;
-}
-
-html body.product-product-40.layout-1 div.productpage div#product-product.container div.row div#content.col-sm-12.productpage div.row div.col-sm-8.product-left div.product-info div.left.product-image.thumbnails {
-    width: 406.5px;
-    height: 508.5px;
-}
-
-html body.common-home.layout-1 div.productpage div#product-product.container div.row div#content.col-sm-12.productpage div.row div.col-sm-8.product-left div.product-info div.left.product-image.thumbnails div.image {
-    width: 406.5px;
-    height: 406.5px;
-}
-
-html body.common-home.layout-1 div.productpage div#product-product.container div.row div#content.col-sm-12.productpage div.row div.col-sm-8.product-left div.product-info div.left.product-image.thumbnails div.image a.thumbnail img#tmzoom {
-    width: 406.5px;
-    height: 406.5px;
-}*/
-    /*
-    All Wines
-*/
-    /*
-html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div.tabs div.product-block-wrapper {
-    width: 320px;
-    height: 0px;
-}
-
-html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div.tabs div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-12.col-md-12.col-sm-12.col-xs-12 {
-    width: 320px;
-    height: 422.05px;
-}*/
-    /*html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div.tabs div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-12.col-md-12.col-sm-12.col-xs-12 div.product-block.product-thumb.transition {
-    width: 320px;
-    height: 407.05px;
-}*/
-    /*html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div.tabs div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-12.col-md-12.col-sm-12.col-xs-12 div.product-block.product-thumb.transition div.product-block-inner {
-    width: 290px;
-    height: 392.05px;
-}*/
-    /*html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div.tabs div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-12.col-md-12.col-sm-12.col-xs-12 div.product-block.product-thumb.transition div.product-block-inner div.image {
-    width: 290px;
-    height: 293.05px;
-}
-
-
-html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div.tabs div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-12.col-md-12.col-sm-12.col-xs-12 div.product-block.product-thumb.transition div.product-block-inner div.image a {
-    width: 290px;
-    height: 293.05px;
-}
 
 html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div.tabs div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-12.col-md-12.col-sm-12.col-xs-12 div.product-block.product-thumb.transition div.product-block-inner div.image a img {
     width: 290px;
     height: 293.05px;
-}*/
-    /*
-    Home page Newest products
-*/
-    /*html body.common-home.layout-1 div#common-home div.content-top div#content1 div#categorycmsblock.categorycms ul.categorycmsblock-inner.row li.category-item.col-lg-4.col-md-4.col-sm-4.col-xs-12 {
-    width: 381.333px;
-    height: 508.317px;
-}*/
-    /*html body.common-home.layout-1 div#common-home div.content-top div#content1 div#categorycmsblock.categorycms ul.categorycmsblock-inner.row li.category-item.col-lg-4.col-md-4.col-sm-4.col-xs-12 div.category-item-inner {
-    width: 341.333px;
 }
 
-html body.common-home.layout-1 div#common-home div.content-top div#content1 div#categorycmsblock.categorycms ul.categorycmsblock-inner.row li.category-item.col-lg-4.col-md-4.col-sm-4.col-xs-12 div.category-item-inner a.category-img {
-    height: 347.317px;
-}*/
-    /*html body.common-home.layout-1 div#common-home div.content-top div#content1 div#categorycmsblock.categorycms ul.categorycmsblock-inner.row li.category-item.col-lg-4.col-md-4.col-sm-4.col-xs-12 div.category-item-inner a.category-img img {
-    width: 341.333px;
-    height: 347.317px;
-}*/
-    /*
+/*
     Favorites
 */
-    html body.common-home.layout-1 section.shopping-cart div.container div.row div.col-md-12 div.cart-table.wsh-list.table-responsive table.table tbody tr td.t-pro.d-flex div.t-img {
-        width: 150px;
-        height: 130px;
-    }
+html body.common-home.layout-1 section.shopping-cart div.container div.row div.col-md-12 div.cart-table.wsh-list.table-responsive table.table tbody tr td.t-pro.d-flex div.t-img {
+    width: 150px;
+    height: 130px;
+}
 
 html body.common-home.layout-1 header div.header div.content_headercms_top div#main-menu.main-menu nav.nav-container div.nav-inner div#menu.responsive-menu {
     padding-top: 0px;
@@ -11932,18 +11825,9 @@ html body.common-home.layout-1 div.productpage div#product-product.container div
     height: 485px;
 }
 
-/*html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div#gattinara.tab-pane.active div.owl-carousel.owl-demo-tabcate.owl-theme div.owl-wrapper-outer div.owl-wrapper div.owl-item div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-4.col-md-4.col-sm-4.col-xs-4 div.product-block.product-thumb.transition div.product-block-inner div.image {
-    height: 473px;
-}
-
-html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div#gattinara.tab-pane.active div.owl-carousel.owl-demo-tabcate.owl-theme div.owl-wrapper-outer div.owl-wrapper div.owl-item div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-4.col-md-4.col-sm-4.col-xs-4 div.product-block.product-thumb.transition div.product-block-inner div.image a img.img-responsive.reg-image {
-    height: 473px;
-}
-
-html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div#gattinara.tab-pane.active div.owl-carousel.owl-demo-tabcate.owl-theme div.owl-wrapper-outer div.owl-wrapper div.owl-item div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-4.col-md-4.col-sm-4.col-xs-4 div.product-block.product-thumb.transition div.product-block-inner div.image a img.img-responsive.hover-image {
-    height: 473px;
-}*/
-
+/*
+    Order All Wines
+*/
 html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div#gattinara.tab-pane.active div.owl-carousel.owl-demo-tabcate.owl-theme div.owl-wrapper-outer div.owl-wrapper div.owl-item div.product-block-wrapper div.item.text-center.product-innerblock {
     display: flex;
     flex-direction: row;
@@ -11952,3 +11836,7 @@ html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.cont
     align-items: stretch;
     align-content: stretch;
 }
+
+    html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.container div#gattinara.tab-pane.active div.owl-carousel.owl-demo-tabcate.owl-theme div.owl-wrapper-outer div.owl-wrapper div.owl-item div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-3.col-md-3.col-sm-6.col-xs-12 div.product-block.product-thumb.transition div.product-block-inner div.image a img.img-responsive.reg-image {
+        width: 270px;
+    }
