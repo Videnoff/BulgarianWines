@@ -101,27 +101,27 @@
         jQuery(window).resize(function () { quickbox(); });
 
     </script>
-    <br/>
-    <br/>
+    <br />
+    <br />
     <div class="productpage">
         <div id="product-product" class="container">
             @*<ul class="breadcrumb">
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Index">
-                        <i class="fa fa-home"></i>
-                    </a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Categories" asp-action="Products" asp-route-categoryId="@Model.CategoryId">
-                        @Model.CategoryName
-                    </a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Wines" asp-action="SingleWine" asp-route-id="@Model.Id">
-                        @Model.Name
-                    </a>
-                </li>
-            </ul>*@
+                    <li>
+                        <a asp-area="" asp-controller="Home" asp-action="Index">
+                            <i class="fa fa-home"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Categories" asp-action="Products" asp-route-categoryId="@Model.CategoryId">
+                            @Model.CategoryName
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Wines" asp-action="SingleWine" asp-route-id="@Model.Id">
+                            @Model.Name
+                        </a>
+                    </li>
+                </ul>*@
             <div class="row">
                 <div id="content" class="col-sm-12 productpage">
                     <div class="row">
@@ -172,28 +172,29 @@
                                 </h3>
 
                                 <div class="rating-wrapper">
-                                    <span class="fa fa-stack">
-                                        <i class="fa fa-star fa-stack-2x"></i>
-                                    </span>
-                                    <span class="fa fa-stack">
-                                        <i class="fa fa-star fa-stack-2x"></i>
-                                    </span>
-                                    <span class="fa fa-stack">
-                                        <i class="fa fa-star fa-stack-2x"></i>
-                                    </span>
-                                    <span class="fa fa-stack">
-                                        <i class="fa fa-star fa-stack-2x"></i>
-                                    </span>
-                                    <span class="fa fa-stack">
-                                        <i class="fa fa-star off fa-stack-2x"></i>
-                                    </span>
-                                    <a href="#" class="review-count" onclick="$('a[href=\'#tab-review\']').trigger('click');return false;">
-                                        @Model.Reviews.Count() reviews
-                                    </a>
-                                    <a href="#" onclick="$('a[href=\'#tab-review\']').trigger('click');return false;" class="write-review">
-                                        <i class="fa fa-pencil"></i>
-                                        Write a review
-                                    </a>
+                                    @*<span class="fa fa-stack">
+            <i class="fa fa-star fa-stack-2x"></i>
+        </span>
+        <span class="fa fa-stack">
+            <i class="fa fa-star fa-stack-2x"></i>
+        </span>
+        <span class="fa fa-stack">
+            <i class="fa fa-star fa-stack-2x"></i>
+        </span>
+        <span class="fa fa-stack">
+            <i class="fa fa-star fa-stack-2x"></i>
+        </span>
+        <span class="fa fa-stack">
+            <i class="fa fa-star off fa-stack-2x"></i>
+        </span>*@
+                                    <partial name="_WineRatingPartial" model="new WineRatingViewModel{AverageRating = Model.AverageRating}"/>
+                                        <a href="#" class="review-count" onclick="$('a[href=\'#tab-review\']').trigger('click');return false;">
+                                            @Model.Reviews.Count() reviews
+                                        </a>
+                                        <a href="#" onclick="$('a[href=\'#tab-review\']').trigger('click');return false;" class="write-review">
+                                            <i class="fa fa-pencil"></i>
+                                            Write a review
+                                        </a>
 
                                 </div>
                                 <ul class="list-unstyled">
@@ -233,11 +234,13 @@
                                         </h2>
                                     </li>
                                     <li class="price-tax">
-                                        Ask for price
+                                        <a asp-area="" asp-controller="Home" asp-action="Contact">
+                                            Ask for price
+                                        </a>
                                     </li>
                                     @*<li class="points">
-                                        Price in reward points: 400
-                                    </li>*@
+                                            Price in reward points: 400
+                                        </li>*@
                                 </ul>
                                 <div id="product">
                                     @*<h3 class="product-option">

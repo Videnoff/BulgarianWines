@@ -66,7 +66,7 @@
         //}
 
         [HttpGet("/Categories/Products/{categoryId}")]
-        public IActionResult Products(int categoryId, int pageNumber = 1, int itemsPerPage = 6, string sorting = "price asc")
+        public IActionResult Products(int categoryId, int pageNumber = 1, int itemsPerPage = 8, string sorting = "price asc")
         {
             if (pageNumber <= 0)
             {

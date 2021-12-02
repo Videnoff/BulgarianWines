@@ -37,7 +37,7 @@
                                 <div class="item text-center product-innerblock">
                                     @foreach (var product in @Model.Products)
                                     {
-                                        <div class="col-md-3 col-6">
+                                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                             <div class="product-block product-thumb transition">
                                                 <div class="product-block-inner">
                                                     <div class="image">
@@ -105,7 +105,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="owl-controls clickable">
+                @*<div class="owl-controls clickable">
                     <div class="owl-buttons">
                         <div class="owl-prev">
                             <span class="left">
@@ -118,7 +118,7 @@
                             </span>
                         </div>
                     </div>
-                </div>
+                </div>*@
             </div>
             <hr/>
             <partial name="_PagingPartial"/>

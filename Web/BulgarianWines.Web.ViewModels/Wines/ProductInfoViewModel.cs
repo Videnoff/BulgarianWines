@@ -33,17 +33,18 @@
 
         public IEnumerable<Review> Reviews { get; set; }
 
-        public double AverageRating { get; set; }
+        [IgnoreMap]
+        public double AverageRating => (!this.Reviews.Any()) ? 0 : Math.Round(this.Reviews.Average(x => x.Rating), 2);
+
+        [IgnoreMap]
+        public double AverageRatingRounded => Math.Round(this.AverageRating * 2, MidpointRounding.AwayFromZero) / 2;
 
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Wine, ProductInfoViewModel>()
                 .ForMember(
                     x => x.Reviews,
-                    opt => opt.MapFrom(m => m.Reviews.OrderByDescending(x => x.CreatedOn)))
-                .ForMember(
-                    x => x.AverageRating,
-                    opt => opt.MapFrom(m => (!m.Reviews.Any()) ? 0 : Math.Round(m.Reviews.Average(x => x.Rating), 2)));
+                    opt => opt.MapFrom(m => m.Reviews.OrderByDescending(x => x.CreatedOn)));
         }
     }
 }
