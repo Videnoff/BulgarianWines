@@ -360,6 +360,9 @@
                                                         </tr>
                                                         @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
                                                         {
+                                                            <span>
+                                                                (@review.UserEmail)
+                                                            </span>
                                                             <a asp-area="Administration" asp-controller="Wines" asp-action="DeleteReview" asp-route-id="@review.Id" asp-route-returnUrl="@string.Format("{0}{1}", this.Context.Request.Path, this.Context.Request.QueryString)" class="btn btn-danger float-right">
                                                                 Delete
                                                             </a>

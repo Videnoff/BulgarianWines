@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace BulgarianWines.Web.ViewModels
+﻿namespace BulgarianWines.Web.ViewModels
 {
     using System;
+    using System.Collections.Generic;
 
     public class PagingViewModel
     {

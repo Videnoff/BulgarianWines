@@ -1,8 +1,7 @@
-﻿using System.Linq;
-
-namespace BulgarianWines.Web.ViewModels.Wines
+﻿namespace BulgarianWines.Web.ViewModels.Wines
 {
     using System.Collections.Generic;
+    using System.Linq;
 
     using AutoMapper;
     using BulgarianWines.Data.Models;

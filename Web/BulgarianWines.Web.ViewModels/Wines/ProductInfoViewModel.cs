@@ -31,20 +31,19 @@
 
         public IEnumerable<Image> Images { get; set; }
 
-        public IEnumerable<Review> Reviews { get; set; }
+        public IEnumerable<WineReviewViewModel> Reviews { get; set; }
 
-        [IgnoreMap]
-        public double AverageRating => (!this.Reviews.Any()) ? 0 : Math.Round(this.Reviews.Average(x => x.Rating), 2);
-
-        [IgnoreMap]
-        public double AverageRatingRounded => Math.Round(this.AverageRating * 2, MidpointRounding.AwayFromZero) / 2;
+        public double AverageRating { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Wine, ProductInfoViewModel>()
                 .ForMember(
                     x => x.Reviews,
-                    opt => opt.MapFrom(m => m.Reviews.OrderByDescending(x => x.CreatedOn)));
+                    opt => opt.MapFrom(m => m.Reviews.OrderByDescending(x => x.CreatedOn)))
+                .ForMember(
+                    source => source.AverageRating,
+                    destination => destination.MapFrom(member => (!member.Reviews.Any()) ? 0 : Math.Round(member.Reviews.Average(x => x.Rating), 2)));
         }
     }
 }
