@@ -1,11 +1,16 @@
 ﻿@using BulgarianWines.Web.ViewModels.Wines
 @using System.Security.Claims
 @using BulgarianWines.Common
+@using BulgarianWines.Data.Models
+@using BulgarianWines.Web.ViewModels.Wines
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager;
 @model BulgarianWines.Web.ViewModels.Wines.SingleProductViewModel
 @{
     this.ViewData["Title"] = Model.Name;
 }
 <head>
+
     <link href="~/css/wined/themecss/bootstrap.min.css" rel="stylesheet" media="screen" asp-append-version="true" />
     <link href="~/js/wined/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" asp-append-version="true" />
 
@@ -25,7 +30,7 @@
 
     <!-- <link href="style.href" type="text/css" rel="style.rel" media="style.media" />
     <link href="style.href" type="text/css" rel="style.rel" media="style.media" />
-     -->
+    -->
 
     <script src="~/js/wined/lightbox/lightbox-2.6.min.js" asp-append-version="true"></script>
     <link href="/js/wined/jquery/magnific/magnific-popup.css" type="text/css" rel="stylesheet" media="screen" asp-append-version="true" />
@@ -55,9 +60,10 @@
     <script type="text/javascript" src="~/js/wined/jquery.countdown.min.js" asp-append-version="true"></script>
     <!-- Theme End -->
 
+    <script src="~/js/wined/jquery/swiper/js/swiper.jquery.js" asp-append-version="true"></script>
+
     <script src="~/js/wined/common.js" asp-append-version="true"></script>
     <script src="~/js/wined/themejs/parallax.js" asp-append-version="true"></script>
-
 
 </head>
 
@@ -173,28 +179,28 @@
 
                                 <div class="rating-wrapper">
                                     @*<span class="fa fa-stack">
-            <i class="fa fa-star fa-stack-2x"></i>
-        </span>
-        <span class="fa fa-stack">
-            <i class="fa fa-star fa-stack-2x"></i>
-        </span>
-        <span class="fa fa-stack">
-            <i class="fa fa-star fa-stack-2x"></i>
-        </span>
-        <span class="fa fa-stack">
-            <i class="fa fa-star fa-stack-2x"></i>
-        </span>
-        <span class="fa fa-stack">
-            <i class="fa fa-star off fa-stack-2x"></i>
-        </span>*@
-                                    <partial name="_WineRatingPartial" model="new WineRatingViewModel{AverageRating = Model.AverageRating}"/>
-                                        <a href="#" class="review-count" onclick="$('a[href=\'#tab-review\']').trigger('click');return false;">
-                                            @Model.Reviews.Count() reviews
-                                        </a>
-                                        <a href="#" onclick="$('a[href=\'#tab-review\']').trigger('click');return false;" class="write-review">
-                                            <i class="fa fa-pencil"></i>
-                                            Write a review
-                                        </a>
+                                            <i class="fa fa-star fa-stack-2x"></i>
+                                        </span>
+                                        <span class="fa fa-stack">
+                                            <i class="fa fa-star fa-stack-2x"></i>
+                                        </span>
+                                        <span class="fa fa-stack">
+                                            <i class="fa fa-star fa-stack-2x"></i>
+                                        </span>
+                                        <span class="fa fa-stack">
+                                            <i class="fa fa-star fa-stack-2x"></i>
+                                        </span>
+                                        <span class="fa fa-stack">
+                                            <i class="fa fa-star off fa-stack-2x"></i>
+                                        </span>*@
+                                    <partial name="_WineRatingPartial" model="new WineRatingViewModel{AverageRating = Model.AverageRating}" />
+                                    <a href="#" class="review-count" onclick="$('a[href=\'#tab-review\']').trigger('click');return false;">
+                                        @Model.Reviews.Count() reviews
+                                    </a>
+                                    <a href="#" onclick="$('a[href=\'#tab-review\']').trigger('click');return false;" class="write-review">
+                                        <i class="fa fa-pencil"></i>
+                                        Write a review
+                                    </a>
 
                                 </div>
                                 <ul class="list-unstyled">
@@ -260,10 +266,10 @@
                                             </div>
                                         </div>*@
                                     <div class="form-group cart">
-                                        <label class="control-label qty" for="input-quantity">
+                                        @*<label class="control-label qty" for="input-quantity">
                                             Qty
-                                        </label>
-                                        <input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control" />
+                                        </label>*@
+                                        @*<input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control" />*@
                                         <a asp-area="" asp-controller="Favorites" asp-action="Add" asp-route-id="@Model.Id">
                                             <button type="button" id="button-cart" data-loading-text="Loading..." class="btn btn-primary btn-lg btn-block">
                                                 Add to Wishlist
@@ -396,6 +402,8 @@
         </div>
     </div>
 
+
+
     @*<script type="text/javascript">
             function() {
                 $('html, body').animate({
@@ -410,7 +418,7 @@
             }
         </script>*@
     <script type="text/javascript">
-    <!--
+        <!--
         $('select[name=\'recurring_id\'], input[name="quantity"]').change(function () {
             $.ajax({
                 url: 'index.php?route=product/product/getRecurringDescription',
@@ -593,12 +601,14 @@
                 }
             }, 500);
         });
-        //--></script>
+        //-->
+    </script>
     <script type="text/javascript">
-<!--
-        $('.write-review, .review-count').on('click', function () {
-            $('html, body').animate({ scrollTop: $('#tabs_info').offset().top }, 'slow');
-        })
+        <!--
+        $('.write-review, .review-count').on('click',
+            function () {
+                $('html, body').animate({ scrollTop: $('#tabs_info').offset().top }, 'slow');
+            });
 
         $('#review').delegate('.pagination a', 'click', function (e) {
             e.preventDefault();

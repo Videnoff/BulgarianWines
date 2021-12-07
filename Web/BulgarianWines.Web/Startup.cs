@@ -75,6 +75,11 @@
                     gOptions.ClientSecret = googleAuthNSection["ClientSecret"];
                 });
 
+            services.AddAntiforgery(options =>
+            {
+                options.HeaderName = "X-CSRF-TOKEN";
+            });
+
             services.AddSession(options =>
             {
                 options.Cookie.HttpOnly = true;

@@ -19,9 +19,9 @@
                                 <th class="t-price">
                                     Price
                                 </th>
-                                <th class="t-total">
+                                @*<th class="t-total">
                                     Add To Cart
-                                </th>
+                                </th>*@
                                 <th class="t-rem">
 
                                 </th>
@@ -47,13 +47,15 @@
                                         </div>
                                     </td>
                                     <td class="t-price">
-                                        @wine.WinePrice
+                                        <a asp-controller="Home" asp-action="Contact">
+                                            Ask for price
+                                        </a>
                                     </td>
-                                    <td class="t-add">
+                                    @*<td class="t-add">
                                         <button type="button" name="button">
                                             Add to Cart
                                         </button>
-                                    </td>
+                                    </td>*@
                                     <td class="t-rem">
                                         <a asp-area="" asp-controller="Favorites" asp-action="Delete" asp-route-id="@wine.WineId">
                                             <i class="fa fa-trash-o"></i>
