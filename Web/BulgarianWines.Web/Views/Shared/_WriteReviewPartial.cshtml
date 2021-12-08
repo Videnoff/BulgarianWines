@@ -5,16 +5,12 @@
 
 @model WineReviewInputModel
 
-<button type="submit" class="btn btn-primary">
-    Continue
-</button>
-
 <div class="review-form">
     <h4>
         Write a review
     </h4>
     
-    <form asp-area="" asp-controller="Wines" asp-action="CreateReview" method="post">
+    <form asp-action="CreateReview" asp-area="" asp-controller="Wines" method="post">
         <div asp-validation-summary="All" class="text-danger"></div>
         <div class="form-group required">
             <div class="col-sm-12">
@@ -39,7 +35,7 @@
                 <label asp-for="Rating" class="control-label">
                     Rating
                 </label>
-                &nbsp;&nbsp;&nbsp; Bad&nbsp;
+                @*&nbsp;&nbsp;&nbsp; Bad&nbsp;
                 <input type="radio" class="fa fa-star-o" name="rating" data-rating="1"/>
                 &nbsp;
                 <input type="radio" class="fa fa-star-o" name="rating" data-rating="2"/>
@@ -49,8 +45,8 @@
                 <input type="radio" class="fa fa-star-o" name="rating" data-rating="4"/>
                 &nbsp;
                 <input type="radio" class="fa fa-star-o" name="rating" data-rating="5"/>
-                &nbsp;Good
-                @*<div class="star-rating">
+                &nbsp;Good*@
+                <div class="star-rating">
                         <label asp-for="Rating"></label>
                         <span class="fa fa-star-o" data-rating="1"></span>
                         <span class="fa fa-star-o" data-rating="2"></span>
@@ -58,7 +54,7 @@
                         <span class="fa fa-star-o" data-rating="4"></span>
                         <span class="fa fa-star-o" data-rating="5"></span>
                         <input asp-for="Rating" class="rating-value" style="visibility:hidden;height:0;" />
-                    </div>*@
+                    </div>
                 <input asp-for="Rating" class="rating-value" style="visibility: hidden"/>
             </div>
         </div>
@@ -66,7 +62,9 @@
             <div class="pull-right">
                 <input asp-for="UserId" hidden />
                 <input asp-for="WineId" hidden />
-                
+                <button type="submit" class="btn btn-primary">
+                    Write Review
+                </button>
             </div>
         </div>
     </form>

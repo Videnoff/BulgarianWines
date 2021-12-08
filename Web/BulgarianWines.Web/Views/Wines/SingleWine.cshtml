@@ -9,6 +9,21 @@
 @{
     this.ViewData["Title"] = Model.Name;
 }
+
+@{
+    var ratingSum = ViewBag.RatingSum;
+    var ratingCount = ViewBag.RatingCount;
+
+    var rating = 0;
+
+    if (ratingCount > 0)
+    {
+        rating = (ratingSum / ratingCount);
+    }
+
+    var totalRating = decimal.Parse(rating.ToString());
+}
+
 <head>
 
     <link href="~/css/wined/themecss/bootstrap.min.css" rel="stylesheet" media="screen" asp-append-version="true" />
@@ -179,20 +194,21 @@
 
                                 <div class="rating-wrapper">
                                     @*<span class="fa fa-stack">
-                                            <i class="fa fa-star fa-stack-2x"></i>
-                                        </span>
-                                        <span class="fa fa-stack">
-                                            <i class="fa fa-star fa-stack-2x"></i>
-                                        </span>
-                                        <span class="fa fa-stack">
-                                            <i class="fa fa-star fa-stack-2x"></i>
-                                        </span>
-                                        <span class="fa fa-stack">
-                                            <i class="fa fa-star fa-stack-2x"></i>
-                                        </span>
-                                        <span class="fa fa-stack">
-                                            <i class="fa fa-star off fa-stack-2x"></i>
-                                        </span>*@
+                        <i class="fa fa-star fa-stack-2x"></i>
+                    </span>
+                    <span class="fa fa-stack">
+                        <i class="fa fa-star fa-stack-2x"></i>
+                    </span>
+                    <span class="fa fa-stack">
+                        <i class="fa fa-star fa-stack-2x"></i>
+                    </span>
+                    <span class="fa fa-stack">
+                        <i class="fa fa-star fa-stack-2x"></i>
+                    </span>
+                    <span class="fa fa-stack">
+                        <i class="fa fa-star off fa-stack-2x"></i>
+                    </span>*@
+
                                     <partial name="_WineRatingPartial" model="new WineRatingViewModel{AverageRating = Model.AverageRating}" />
                                     <a href="#" class="review-count" onclick="$('a[href=\'#tab-review\']').trigger('click');return false;">
                                         @Model.Reviews.Count() reviews
@@ -245,30 +261,30 @@
                                         </a>
                                     </li>
                                     @*<li class="points">
-                                            Price in reward points: 400
-                                        </li>*@
+                        Price in reward points: 400
+                    </li>*@
                                 </ul>
                                 <div id="product">
                                     @*<h3 class="product-option">
-                                            Available Options
-                                        </h3>
-                                        <div class="form-group required">
-                                            <label class="control-label" for="input-option228">
-                                                Delivery Date
-                                            </label>
-                                            <div class="input-group date">
-                                                <input type="text" name="option[228]" value="2011-04-22" data-date-format="YYYY-MM-DD" id="input-option228" class="form-control" />
-                                                <span class="input-group-btn">
-                                                    <button class="btn btn-default" type="button">
-                                                        <i class="fa fa-calendar"></i>
-                                                    </button>
-                                                </span>
-                                            </div>
-                                        </div>*@
+                        Available Options
+                    </h3>
+                    <div class="form-group required">
+                        <label class="control-label" for="input-option228">
+                            Delivery Date
+                        </label>
+                        <div class="input-group date">
+                            <input type="text" name="option[228]" value="2011-04-22" data-date-format="YYYY-MM-DD" id="input-option228" class="form-control" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>*@
                                     <div class="form-group cart">
                                         @*<label class="control-label qty" for="input-quantity">
-                                            Qty
-                                        </label>*@
+                            Qty
+                        </label>*@
                                         @*<input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control" />*@
                                         <a asp-area="" asp-controller="Favorites" asp-action="Add" asp-route-id="@Model.Id">
                                             <button type="button" id="button-cart" data-loading-text="Loading..." class="btn btn-primary btn-lg btn-block">
@@ -276,16 +292,16 @@
                                             </button>
                                         </a>
                                         @*<span>
-                                                - OR -
-                                            </span>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-default wishlist" title="Add to Wish List" onclick="wishlist.add('51');">
-                                                    Add to Wish List
-                                                </button>
-                                                <button type="button" class="btn btn-default compare" title="Compare this Product" onclick="compare.add('51');">
-                                                    Compare this Product
-                                                </button>
-                                            </div>*@
+                            - OR -
+                        </span>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default wishlist" title="Add to Wish List" onclick="wishlist.add('51');">
+                                Add to Wish List
+                            </button>
+                            <button type="button" class="btn btn-default compare" title="Compare this Product" onclick="compare.add('51');">
+                                Compare this Product
+                            </button>
+                        </div>*@
 
                                     </div>
                                     <input type="hidden" name="@Model.Id" value="@Model.Id" />
@@ -333,56 +349,58 @@
 
                                 </div>
                                 <div class="tab-pane" id="tab-review">
-                                    <form class="form-horizontal" id="form-review">
-                                        <div>
-                                            @foreach (var review in Model.Reviews)
-                                            {
-                                                <table class="table table-striped table-bordered">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="width: 50%;">
-                                                                <strong>
-                                                                    @review.Name
-                                                                </strong>
-                                                            </td>
-                                                            <td class="text-right">
-                                                                @review.CreatedOn
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="2">
-                                                                <p>
-                                                                    @review.Content
-                                                                </p>
-                                                                @for (int i = 0; i < review.Rating; i++)
-                                                                {
-                                                                    <span class="fa fa-stack">
-                                                                        <i class="fa fa-star fa-stack-2x"></i>
-                                                                        <i class="fa fa-star-o fa-stack-2x"></i>
-                                                                    </span>
-                                                                }
+                                    @*<form class="form-horizontal" id="form-review">
+        </form>*@
+                                    <div>
+                                        @foreach (var review in Model.Reviews)
+                                        {
+                                            <table class="table table-striped table-bordered">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="width: 50%;">
+                                                            <strong>
+                                                                @review.Name
+                                                            </strong>
+                                                        </td>
+                                                        <td class="text-right">
+                                                            @review.CreatedOn
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <p>
+                                                                @review.Content
+                                                            </p>
+                                                            @for (int i = 0; i < review.Rating; i++)
+                                                            {
+                                                                <span class="fa fa-stack">
+                                                                    <i class="fa fa-star fa-stack-2x"></i>
+                                                                    <i class="fa fa-star-o fa-stack-2x"></i>
+                                                                </span>
+                                                            }
 
-                                                            </td>
-                                                        </tr>
-                                                        @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
-                                                        {
-                                                            <span>
-                                                                (@review.UserEmail)
-                                                            </span>
-                                                            <a asp-area="Administration" asp-controller="Wines" asp-action="DeleteReview" asp-route-id="@review.Id" asp-route-returnUrl="@string.Format("{0}{1}", this.Context.Request.Path, this.Context.Request.QueryString)" class="btn btn-danger float-right">
-                                                                Delete
-                                                            </a>
-                                                        }
-                                                    </tbody>
-                                                </table>
-                                            }
+                                                        </td>
+                                                    </tr>
+                                                    @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+                                                    {
+                                                        <span>
+                                                            (@review.UserEmail)
+                                                        </span>
+                                                        <a asp-area="Administration" asp-controller="Wines" asp-action="DeleteReview" asp-route-id="@review.Id" asp-route-returnUrl="@string.Format("{0}{1}", this.Context.Request.Path, this.Context.Request.QueryString)" class="btn btn-danger float-right">
+                                                            Delete
+                                                        </a>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        }
 
-                                        </div>
-                                        <partial name="_WriteReviewPartial" model="new WineReviewInputModel { UserId = this.User.FindFirstValue(ClaimTypes.NameIdentifier), WineId = Model.Id }" />
-                                    </form>
+                                    </div>
+                                    <partial name="_WriteReviewPartial" model="new WineReviewInputModel { UserId = this.User.FindFirstValue(ClaimTypes.NameIdentifier), WineId = Model.Id }" />
+                                    @*<partial name="_CommentBoxPartial" />*@
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                     <div>
                         <vc:related-products category-id="@Model.CategoryId"></vc:related-products>
@@ -620,37 +638,37 @@
             $('#review').fadeIn('slow');
         });
 
-        $('#review').load('indexbe0f.html?route=product/product/review&amp;product_id=51');
+        //$('#review').load('indexbe0f.html?route=product/product/review&amp;product_id=51');
 
-        $('#button-review').on('click', function () {
-            $.ajax({
-                url: 'index.php?route=product/product/write&product_id=51',
-                type: 'post',
-                dataType: 'json',
-                data: $("#form-review").serialize(),
-                beforeSend: function () {
-                    $('#button-review').button('loading');
-                },
-                complete: function () {
-                    $('#button-review').button('reset');
-                },
-                success: function (json) {
-                    $('.alert-dismissible').remove();
+        //$('#button-review').on('click', function () {
+        //    $.ajax({
+        //        url: 'index.php?route=product/product/write&product_id=51',
+        //        type: 'post',
+        //        dataType: 'json',
+        //        data: $("#form-review").serialize(),
+        //        beforeSend: function () {
+        //            $('#button-review').button('loading');
+        //        },
+        //        complete: function () {
+        //            $('#button-review').button('reset');
+        //        },
+        //        success: function (json) {
+        //            $('.alert-dismissible').remove();
 
-                    if (json['error']) {
-                        $('#review').after('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
-                    }
+        //            if (json['error']) {
+        //                $('#review').after('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+        //            }
 
-                    if (json['success']) {
-                        $('#review').after('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+        //            if (json['success']) {
+        //                $('#review').after('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
 
-                        $('input[name=\'name\']').val('');
-                        $('textarea[name=\'text\']').val('');
-                        $('input[name=\'rating\']:checked').prop('checked', false);
-                    }
-                }
-            });
-        });
+        //                $('input[name=\'name\']').val('');
+        //                $('textarea[name=\'text\']').val('');
+        //                $('input[name=\'rating\']:checked').prop('checked', false);
+        //            }
+        //        }
+        //    });
+        //});
 
         $(document).ready(function () {
             $('.thumbnails').magnificPopup({

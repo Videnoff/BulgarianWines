@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web.Controllers
+﻿using BulgarianWines.Data;
+
+namespace BulgarianWines.Web.Controllers
 {
     using System.Threading.Tasks;
 
@@ -6,13 +8,16 @@
     using BulgarianWines.Web.ViewModels.Wines;
     using Microsoft.AspNetCore.Mvc;
 
-    public class WinesController : Controller
+    public class WinesController : BaseController
     {
         private readonly IWinesService winesService;
+        private readonly ApplicationDbContext dbContext;
 
-        public WinesController(IWinesService winesService)
+        public WinesController(IWinesService winesService,
+            ApplicationDbContext dbContext)
         {
             this.winesService = winesService;
+            this.dbContext = dbContext;
         }
 
         public IActionResult AllWines(int id = 1)
