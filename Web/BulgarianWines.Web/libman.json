@@ -149,6 +149,10 @@
         "dist/wow.js",
         "dist/wow.min.js"
       ]
+    },
+    {
+      "library": "@rateyo/jquery@3.0.0-alpha.2",
+      "destination": "wwwroot/lib/rateyo/jquery/"
     }
   ]
 }

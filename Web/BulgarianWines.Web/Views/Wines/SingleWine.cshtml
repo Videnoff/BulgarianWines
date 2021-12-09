@@ -2,7 +2,6 @@
 @using System.Security.Claims
 @using BulgarianWines.Common
 @using BulgarianWines.Data.Models
-@using BulgarianWines.Web.ViewModels.Wines
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<ApplicationUser> SignInManager;
 @model BulgarianWines.Web.ViewModels.Wines.SingleProductViewModel
@@ -10,21 +9,9 @@
     this.ViewData["Title"] = Model.Name;
 }
 
-@{
-    var ratingSum = ViewBag.RatingSum;
-    var ratingCount = ViewBag.RatingCount;
-
-    var rating = 0;
-
-    if (ratingCount > 0)
-    {
-        rating = (ratingSum / ratingCount);
-    }
-
-    var totalRating = decimal.Parse(rating.ToString());
-}
 
 <head>
+    <link href="~/lib/rateyo/jquery/lib/cjs/jquery.rateyo.min.css" rel="stylesheet" asp-append-version="true" />
 
     <link href="~/css/wined/themecss/bootstrap.min.css" rel="stylesheet" media="screen" asp-append-version="true" />
     <link href="~/js/wined/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" asp-append-version="true" />
@@ -79,6 +66,9 @@
 
     <script src="~/js/wined/common.js" asp-append-version="true"></script>
     <script src="~/js/wined/themejs/parallax.js" asp-append-version="true"></script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/rateyo/jquery/lib/cjs/jquery.rateyo.min.js"></script>
 
 </head>
 
@@ -194,20 +184,20 @@
 
                                 <div class="rating-wrapper">
                                     @*<span class="fa fa-stack">
-                        <i class="fa fa-star fa-stack-2x"></i>
-                    </span>
-                    <span class="fa fa-stack">
-                        <i class="fa fa-star fa-stack-2x"></i>
-                    </span>
-                    <span class="fa fa-stack">
-                        <i class="fa fa-star fa-stack-2x"></i>
-                    </span>
-                    <span class="fa fa-stack">
-                        <i class="fa fa-star fa-stack-2x"></i>
-                    </span>
-                    <span class="fa fa-stack">
-                        <i class="fa fa-star off fa-stack-2x"></i>
-                    </span>*@
+                                            <i class="fa fa-star fa-stack-2x"></i>
+                                        </span>
+                                        <span class="fa fa-stack">
+                                            <i class="fa fa-star fa-stack-2x"></i>
+                                        </span>
+                                        <span class="fa fa-stack">
+                                            <i class="fa fa-star fa-stack-2x"></i>
+                                        </span>
+                                        <span class="fa fa-stack">
+                                            <i class="fa fa-star fa-stack-2x"></i>
+                                        </span>
+                                        <span class="fa fa-stack">
+                                            <i class="fa fa-star off fa-stack-2x"></i>
+                                        </span>*@
 
                                     <partial name="_WineRatingPartial" model="new WineRatingViewModel{AverageRating = Model.AverageRating}" />
                                     <a href="#" class="review-count" onclick="$('a[href=\'#tab-review\']').trigger('click');return false;">
@@ -261,30 +251,30 @@
                                         </a>
                                     </li>
                                     @*<li class="points">
-                        Price in reward points: 400
-                    </li>*@
+                                            Price in reward points: 400
+                                        </li>*@
                                 </ul>
                                 <div id="product">
                                     @*<h3 class="product-option">
-                        Available Options
-                    </h3>
-                    <div class="form-group required">
-                        <label class="control-label" for="input-option228">
-                            Delivery Date
-                        </label>
-                        <div class="input-group date">
-                            <input type="text" name="option[228]" value="2011-04-22" data-date-format="YYYY-MM-DD" id="input-option228" class="form-control" />
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-calendar"></i>
-                                </button>
-                            </span>
-                        </div>
-                    </div>*@
+                                            Available Options
+                                        </h3>
+                                        <div class="form-group required">
+                                            <label class="control-label" for="input-option228">
+                                                Delivery Date
+                                            </label>
+                                            <div class="input-group date">
+                                                <input type="text" name="option[228]" value="2011-04-22" data-date-format="YYYY-MM-DD" id="input-option228" class="form-control" />
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default" type="button">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>*@
                                     <div class="form-group cart">
                                         @*<label class="control-label qty" for="input-quantity">
-                            Qty
-                        </label>*@
+                                                Qty
+                                            </label>*@
                                         @*<input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control" />*@
                                         <a asp-area="" asp-controller="Favorites" asp-action="Add" asp-route-id="@Model.Id">
                                             <button type="button" id="button-cart" data-loading-text="Loading..." class="btn btn-primary btn-lg btn-block">
@@ -292,16 +282,16 @@
                                             </button>
                                         </a>
                                         @*<span>
-                            - OR -
-                        </span>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default wishlist" title="Add to Wish List" onclick="wishlist.add('51');">
-                                Add to Wish List
-                            </button>
-                            <button type="button" class="btn btn-default compare" title="Compare this Product" onclick="compare.add('51');">
-                                Compare this Product
-                            </button>
-                        </div>*@
+                                                - OR -
+                                            </span>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-default wishlist" title="Add to Wish List" onclick="wishlist.add('51');">
+                                                    Add to Wish List
+                                                </button>
+                                                <button type="button" class="btn btn-default compare" title="Compare this Product" onclick="compare.add('51');">
+                                                    Compare this Product
+                                                </button>
+                                            </div>*@
 
                                     </div>
                                     <input type="hidden" name="@Model.Id" value="@Model.Id" />
@@ -350,7 +340,7 @@
                                 </div>
                                 <div class="tab-pane" id="tab-review">
                                     @*<form class="form-horizontal" id="form-review">
-        </form>*@
+                                        </form>*@
                                     <div>
                                         @foreach (var review in Model.Reviews)
                                         {
@@ -400,7 +390,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                     <div>
                         <vc:related-products category-id="@Model.CategoryId"></vc:related-products>
@@ -456,6 +446,21 @@
             });
         });
         //--></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#rateYo").rateYo({
+                rating: 0,
+                numStars: 5,
+                maxValue: 5,
+                halfStar: true,
+                onChange: function (rating, rateYoInstance) {
+                    $('#rating').val(rating);
+                }
+            });
+        });
+    </script>
+
     <script type="text/javascript">
 <!--
         //$('#button-cart').on('click', function () {
