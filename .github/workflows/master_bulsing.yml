@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'bulsing'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_20BEC4B6E38E47528A189E64EDDAE9EF }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BAC617808C7D44038BC593D7109F5815 }}
           package: .
