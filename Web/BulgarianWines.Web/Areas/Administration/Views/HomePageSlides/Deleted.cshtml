@@ -4,41 +4,46 @@
     ViewData["Title"] = "Deleted Homepage Slides";
 }
 
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+</head>
+
 <div class="table-responsive">
     <table class="table align-middle table-striped table-hover table-bordered">
         <thead>
-        <tr>
-            <th>#</th>
-            <th>Deleted On</th>
-            <th>Actions</th>
-        </tr>
+            <tr>
+                <th>#</th>
+                <th>Deleted On</th>
+                <th>Actions</th>
+            </tr>
         </thead>
         <tbody>
-        @if (!Model.Any())
-        {
-            <tr class="row">
-                <td class="col-12 d-flex justify-content-center">
-                    <strong>
-                        No deleted slides
-                    </strong>
-                </td>
-            </tr>
-        }
-        @foreach (var item in this.Model)
-        {
-            <tr>
-                <td>
-                    @item.Id
-                </td>
-                <td>
-                    @item.DeletedOn
-                </td>
-                <td>
-                <a asp-controller="HomePageSlides" asp-action="Restore" asp-route-id="@item.Id" class="btn btn-warning">
-                    Restore
-                </a>
-            </tr>
-        }
+            @if (!Model.Any())
+            {
+                <tr class="row">
+                    <td class="col-12 d-flex justify-content-center">
+                        <strong>
+                            No deleted slides
+                        </strong>
+                    </td>
+                </tr>
+            }
+            @foreach (var item in this.Model)
+            {
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @item.DeletedOn
+                    </td>
+                    <td>
+                        <a asp-controller="HomePageSlides" asp-action="Restore" asp-route-id="@item.Id" class="btn btn-warning">
+                            Restore
+                        </a>
+                </tr>
+            }
         </tbody>
     </table>
 </div>

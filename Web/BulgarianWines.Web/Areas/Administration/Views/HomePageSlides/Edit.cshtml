@@ -1,38 +1,47 @@
 ﻿@model BulgarianWines.Web.ViewModels.Administration.HomePageSlides.EditSlideViewModel
-@{ ViewData["Title"] = "Edit Slide"; }
+@{
+    ViewData["Title"] = "Edit Slide";
+}
+
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+</head>
 
 <div class="shadow card">
-    <div class="card-header h3 text-center">@ViewData["Title"]</div>
+    <div class="card-header h3 text-center">
+        @ViewData["Title"]
+    </div>
     <div class="card-body">
         <form asp-area="Administration" asp-controller="HomePageSlides" asp-action="Edit" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="All" class="text-danger"></div>
             <table class="table align-middle table-striped table-hover table-bordered" style="margin-left: 100px;">
                 <thead>
-                <tr>
-                    <th>
-                        Image
-                    </th>
-                    <th>
-                        Actions
-                    </th>
-                </tr>
+                    <tr>
+                        <th>
+                            Image
+                        </th>
+                        <th>
+                            Actions
+                        </th>
+                    </tr>
                 </thead>
                 <tbody>
-                @foreach (var image in Model.SlideImages)
-                {
-                    <tr>
-                        <td style="width: 50%; height: 50%; text-align: center; vertical-align: auto">
-                            <img src="@image.ImageUrl" style="max-height: 100%; max-width: 100%" alt="@image.ImageUrl" />
-                        </td>
-                        <td>
-                            <div>
-                                <a asp-controller="HomePageSlides" asp-action="DeleteImage" asp-route-id="@image.Id" class="btn btn-danger btn-sm">
-                                    Delete
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-                }
+                    @foreach (var image in Model.SlideImages)
+                    {
+                        <tr>
+                            <td style="width: 50%; height: 50%; text-align: center; vertical-align: auto">
+                                <img src="@image.ImageUrl" style="max-height: 100%; max-width: 100%" alt="@image.ImageUrl" />
+                            </td>
+                            <td>
+                                <div>
+                                    <a asp-controller="HomePageSlides" asp-action="DeleteImage" asp-route-id="@image.Id" class="btn btn-danger btn-sm">
+                                        Delete
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
                 </tbody>
             </table>
             <div class="form-group">

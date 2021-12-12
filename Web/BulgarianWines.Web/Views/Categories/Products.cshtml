@@ -3,6 +3,11 @@
     this.ViewData["Title"] = Model.Name;
 }
 
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+</head>
+
 <div id="breadcrumb">
     <div class="container">
         <ul class="breadcrumb">
@@ -22,7 +27,7 @@
 
 <div id="Tab_Category_Slider" class="category_tab box">
     <div class="container">
-        <br/>
+        <br />
         <div class="title-wrapper">
             <div class="box-heading">
                 @this.ViewData["Title"]
@@ -42,14 +47,14 @@
                                                 <div class="product-block-inner">
                                                     <div class="image">
                                                         <a asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.Id">
-                                                            <img class="img-responsive reg-image" src="@product.ImageUrl." title="@product.Name" alt="@product.Name" style="height: 100%; width: 100%"/>
-                                                            <img class="img-responsive hover-image" src="@product.ImageUrl" title="@product.Name" alt="@product.Name" style="height: 100%; width: 100%"/>
+                                                            <img class="img-responsive reg-image" src="@product.ImageUrl." title="@product.Name" alt="@product.Name" style="height: 100%; width: 100%" />
+                                                            <img class="img-responsive hover-image" src="@product.ImageUrl" title="@product.Name" alt="@product.Name" style="height: 100%; width: 100%" />
                                                         </a>
 
                                                         <div class="button-group">
                                                             @*<button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('51 ');">
-                                                                Add to Cart
-                                                            </button>*@
+                                                                    Add to Cart
+                                                                </button>*@
                                                             <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('@product.Id');">
                                                                 <a asp-area="" asp-controller="Favorites" asp-action="Add" asp-route-id="@product.Id" class="it-fav" data-toggle="tooltip" data-placement="left" title="Favorite">
                                                                     <i class="fas fa-heart mr-0 pt-1"></i>
@@ -106,22 +111,22 @@
                     </div>
                 </div>
                 @*<div class="owl-controls clickable">
-                    <div class="owl-buttons">
-                        <div class="owl-prev">
-                            <span class="left">
-                                <a class="fa prev fa-angle-left"></a>
-                            </span>
+                        <div class="owl-buttons">
+                            <div class="owl-prev">
+                                <span class="left">
+                                    <a class="fa prev fa-angle-left"></a>
+                                </span>
+                            </div>
+                            <div class="owl-next">
+                                <span class="right">
+                                    <a class="fa prev fa-angle-right"></a>
+                                </span>
+                            </div>
                         </div>
-                        <div class="owl-next">
-                            <span class="right">
-                                <a class="fa prev fa-angle-right"></a>
-                            </span>
-                        </div>
-                    </div>
-                </div>*@
+                    </div>*@
             </div>
-            <hr/>
-            <partial name="_PagingPartial"/>
+            <hr />
+            <partial name="_PagingPartial" />
         </div>
     </div>
 </div>

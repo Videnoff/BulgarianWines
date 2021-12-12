@@ -4,49 +4,54 @@
     ViewData["Title"] = "Deleted Categories";
 }
 
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+</head>
+
 <div class="table-responsive">
     <table class="table align-middle table-striped table-hover table-bordered">
         <thead>
-        <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Icon</th>
-            <th>Deleted On</th>
-            <th>Actions</th>
-        </tr>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Icon</th>
+                <th>Deleted On</th>
+                <th>Actions</th>
+            </tr>
         </thead>
         <tbody>
-        @if (!Model.Any())
-        {
-            <tr class="row">
-                <td class="col-12 d-flex justify-content-center">
-                    <strong>
-                        No deleted categories
-                    </strong>
-                </td>
-            </tr>
-        }
-        @foreach (var item in this.Model)
-        {
-            <tr>
-                <td>
-                    @item.Id
-                </td>
-                <td>
-                    @item.Name
-                </td>
-                <td style="width: 100%; height: 100%; text-align: center; vertical-align: auto">
-                    @item.Icon
-                </td>
-                <td>
-                    @item.DeletedOn
-                </td>
-                <td>
-                <a asp-controller="Categories" asp-action="Restore" asp-route-id="@item.Id" class="btn btn-warning">
-                    Restore
-                </a>
-            </tr>
-        }
+            @if (!Model.Any())
+            {
+                <tr class="row">
+                    <td class="col-12 d-flex justify-content-center">
+                        <strong>
+                            No deleted categories
+                        </strong>
+                    </td>
+                </tr>
+            }
+            @foreach (var item in this.Model)
+            {
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td style="width: 100%; height: 100%; text-align: center; vertical-align: auto">
+                        @item.Icon
+                    </td>
+                    <td>
+                        @item.DeletedOn
+                    </td>
+                    <td>
+                        <a asp-controller="Categories" asp-action="Restore" asp-route-id="@item.Id" class="btn btn-warning">
+                            Restore
+                        </a>
+                </tr>
+            }
         </tbody>
     </table>
 </div>

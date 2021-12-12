@@ -4,6 +4,11 @@
     this.ViewData["Title"] = "Favorite Products";
 }
 
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+</head>
+
 <!-- Wishlist -->
 <section class="shopping-cart">
     <div class="container">
@@ -20,8 +25,8 @@
                                     Price
                                 </th>
                                 @*<th class="t-total">
-                                    Add To Cart
-                                </th>*@
+                                        Add To Cart
+                                    </th>*@
                                 <th class="t-rem">
 
                                 </th>
@@ -52,10 +57,10 @@
                                         </a>
                                     </td>
                                     @*<td class="t-add">
-                                        <button type="button" name="button">
-                                            Add to Cart
-                                        </button>
-                                    </td>*@
+                                            <button type="button" name="button">
+                                                Add to Cart
+                                            </button>
+                                        </td>*@
                                     <td class="t-rem">
                                         <a asp-area="" asp-controller="Favorites" asp-action="Delete" asp-route-id="@wine.WineId">
                                             <i class="fa fa-trash-o"></i>
