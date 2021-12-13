@@ -9,7 +9,7 @@
     <h4>
         Write a review
     </h4>
-    
+
     <form asp-action="CreateReview" asp-area="" asp-controller="Wines" method="post">
         <div asp-validation-summary="All" class="text-danger"></div>
         <div class="form-group required">
@@ -17,7 +17,7 @@
                 <label asp-for="Name" class="control-label">
                     Your Name
                 </label>
-                <input asp-for="Name" class="form-control"/>
+                <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
         </div>
@@ -35,27 +35,27 @@
                 <label asp-for="Rating" class="control-label">
                     Rating
                 </label>
-                @*&nbsp;&nbsp;&nbsp; Bad&nbsp;
-                <input type="radio" class="fa fa-star-o" name="rating" data-rating="1"/>
+                &nbsp;&nbsp;&nbsp; Bad&nbsp;
+                <input type="radio" class="fa fa-star-o" @*name="rating"*@ data-rating="1" />
                 &nbsp;
-                <input type="radio" class="fa fa-star-o" name="rating" data-rating="2"/>
+                <input type="radio" class="fa fa-star-o" @*name="rating"*@ data-rating="2" />
                 &nbsp;
-                <input type="radio" class="fa fa-star-o" name="rating" data-rating="3"/>
+                <input type="radio" class="fa fa-star-o" @*name="rating"*@ data-rating="3" />
                 &nbsp;
-                <input type="radio" class="fa fa-star-o" name="rating" data-rating="4"/>
+                <input type="radio" class="fa fa-star-o" @*name="rating"*@ data-rating="4" />
                 &nbsp;
-                <input type="radio" class="fa fa-star-o" name="rating" data-rating="5"/>
-                &nbsp;Good*@
-                <div class="star-rating">
-                        <label asp-for="Rating"></label>
-                        <span class="fa fa-star-o" data-rating="1"></span>
-                        <span class="fa fa-star-o" data-rating="2"></span>
-                        <span class="fa fa-star-o" data-rating="3"></span>
-                        <span class="fa fa-star-o" data-rating="4"></span>
-                        <span class="fa fa-star-o" data-rating="5"></span>
-                        <input asp-for="Rating" class="rating-value" style="visibility:hidden;height:0;" />
-                    </div>
-                <input asp-for="Rating" class="rating-value" style="visibility: hidden"/>
+                <input type="radio" class="fa fa-star-o" @*name="rating"*@ data-rating="5" />
+                &nbsp;Good
+                @*<div class="star-rating">
+                    <label asp-for="Rating"></label>
+                    <span class="fa fa-star-o" data-rating="1"></span>
+                    <span class="fa fa-star-o" data-rating="2"></span>
+                    <span class="fa fa-star-o" data-rating="3"></span>
+                    <span class="fa fa-star-o" data-rating="4"></span>
+                    <span class="fa fa-star-o" data-rating="5"></span>
+                    <input asp-for="Rating" class="rating-value" style="visibility:hidden;height:0;" />
+                </div>*@
+                <input asp-for="Rating" class="rating-value" style="visibility: hidden" />
             </div>
         </div>
         <div class="buttons clearfix">
@@ -68,7 +68,7 @@
             </div>
         </div>
     </form>
-    
+
 </div>
 
 

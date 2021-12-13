@@ -72,8 +72,8 @@
                     x => x.Reviews,
                     opt => opt.MapFrom(m => m.Reviews.OrderByDescending(x => x.CreatedOn)))
                 .ForMember(
-                    source => source.AverageRating,
-                    destination => destination.MapFrom(member => (!member.Reviews.Any()) ? 0 : Math.Round(member.Reviews.Average(x => x.Rating), 2)));
+                    x => x.AverageRating,
+                    opt => opt.MapFrom(m => (!m.Reviews.Any()) ? 0 : Math.Round(m.Reviews.Average(x => x.Rating), 2)));
         }
     }
 }

@@ -1,9 +1,8 @@
-﻿using BulgarianWines.Data;
-
-namespace BulgarianWines.Web.Controllers
+﻿namespace BulgarianWines.Web.Controllers
 {
     using System.Threading.Tasks;
 
+    using BulgarianWines.Data;
     using BulgarianWines.Services.Data;
     using BulgarianWines.Web.ViewModels.Wines;
     using Microsoft.AspNetCore.Mvc;
