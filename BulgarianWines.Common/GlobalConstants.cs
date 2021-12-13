@@ -2,7 +2,7 @@
 {
     public static class GlobalConstants
     {
-        public const string SystemName = "BulgarianWines";
+        public const string SystemName = "Bulsing";
 
         public const string AdministratorRoleName = "Administrator";
 
