@@ -41,11 +41,20 @@
                 return false;
             }
 
-            await this.favoriteProductsRepository.AddAsync(new FavoriteProduct
+            var wineExists = this.favoriteProductsRepository.AllAsNoTracking().Any(x => x.WineId == wineId);
+
+            if (wineExists)
             {
-                WineId = wine.Id,
-                UserId = user.Id,
-            });
+                return false;
+            }
+            else
+            {
+                await this.favoriteProductsRepository.AddAsync(new FavoriteProduct
+                {
+                    WineId = wine.Id,
+                    UserId = user.Id,
+                });
+            }
 
             await this.favoriteProductsRepository.SaveChangesAsync();
 
