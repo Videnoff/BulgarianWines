@@ -18,8 +18,6 @@
     <script src="~/lib/popper/dist/umd/popper.js" asp-append-version="true"></script>
 
     <script src="~/js/wined/jquery/jquery-2.1.1.min.js" asp-append-version="true"></script>
-    <!-- <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" /> -->
-    @*<script src="~/js/wined/bootstrap/js/bootstrap.min.js"></script>*@
     <link href="~/js/wined/font-awesome/css/font-awesome.min.css" rel="stylesheet" asp-append-version="true" />
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
     <link href="~/css/wined/stylesheet.css" rel="stylesheet" asp-append-version="true" />
@@ -32,14 +30,6 @@
     <link href="~/css/wined/themecss/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/css/wined/themecss/animate.css" rel="stylesheet" asp-append-version="true" />
 
-
-
-    <!-- <link href="style.href" type="text/css" rel="style.rel" media="style.media" />
-    <link href="style.href" type="text/css" rel="style.rel" media="style.media" />
-    <link href="style.href" type="text/css" rel="style.rel" media="style.media" />
-    <link href="style.href" type="text/css" rel="style.rel" media="style.media" />
-     -->
-
     <script src="~/lib/datatables-js/js/jquery.dataTables.js" asp-append-version="true"></script>
     <script src="~/js/wined/lightbox/lightbox-2.6.min.js" asp-append-version="true"></script>
     <link href="~/js/wined/jquery/swiper/css/swiper.min.css" rel="stylesheet" asp-append-version="true" />
@@ -48,8 +38,6 @@
     <link href="~/js/wined/jquery/owl-carousel/owl.transitions.css" rel="stylesheet" media="screen" asp-append-version="true" />
     <script src="~/js/wined/jquery/swiper/js/swiper.jquery.js" asp-append-version="true"></script>
     <script src="~/js/wined/jquery/owl-carousel/owl.carousel.min.js" asp-append-version="true"></script>
-    @*<script src="~/js/wined/common.js"></script>*@
-
     <link href="~/images/wined/cart.png" />
 
     <!-- Theme Start -->
@@ -73,6 +61,16 @@
     <script src="~/js/wined/themejs/parallax.js" asp-append-version="true"></script>
 
     <link href="~/css/site.min.css" rel="stylesheet" asp-append-version="true" />
+
+    <!-- <link href="style.href" type="text/css" rel="style.rel" media="style.media" />
+    <link href="style.href" type="text/css" rel="style.rel" media="style.media" />
+    <link href="style.href" type="text/css" rel="style.rel" media="style.media" />
+    <link href="style.href" type="text/css" rel="style.rel" media="style.media" />
+    -->
+    @*<script src="~/js/wined/common.js"></script>*@
+    <!-- <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" /> -->
+    @*<script src="~/js/wined/bootstrap/js/bootstrap.min.js"></script>*@
+
 </head>
 <body class="common-home   layout-1">
     <header>
@@ -306,13 +304,15 @@
         </div>
     </header>
 
-    @*<div class="container">*@
-    <partial name="_CookieConsentPartial" />
-    <partial name="_AlertPartial" />
-    @*<main role="main" class="pb-3">*@
-    @this.RenderBody()
-    @*</main>*@
-    @*</div>*@
+    <div class="container">
+        <partial name="_CookieConsentPartial" />
+        <partial name="_AlertPartial" />
+    </div>
+
+    <main role="main" class="pb-3">
+
+        @this.RenderBody()
+    </main>
     <footer>
         <div id="footer">
             <div class="content_footer_top">
@@ -512,7 +512,7 @@
                 </div>
                 <div class="copyright-container text-muted">
                     <div class="content_footer_bottom container">
-                        &copy; @DateTime.Now.Year - Bulsing
+                        &copy; @DateTime.Now.Year - @GlobalConstants.SystemName
                     </div>
                     <div class="footer-container">
                     </div>
