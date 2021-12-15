@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web.Controllers
+﻿using System.Linq;
+
+namespace BulgarianWines.Web.Controllers
 {
     using System.Collections.Generic;
     using System.Net;
@@ -41,6 +43,11 @@
             if (itemsPerPage <= 0)
             {
                 this.TempData["Error"] = "Items per page cannot be negative.";
+                return this.RedirectToAction("Index", "Home");
+            }
+
+            if (searchTerm == null)
+            {
                 return this.RedirectToAction("Index", "Home");
             }
 
