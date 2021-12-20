@@ -169,6 +169,31 @@
                 </div>
             </li>
 
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
+                   aria-expanded="true" aria-controls="collapseMessages">
+                    <i class="fas fa-users"></i>
+                    <span>
+                        Users
+                    </span>
+                </a>
+                <div id="collapseUsers" class="collapse" aria-labelledby="headingUtilities"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">
+                            Users:
+                        </h6>
+                        <a class="collapse-item" asp-area="Administration" asp-controller="UserMessages" asp-action="Index">
+                            All
+                        </a>
+                        <a class="collapse-item" asp-area="Identity" asp-page="/Account/Register">
+                            Create
+                        </a>
+                    </div>
+                </div>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 

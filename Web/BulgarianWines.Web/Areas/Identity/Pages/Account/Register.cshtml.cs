@@ -11,6 +11,7 @@
 
     using BulgarianWines.Data.Models;
     using BulgarianWines.Services;
+    using BulgarianWines.Services.Messaging;
     using BulgarianWines.Web.Infrastructure.ValidationAttributes;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authorization;
@@ -30,21 +31,21 @@
         private readonly IImagesService imagesService;
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly Services.Messaging.IEmailSender emailSender;
         private readonly ILogger<RegisterModel> logger;
-        private readonly IEmailSender emailSender;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender,
+            Services.Messaging.IEmailSender emailSender,
             IImagesService imagesService)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.logger = logger;
-            this.emailSender = emailSender;
             this.imagesService = imagesService;
+            this.emailSender = emailSender;
         }
 
         [BindProperty]
@@ -131,7 +132,7 @@
                         },
                         protocol: this.Request.Scheme);
 
-                    await this.emailSender.SendEmailAsync(this.Input.Email, "Confirm your email", $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    await this.emailSender.SendEmailAsync("bulsing@bulsing.com", "Bulsing", this.Input.Email, "Confirm your email", $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
                     if (this.userManager.Options.SignIn.RequireConfirmedAccount)
                     {
