@@ -68,6 +68,7 @@
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
+            // [Remote(action: "IsEmailInUse", controller: "Users", areaName: "Administration")]
             public string Email { get; set; }
 
             [Required]
@@ -81,9 +82,9 @@
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
 
-            //[Display(Name = "Select Profile Image")]
-            //[ImageAttribute]
-            //public IFormFile ImagePath { get; set; }
+            // [Display(Name = "Select Profile Image")]
+            // [ImageAttribute]
+            // public IFormFile ImagePath { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -102,7 +103,7 @@
                 MailAddress address = new MailAddress(this.Input.Email);
                 var userName = address.User;
 
-                //await this.imagesService.UploadAzureBlobImageAsync(file, AzureContainerName);
+                // await this.imagesService.UploadAzureBlobImageAsync(file, AzureContainerName);
 
                 var user = new ApplicationUser
                 {
@@ -110,7 +111,7 @@
                     Email = this.Input.Email,
                     FirstName = this.Input.FirstName,
                     LastName = this.Input.LastName,
-                    //ImageUrl = file.FileName,
+                    // ImageUrl = file.FileName,
                 };
 
                 var result = await this.userManager.CreateAsync(user, this.Input.Password);

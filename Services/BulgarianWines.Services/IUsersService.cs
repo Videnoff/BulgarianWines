@@ -4,6 +4,6 @@
     {
         public T GetById<T>(string id);
 
-        //public string GetImage();
+        // public string GetImage();
     }
 }

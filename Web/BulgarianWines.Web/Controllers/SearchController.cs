@@ -1,8 +1,7 @@
-﻿using System.Linq;
-
-namespace BulgarianWines.Web.Controllers
+﻿namespace BulgarianWines.Web.Controllers
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net;
     using System.Text.RegularExpressions;
 
@@ -64,7 +63,7 @@ namespace BulgarianWines.Web.Controllers
 
             var searchViewModel = new SearchProductInputModel
             {
-                //ItemsCount = this.productsService.GetProductsCountBySearchStringAndMainCategoryId(searchTerm, mainCategoryId),
+                // ItemsCount = this.productsService.GetProductsCountBySearchStringAndMainCategoryId(searchTerm, mainCategoryId),
                 ItemsPerPage = itemsPerPage,
                 PageNumber = pageNumber,
                 Products = products,

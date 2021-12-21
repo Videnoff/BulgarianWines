@@ -19,22 +19,22 @@
 
         public IEnumerable<int> ItemsPerPageValues { get; set; }
 
-        //public override Dictionary<string, string> GetPageQuery(int pageNumber)
-        //{
+        // public override Dictionary<string, string> GetPageQuery(int pageNumber)
+        // {
         //    var baseDictionary = base.GetPageQuery(pageNumber);
         //    baseDictionary.Add("SubcategoryId", this.Id.ToString());
 
-        //    if (this.ItemsPerPage != this.ItemsPerPageValues.FirstOrDefault())
+        // if (this.ItemsPerPage != this.ItemsPerPageValues.FirstOrDefault())
         //    {
         //        baseDictionary.Add("ItemsPerPage", this.ItemsPerPage.ToString());
         //    }
 
-        //    if (this.Sorting.ToLower() != this.SortingValues.FirstOrDefault().ToLower())
+        // if (this.Sorting.ToLower() != this.SortingValues.FirstOrDefault().ToLower())
         //    {
         //        baseDictionary.Add("Sorting", this.Sorting.ToString());
         //    }
 
-        //    return baseDictionary;
-        //}
+        // return baseDictionary;
+        // }
     }
 }

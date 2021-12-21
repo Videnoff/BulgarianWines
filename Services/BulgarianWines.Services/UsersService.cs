@@ -22,7 +22,7 @@
                 .To<T>()
                 .FirstOrDefault();
 
-        //public string GetImage() => this.usersRepository
+        // public string GetImage() => this.usersRepository
         //    .AllAsNoTracking()
         //    .Select(x => x.ImageUrl)
         //    .FirstOrDefault();

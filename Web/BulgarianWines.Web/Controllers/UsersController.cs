@@ -1,4 +1,4 @@
-﻿namespace BulgarianWines.Web.Areas.Administration.Controllers
+﻿namespace BulgarianWines.Web.Controllers
 {
     using System.Threading.Tasks;
 
@@ -8,7 +8,7 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
-    public class UsersController : AdministrationController
+    public class UsersController : BaseController
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly RoleManager<ApplicationRole> roleManager;

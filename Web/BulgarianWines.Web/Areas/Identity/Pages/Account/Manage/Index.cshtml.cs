@@ -30,8 +30,8 @@
             this.imagesService = imagesService;
         }
 
-        //[Display(Name = "Profile Image")]
-        //public string ImagePath { get; set; }
+        // [Display(Name = "Profile Image")]
+        // public string ImagePath { get; set; }
 
         public string Username { get; set; }
 
@@ -46,8 +46,8 @@
 
         public class InputModel
         {
-            //[Display(Name = "Profile Image")]
-            //public IFormFile ProfileImage { get; set; }
+            // [Display(Name = "Profile Image")]
+            // public IFormFile ProfileImage { get; set; }
 
             [Display(Name = "First Name")]
             public string FirstName { get; set; }
@@ -76,7 +76,7 @@
             var profilePicture = user.ProfilePicture;
 
             this.Username = userName;
-            //this.ImagePath = user.ImageUrl;
+            // this.ImagePath = user.ImageUrl;
 
             this.Input = new InputModel
             {
@@ -181,13 +181,13 @@
                 }
             }
 
-            //user.ImageUrl = await this.imagesService.UploadAzureBlobImageAsync(input.ProfileImage, AzureContainerName);
-            //var imageUrl = user.ImageUrl;
+            // user.ImageUrl = await this.imagesService.UploadAzureBlobImageAsync(input.ProfileImage, AzureContainerName);
+            // var imageUrl = user.ImageUrl;
 
-            //user.UserImages.Add(new UserImage
-            //{
+            // user.UserImages.Add(new UserImage
+            // {
             //    ImageUrl = imageUrl,
-            //});
+            // });
 
             await this.userManager.UpdateAsync(user);
 

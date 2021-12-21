@@ -212,16 +212,16 @@
         }
 
         // POST: Administration/Wines/Delete/5
-        //[HttpPost]
-        //[ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> DeleteConfirmed(int id)
-        //{
+        // [HttpPost]
+        // [ActionName("Delete")]
+        // [ValidateAntiForgeryToken]
+        // public async Task<IActionResult> DeleteConfirmed(int id)
+        // {
         //    var wine = await this.db.Wines.FindAsync(id);
         //    this.db.Wines.Remove(wine);
         //    await this.db.SaveChangesAsync();
         //    return this.RedirectToAction(nameof(this.Index));
-        //}
+        // }
 
         [HttpPost]
         [ValidateAntiForgeryToken]

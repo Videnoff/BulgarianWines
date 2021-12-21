@@ -22,7 +22,7 @@
 
         public void CreateMappings(IProfileExpression configuration)
         {
-            //configuration.CreateMap<Wine, SideWinesViewModel>()
+            // configuration.CreateMap<Wine, SideWinesViewModel>()
             //    .ForMember(
             //        source => source.AverageRating,
             //        destination => destination.MapFrom(member => (!member.Reviews.Any()) ? 0 : Math.Round(member.Reviews.Average(x => x.Rating), 2)))

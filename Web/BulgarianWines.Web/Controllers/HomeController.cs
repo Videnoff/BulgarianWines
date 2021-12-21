@@ -54,17 +54,17 @@
             if (viewModelAsString == null)
             {
                 var allCategories = this.categoriesService.GetAll<CategoryViewModel>();
-                //var mostBoughtProducts = this.ordersService.GetMostBoughtProducts<ProductSidebarViewModel>(10);
+                // var mostBoughtProducts = this.ordersService.GetMostBoughtProducts<ProductSidebarViewModel>(10);
                 var newestProducts = this.winesService.GetNewest<ProductViewModel>(3);
 
-                //var topRatedProducts = this.productsService.GetTopRated<ProductSidebarViewModel>(4);
+                // var topRatedProducts = this.productsService.GetTopRated<ProductSidebarViewModel>(4);
 
                 var slides = this.homePageSlidesService.GetAll<HomePageViewModel>();
 
-                //foreach (var product in topRatedProducts)
-                //{
+                // foreach (var product in topRatedProducts)
+                // {
                 //    product.Name = this.stringService.TruncateAtWord(product.Name, 30);
-                //}
+                // }
                 foreach (var product in newestProducts)
                 {
                     product.Description = this.shortTextService.ShortText(product.Description, DescriptionMaxLength);
@@ -72,9 +72,9 @@
 
                 viewModel = new IndexViewModel
                 {
-                    //MostBoughtProducts = mostBoughtProducts,
+                    // MostBoughtProducts = mostBoughtProducts,
                     NewestProducts = newestProducts,
-                    //TopRatedProducts = topRatedProducts,
+                    // TopRatedProducts = topRatedProducts,
                     AllCategories = allCategories,
                     Slides = slides,
                 };

@@ -42,28 +42,28 @@
         }
 
         // GET: Categories
-        //public async Task<IActionResult> Index()
-        //{
+        // public async Task<IActionResult> Index()
+        // {
         //    return this.View(await this.context.Categories.ToListAsync());
-        //}
+        // }
 
         // GET: Categories/Details/5
-        //public async Task<IActionResult> Details(int? id)
-        //{
+        // public async Task<IActionResult> Details(int? id)
+        // {
         //    if (id == null)
         //    {
         //        return this.NotFound();
         //    }
 
-        //    var category = await this.context.Categories
+        // var category = await this.context.Categories
         //        .FirstOrDefaultAsync(m => m.Id == id);
         //    if (category == null)
         //    {
         //        return this.NotFound();
         //    }
 
-        //    return this.View(category);
-        //}
+        // return this.View(category);
+        // }
 
         [HttpGet("/Categories/Products/{categoryId}")]
         public IActionResult Products(int categoryId, int pageNumber = 1, int itemsPerPage = 8, string sorting = "price asc")
@@ -100,16 +100,16 @@
             {
                 Id = categoryNameAndProductCount.Id,
                 Name = categoryNameAndProductCount.Name,
-                //ItemsCount = categoryNameAndProductCount.ProductsCount,
+                // ItemsCount = categoryNameAndProductCount.ProductsCount,
                 ItemsPerPage = itemsPerPage,
                 PageNumber = pageNumber,
                 Products = products,
                 ItemsPerPageValues = this.itemsPerPageValues,
                 Sorting = sorting,
                 SortingValues = this.sortingValues,
-                //Area = string.Empty,
-                //Controller = "Categories",
-                //Action = nameof(this.Products),
+                // Area = string.Empty,
+                // Controller = "Categories",
+                // Action = nameof(this.Products),
             };
 
             return this.View(category);
