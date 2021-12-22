@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web.Areas.Administration.Controllers
+﻿using BulgarianWines.Web.ViewModels.Administration.Users;
+
+namespace BulgarianWines.Web.Areas.Administration.Controllers
 {
     using System.Threading.Tasks;
 
@@ -38,6 +40,38 @@
             {
                 return this.Json($"Email {email} is already in use");
             }
+        }
+
+        [HttpGet]
+        public IActionResult CreateRole()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateRole(CreateRoleViewModel model)
+        {
+            if (this.ModelState.IsValid)
+            {
+                var applicationRole = new ApplicationRole
+                {
+                    Name = model.RoleName,
+                };
+
+                var result = await this.roleManager.CreateAsync(applicationRole);
+
+                if (result.Succeeded)
+                {
+                    return this.RedirectToAction("Index", "Home");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    this.ModelState.AddModelError(string.Empty, error.Description);
+                }
+            }
+
+            return this.View(model);
         }
     }
 }
