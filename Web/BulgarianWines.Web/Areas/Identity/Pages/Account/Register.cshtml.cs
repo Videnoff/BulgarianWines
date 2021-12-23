@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web.Areas.Identity.Pages.Account
+﻿using BulgarianWines.Common;
+
+namespace BulgarianWines.Web.Areas.Identity.Pages.Account
 {
     using System;
     using System.Collections.Generic;
@@ -141,6 +143,11 @@
                     }
                     else
                     {
+                        if (this.signInManager.IsSignedIn(this.User) && (this.User.IsInRole(GlobalConstants.AdministratorRoleName) || this.User.IsInRole(GlobalConstants.SuperAdministratorRoleName)))
+                        {
+                            return this.RedirectToAction("ListUsers", "Users", new {area = "Administration"});
+                        }
+
                         await this.signInManager.SignInAsync(user, isPersistent: false);
                         return this.LocalRedirect(returnUrl);
                     }

@@ -221,5 +221,12 @@
 
             return this.RedirectToAction("EditRole", new { Id = roleId });
         }
+
+        [HttpGet]
+        public IActionResult ListUsers()
+        {
+            var users = this.userManager.Users;
+            return this.View(users);
+        }
     }
 }
