@@ -62,7 +62,7 @@ namespace BulgarianWines.Web.Areas.Administration.Controllers
 
                 if (result.Succeeded)
                 {
-                    return this.RedirectToAction("Index", "Home");
+                    return this.RedirectToAction("ListRoles", "Users");
                 }
 
                 foreach (var error in result.Errors)
@@ -72,6 +72,13 @@ namespace BulgarianWines.Web.Areas.Administration.Controllers
             }
 
             return this.View(model);
+        }
+
+        [HttpGet]
+        public IActionResult ListRoles()
+        {
+            var roles = this.roleManager.Roles;
+            return this.View(roles);
         }
     }
 }
