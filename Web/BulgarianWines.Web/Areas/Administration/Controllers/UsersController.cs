@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web.Areas.Administration.Controllers
+﻿using System.Linq;
+
+namespace BulgarianWines.Web.Areas.Administration.Controllers
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -227,6 +229,63 @@
         {
             var users = this.userManager.Users;
             return this.View(users);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EditUser(string id)
+        {
+            var user = await this.userManager.FindByIdAsync(id);
+
+            if (user == null)
+            {
+                this.ViewBag.ErrorMessage = $"User with Id = {id} cannot be found!";
+                return this.NotFound();
+            }
+
+            var userClaims = await this.userManager.GetClaimsAsync(user);
+            var userRoles = await this.userManager.GetRolesAsync(user);
+
+            var model = new EditUserViewModel
+            {
+                Id = user.Id,
+                Email = user.Email,
+                Username = user.UserName,
+                Claims = userClaims.Select(x => x.Type + " : " + x.Value).ToList(),
+                Roles = userRoles,
+            };
+
+            return this.View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditUser(EditUserViewModel model)
+        {
+            var user = await this.userManager.FindByIdAsync(model.Id);
+
+            if (user == null)
+            {
+                this.ViewBag.ErrorMessage = $"User with Id = {model.Id} cannot be found!";
+                return this.NotFound();
+            }
+            else
+            {
+                user.Email = model.Email;
+                user.UserName = model.Username;
+
+                var result = await this.userManager.UpdateAsync(user);
+
+                if (result.Succeeded)
+                {
+                    return this.RedirectToAction("ListUsers");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    this.ModelState.AddModelError(string.Empty, error.Description);
+                }
+
+                return this.View(model);
+            }
         }
     }
 }

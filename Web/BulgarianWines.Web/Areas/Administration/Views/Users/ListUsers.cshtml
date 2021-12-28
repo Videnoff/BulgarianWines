@@ -4,88 +4,91 @@
     this.ViewData["Title"] = "All Users";
 }
 
-<h1 class="text-center">
-    @this.ViewData["Title"]
-</h1>
+<div class="container">
 
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" ari-expanded="false">
-        Manage
-    </a>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a asp-action="ListUsers" asp-controller="Users" class="dropdown-item">
-            Users
-        </a>
-        <a asp-action="ListRoles" asp-controller="Users" class="dropdown-item">
-            Roles
-        </a>
-    </div>
-</li>
+    <h1 class="text-center">
+        @this.ViewData["Title"]
+    </h1>
 
-@if (Model.Any())
-{
-    <a asp-area="Identity" asp-page="/Account/Register" class=" btn btn-primary mb-3" style="width: auto">
-        Add new user
-    </a>
+    @*<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" ari-expanded="false">
+                Manage
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a asp-action="ListUsers" asp-controller="Users" class="dropdown-item">
+                    Users
+                </a>
+                <a asp-action="ListRoles" asp-controller="Users" class="dropdown-item">
+                    Roles
+                </a>
+            </div>
+        </li>*@
 
-    foreach (var user in Model)
+    @if (Model.Any())
     {
-        <div class="card mb-3">
+        <a asp-area="Identity" asp-page="/Account/Register" class=" btn btn-primary mb-3" style="width: auto">
+            Add new user
+        </a>
+
+        foreach (var user in Model)
+        {
+            <div class="card mb-3">
+                <div class="card-header">
+                    User Id: @user.Id
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        @user.UserName
+                    </h5>
+                </div>
+                <div class="card-header">
+                    User Email: @user.Email
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        @user.Email
+                    </h5>
+                </div>
+                <div class="card-footer">
+                    <form asp-action="DeleteUser" asp-route-id="@user.Id" method="post">
+                            <a asp-action="EditUser" asp-controller="Users" asp-route-id="@user.Id" class="btn btn-warning">
+                                Edit
+                            </a>
+                            <span id="confirmDeleteSpan_@user.Id" style="display: none">
+                                <span>
+                                    Are you sure you want to delete?
+                                </span>
+                                <button type="submit" class="btn btn-danger">
+                                    Yes
+                                </button>
+                                <a href="#" class="btn btn-primary" onclick="confirmDelete('@user.Id', false)">
+                                    No
+                                </a>
+                            </span>
+                            <span id="deleteSpan_@user.Id">
+                                <a href="#" class="btn btn-danger" onclick="confirmDelete('@user.Id', true)">
+                                    Delete
+                                </a>
+                            </span>
+                        </form>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="card">
             <div class="card-header">
-                User Id: @user.Id
+                No users created yet
             </div>
             <div class="card-body">
                 <h5 class="card-title">
-                    @user.UserName
+                    Use the button bellow to create a user
                 </h5>
-            </div>
-            <div class="card-header">
-                User Email: @user.Email
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">
-                    @user.Email
-                </h5>
-            </div>
-            <div class="card-footer">
-                @*<form asp-action="DeleteUser" asp-route-id="@user.Id" method="post">
-                    <a asp-action="EditUser" asp-controller="Users" asp-route-id="@user.Id" class="btn btn-warning">
-                        Edit
-                    </a>
-                    <span id="confirmDeleteSpan_@user.Id" style="display: none">
-                        <span>
-                            Are you sure you want to delete?
-                        </span>
-                        <button type="submit" class="btn btn-danger">
-                            Yes
-                        </button>
-                        <a href="#" class="btn btn-primary" onclick="confirmDelete('@user.Id', false)">
-                            No
-                        </a>
-                    </span>
-                    <span id="deleteSpan_@user.Id">
-                        <a href="#" class="btn btn-danger" onclick="confirmDelete('@user.Id', true)">
-                            Delete
-                        </a>
-                    </span>
-                </form>*@
+                <a class="btn btn-primary" style="width: auto" asp-area="Identity" asp-page="/Account/Register">
+                    Add new user
+                </a>
             </div>
         </div>
     }
-}
-else
-{
-    <div class="card">
-        <div class="card-header">
-            No users created yet
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">
-                Use the button bellow to create a user
-            </h5>
-            <a class="btn btn-primary" style="width: auto" asp-area="Identity" asp-page="/Account/Register">
-                Add new user
-            </a>
-        </div>
-    </div>
-}
+</div>

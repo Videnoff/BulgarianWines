@@ -1,6 +1,4 @@
-﻿using BulgarianWines.Common;
-
-namespace BulgarianWines.Web.Areas.Identity.Pages.Account
+﻿namespace BulgarianWines.Web.Areas.Identity.Pages.Account
 {
     using System;
     using System.Collections.Generic;
@@ -11,6 +9,7 @@ namespace BulgarianWines.Web.Areas.Identity.Pages.Account
     using System.Text.Encodings.Web;
     using System.Threading.Tasks;
 
+    using BulgarianWines.Common;
     using BulgarianWines.Data.Models;
     using BulgarianWines.Services;
     using BulgarianWines.Services.Messaging;
