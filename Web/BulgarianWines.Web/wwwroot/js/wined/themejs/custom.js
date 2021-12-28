@@ -80,11 +80,11 @@ $(document).ready(function () {
         });
     }
 
-     		if ($(document).width() <= 979) {
-             $('.content_headercms_top .container #main-menu').appendTo('.content_headercms_top .container'); 
-            $('.content_headercms_top .search').appendTo('.content_headercms_bottom .container');
-        }
-         
+    if ($(document).width() <= 979) {
+        $('.content_headercms_top .container #main-menu').appendTo('.content_headercms_top .container');
+        $('.content_headercms_top .search').appendTo('.content_headercms_bottom .container');
+    }
+
 
 
     /* // first word change css //
@@ -859,3 +859,19 @@ $star_rating.on('click', function () {
     $star_rating.siblings('input.rating-value').val($(this).data('rating'));
     return SetRatingStar();
 });
+
+/*
+ * Delete Users
+ */
+function confirmDelete(uniqueId, isDeleteClicked) {
+    var deleteSpan = 'deleteSpan_' + uniqueId;
+    var confirmDeleteSpan = 'confirmDeleteSpan_' + uniqueId;
+
+    if (isDeleteClicked) {
+        $('#' + deleteSpan).hide();
+        $('#' + confirmDeleteSpan).show();
+    } else {
+        $('#' + deleteSpan).show();
+        $('#' + confirmDeleteSpan).hide();
+    }
+}

@@ -287,5 +287,38 @@ namespace BulgarianWines.Web.Areas.Administration.Controllers
                 return this.View(model);
             }
         }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            var user = await this.userManager.FindByIdAsync(id);
+
+            if (user == null)
+            {
+                this.ViewBag.ErrorMessage = $"User with Id = {id} cannot be found!";
+                return this.NotFound();
+            }
+            else
+            {
+                var result = await this.userManager.DeleteAsync(user);
+
+                if (result.Succeeded)
+                {
+                    return this.RedirectToAction("ListUsers");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    this.ModelState.AddModelError(string.Empty, error.Description);
+                }
+
+                //await this.usersRepository
+                //    .All()
+                //    .Include(p => p.ShoppingBag)
+                //    .Include(p => p.WishListProducts)
+                //    .FirstOrDefaultAsync(m => m.Id == id);
+                return this.View("ListUsers");
+            }
+        }
     }
 }
