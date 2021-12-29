@@ -294,7 +294,7 @@
         [HttpPost]
         public async Task<IActionResult> DeleteUser(string id)
         {
-            var deleteResult = await this.usersService.DeleteAsync(id);
+            var deleteResult = await this.usersService.DeleteUserAsync(id);
 
             if (deleteResult)
             {
@@ -312,34 +312,23 @@
         [Authorize(Policy = "DeleteRolePolicy")]
         public async Task<IActionResult> DeleteRole(string id)
         {
-            var role = await this.roleManager.FindByIdAsync(id);
+            var deleteResult = await this.usersService.DeleteRoleAsync(id);
 
-            if (role == null)
+            if (deleteResult)
             {
-                this.ViewBag.ErrorMessage = $"Role with Id = {id} cannot be found!";
-                return this.NotFound();
+                this.TempData["Alert"] = "Successfully deleted role.";
             }
             else
             {
-                var result = await this.roleManager.DeleteAsync(role);
-
-                if (result.Succeeded)
-                {
-                    return this.RedirectToAction("ListRoles");
-                }
-
-                foreach (var error in result.Errors)
-                {
-                    this.ModelState.AddModelError(string.Empty, error.Description);
-                }
-
-                return this.View("ListRoles");
+                this.TempData["Error"] = "There was a problem deleting the role.";
             }
+
+            return this.RedirectToAction(nameof(this.ListRoles));
         }
 
-        public async Task<IActionResult> Restore(string id)
+        public async Task<IActionResult> RestoreUser(string id)
         {
-            var restoreResult = await this.usersService.RestoreAsync(id);
+            var restoreResult = await this.usersService.RestoreUserAsync(id);
 
             if (restoreResult)
             {
@@ -355,8 +344,30 @@
 
         public IActionResult DeletedUsers()
         {
-            var wines = this.usersService.GetAllDeleted<DeletedUsersViewModel>();
-            return this.View(wines);
+            var users = this.usersService.GetAllDeletedUsers<DeletedUsersViewModel>();
+            return this.View(users);
+        }
+
+        public async Task<IActionResult> RestoreRole(string id)
+        {
+            var restoreResult = await this.usersService.RestoreRoleAsync(id);
+
+            if (restoreResult)
+            {
+                this.TempData["Alert"] = "Successfully restored role";
+            }
+            else
+            {
+                this.TempData["Error"] = "There was a problem restoring the role";
+            }
+
+            return this.RedirectToAction(nameof(this.ListRoles));
+        }
+
+        public IActionResult DeletedRoles()
+        {
+            var roles = this.usersService.GetAllDeletedRoles<DeletedRolesViewModel>();
+            return this.View(roles);
         }
     }
 }
