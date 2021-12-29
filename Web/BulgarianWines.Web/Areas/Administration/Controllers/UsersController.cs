@@ -1,12 +1,12 @@
-﻿using System.Linq;
-
-namespace BulgarianWines.Web.Areas.Administration.Controllers
+﻿namespace BulgarianWines.Web.Areas.Administration.Controllers
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using BulgarianWines.Data.Common.Repositories;
     using BulgarianWines.Data.Models;
+    using BulgarianWines.Services;
     using BulgarianWines.Web.ViewModels.Administration.Users;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
@@ -17,15 +17,18 @@ namespace BulgarianWines.Web.Areas.Administration.Controllers
         private readonly UserManager<ApplicationUser> userManager;
         private readonly RoleManager<ApplicationRole> roleManager;
         private readonly IDeletableEntityRepository<ApplicationUser> usersRepository;
+        private readonly IUsersService usersService;
 
         public UsersController(
             UserManager<ApplicationUser> userManager,
             RoleManager<ApplicationRole> roleManager,
-            IDeletableEntityRepository<ApplicationUser> usersRepository)
+            IDeletableEntityRepository<ApplicationUser> usersRepository,
+            IUsersService usersService)
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
             this.usersRepository = usersRepository;
+            this.usersService = usersService;
         }
 
         [AcceptVerbs("Get", "Post")]
@@ -291,34 +294,18 @@ namespace BulgarianWines.Web.Areas.Administration.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteUser(string id)
         {
-            var user = await this.userManager.FindByIdAsync(id);
+            var deleteResult = await this.usersService.DeleteAsync(id);
 
-            if (user == null)
+            if (deleteResult)
             {
-                this.ViewBag.ErrorMessage = $"User with Id = {id} cannot be found!";
-                return this.NotFound();
+                this.TempData["Alert"] = "Successfully deleted user.";
             }
             else
             {
-                var result = await this.userManager.DeleteAsync(user);
-
-                if (result.Succeeded)
-                {
-                    return this.RedirectToAction("ListUsers");
-                }
-
-                foreach (var error in result.Errors)
-                {
-                    this.ModelState.AddModelError(string.Empty, error.Description);
-                }
-
-                //await this.usersRepository
-                //    .All()
-                //    .Include(p => p.ShoppingBag)
-                //    .Include(p => p.WishListProducts)
-                //    .FirstOrDefaultAsync(m => m.Id == id);
-                return this.View("ListUsers");
+                this.TempData["Error"] = "There was a problem deleting the user.";
             }
+
+            return this.RedirectToAction(nameof(this.ListUsers));
         }
 
         [HttpPost]
@@ -348,6 +335,28 @@ namespace BulgarianWines.Web.Areas.Administration.Controllers
 
                 return this.View("ListRoles");
             }
+        }
+
+        public async Task<IActionResult> Restore(string id)
+        {
+            var restoreResult = await this.usersService.RestoreAsync(id);
+
+            if (restoreResult)
+            {
+                this.TempData["Alert"] = "Successfully restored user";
+            }
+            else
+            {
+                this.TempData["Error"] = "There was a problem restoring the user";
+            }
+
+            return this.RedirectToAction(nameof(this.ListUsers));
+        }
+
+        public IActionResult DeletedUsers()
+        {
+            var wines = this.usersService.GetAllDeleted<DeletedUsersViewModel>();
+            return this.View(wines);
         }
     }
 }
