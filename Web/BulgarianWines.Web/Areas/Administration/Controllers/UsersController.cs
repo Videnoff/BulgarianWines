@@ -320,5 +320,34 @@ namespace BulgarianWines.Web.Areas.Administration.Controllers
                 return this.View("ListUsers");
             }
         }
+
+        [HttpPost]
+        [Authorize(Policy = "DeleteRolePolicy")]
+        public async Task<IActionResult> DeleteRole(string id)
+        {
+            var role = await this.roleManager.FindByIdAsync(id);
+
+            if (role == null)
+            {
+                this.ViewBag.ErrorMessage = $"Role with Id = {id} cannot be found!";
+                return this.NotFound();
+            }
+            else
+            {
+                var result = await this.roleManager.DeleteAsync(role);
+
+                if (result.Succeeded)
+                {
+                    return this.RedirectToAction("ListRoles");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    this.ModelState.AddModelError(string.Empty, error.Description);
+                }
+
+                return this.View("ListRoles");
+            }
+        }
     }
 }

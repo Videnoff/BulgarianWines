@@ -29,13 +29,13 @@
                     </h5>
                 </div>
                 <div class="card-footer">
-                    @*<form asp-action="DeleteRole" asp-route-id="@role.Id" method="post">
-                            @if ((await authorizationService.AuthorizeAsync(User, "EditRolePolicy")).Succeeded)
-                            {
+                    <form asp-action="DeleteRole" asp-route-id="@role.Id" method="post">
+                            @*@if ((await authorizationService.AuthorizeAsync(User, "EditRolePolicy")).Succeeded)
+                            {*@
                                 <a class="btn btn-warning" asp-action="EditRole" asp-controller="Users" , asp-route-id="@role.Id">
                                     Edit
                                 </a>
-                            }
+                            @*}*@
                             <span id="confirmDeleteSpan_@role.Id" style="display: none">
                                 <span>
                                     Are you sure you want to delete?
@@ -52,14 +52,13 @@
                                     Delete
                                 </a>
                             </span>
-                        </form>*@
+                        </form>
                 </div>
             </div>
         }
     }
     else
     {
-
         <div class="card">
             <div class="card-header">
                 No roles created yet
@@ -78,4 +77,5 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script type="text/javascript" src="~/js/wined/themejs/custom.js" asp-append-version="true"></script>
 }
