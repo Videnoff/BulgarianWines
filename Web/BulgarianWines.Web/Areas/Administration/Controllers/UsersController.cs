@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web.Areas.Administration.Controllers
+﻿using BulgarianWines.Web.ViewModels.Administration.Statistics;
+
+namespace BulgarianWines.Web.Areas.Administration.Controllers
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -368,6 +370,77 @@
         {
             var roles = this.usersService.GetAllDeletedRoles<DeletedRolesViewModel>();
             return this.View(roles);
+        }
+
+        [HttpGet]
+        [Authorize(Policy = "EditRolePolicy")]
+        public async Task<IActionResult> ManageUserRoles(string userId)
+        {
+            this.ViewBag.userId = userId;
+
+            var user = await this.userManager.FindByIdAsync(userId);
+
+            if (user == null)
+            {
+                this.ViewBag.ErrorMessage = $"User with Id = {userId} cannot be found!";
+                return this.NotFound();
+            }
+
+            var model = new List<UsersRolesViewModel>();
+
+            foreach (var role in this.roleManager.Roles)
+            {
+                var userRolesViewModel = new UsersRolesViewModel
+                {
+                    RoleId = role.Id,
+                    RoleName = role.Name,
+                };
+
+                if (await this.userManager.IsInRoleAsync(user, role.Name))
+                {
+                    userRolesViewModel.IsSelected = true;
+                }
+                else
+                {
+                    userRolesViewModel.IsSelected = false;
+                }
+
+                model.Add(userRolesViewModel);
+            }
+
+            return this.View(model);
+        }
+
+        [HttpPost]
+        [Authorize(Policy = "EditRolePolicy")]
+        public async Task<IActionResult> ManageUserRoles(List<UsersRolesViewModel> model, string userId)
+        {
+            var user = await this.userManager.FindByIdAsync(userId);
+
+            if (user == null)
+            {
+                this.ViewBag.ErrorMessage = $"User with Id = {userId} cannot be found!";
+                return this.NotFound();
+            }
+
+            var roles = await this.userManager.GetRolesAsync(user);
+            var result = await this.userManager.RemoveFromRolesAsync(user, roles);
+
+            if (!result.Succeeded)
+            {
+                this.ModelState.AddModelError(string.Empty, "Cannot remove user existing roles!");
+                return this.View(model);
+            }
+
+            result = await this.userManager.AddToRolesAsync(user, model.Where(x => x.IsSelected).Select(y => y.RoleName));
+
+            if (!result.Succeeded)
+            {
+                this.ModelState.AddModelError(string.Empty, "Cannot add selected roles to user!");
+                return this.View(model);
+            }
+
+            return this.RedirectToAction("EditUser", new { Id = userId });
         }
     }
 }
