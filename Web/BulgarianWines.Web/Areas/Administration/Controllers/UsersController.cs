@@ -314,6 +314,7 @@ namespace BulgarianWines.Web.Areas.Administration.Controllers
 
         [HttpPost]
         [Authorize(Policy = "DeleteRolePolicy")]
+        [Authorize(Policy = "SuperAdminPolicy")]
         public async Task<IActionResult> DeleteRole(string id)
         {
             var deleteResult = await this.usersService.DeleteRoleAsync(id);

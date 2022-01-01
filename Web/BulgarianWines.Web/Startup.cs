@@ -80,8 +80,10 @@ namespace BulgarianWines.Web
                 options.AddPolicy("DeleteRolePolicy", policy =>
                     policy
                         .RequireClaim("Delete Role")
-                        .RequireClaim("Create Role")
                     );
+                options.AddPolicy("SuperAdminPolicy", policy =>
+                    policy
+                        .RequireRole("SuperAdmin"));
             });
 
             services.AddAuthentication()
