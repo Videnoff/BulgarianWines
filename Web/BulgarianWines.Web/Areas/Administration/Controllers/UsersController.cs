@@ -1,4 +1,5 @@
-﻿using BulgarianWines.Web.ViewModels.Administration.Statistics;
+﻿using System.Security.Claims;
+using BulgarianWines.Data.Models.Claims;
 
 namespace BulgarianWines.Web.Areas.Administration.Controllers
 {
@@ -9,6 +10,7 @@ namespace BulgarianWines.Web.Areas.Administration.Controllers
     using BulgarianWines.Data.Common.Repositories;
     using BulgarianWines.Data.Models;
     using BulgarianWines.Services;
+    using BulgarianWines.Web.ViewModels.Administration.Statistics;
     using BulgarianWines.Web.ViewModels.Administration.Users;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
@@ -441,6 +443,76 @@ namespace BulgarianWines.Web.Areas.Administration.Controllers
             }
 
             return this.RedirectToAction("EditUser", new { Id = userId });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ManageUserClaims(string userId)
+        {
+            var user = await this.userManager.FindByIdAsync(userId);
+
+            if (user == null)
+            {
+                this.ViewBag.ErrorMessage = $"User with Id = {userId} cannot be found";
+                return this.NotFound();
+            }
+
+            var existingUserClaims = await this.userManager.GetClaimsAsync(user);
+
+            var model = new UserClaimsViewModel()
+            {
+                UserId = userId,
+            };
+
+            foreach (var claim in ClaimsStore.AllClaims)
+            {
+                var userClaim = new UserClaim
+                {
+                    ClaimType = claim.Type,
+                };
+
+                if (existingUserClaims.Any(x => x.Type == claim.Type && x.Value == "true"))
+                {
+                    userClaim.IsSelected = true;
+                }
+
+                model.UserClaims.Add(userClaim);
+            }
+
+            return this.View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ManageUserClaims(UserClaimsViewModel model)
+        {
+            var user = await this.userManager.FindByIdAsync(model.UserId);
+
+            if (user == null)
+            {
+                this.ViewBag.ErrorMessage = $"User with Id = {model.UserId} cannot be found";
+                return this.NotFound();
+            }
+
+            // Get all the user existing claims and delete them
+            var claims = await this.userManager.GetClaimsAsync(user);
+            var result = await this.userManager.RemoveClaimsAsync(user, claims);
+
+            if (!result.Succeeded)
+            {
+                this.ModelState.AddModelError(string.Empty, "Cannot remove user existing claims");
+                return this.View(model);
+            }
+
+            // Add all the claims that are selected on the UI
+            result = await this.userManager.AddClaimsAsync(user, model.UserClaims
+                    .Select(c => new Claim(c.ClaimType, c.IsSelected ? "true" : "false")));
+
+            if (!result.Succeeded)
+            {
+                this.ModelState.AddModelError(string.Empty, "Cannot add selected claims to user");
+                return this.View(model);
+            }
+
+            return this.RedirectToAction("EditUser", new { Id = model.UserId });
         }
     }
 }
