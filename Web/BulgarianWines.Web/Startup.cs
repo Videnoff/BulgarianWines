@@ -1,4 +1,7 @@
-﻿namespace BulgarianWines.Web
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
+
+namespace BulgarianWines.Web
 {
     using System;
     using System.Reflection;
@@ -63,6 +66,23 @@
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddSingleton(this.configuration);
+
+            services.AddMvc(options =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build();
+                options.Filters.Add(new AuthorizeFilter(policy));
+            }).AddXmlSerializerFormatters();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("DeleteRolePolicy", policy =>
+                    policy
+                        .RequireClaim("Delete Role")
+                        .RequireClaim("Create Role")
+                    );
+            });
 
             services.AddAuthentication()
 #pragma warning disable SA1305 // Field names should not use Hungarian notation
