@@ -1,7 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Authorization
+@using BulgarianWines.Common
 @model IEnumerable<BulgarianWines.Data.Models.ApplicationRole>
+@inject IAuthorizationService authorizationService
 
-@{ 
+@{
     this.ViewData["Title"] = "All Roles";
 }
 
@@ -19,23 +21,61 @@
 
         foreach (var role in Model)
         {
-            <div class="card mb-3">
-                <div class="card-header">
-                    Role Id: @role.Id
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">
-                        @role.Name
-                    </h5>
-                </div>
-                <div class="card-footer">
-                    <form asp-action="DeleteRole" asp-route-id="@role.Id" method="post">
-                            @*@if ((await authorizationService.AuthorizeAsync(User, "EditRolePolicy")).Succeeded)
-                            {*@
+            @if (!(await this.authorizationService.AuthorizeAsync(this.User, "SuperAdminPolicy")).Succeeded)
+            {
+                @if (role.Name != GlobalConstants.SuperAdministratorRoleName)
+                {
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            Role Id: @role.Id
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                @role.Name
+                            </h5>
+                        </div>
+                        <div class="card-footer">
+                            <form asp-action="DeleteRole" asp-route-id="@role.Id" method="post">
                                 <a class="btn btn-warning" asp-action="EditRole" asp-controller="Users" , asp-route-id="@role.Id">
                                     Edit
                                 </a>
-                            @*}*@
+                                <span id="confirmDeleteSpan_@role.Id" style="display: none">
+                                    <span>
+                                        Are you sure you want to delete?
+                                    </span>
+                                    <button type="submit" class="btn btn-danger">
+                                        Yes
+                                    </button>
+                                    <a href="#" class="btn btn-primary" onclick="confirmDelete('@role.Id', false)">
+                                        No
+                                    </a>
+                                </span>
+                                <span id="deleteSpan_@role.Id">
+                                    <a href="#" class="btn btn-danger" onclick="confirmDelete('@role.Id', true)">
+                                        Delete
+                                    </a>
+                                </span>
+                            </form>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="card mb-3">
+                    <div class="card-header">
+                        Role Id: @role.Id
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            @role.Name
+                        </h5>
+                    </div>
+                    <div class="card-footer">
+                        <form asp-action="DeleteRole" asp-route-id="@role.Id" method="post">
+                            <a class="btn btn-warning" asp-action="EditRole" asp-controller="Users" , asp-route-id="@role.Id">
+                                Edit
+                            </a>
                             <span id="confirmDeleteSpan_@role.Id" style="display: none">
                                 <span>
                                     Are you sure you want to delete?
@@ -53,8 +93,9 @@
                                 </a>
                             </span>
                         </form>
+                    </div>
                 </div>
-            </div>
+            }
         }
     }
     else
