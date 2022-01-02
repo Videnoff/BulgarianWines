@@ -76,17 +76,22 @@
 
             services.AddAuthorization(options =>
             {
+                options.AddPolicy("CreateRolePolicy", policy =>
+                    policy
+                        .RequireClaim("Create Role", "true"));
+
                 options.AddPolicy("DeleteRolePolicy", policy =>
                     policy
-                        .RequireClaim("Delete Role"));
+                        .RequireClaim("Delete Role", "true"));
 
                 options.AddPolicy("EditRolePolicy", policy =>
                     policy
-                        .RequireClaim("Edit Role"));
+                        .RequireClaim("Edit Role", "true"));
 
                 options.AddPolicy("SuperAdminPolicy", policy =>
                     policy
-                        .RequireRole("SuperAdmin"));
+                        .RequireAssertion(context =>
+                            context.User.IsInRole(GlobalConstants.SuperAdministratorRoleName)));
             });
 
             services.AddAuthentication()
