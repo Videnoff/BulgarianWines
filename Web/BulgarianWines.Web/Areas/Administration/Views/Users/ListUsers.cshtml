@@ -1,4 +1,7 @@
-﻿@model IEnumerable<BulgarianWines.Data.Models.ApplicationUser>
+﻿@using BulgarianWines.Common
+@using Microsoft.AspNetCore.Authorization
+@model IEnumerable<BulgarianWines.Data.Models.ApplicationUser>
+@inject IAuthorizationService authorizationService
 
 @{
     this.ViewData["Title"] = "All Users";
@@ -32,47 +35,97 @@
 
         foreach (var user in Model)
         {
-            <div class="card mb-3">
-                <div class="card-header">
-                    User Id: @user.Id
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">
-                        @user.UserName
-                    </h5>
-                </div>
-                <div class="card-header">
-                    User Email: @user.Email
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">
-                        @user.Email
-                    </h5>
-                </div>
-                <div class="card-footer">
-                    <form asp-action="DeleteUser" asp-route-id="@user.Id" method="post">
-                        <a asp-action="EditUser" asp-controller="Users" asp-route-id="@user.Id" class="btn btn-warning">
-                            Edit
-                        </a>
-                        <span id="confirmDeleteSpan_@user.Id" style="display: none">
-                            <span>
-                                Are you sure you want to delete?
+            @if (!(await this.authorizationService.AuthorizeAsync(this.User, "SuperAdminPolicy")).Succeeded)
+            {
+                @if (user.UserName != "superadmin@bulsing.com")
+                {
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            User Id: @user.Id
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                @user.UserName
+                            </h5>
+                        </div>
+                        <div class="card-header">
+                            User Email: @user.Email
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                @user.Email
+                            </h5>
+                        </div>
+                        <div class="card-footer">
+                            <form asp-action="DeleteUser" asp-route-id="@user.Id" method="post">
+                                <a asp-action="EditUser" asp-controller="Users" asp-route-id="@user.Id" class="btn btn-warning">
+                                    Edit
+                                </a>
+                                <span id="confirmDeleteSpan_@user.Id" style="display: none">
+                                    <span>
+                                        Are you sure you want to delete?
+                                    </span>
+                                    <button type="submit" class="btn btn-danger">
+                                        Yes
+                                    </button>
+                                    <a href="#" class="btn btn-primary" onclick="confirmDelete('@user.Id', false)">
+                                        No
+                                    </a>
+                                </span>
+                                <span id="deleteSpan_@user.Id">
+                                    <a href="#" class="btn btn-danger" onclick="confirmDelete('@user.Id', true)">
+                                        Delete
+                                    </a>
+                                </span>
+                            </form>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="card mb-3">
+                    <div class="card-header">
+                        User Id: @user.Id
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            @user.UserName
+                        </h5>
+                    </div>
+                    <div class="card-header">
+                        User Email: @user.Email
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            @user.Email
+                        </h5>
+                    </div>
+                    <div class="card-footer">
+                        <form asp-action="DeleteUser" asp-route-id="@user.Id" method="post">
+                            <a asp-action="EditUser" asp-controller="Users" asp-route-id="@user.Id" class="btn btn-warning">
+                                Edit
+                            </a>
+                            <span id="confirmDeleteSpan_@user.Id" style="display: none">
+                                <span>
+                                    Are you sure you want to delete?
+                                </span>
+                                <button type="submit" class="btn btn-danger">
+                                    Yes
+                                </button>
+                                <a href="#" class="btn btn-primary" onclick="confirmDelete('@user.Id', false)">
+                                    No
+                                </a>
                             </span>
-                            <button type="submit" class="btn btn-danger">
-                                Yes
-                            </button>
-                            <a href="#" class="btn btn-primary" onclick="confirmDelete('@user.Id', false)">
-                                No
-                            </a>
-                        </span>
-                        <span id="deleteSpan_@user.Id">
-                            <a href="#" class="btn btn-danger" onclick="confirmDelete('@user.Id', true)">
-                                Delete
-                            </a>
-                        </span>
-                    </form>
+                            <span id="deleteSpan_@user.Id">
+                                <a href="#" class="btn btn-danger" onclick="confirmDelete('@user.Id', true)">
+                                    Delete
+                                </a>
+                            </span>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            }
         }
     }
     else

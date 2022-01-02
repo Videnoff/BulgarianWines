@@ -1,14 +1,13 @@
-﻿using System.Security.Claims;
-using BulgarianWines.Data.Models.Claims;
-
-namespace BulgarianWines.Web.Areas.Administration.Controllers
+﻿namespace BulgarianWines.Web.Areas.Administration.Controllers
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Security.Claims;
     using System.Threading.Tasks;
 
     using BulgarianWines.Data.Common.Repositories;
     using BulgarianWines.Data.Models;
+    using BulgarianWines.Data.Models.Claims;
     using BulgarianWines.Services;
     using BulgarianWines.Web.ViewModels.Administration.Statistics;
     using BulgarianWines.Web.ViewModels.Administration.Users;

@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.Authorization;
-
-namespace BulgarianWines.Web
+﻿namespace BulgarianWines.Web
 {
     using System;
     using System.Reflection;
@@ -19,11 +16,13 @@ namespace BulgarianWines.Web
     using BulgarianWines.Services.Mapping;
     using BulgarianWines.Services.Messaging;
     using BulgarianWines.Web.ViewModels;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Authorization;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -79,8 +78,12 @@ namespace BulgarianWines.Web
             {
                 options.AddPolicy("DeleteRolePolicy", policy =>
                     policy
-                        .RequireClaim("Delete Role")
-                    );
+                        .RequireClaim("Delete Role"));
+
+                options.AddPolicy("EditRolePolicy", policy =>
+                    policy
+                        .RequireClaim("Edit Role"));
+
                 options.AddPolicy("SuperAdminPolicy", policy =>
                     policy
                         .RequireRole("SuperAdmin"));
