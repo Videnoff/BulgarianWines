@@ -12,7 +12,8 @@
         private readonly IWinesService winesService;
         private readonly ApplicationDbContext dbContext;
 
-        public WinesController(IWinesService winesService,
+        public WinesController(
+            IWinesService winesService,
             ApplicationDbContext dbContext)
         {
             this.winesService = winesService;

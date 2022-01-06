@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web.ViewModels.Wines
+﻿using System;
+
+namespace BulgarianWines.Web.ViewModels.Wines
 {
     using System.Linq;
 
@@ -20,6 +22,8 @@
 
         public string CategoryName { get; set; }
 
+        public double AverageRating { get; set; }
+
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Wine, AllWinesViewModel>()
@@ -28,7 +32,10 @@
                         x.Images.FirstOrDefault().ImageUrl != null
                             ? x.Images.FirstOrDefault().ImageUrl
                             : "/images/wines/" + x.Images.FirstOrDefault().Id + "." +
-                              x.Images.FirstOrDefault().Extension));
+                              x.Images.FirstOrDefault().Extension))
+                .ForMember(
+                    x => x.AverageRating,
+                    opt => opt.MapFrom(m => (!m.Reviews.Any()) ? 0 : Math.Round(m.Reviews.Average(x => x.Rating), 2)));
         }
     }
 }

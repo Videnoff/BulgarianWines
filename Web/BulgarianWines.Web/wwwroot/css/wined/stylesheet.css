@@ -3836,6 +3836,75 @@ ul.dropmenu {
 
 /* Css for wishlist end */
 
+/*
+    slowView
+*/
+
+#slowView {
+    float: right;
+    position: relative;
+    margin: 0 0 0 10px;
+}
+
+    #slowView .wish-image {
+        display: inline-block;
+        vertical-align: top;
+        font-size: 0;
+        background-image: url(../../images/wined/product-view.svg);
+        background-repeat: no-repeat;
+        transition-duration: 300ms;
+        -webkit-transition-duration: 300ms;
+        -moz-transition-duration: 300ms;
+        -ms-transition-duration: 300ms;
+        -o-transition-duration: 300ms;
+        background-position: center;
+        background-size: 16px;
+        height: 25px;
+        width: 25px;
+        line-height: 25px;
+    }
+
+    #slowView:hover .wish-image {
+        background-image: url(../../images/wined/product-view.svg);
+        background-repeat: no-repeat;
+        -webkit-transition-duration: 300ms;
+        -moz-transition-duration: 300ms;
+        -ms-transition-duration: 300ms;
+        -o-transition-duration: 300ms;
+    }
+
+    #slowView .header-wishlist a {
+        padding: 3px 10px;
+        font-size: 13px;
+    }
+
+    #slowView .header-wishlist {
+        margin: 0 10px;
+    }
+
+    #slowView .wish-list-details {
+        position: absolute;
+        top: 40px;
+        bottom: auto;
+        margin: 0;
+        left: auto;
+        right: 0;
+        text-align: left;
+        padding: 10px 0;
+        text-transform: capitalize;
+    }
+
+    #slowView .wish-details {
+        display: block;
+        cursor: pointer;
+    }
+
+@media (max-width: 479px) {
+    #slowView .wish-list-details {
+        top: 33px;
+    }
+}
+
 /* Css for block top cms start */
 #blocktopcms {
     text-transform: capitalize;
@@ -7648,6 +7717,61 @@ h2.price {
 
 .product-thumb .wishlist:hover {
     background-image: url(../../images/wined/product-wishlist-hover.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #BC4857;
+    transition: all 0.3s ease-out 0s;
+    -webkit-transition: all 0.3s ease-out 0s;
+    -moz-transition: all 0.3s ease-out 0s;
+    -ms-transition: all 0.3s ease-out 0s;
+    -o-transition: all 0.3s ease-out 0s;
+}
+
+/*
+    slowView
+*/
+
+.product-thumb .slowView {
+    background-image: url(../../images/wined/product-view.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 20px;
+    display: inline-block;
+    vertical-align: top;
+    padding: 0;
+    border: none;
+    font-size: 0;
+    border: none;
+    margin: 0 8px 0 0;
+    background-color: #ffffff;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+    transition: all 0.5s ease 0s;
+    -webkit-transition: all 0.5s ease 0s;
+    -moz-transition: all 0.5s ease 0s;
+    -ms-transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s;
+    -webkit-box-shadow: 0px 1px 7px 0 rgb(153,153,153,0.5);
+    -moz-box-shadow: 0px 1px 7px 0 rgb(153,153,153,0.5);
+    box-shadow: 0px 1px 7px 0 rgb(153,153,153,0.5);
+}
+
+.product-thumb:hover .slowView {
+    opacity: 1;
+    -khtml-opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    transition-duration: 300ms;
+    -webkit-transition-duration: 300ms;
+    -moz-transition-duration: 300ms;
+    -ms-transition-duration: 300ms;
+    -o-transition-duration: 300ms;
+}
+
+.product-thumb .slowView:hover {
+    background-image: url(../../images/wined/product-view-hover.svg);
     background-repeat: no-repeat;
     background-position: center center;
     background-color: #BC4857;
@@ -11835,6 +11959,10 @@ html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.cont
     justify-content: flex-start;
     align-items: stretch;
     align-content: stretch;
+}
+
+html body.common-home.layout-1 main.pb-3 div#Tab_Category_Slider.category_tab.box div.container div#gattinara.tab-pane.active div.owl-carousel.owl-demo-tabcate.owl-theme div.owl-wrapper-outer div.owl-wrapper div.owl-item div.product-block-wrapper div.item.text-center.product-innerblock div.col-lg-3.col-md-3.col-sm-6.col-xs-12 div.product-block.product-thumb.transition div.product-block-inner div.image a {
+    height: 279.9px;
 }
 
 /*

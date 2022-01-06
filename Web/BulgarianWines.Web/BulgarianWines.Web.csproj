@@ -10,13 +10,10 @@
     <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
-  <ItemGroup>
+  <!-- <ItemGroup>
     <Content Remove="Areas\Administration\Views\HomePageSlides\Index.cshtml" />
-    <Content Remove="Areas\Administration\Views\Shared\_AdminLayout.cshtml" />
-    <Content Remove="Views\Categories\Products.cshtml" />
-    <Content Remove="Views\Home\Contact.cshtml" />
     <Content Remove="Views\Shared\Components\_WriteReviewPartial.cshtml" />
-  </ItemGroup>
+  </ItemGroup> -->
   <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" />
   </ItemGroup>
@@ -64,7 +61,7 @@
     <ProjectReference Include="..\BulgarianWines.Web.ViewModels\BulgarianWines.Web.ViewModels.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
+  <!-- <ItemGroup>
     <UpToDateCheckInput Remove="Areas\Administration\Views\HomePageSlides\Index.cshtml" />
   </ItemGroup>
 
@@ -73,14 +70,11 @@
     <_ContentIncludedByDefault Remove="Views\Categories\Products.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Home\Contact.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Shared\Components\_WriteReviewPartial.cshtml" />
-  </ItemGroup>
+  </ItemGroup> -->
 
   <ItemGroup>
     <None Include="..\..\.editorconfig" Link=".editorconfig" />
     <None Include="Areas\Administration\Views\HomePageSlides\Index.cshtml" />
-    <None Include="Areas\Administration\Views\Shared\_AdminLayout.cshtml" />
-    <None Include="Views\Categories\Products.cshtml" />
-    <None Include="Views\Home\Contact.cshtml" />
     <None Include="wwwroot\js\admin\demo\registered-users-area-chart.js" />
     <None Include="wwwroot\js\admin\demo\chart-bar-demo.js" />
     <None Include="wwwroot\js\admin\demo\users-in-roles-pie-chart.js" />
@@ -1906,7 +1900,7 @@
     <Folder Include="wwwroot\images\admin\" />
   </ItemGroup>
 
-  <ItemGroup>
+  <!-- <ItemGroup>
     <UpToDateCheckInput Remove="Views\Categories\Products.cshtml" />
   </ItemGroup>
 
@@ -1916,5 +1910,5 @@
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Views\Home\Contact.cshtml" />
-  </ItemGroup>
+  </ItemGroup> -->
 </Project>

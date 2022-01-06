@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web
+﻿using System.IO;
+
+namespace BulgarianWines.Web
 {
     using System;
     using System.Reflection;
@@ -66,13 +68,13 @@
 
             services.AddSingleton(this.configuration);
 
-            services.AddMvc(options =>
-            {
-                var policy = new AuthorizationPolicyBuilder()
-                    .RequireAuthenticatedUser()
-                    .Build();
-                options.Filters.Add(new AuthorizeFilter(policy));
-            }).AddXmlSerializerFormatters();
+            //services.AddMvc(options =>
+            //{
+            //    var policy = new AuthorizationPolicyBuilder()
+            //        .RequireAuthenticatedUser()
+            //        .Build();
+            //    options.Filters.Add(new AuthorizeFilter(policy));
+            //}).AddXmlSerializerFormatters();
 
             services.AddAuthorization(options =>
             {
@@ -140,8 +142,10 @@
             services.AddTransient<IUserMessagesService, UserMessagesService>();
             services.AddTransient<ITimeService, TimeService>();
             // services.AddTransient<INewsletterService, NewsletterService>();
+            //File.WriteAllText("/home/abc" + Guid.NewGuid().ToString() + ".txt", this.configuration["BlobConnectionString"]);
             services.AddSingleton(x =>
                 new BlobServiceClient(this.configuration["BlobConnectionString"]));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

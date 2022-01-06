@@ -56,11 +56,18 @@
                                                                     <i class="fas fa-heart mr-0 pt-1"></i>
                                                                 </a>
                                                             </button>
-                                                            <div class="quickview" data-placement="right" title="Quick view">
+                                                            <button class="slowView" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('@product.Id');">
+                                                                <a asp-area="" asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.Id" class="it-fav" data-toggle="tooltip" data-placement="left" title="Quick View">
+                                                                    Quick View
+                                                                </a>
+                                                            </button>
+                                                            
+
+                                                            @*<div class="quickview" data-placement="right" title="Quick view">
                                                                 <a asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.Id">
                                                                     Quick View
                                                                 </a>
-                                                            </div>
+                                                            </div>*@
                                                             @*<button class="compare" type="button" data-placement="right" title="Compare this Product " onclick="compare.add('51 ');"></button>*@
                                                         </div>
                                                     </div>
@@ -72,29 +79,14 @@
                                                                 </a>
                                                             </h4>
                                                             <p class="price">
-                                                                $122.00
+                                                                @*$122.00
                                                                 <span class="price-tax">
                                                                     Ex Tax: $100.00
-                                                                </span>
+                                                                </span>*@
                                                             </p>
 
                                                             <div class="rating">
-                                                                @*<span class="fa fa-stack">
-                                                                        <i class="fa fa-star fa-stack-2x"></i>
-                                                                    </span>
-                                                                    <span class="fa fa-stack">
-                                                                        <i class="fa fa-star fa-stack-2x"></i>
-                                                                    </span>
-                                                                    <span class="fa fa-stack">
-                                                                        <i class="fa fa-star fa-stack-2x"></i>
-                                                                    </span>
-                                                                    <span class="fa fa-stack">
-                                                                        <i class="fa fa-star fa-stack-2x"></i>
-                                                                    </span>
-                                                                    <span class="fa fa-stack">
-                                                                        <i class="fa fa-star off fa-stack-2x"></i>
-                                                                    </span>*@
-                                                                <partial name="_WineRatingPartial" model="new WineRatingViewModel{AverageRating = Model.AverageRating}" />
+                                                                <partial name="_WineRatingPartial" model="new WineRatingViewModel { AverageRating = Model.AverageRating }" />
                                                             </div>
                                                         </div>
                                                     </div>
