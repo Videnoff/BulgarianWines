@@ -1,5 +1,6 @@
 ﻿namespace BulgarianWines.Web.ViewModels.Administration.Categories
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -18,6 +19,12 @@
         public string Sorting { get; set; }
 
         public IEnumerable<int> ItemsPerPageValues { get; set; }
+
+        public double AverageRating { get; set; }
+
+        public double AverageRatingRounded => Math.Round(this.AverageRating * 2, MidpointRounding.AwayFromZero) / 2;
+
+        public bool ShowAverageRating { get; set; } = true;
 
         // public override Dictionary<string, string> GetPageQuery(int pageNumber)
         // {

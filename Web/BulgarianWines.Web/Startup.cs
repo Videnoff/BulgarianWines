@@ -1,8 +1,7 @@
-﻿using System.IO;
-
-namespace BulgarianWines.Web
+﻿namespace BulgarianWines.Web
 {
     using System;
+    using System.IO;
     using System.Reflection;
 
     using Azure.Storage.Blobs;
