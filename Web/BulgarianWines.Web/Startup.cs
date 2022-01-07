@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web
+﻿using BulgarianWines.Web.Areas.Administration.Security;
+
+namespace BulgarianWines.Web
 {
     using System;
     using System.IO;
@@ -67,13 +69,13 @@
 
             services.AddSingleton(this.configuration);
 
-            //services.AddMvc(options =>
-            //{
-            //    var policy = new AuthorizationPolicyBuilder()
-            //        .RequireAuthenticatedUser()
-            //        .Build();
-            //    options.Filters.Add(new AuthorizeFilter(policy));
-            //}).AddXmlSerializerFormatters();
+            services.AddMvc(options =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build();
+                options.Filters.Add(new AuthorizeFilter(policy));
+            }).AddXmlSerializerFormatters();
 
             services.AddAuthorization(options =>
             {
@@ -87,7 +89,7 @@
 
                 options.AddPolicy("EditRolePolicy", policy =>
                     policy
-                        .RequireClaim("Edit Role", "true"));
+                        .AddRequirements(new ManageAdminRolesAndClaimsRequirement()));
 
                 options.AddPolicy("SuperAdminPolicy", policy =>
                     policy
@@ -144,7 +146,7 @@
             //File.WriteAllText("/home/abc" + Guid.NewGuid().ToString() + ".txt", this.configuration["BlobConnectionString"]);
             services.AddSingleton(x =>
                 new BlobServiceClient(this.configuration["BlobConnectionString"]));
-
+            services.AddSingleton<IAuthorizationHandler, CanEditOnlyAdminRolesAndClaimsHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
