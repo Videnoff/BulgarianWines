@@ -31,11 +31,6 @@
                 context.Succeed(requirement);
             }
 
-            if (context.User.IsInRole(GlobalConstants.SuperAdministratorRoleName))
-            {
-                context.Succeed(requirement);
-            }
-
             return Task.CompletedTask;
         }
     }

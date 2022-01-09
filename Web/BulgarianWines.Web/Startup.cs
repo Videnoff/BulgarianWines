@@ -147,6 +147,7 @@ namespace BulgarianWines.Web
             services.AddSingleton(x =>
                 new BlobServiceClient(this.configuration["BlobConnectionString"]));
             services.AddSingleton<IAuthorizationHandler, CanEditOnlyAdminRolesAndClaimsHandler>();
+            services.AddSingleton<IAuthorizationHandler, SuperAdminHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
