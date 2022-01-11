@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web.Areas.Identity.Pages.Account
+﻿using BulgarianWines.Common;
+
+namespace BulgarianWines.Web.Areas.Identity.Pages.Account
 {
     using System.ComponentModel.DataAnnotations;
     using System.Security.Claims;
@@ -7,9 +9,9 @@
     using System.Threading.Tasks;
 
     using BulgarianWines.Data.Models;
+    using BulgarianWines.Services.Messaging;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
-    using Microsoft.AspNetCore.Identity.UI.Services;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using Microsoft.AspNetCore.WebUtilities;
@@ -68,6 +70,7 @@
         public async Task<IActionResult> OnGetCallbackAsync(string returnUrl = null, string remoteError = null)
         {
             returnUrl = returnUrl ?? this.Url.Content("~/");
+
             if (remoteError != null)
             {
                 this.ErrorMessage = $"Error from external provider: {remoteError}";
@@ -75,6 +78,7 @@
             }
 
             var info = await this.signInManager.GetExternalLoginInfoAsync();
+
             if (info == null)
             {
                 this.ErrorMessage = "Error loading external login information.";
@@ -123,7 +127,11 @@
 
             if (this.ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = this.Input.Email, Email = this.Input.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = this.Input.Email,
+                    Email = this.Input.Email,
+                };
 
                 var result = await this.userManager.CreateAsync(user);
                 if (result.Succeeded)
@@ -139,10 +147,19 @@
                         var callbackUrl = this.Url.Page(
                             "/Account/ConfirmEmail",
                             pageHandler: null,
-                            values: new { area = "Identity", userId = userId, code = code },
+                            values: new
+                            {
+                                area = "Identity",
+                                userId = userId,
+                                code = code,
+                            },
                             protocol: this.Request.Scheme);
 
-                        await this.emailSender.SendEmailAsync(this.Input.Email, "Confirm your email",
+                        await this.emailSender.SendEmailAsync(
+                            GlobalConstants.SystemEmail,
+                            GlobalConstants.SystemEmail,
+                            this.Input.Email,
+                            "Confirm your email",
                             $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
                         // If account confirmation is required, we need to show the link if we don't have a real email sender

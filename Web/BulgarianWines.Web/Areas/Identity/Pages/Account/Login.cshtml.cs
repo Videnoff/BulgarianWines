@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web.Areas.Identity.Pages.Account
+﻿using BulgarianWines.Services.Messaging;
+
+namespace BulgarianWines.Web.Areas.Identity.Pages.Account
 {
     using System;
     using System.Collections.Generic;
@@ -20,14 +22,17 @@
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly Services.Messaging.IEmailSender emailSender;
         private readonly ILogger<LoginModel> logger;
 
         public LoginModel(
             SignInManager<ApplicationUser> signInManager,
             ILogger<LoginModel> logger,
-            UserManager<ApplicationUser> userManager)
+            UserManager<ApplicationUser> userManager,
+            IEmailSender emailSender)
         {
             this.userManager = userManager;
+            this.emailSender = emailSender;
             this.signInManager = signInManager;
             this.logger = logger;
         }
@@ -86,9 +91,16 @@
                 if (this.IsValidEmail(this.Input.Email))
                 {
                     var user = await this.userManager.FindByEmailAsync(this.Input.Email);
+
                     if (user != null)
                     {
                         userName = user.UserName;
+                    }
+
+                    if (!user.EmailConfirmed && (await this.userManager.CheckPasswordAsync(user, this.Input.Password)))
+                    {
+                        this.ModelState.AddModelError(string.Empty, "Email not confirmed yet");
+                        return this.Page();
                     }
                 }
 
@@ -103,7 +115,11 @@
 
                 if (result.RequiresTwoFactor)
                 {
-                    return this.RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = this.Input.RememberMe });
+                    return this.RedirectToPage("./LoginWith2fa", new
+                    {
+                        ReturnUrl = returnUrl,
+                        RememberMe = this.Input.RememberMe,
+                    });
                 }
 
                 if (result.IsLockedOut)

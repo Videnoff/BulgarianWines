@@ -69,13 +69,13 @@ namespace BulgarianWines.Web
 
             services.AddSingleton(this.configuration);
 
-            services.AddMvc(options =>
-            {
-                var policy = new AuthorizationPolicyBuilder()
-                    .RequireAuthenticatedUser()
-                    .Build();
-                options.Filters.Add(new AuthorizeFilter(policy));
-            }).AddXmlSerializerFormatters();
+            //services.AddMvc(options =>
+            //{
+            //    var policy = new AuthorizationPolicyBuilder()
+            //        .RequireAuthenticatedUser()
+            //        .Build();
+            //    options.Filters.Add(new AuthorizeFilter(policy));
+            //}).AddXmlSerializerFormatters();
 
             services.AddAuthorization(options =>
             {
@@ -90,7 +90,6 @@ namespace BulgarianWines.Web
                 options.AddPolicy("EditRolePolicy", policy =>
                     policy
                         .AddRequirements(new ManageAdminRolesAndClaimsRequirement()));
-
                 options.AddPolicy("SuperAdminPolicy", policy =>
                     policy
                         .RequireAssertion(context =>

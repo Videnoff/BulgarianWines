@@ -13,7 +13,8 @@
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "AZURE_USERNAME": "Videnoff@students.softuni.bg"
+        "AZURE_USERNAME": "Videnoff@students.softuni.bg",
+        "VaultUri": "https://bulgarianwineswebvault.vault.azure.net/"
       }
     },
     "BulgarianWines.Web": {
@@ -22,7 +23,8 @@
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "AZURE_USERNAME": "Videnoff@students.softuni.bg"
+        "AZURE_USERNAME": "Videnoff@students.softuni.bg",
+        "VaultUri": "https://bulgarianwineswebvault.vault.azure.net/"
       }
     }
   }
