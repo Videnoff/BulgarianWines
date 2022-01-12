@@ -1,6 +1,4 @@
-﻿using BulgarianWines.Services.Messaging;
-
-namespace BulgarianWines.Web.Areas.Identity.Pages.Account
+﻿namespace BulgarianWines.Web.Areas.Identity.Pages.Account
 {
     using System;
     using System.Collections.Generic;
@@ -10,6 +8,7 @@ namespace BulgarianWines.Web.Areas.Identity.Pages.Account
     using System.Threading.Tasks;
 
     using BulgarianWines.Data.Models;
+    using BulgarianWines.Services.Messaging;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;

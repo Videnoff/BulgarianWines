@@ -1,6 +1,4 @@
-﻿using BulgarianWines.Web.Areas.Administration.Security;
-
-namespace BulgarianWines.Web
+﻿namespace BulgarianWines.Web
 {
     using System;
     using System.IO;
@@ -18,6 +16,7 @@ namespace BulgarianWines.Web
     using BulgarianWines.Services.Data;
     using BulgarianWines.Services.Mapping;
     using BulgarianWines.Services.Messaging;
+    using BulgarianWines.Web.Areas.Administration.Security;
     using BulgarianWines.Web.ViewModels;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Builder;

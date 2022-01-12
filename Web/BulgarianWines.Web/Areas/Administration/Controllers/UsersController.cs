@@ -14,6 +14,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
 
     public class UsersController : AdministrationController
     {
@@ -21,17 +22,20 @@
         private readonly RoleManager<ApplicationRole> roleManager;
         private readonly IDeletableEntityRepository<ApplicationUser> usersRepository;
         private readonly IUsersService usersService;
+        private readonly ILogger<UsersController> logger;
 
         public UsersController(
             UserManager<ApplicationUser> userManager,
             RoleManager<ApplicationRole> roleManager,
             IDeletableEntityRepository<ApplicationUser> usersRepository,
-            IUsersService usersService)
+            IUsersService usersService,
+            ILogger<UsersController> logger)
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
             this.usersRepository = usersRepository;
             this.usersService = usersService;
+            this.logger = logger;
         }
 
         [AcceptVerbs("Get", "Post")]

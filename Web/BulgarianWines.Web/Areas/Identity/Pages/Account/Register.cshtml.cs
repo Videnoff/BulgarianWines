@@ -144,7 +144,7 @@
                     {
                         if (this.signInManager.IsSignedIn(this.User) && (this.User.IsInRole(GlobalConstants.AdministratorRoleName) || this.User.IsInRole(GlobalConstants.SuperAdministratorRoleName)))
                         {
-                            return this.RedirectToAction("ListUsers", "Users", new {area = "Administration"});
+                            return this.RedirectToAction("ListUsers", "Users", new { area = "Administration" });
                         }
 
                         await this.signInManager.SignInAsync(user, isPersistent: false);
