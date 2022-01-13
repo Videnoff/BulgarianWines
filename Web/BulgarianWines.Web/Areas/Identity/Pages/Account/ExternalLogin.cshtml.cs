@@ -116,6 +116,7 @@
         public async Task<IActionResult> OnPostConfirmationAsync(string returnUrl = null)
         {
             returnUrl = returnUrl ?? this.Url.Content("~/");
+
             // Get the information about the user from the external login provider
             var info = await this.signInManager.GetExternalLoginInfoAsync();
             if (info == null)

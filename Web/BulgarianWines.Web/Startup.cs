@@ -68,13 +68,13 @@
 
             services.AddSingleton(this.configuration);
 
-            //services.AddMvc(options =>
-            //{
+            // services.AddMvc(options =>
+            // {
             //    var policy = new AuthorizationPolicyBuilder()
             //        .RequireAuthenticatedUser()
             //        .Build();
             //    options.Filters.Add(new AuthorizeFilter(policy));
-            //}).AddXmlSerializerFormatters();
+            // }).AddXmlSerializerFormatters();
 
             services.AddAuthorization(options =>
             {
@@ -140,8 +140,10 @@
             services.AddTransient<IFavoritesService, FavoritesService>();
             services.AddTransient<IUserMessagesService, UserMessagesService>();
             services.AddTransient<ITimeService, TimeService>();
+            services.AddTransient<IRenderViewService, RenderViewService>();
+
             // services.AddTransient<INewsletterService, NewsletterService>();
-            //File.WriteAllText("/home/abc" + Guid.NewGuid().ToString() + ".txt", this.configuration["BlobConnectionString"]);
+            // File.WriteAllText("/home/abc" + Guid.NewGuid().ToString() + ".txt", this.configuration["BlobConnectionString"]);
             services.AddSingleton(x =>
                 new BlobServiceClient(this.configuration["BlobConnectionString"]));
             services.AddSingleton<IAuthorizationHandler, CanEditOnlyAdminRolesAndClaimsHandler>();

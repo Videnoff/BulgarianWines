@@ -76,6 +76,7 @@
             var profilePicture = user.ProfilePicture;
 
             this.Username = userName;
+
             // this.ImagePath = user.ImageUrl;
 
             this.Input = new InputModel

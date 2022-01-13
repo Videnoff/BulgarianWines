@@ -100,6 +100,7 @@
             {
                 Id = categoryNameAndProductCount.Id,
                 Name = categoryNameAndProductCount.Name,
+
                 // ItemsCount = categoryNameAndProductCount.ProductsCount,
                 ItemsPerPage = itemsPerPage,
                 PageNumber = pageNumber,
@@ -107,6 +108,7 @@
                 ItemsPerPageValues = this.itemsPerPageValues,
                 Sorting = sorting,
                 SortingValues = this.sortingValues,
+
                 // Area = string.Empty,
                 // Controller = "Categories",
                 // Action = nameof(this.Products),

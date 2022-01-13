@@ -40,12 +40,12 @@
 
             this.usersRepository.Delete(user);
 
-            //foreach (var role in user.Roles)
-            //{
+            // foreach (var role in user.Roles)
+            // {
             //    this.rolesRepository.Delete(role);
-            //}
+            // }
 
-            //await this.rolesRepository.SaveChangesAsync();
+            // await this.rolesRepository.SaveChangesAsync();
             await this.usersRepository.SaveChangesAsync();
 
             return true;

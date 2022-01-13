@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web.Areas.Identity.Pages.Account
+﻿using BulgarianWines.Web.Areas.Identity.ViewModels;
+
+namespace BulgarianWines.Web.Areas.Identity.Pages.Account
 {
     using System;
     using System.Collections.Generic;
@@ -14,6 +16,7 @@
     using BulgarianWines.Services;
     using BulgarianWines.Services.Messaging;
     using BulgarianWines.Web.Infrastructure.ValidationAttributes;
+    using BulgarianWines.Web.ViewModels.Administration.Users;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
@@ -34,18 +37,21 @@
         private readonly UserManager<ApplicationUser> userManager;
         private readonly Services.Messaging.IEmailSender emailSender;
         private readonly ILogger<RegisterModel> logger;
+        private readonly IRenderViewService renderViewService;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
             Services.Messaging.IEmailSender emailSender,
-            IImagesService imagesService)
+            IImagesService imagesService,
+            IRenderViewService renderViewService)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.logger = logger;
             this.imagesService = imagesService;
+            this.renderViewService = renderViewService;
             this.emailSender = emailSender;
         }
 
@@ -69,6 +75,7 @@
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
+
             // [Remote(action: "IsEmailInUse", controller: "Users", areaName: "Administration")]
             public string Email { get; set; }
 
@@ -112,6 +119,7 @@
                     Email = this.Input.Email,
                     FirstName = this.Input.FirstName,
                     LastName = this.Input.LastName,
+
                     // ImageUrl = file.FileName,
                 };
 
@@ -134,9 +142,15 @@
                         },
                         protocol: this.Request.Scheme);
 
-                    await this.emailSender.SendEmailAsync("bulsing@bulsing.com", "Bulsing", this.Input.Email, "Confirm your email", $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    var viewModel = new RegisterViewModel();
 
-                    if (this.userManager.Options.SignIn.RequireConfirmedAccount)
+                    var emailContent =
+                        await this.renderViewService.RenderToStringAsync(
+                            "Areas/Administration/Views/Users/RegisterEmailConfirmation.cshtml", viewModel);
+
+                    await this.emailSender.SendEmailAsync("bulsing@baramail.com", "Bulsing", this.Input.Email, "Confirm your email", emailContent /*$"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>."*/);
+
+                    if (this.userManager.Options.SignIn.RequireConfirmedAccount || this.userManager.Options.SignIn.RequireConfirmedEmail)
                     {
                         return this.RedirectToPage("RegisterConfirmation", new { email = this.Input.Email, returnUrl = returnUrl });
                     }

@@ -54,6 +54,7 @@
             if (viewModelAsString == null)
             {
                 var allCategories = this.categoriesService.GetAll<CategoryViewModel>();
+
                 // var mostBoughtProducts = this.ordersService.GetMostBoughtProducts<ProductSidebarViewModel>(10);
                 var newestProducts = this.winesService.GetNewest<ProductViewModel>(3);
 
@@ -74,6 +75,7 @@
                 {
                     // MostBoughtProducts = mostBoughtProducts,
                     NewestProducts = newestProducts,
+
                     // TopRatedProducts = topRatedProducts,
                     AllCategories = allCategories,
                     Slides = slides,
