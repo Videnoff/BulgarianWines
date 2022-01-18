@@ -6887,7 +6887,14 @@ footer hr {
 /* breadcrumb */
 #breadcrumb {
     margin: 0 0 40px;
-    background: url(../../images/wined/breadcum.jpg);
+    /*
+        original
+    */
+    /*background: url(../../images/wined/breadcum.jpg);*/
+    /*
+        modified
+    */
+    background: url(https://bulgarianwines.blob.core.windows.net/publicimages/breadcum2.jpg);
     background-position: center;
 }
 
