@@ -1,8 +1,4 @@
-﻿using BulgarianWines.Data.Common.Repositories;
-using BulgarianWines.Services.Mapping;
-using BulgarianWines.Web.Areas.Identity.ViewModels;
-
-namespace BulgarianWines.Web.Areas.Identity.Pages.Account
+﻿namespace BulgarianWines.Web.Areas.Identity.Pages.Account
 {
     using System;
     using System.Collections.Generic;
@@ -14,9 +10,12 @@ namespace BulgarianWines.Web.Areas.Identity.Pages.Account
     using System.Threading.Tasks;
 
     using BulgarianWines.Common;
+    using BulgarianWines.Data.Common.Repositories;
     using BulgarianWines.Data.Models;
     using BulgarianWines.Services;
+    using BulgarianWines.Services.Mapping;
     using BulgarianWines.Services.Messaging;
+    using BulgarianWines.Web.Areas.Identity.ViewModels;
     using BulgarianWines.Web.Infrastructure.ValidationAttributes;
     using BulgarianWines.Web.ViewModels.Administration.Users;
     using Microsoft.AspNetCore.Authentication;
@@ -153,7 +152,12 @@ namespace BulgarianWines.Web.Areas.Identity.Pages.Account
                     //    await this.renderViewService.RenderToStringAsync(
                     //        "Areas/Administration/Views/Users/RegisterEmailConfirmation.cshtml", viewModel);
 
-                    await this.emailSender.SendEmailAsync("bulsing@baramail.com", "Bulsing", this.Input.Email, "Confirm your email", /*null*/ $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    await this.emailSender.SendEmailAsync(
+                        "bulsing@baramail.com",
+                        "Bulsing",
+                        this.Input.Email,
+                        "Confirm your email",
+                        /*null*/ $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
                     if (this.userManager.Options.SignIn.RequireConfirmedAccount || this.userManager.Options.SignIn.RequireConfirmedEmail)
                     {

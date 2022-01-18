@@ -1,9 +1,8 @@
-﻿using AutoMapper;
-using BulgarianWines.Data.Models;
-using BulgarianWines.Services.Mapping;
-
-namespace BulgarianWines.Web.Areas.Identity.ViewModels
+﻿namespace BulgarianWines.Web.Areas.Identity.ViewModels
 {
+    using AutoMapper;
+    using BulgarianWines.Data.Models;
+    using BulgarianWines.Services.Mapping;
     using Microsoft.AspNetCore.Identity.UI.V4.Pages.Account.Internal;
 
     public class RegisterViewModel : IMapFrom<ApplicationUser>, IHaveCustomMappings
