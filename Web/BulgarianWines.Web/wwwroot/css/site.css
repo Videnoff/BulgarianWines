@@ -80,3 +80,11 @@ html body.common-home.layout-1 main.pb-3 div.container main.pb-3 h1 {
 html body.common-home.layout-1 main.pb-3 div.container h1 {
     text-align: center
 }
+
+html body.common-home.layout-1 main.pb-3 div.container main.pb-3 p {
+    text-align: center
+}
+
+html body.common-home.layout-1 main.pb-3 div.container h4 {
+    text-align: center
+}
