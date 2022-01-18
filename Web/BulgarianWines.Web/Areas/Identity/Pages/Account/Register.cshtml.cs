@@ -1,4 +1,6 @@
-﻿using BulgarianWines.Web.Areas.Identity.ViewModels;
+﻿using BulgarianWines.Data.Common.Repositories;
+using BulgarianWines.Services.Mapping;
+using BulgarianWines.Web.Areas.Identity.ViewModels;
 
 namespace BulgarianWines.Web.Areas.Identity.Pages.Account
 {
@@ -38,6 +40,7 @@ namespace BulgarianWines.Web.Areas.Identity.Pages.Account
         private readonly Services.Messaging.IEmailSender emailSender;
         private readonly ILogger<RegisterModel> logger;
         private readonly IRenderViewService renderViewService;
+        private readonly IDeletableEntityRepository<ApplicationUser> usersRepository;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
@@ -45,13 +48,15 @@ namespace BulgarianWines.Web.Areas.Identity.Pages.Account
             ILogger<RegisterModel> logger,
             Services.Messaging.IEmailSender emailSender,
             IImagesService imagesService,
-            IRenderViewService renderViewService)
+            IRenderViewService renderViewService,
+            IDeletableEntityRepository<ApplicationUser> usersRepository)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.logger = logger;
             this.imagesService = imagesService;
             this.renderViewService = renderViewService;
+            this.usersRepository = usersRepository;
             this.emailSender = emailSender;
         }
 
@@ -142,13 +147,13 @@ namespace BulgarianWines.Web.Areas.Identity.Pages.Account
                         },
                         protocol: this.Request.Scheme);
 
-                    var viewModel = new RegisterViewModel();
+                    //var viewModel = this.GetById<RegisterViewModel>(user.Id);
 
-                    var emailContent =
-                        await this.renderViewService.RenderToStringAsync(
-                            "Areas/Administration/Views/Users/RegisterEmailConfirmation.cshtml", viewModel);
+                    //var emailContent =
+                    //    await this.renderViewService.RenderToStringAsync(
+                    //        "Areas/Administration/Views/Users/RegisterEmailConfirmation.cshtml", viewModel);
 
-                    await this.emailSender.SendEmailAsync("bulsing@baramail.com", "Bulsing", this.Input.Email, "Confirm your email", emailContent /*$"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>."*/);
+                    await this.emailSender.SendEmailAsync("bulsing@baramail.com", "Bulsing", this.Input.Email, "Confirm your email", /*null*/ $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
                     if (this.userManager.Options.SignIn.RequireConfirmedAccount || this.userManager.Options.SignIn.RequireConfirmedEmail)
                     {
@@ -175,5 +180,10 @@ namespace BulgarianWines.Web.Areas.Identity.Pages.Account
             // If we got this far, something failed, redisplay form
             return this.Page();
         }
+
+        public T GetById<T>(string id) =>
+            this.usersRepository.AllAsNoTracking()
+                .Where(x => x.Id == id)
+                .To<T>().FirstOrDefault();
     }
 }

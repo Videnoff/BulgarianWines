@@ -27,6 +27,12 @@
             var fromAddress = new EmailAddress(from, fromName);
             var toAddress = new EmailAddress(to);
             var message = MailHelper.CreateSingleEmail(fromAddress, toAddress, subject, null, htmlContent);
+            //message.SetTemplateId("d-fa9239ac47184b0f8ff12aa6c26b90c2");
+            //message.SetTemplateData(new
+            //{
+            //    Name = "asdasd",
+            //    Url = "/*https://www.vivienfabing.com*/",
+            //});
             if (attachments?.Any() == true)
             {
                 foreach (var attachment in attachments)
