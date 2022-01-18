@@ -72,7 +72,6 @@
 
             var wines = this.winesService.GetAll<ProductViewModel>(id, itemsPerPage);
             return this.View(wines);
-
         }
 
         // GET: Administration/Wines/Details/5

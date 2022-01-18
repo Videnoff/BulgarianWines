@@ -1,8 +1,10 @@
 ﻿namespace BulgarianWines.Web.Areas.Identity.Pages.Account
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc.RazorPages;
 
-    public class AccessDeniedModel : PageModel
+    [AllowAnonymous]
+    public class ResetPasswordConfirmationModel : PageModel
     {
         public void OnGet()
         {
