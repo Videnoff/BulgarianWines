@@ -81,7 +81,14 @@ select.form-control, textarea.form-control, input[type="text"].form-control, inp
 }
 
 .radio label:hover, .checkbox label:hover {
-    color: #BC4857;
+    /*
+        original
+    */
+    /*color: #BC4857;*/
+    /*
+        modified
+    */
+    color: #9D1E25;
 }
 
 .input-group .input-group-addon {
@@ -319,7 +326,14 @@ div.required .control-label:before {
 
 .header .header-cart {
     float: right;
-    background: #BC4857;
+    /*
+        original
+    */
+    /*background: #BC4857;*/
+    /*
+        modified
+    */
+    background: #9d1e25;
 }
 
 .user-info-wrapper .user-info-icon-desc {
@@ -1771,7 +1785,7 @@ ul {
     }
 
     #menu .nav-mainmenu {
-        background: #BC4857;
+        background: #9d1e25;
         text-align: center;
         cursor: pointer;
         padding: 15px 35px;
