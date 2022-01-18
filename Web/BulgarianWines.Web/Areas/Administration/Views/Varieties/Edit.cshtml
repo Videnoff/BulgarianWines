@@ -1,0 +1,78 @@
+﻿@model BulgarianWines.Web.ViewModels.Administration.Varieties.EditVarietyViewModel
+
+@{
+    ViewData["Title"] = "Edit Variety";
+}
+
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+</head>
+
+<div>
+    <a asp-action="Index" class="btn btn-primary">
+        Back to List
+    </a>
+</div>
+
+<br/>
+
+<div class="shadow card">
+    <div class="card-header h3 text-center">
+        @ViewData["Title"]
+    </div>
+    <div class="card-body">
+        <form asp-area="Administration" asp-controller="Varieties" asp-action="Edit" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            <input asp-for="Id" hidden />
+            <div class="form-group text-center">
+                <button type="submit" value="" class="btn btn-primary">
+                    Edit
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Styles{
+    <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+    <link href="~/css/fontawesome-iconpicker.min.css" rel="stylesheet" asp-append-version="true" />
+    <style>
+        .fade:not(.show) {
+            opacity: unset;
+        }
+    </style>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="~/lib/tinymce/tinymce.min.js" asp-append-version="true"></script>
+    <script src="~/js/fontawesome-iconpicker.min.js" asp-append-version="true"></script>
+
+    <script type="text/javascript">
+        tinymce.init({
+            selector: "textarea.edit-with-tinymce",
+            relative_urls: false,
+            remove_script_host: false,
+            convert_urls: true,
+            plugins: [
+                "image paste table link code media fullscreen wordcount searchreplace lists"
+            ],
+            toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent"
+        });
+    </script>
+
+    <script>
+        (function () {
+            $('.icp-auto').iconpicker();
+        })()
+    </script>
+}

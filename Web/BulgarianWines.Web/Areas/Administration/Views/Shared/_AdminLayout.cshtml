@@ -60,14 +60,14 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                Options
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts"
                    aria-expanded="true" aria-controls="collapseProducts">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-wine-bottle"></i>
                     <span>
                         Wines
                     </span>
@@ -94,7 +94,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories"
                    aria-expanded="true" aria-controls="collapseCategories">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-tags"></i>
                     <span>
                         Categories
                     </span>
@@ -121,7 +121,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSlides"
                    aria-expanded="true" aria-controls="collapseSlides">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-sliders-h"></i>
                     <span>
                         Slides
                     </span>
@@ -170,57 +170,83 @@
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
-                   aria-expanded="true" aria-controls="collapseMessages">
-                    <i class="fas fa-users"></i>
-                    <span>
-                        Users & Roles
-                    </span>
-                </a>
-                <div id="collapseUsers" class="collapse" aria-labelledby="headingUtilities"
-                     data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">
-                            Users:
-                        </h6>
-                        <a class="collapse-item" asp-area="Administration" asp-controller="Users" asp-action="ListUsers">
-                            All
-                        </a>
-                        <a class="collapse-item" asp-area="Identity" asp-page="/Account/Register">
-                            Create
-                        </a>
-                        <a class="collapse-item" asp-area="Administration" asp-controller="Users" asp-action="DeletedUsers">
-                            Deleted
-                        </a>
-                    </div>
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">
-                            Roles:
-                        </h6>
-                        <a class="collapse-item" asp-area="Administration" asp-controller="Users" asp-action="ListRoles">
-                            All
-                        </a>
-                        <a class="collapse-item" asp-area="Administration" asp-controller="Users" asp-action="CreateRole">
-                            Create
-                        </a>
-                        <a class="collapse-item" asp-area="Administration" asp-controller="Users" asp-action="DeletedRoles">
-                            Deleted
-                        </a>
-                    </div>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
+               aria-expanded="true" aria-controls="collapseMessages">
+                <i class="fas fa-users"></i>
+                <span>
+                    Users & Roles
+                </span>
+            </a>
+            <div id="collapseUsers" class="collapse" aria-labelledby="headingUtilities"
+                 data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">
+                        Users:
+                    </h6>
+                    <a class="collapse-item" asp-area="Administration" asp-controller="Users" asp-action="ListUsers">
+                        All
+                    </a>
+                    <a class="collapse-item" asp-area="Identity" asp-page="/Account/Register">
+                        Create
+                    </a>
+                    <a class="collapse-item" asp-area="Administration" asp-controller="Users" asp-action="DeletedUsers">
+                        Deleted
+                    </a>
                 </div>
-            </li>
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">
+                        Roles:
+                    </h6>
+                    <a class="collapse-item" asp-area="Administration" asp-controller="Users" asp-action="ListRoles">
+                        All
+                    </a>
+                    <a class="collapse-item" asp-area="Administration" asp-controller="Users" asp-action="CreateRole">
+                        Create
+                    </a>
+                    <a class="collapse-item" asp-area="Administration" asp-controller="Users" asp-action="DeletedRoles">
+                        Deleted
+                    </a>
+                </div>
+            </div>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVarieties"
+               aria-expanded="true" aria-controls="collapseVarieties">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>
+                    Varieties
+                </span>
+            </a>
+            <div id="collapseVarieties" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">
+                        Varieties:
+                    </h6>
+                    <a class="collapse-item" asp-area="Administration" asp-controller="Varieties" asp-action="Index">
+                        All
+                    </a>
+                    <a class="collapse-item" asp-area="Administration" asp-controller="Varieties" asp-action="Create">
+                        Create
+                    </a>
+                    <a class="collapse-item" asp-area="Administration" asp-controller="Varieties" asp-action="Deleted">
+                        Deleted
+                    </a>
+                </div>
+            </div>
+        </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+        <!-- Divider -->
+            <!--<hr class="sidebar-divider">-->
 
             <!-- Heading -->
-            <div class="sidebar-heading">
+            <!--<div class="sidebar-heading">
                 Addons
-            </div>
+            </div>-->
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            @*<li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                    aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
@@ -250,31 +276,31 @@
                         </a>
                     </div>
                 </div>
-            </li>
+            </li>*@
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
+            @*<li class="nav-item">
                 <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span>
                 </a>
-            </li>
+            </li>*@
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
+            @*<li class="nav-item">
                 <a class="nav-link" href="tables.html">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span>
                 </a>
-            </li>
+            </li>*@
 
             <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+            <!--<hr class="sidebar-divider d-none d-md-block">-->
 
             <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
+            <!--<div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
+            </div>-->
         </ul>
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
@@ -292,7 +318,7 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    @*<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                    aria-label="Search" aria-describedby="basic-addon2">
@@ -302,7 +328,7 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form>*@
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -349,18 +375,20 @@
                     <partial name="~/Views/Shared/_AlertPartial.cshtml" />
                     @this.RenderBody()
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                    @*<div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">
+                            Dashboard
+                        </h1>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                             <i class="fas fa-download fa-sm text-white-50"></i> Generate Report
                         </a>
-                    </div>
+                    </div>*@
 
                     <!-- Content Row -->
                     <div class="row">
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        @*<div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -376,10 +404,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        @*<div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -395,10 +423,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        @*<div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -425,10 +453,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
 
                         <!-- Pending Requests Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        @*<div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -444,7 +472,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                     </div>
 
                     <!-- Content Row -->
@@ -455,7 +483,7 @@
                         <div class="col-xl-8 col-lg-7">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
-                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                @*<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
@@ -471,13 +499,13 @@
                                             <a class="dropdown-item" href="#">Something else here</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div>*@
                                 <!-- Card Body -->
-                                <div class="card-body">
+                                @*<div class="card-body">
                                     <div class="chart-area">
                                         <canvas id="myAreaChart"></canvas>
                                     </div>
-                                </div>
+                                </div>*@
                             </div>
                         </div>
 
@@ -485,7 +513,7 @@
                         <div class="col-xl-4 col-lg-5">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
-                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                @*<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
@@ -501,9 +529,9 @@
                                             <a class="dropdown-item" href="#">Something else here</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div>*@
                                 <!-- Card Body -->
-                                <div class="card-body">
+                                @*<div class="card-body">
                                     <div class="chart-pie pt-4 pb-2">
                                         <canvas id="myPieChart"></canvas>
                                     </div>
@@ -521,7 +549,7 @@
                                             Referral
                                         </span>
                                     </div>
-                                </div>
+                                </div>*@
                             </div>
                         </div>
                     </div>

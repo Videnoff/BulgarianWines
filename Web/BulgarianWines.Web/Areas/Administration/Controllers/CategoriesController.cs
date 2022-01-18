@@ -68,7 +68,7 @@
 
             await this.categoriesService.CreateAsync(input, input.UploadedImages);
 
-            this.TempData["Alert"] = "Successfully created slide.";
+            this.TempData["Alert"] = "Successfully created category.";
 
             return this.RedirectToAction(nameof(this.Index));
         }
@@ -102,11 +102,11 @@
             var editResult = await this.categoriesService.EditAsync(model, model.UploadedImages);
             if (editResult)
             {
-                this.TempData["Alert"] = "Successfully edited slide.";
+                this.TempData["Alert"] = "Successfully edited variety.";
             }
             else
             {
-                this.TempData["Error"] = "There was a problem editing the slide.";
+                this.TempData["Error"] = "There was a problem editing the variety.";
             }
 
             return this.RedirectToAction(nameof(this.Index));
