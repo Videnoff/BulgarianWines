@@ -11,11 +11,14 @@
             this.Images = new HashSet<Image>();
             this.FavoriteProducts = new HashSet<FavoriteProduct>();
             this.Reviews = new HashSet<Review>();
+            this.ShoppingCartProducts = new HashSet<ShoppingCartProduct>();
         }
 
         public string Name { get; set; }
 
         public string Description { get; set; }
+
+        public decimal Price { get; set; }
 
         public int OriginId { get; set; }
 
@@ -52,5 +55,7 @@
         public virtual ICollection<FavoriteProduct> FavoriteProducts { get; set; }
 
         public virtual ICollection<Review> Reviews { get; set; }
+
+        public virtual ICollection<ShoppingCartProduct> ShoppingCartProducts { get; set; }
     }
 }

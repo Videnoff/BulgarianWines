@@ -1,4 +1,8 @@
 ﻿// ReSharper disable VirtualMemberCallInConstructor
+
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace BulgarianWines.Data.Models
 {
     using System;
@@ -49,5 +53,11 @@ namespace BulgarianWines.Data.Models
         public virtual ICollection<FavoriteProduct> FavoriteProducts { get; set; }
 
         public virtual ICollection<Review> Reviews { get; set; }
+
+        //[Required]
+        [ForeignKey(nameof(ShoppingCart))]
+        public string ShoppingCartId { get; set; }
+
+        public virtual ShoppingCart ShoppingCart { get; set; }
     }
 }

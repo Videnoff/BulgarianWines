@@ -168,6 +168,9 @@ namespace BulgarianWines.Data.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ShoppingCartId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
@@ -189,6 +192,8 @@ namespace BulgarianWines.Data.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.HasIndex("ShoppingCartId");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -676,6 +681,73 @@ namespace BulgarianWines.Data.Migrations
                     b.ToTable("Settings");
                 });
 
+            modelBuilder.Entity("BulgarianWines.Data.Models.ShoppingCart", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ShoppingCarts");
+                });
+
+            modelBuilder.Entity("BulgarianWines.Data.Models.ShoppingCartProduct", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ShoppingCartId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("WineId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("ShoppingCartId");
+
+                    b.HasIndex("WineId");
+
+                    b.ToTable("ShoppingCartProduct");
+                });
+
             modelBuilder.Entity("BulgarianWines.Data.Models.SlideImage", b =>
                 {
                     b.Property<string>("Id")
@@ -873,6 +945,9 @@ namespace BulgarianWines.Data.Migrations
 
                     b.Property<int>("OriginId")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -1074,6 +1149,15 @@ namespace BulgarianWines.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("BulgarianWines.Data.Models.ApplicationUser", b =>
+                {
+                    b.HasOne("BulgarianWines.Data.Models.ShoppingCart", "ShoppingCart")
+                        .WithMany()
+                        .HasForeignKey("ShoppingCartId");
+
+                    b.Navigation("ShoppingCart");
+                });
+
             modelBuilder.Entity("BulgarianWines.Data.Models.CategoryImage", b =>
                 {
                     b.HasOne("BulgarianWines.Data.Models.Category", "Category")
@@ -1162,6 +1246,34 @@ namespace BulgarianWines.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+
+                    b.Navigation("Wine");
+                });
+
+            modelBuilder.Entity("BulgarianWines.Data.Models.ShoppingCart", b =>
+                {
+                    b.HasOne("BulgarianWines.Data.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BulgarianWines.Data.Models.ShoppingCartProduct", b =>
+                {
+                    b.HasOne("BulgarianWines.Data.Models.ShoppingCart", "ShoppingCart")
+                        .WithMany("ShoppingCartProducts")
+                        .HasForeignKey("ShoppingCartId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("BulgarianWines.Data.Models.Wine", "Wine")
+                        .WithMany("ShoppingCartProducts")
+                        .HasForeignKey("WineId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("ShoppingCart");
 
                     b.Navigation("Wine");
                 });
@@ -1368,6 +1480,11 @@ namespace BulgarianWines.Data.Migrations
                     b.Navigation("Wines");
                 });
 
+            modelBuilder.Entity("BulgarianWines.Data.Models.ShoppingCart", b =>
+                {
+                    b.Navigation("ShoppingCartProducts");
+                });
+
             modelBuilder.Entity("BulgarianWines.Data.Models.Variety", b =>
                 {
                     b.Navigation("Wines");
@@ -1385,6 +1502,8 @@ namespace BulgarianWines.Data.Migrations
                     b.Navigation("Images");
 
                     b.Navigation("Reviews");
+
+                    b.Navigation("ShoppingCartProducts");
                 });
 #pragma warning restore 612, 618
         }
