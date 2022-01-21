@@ -266,6 +266,8 @@
             return true;
         }
 
+        public bool HasProduct(int id) => this.winesRepository.AllAsNoTracking().Any(x => x.Id == id);
+
         private Wine GetDeletedProductById(int id) =>
             this.winesRepository
                 .AllAsNoTrackingWithDeleted()

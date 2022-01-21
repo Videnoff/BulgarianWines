@@ -11,5 +11,7 @@
         public const string DateTimeFormat = "dd-MMM-yyyy HH:mm";
 
         public const string SystemEmail = "bulsing@bulsing.com";
+
+        public const string SessionShoppingCartKey = "shoppingCart";
     }
 }

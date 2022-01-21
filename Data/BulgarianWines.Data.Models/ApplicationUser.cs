@@ -1,12 +1,11 @@
 ﻿// ReSharper disable VirtualMemberCallInConstructor
 
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace BulgarianWines.Data.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     using BulgarianWines.Data.Common.Models;
     using Microsoft.AspNetCore.Identity;

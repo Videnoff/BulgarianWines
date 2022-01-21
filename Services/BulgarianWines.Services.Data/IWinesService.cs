@@ -36,5 +36,7 @@
         public Task<bool> CreateReviewAsync<T>(T model);
 
         public Task<bool> DeleteReviewAsync(string id);
+
+        public bool HasProduct(int id);
     }
 }
