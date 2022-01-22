@@ -33,7 +33,68 @@ namespace BulgarianWines.Services.Data
 
         public async Task<bool> AddProductAsync(bool isUserAuthenticated, ISession session, string userId, int productId, int quantity = 1)
         {
-            throw new System.NotImplementedException();
+            if (isUserAuthenticated)
+            {
+                var user = await this.userManager.FindByIdAsync(userId);
+                var shoppingBagId = user.ShoppingCartId;
+
+                var shoppingBagExists = this.GetShoppingCartByIdAndProductId(productId, shoppingBagId) != null;
+
+                if (shoppingBagExists)
+                {
+                    return false;
+                }
+
+                var productExists = this.winesService.HasProduct(productId);
+
+                if (!productExists)
+                {
+                    return false;
+                }
+
+                var newShoppingBag = new ShoppingCartProduct
+                {
+                    ShoppingCartId = shoppingBagId,
+                    WineId = productId,
+                    Quantity = quantity,
+                };
+
+                await this.shoppingCartProductRepository.AddAsync(newShoppingBag);
+                await this.shoppingCartProductRepository.SaveChangesAsync();
+
+                return true;
+            }
+            else
+            {
+                var shoppingCartSession = session.GetObjectFromJson<List<ShoppingBagProductViewModel>>(GlobalConstants.SessionShoppingCartKey);
+
+                if (shoppingCartSession == null)
+                {
+                    shoppingCartSession = new List<ShoppingBagProductViewModel>();
+                }
+
+                if (shoppingCartSession.Any(x => x.ProductId == productId))
+                {
+                    return false;
+                }
+
+                var product = this.winesService.GetById<SingleProductViewModel>(productId);
+                var shoppingCartProduct = new ShoppingBagProductViewModel
+                {
+                    ProductId = product.Id,
+                    ProductName = product.Name,
+                    ProductPrice = product.Price,
+                    ImageUrl = product.ImageUrl,
+                    AverageRating = product.AverageRating,
+                    Quantity = quantity,
+                };
+
+                shoppingCartSession.Add(shoppingCartProduct);
+
+                session.SetObjectAsJson(GlobalConstants.SessionShoppingCartKey, shoppingCartSession);
+
+                return true;
+            }
         }
 
         public Task<bool> UpdateQuantityAsync(bool isUserAuthenticated, ISession session, string userId, int productId, bool increase)

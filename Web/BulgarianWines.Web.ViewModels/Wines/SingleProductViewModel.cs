@@ -47,6 +47,8 @@
 
         public string AvailabilityStatus { get; set; }
 
+        public decimal Price { get; set; }
+
         public string SanitizedDescription => this.sanitizer.Sanitize(this.Description);
 
         public IEnumerable<WineReviewViewModel> Reviews { get; set; }
