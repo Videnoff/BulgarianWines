@@ -11,12 +11,10 @@
 
         public Task<bool> UpdateQuantityAsync(bool isUserAuthenticated, ISession session, string userId, int productId, bool increase);
 
-        public Task<IEnumerable<T>> GetAllProducts<T>(bool isUserAuthenticated, ISession session, string userId);
+        public Task<IEnumerable<T>> GetAllProductsAsync<T>(bool isUserAuthenticated, ISession session, string userId);
 
         public Task<bool> DeleteProductAsync(bool isUserAuthenticated, ISession session, string userId, int productId);
 
-        public Task<bool> DeleteAllProductsAsync(string userId);
-
-        public Task<bool> HasAnyProducts(string userId);
+        public Task DeleteAllProductsAsync(string userId);
     }
 }

@@ -1,7 +1,6 @@
-﻿using BulgarianWines.Web.ViewModels.ShoppingBagAndFavorites;
-
-namespace BulgarianWines.Services.Data
+﻿namespace BulgarianWines.Services.Data
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -11,6 +10,7 @@ namespace BulgarianWines.Services.Data
     using BulgarianWines.Data.Models;
     using BulgarianWines.Services.Mapping;
     using BulgarianWines.Web.Infrastructure;
+    using BulgarianWines.Web.ViewModels.ShoppingCart;
     using BulgarianWines.Web.ViewModels.Wines;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
@@ -36,11 +36,11 @@ namespace BulgarianWines.Services.Data
             if (isUserAuthenticated)
             {
                 var user = await this.userManager.FindByIdAsync(userId);
-                var shoppingBagId = user.ShoppingCartId;
+                var shoppingCartId = user.ShoppingCartId;
 
-                var shoppingBagExists = this.GetShoppingCartByIdAndProductId(productId, shoppingBagId) != null;
+                var shoppingCartExists = this.GetShoppingCartByIdAndProductId(productId, shoppingCartId) != null;
 
-                if (shoppingBagExists)
+                if (shoppingCartExists)
                 {
                     return false;
                 }
@@ -52,25 +52,25 @@ namespace BulgarianWines.Services.Data
                     return false;
                 }
 
-                var newShoppingBag = new ShoppingCartProduct
+                var shoppingCart = new ShoppingCartProduct
                 {
-                    ShoppingCartId = shoppingBagId,
+                    ShoppingCartId = shoppingCartId,
                     WineId = productId,
                     Quantity = quantity,
                 };
 
-                await this.shoppingCartProductRepository.AddAsync(newShoppingBag);
+                await this.shoppingCartProductRepository.AddAsync(shoppingCart);
                 await this.shoppingCartProductRepository.SaveChangesAsync();
 
                 return true;
             }
             else
             {
-                var shoppingCartSession = session.GetObjectFromJson<List<ShoppingBagProductViewModel>>(GlobalConstants.SessionShoppingCartKey);
+                var shoppingCartSession = session.GetObjectFromJson<List<ShoppingCartProductViewModel>>(GlobalConstants.SessionShoppingCartKey);
 
                 if (shoppingCartSession == null)
                 {
-                    shoppingCartSession = new List<ShoppingBagProductViewModel>();
+                    shoppingCartSession = new List<ShoppingCartProductViewModel>();
                 }
 
                 if (shoppingCartSession.Any(x => x.ProductId == productId))
@@ -79,7 +79,7 @@ namespace BulgarianWines.Services.Data
                 }
 
                 var product = this.winesService.GetById<SingleProductViewModel>(productId);
-                var shoppingCartProduct = new ShoppingBagProductViewModel
+                var shoppingCartProduct = new ShoppingCartProductViewModel
                 {
                     ProductId = product.Id,
                     ProductName = product.Name,
@@ -97,29 +97,81 @@ namespace BulgarianWines.Services.Data
             }
         }
 
-        public Task<bool> UpdateQuantityAsync(bool isUserAuthenticated, ISession session, string userId, int productId, bool increase)
+        public async Task<bool> UpdateQuantityAsync(bool isUserAuthenticated, ISession session, string userId, int productId, bool increase)
         {
-            throw new System.NotImplementedException();
+            var user = await this.userManager.FindByIdAsync(userId);
+            var shoppingCartId = user.ShoppingCartId;
+
+            var shoppingCart = this.GetShoppingCartByIdAndProductId(productId, shoppingCartId);
+
+            if (shoppingCart == null)
+            {
+                return false;
+            }
+
+            var quantity = shoppingCart.Quantity;
+            if (increase)
+            {
+                quantity++;
+            }
+            else
+            {
+                quantity = Math.Max(quantity - 1, 1);
+            }
+
+            shoppingCart.Quantity = quantity;
+
+            this.shoppingCartProductRepository.Update(shoppingCart);
+            await this.shoppingCartProductRepository.SaveChangesAsync();
+
+            return true;
         }
 
-        public Task<IEnumerable<T>> GetAllProducts<T>(bool isUserAuthenticated, ISession session, string userId)
+        public async Task<IEnumerable<T>> GetAllProductsAsync<T>(bool isUserAuthenticated, ISession session, string userId)
         {
-            throw new System.NotImplementedException();
+            var user = await this.userManager.FindByIdAsync(userId);
+            var shoppingCartId = user.ShoppingCartId;
+
+            return this.shoppingCartProductRepository
+                .AllAsNoTracking()
+                .Where(x => x.ShoppingCartId == shoppingCartId)
+                .To<T>()
+                .ToList();
         }
 
-        public Task<bool> DeleteProductAsync(bool isUserAuthenticated, ISession session, string userId, int productId)
+        public async Task<bool> DeleteProductAsync(bool isUserAuthenticated, ISession session, string userId, int productId)
         {
-            throw new System.NotImplementedException();
+            var user = await this.userManager.FindByIdAsync(userId);
+            var shoppingCartId = user.ShoppingCartId;
+
+            var shoppingCart = this.GetShoppingCartByIdAndProductId(productId, shoppingCartId);
+
+            if (shoppingCart == null)
+            {
+                return false;
+            }
+
+            this.shoppingCartProductRepository.Delete(shoppingCart);
+            await this.shoppingCartProductRepository.SaveChangesAsync();
+
+            return true;
         }
 
-        public Task<bool> DeleteAllProductsAsync(string userId)
+        public async Task DeleteAllProductsAsync(string userId)
         {
-            throw new System.NotImplementedException();
-        }
+            var user = await this.userManager.FindByIdAsync(userId);
+            var shoppingCartId = user.ShoppingCartId;
 
-        public Task<bool> HasAnyProducts(string userId)
-        {
-            throw new System.NotImplementedException();
+            var products = this.shoppingCartProductRepository.All()
+                .Where(x => x.ShoppingCartId == shoppingCartId)
+                .ToList();
+
+            foreach (var product in products)
+            {
+                this.shoppingCartProductRepository.Delete(product);
+            }
+
+            await this.shoppingCartProductRepository.SaveChangesAsync();
         }
 
         private ShoppingCartProduct GetShoppingCartByIdAndProductId(int productId, string shoppingCartId) =>

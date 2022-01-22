@@ -1,6 +1,6 @@
 ﻿namespace BulgarianWines.Web.ViewModels.ShoppingBagAndFavorites
 {
-    public class ShoppingBagAndFavoritesViewModel
+    public class FavoritesViewModel
     {
         public int FavoriteProductsCount { get; set; }
     }

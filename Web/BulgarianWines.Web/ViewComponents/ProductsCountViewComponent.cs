@@ -21,7 +21,7 @@
             var userId = this.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var favoritesCount = this.favoritesService.GetCount(userId);
 
-            var model = new ShoppingBagAndFavoritesViewModel
+            var model = new FavoritesViewModel
             {
                 FavoriteProductsCount = favoritesCount,
             };
