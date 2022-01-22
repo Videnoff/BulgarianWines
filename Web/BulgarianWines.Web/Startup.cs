@@ -141,6 +141,7 @@
             services.AddTransient<IUserMessagesService, UserMessagesService>();
             services.AddTransient<ITimeService, TimeService>();
             services.AddTransient<IRenderViewService, RenderViewService>();
+            services.AddTransient<IShoppingCartService, ShoppingCartService>();
 
             // services.AddTransient<INewsletterService, NewsletterService>();
             // File.WriteAllText("/home/abc" + Guid.NewGuid().ToString() + ".txt", this.configuration["BlobConnectionString"]);
