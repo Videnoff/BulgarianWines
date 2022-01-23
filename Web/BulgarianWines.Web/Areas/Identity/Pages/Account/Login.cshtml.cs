@@ -1,4 +1,9 @@
-﻿namespace BulgarianWines.Web.Areas.Identity.Pages.Account
+﻿using BulgarianWines.Common;
+using BulgarianWines.Services.Data;
+using BulgarianWines.Web.Infrastructure;
+using BulgarianWines.Web.ViewModels.ShoppingCart;
+
+namespace BulgarianWines.Web.Areas.Identity.Pages.Account
 {
     using System;
     using System.Collections.Generic;
@@ -23,15 +28,18 @@
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly Services.Messaging.IEmailSender emailSender;
         private readonly ILogger<LoginModel> logger;
+        private readonly IShoppingCartService shoppingCartService;
 
         public LoginModel(
             SignInManager<ApplicationUser> signInManager,
             ILogger<LoginModel> logger,
             UserManager<ApplicationUser> userManager,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IShoppingCartService shoppingCartService)
         {
             this.userManager = userManager;
             this.emailSender = emailSender;
+            this.shoppingCartService = shoppingCartService;
             this.signInManager = signInManager;
             this.logger = logger;
         }
@@ -109,6 +117,18 @@
                 if (result.Succeeded)
                 {
                     this.logger.LogInformation("User logged in.");
+                    var cart = this.HttpContext.Session.GetObjectFromJson<List<ShoppingCartProductViewModel>>(GlobalConstants.SessionShoppingCartKey);
+                    if (cart != null)
+                    {
+                        foreach (var product in cart)
+                        {
+                            var user = await this.userManager.FindByEmailAsync(this.Input.Email);
+                            await this.shoppingCartService.AddProductAsync(true, this.HttpContext.Session, user.Id, product.ProductId, product.Quantity);
+                        }
+
+                        this.HttpContext.Session.Remove(GlobalConstants.SessionShoppingCartKey);
+                    }
+
                     return this.LocalRedirect(returnUrl);
                 }
 

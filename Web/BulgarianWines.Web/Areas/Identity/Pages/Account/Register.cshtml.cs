@@ -1,4 +1,9 @@
-﻿namespace BulgarianWines.Web.Areas.Identity.Pages.Account
+﻿using BulgarianWines.Data;
+using BulgarianWines.Services.Data;
+using BulgarianWines.Web.Infrastructure;
+using BulgarianWines.Web.ViewModels.ShoppingCart;
+
+namespace BulgarianWines.Web.Areas.Identity.Pages.Account
 {
     using System;
     using System.Collections.Generic;
@@ -40,6 +45,8 @@
         private readonly ILogger<RegisterModel> logger;
         private readonly IRenderViewService renderViewService;
         private readonly IDeletableEntityRepository<ApplicationUser> usersRepository;
+        private readonly IShoppingCartService shoppingCartService;
+        private readonly ApplicationDbContext dbContext;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
@@ -48,7 +55,9 @@
             Services.Messaging.IEmailSender emailSender,
             IImagesService imagesService,
             IRenderViewService renderViewService,
-            IDeletableEntityRepository<ApplicationUser> usersRepository)
+            IDeletableEntityRepository<ApplicationUser> usersRepository,
+            IShoppingCartService shoppingCartService,
+            ApplicationDbContext dbContext)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
@@ -56,6 +65,8 @@
             this.imagesService = imagesService;
             this.renderViewService = renderViewService;
             this.usersRepository = usersRepository;
+            this.shoppingCartService = shoppingCartService;
+            this.dbContext = dbContext;
             this.emailSender = emailSender;
         }
 
@@ -117,17 +128,23 @@
 
                 // await this.imagesService.UploadAzureBlobImageAsync(file, AzureContainerName);
 
+                var shoppingCart = new ShoppingCart();
+
                 var user = new ApplicationUser
                 {
                     UserName = userName,
                     Email = this.Input.Email,
                     FirstName = this.Input.FirstName,
                     LastName = this.Input.LastName,
+                    ShoppingCart = shoppingCart,
 
                     // ImageUrl = file.FileName,
                 };
 
                 var result = await this.userManager.CreateAsync(user, this.Input.Password);
+                shoppingCart.User = user;
+
+                await this.dbContext.SaveChangesAsync();
                 if (result.Succeeded)
                 {
                     this.logger.LogInformation("User created a new account with password.");
@@ -171,6 +188,20 @@
                         }
 
                         await this.signInManager.SignInAsync(user, isPersistent: false);
+
+                        var cart = this.HttpContext.Session.GetObjectFromJson<List<ShoppingCartProductViewModel>>(
+                            GlobalConstants.SessionShoppingCartKey);
+
+                        if (cart != null)
+                        {
+                            foreach (var product in cart)
+                            {
+                                await this.shoppingCartService.AddProductAsync(true, this.HttpContext.Session, user.Id, product.ProductId, product.Quantity);
+                            }
+
+                            this.HttpContext.Session.Remove(GlobalConstants.SessionShoppingCartKey);
+                        }
+
                         return this.LocalRedirect(returnUrl);
                     }
                 }

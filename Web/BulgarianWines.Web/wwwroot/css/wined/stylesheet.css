@@ -12023,3 +12023,7 @@ html body.common-home.layout-1 div#Tab_Category_Slider.category_tab.box div.cont
 /*
     By category
 */
+
+.custom-image-box {
+    height: 60px;
+}

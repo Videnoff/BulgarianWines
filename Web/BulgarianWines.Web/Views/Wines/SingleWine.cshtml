@@ -241,18 +241,19 @@
                                 </ul>
                                 <ul class="list-unstyled price">
                                     <li>
-                                        <h2>
-                                            Price
+                                        <h2 class="product-price">
+                                            S$ @Model.Price
                                         </h2>
                                     </li>
-                                    <li class="price-tax">
-                                        <a asp-area="" asp-controller="Home" asp-action="Contact">
-                                            Ask for price
-                                        </a>
+                                    <li class="discount">
+                                        1 to 5 Cases S$ 27
                                     </li>
-                                    @*<li class="points">
-                                            Price in reward points: 400
-                                        </li>*@
+                                    <li class="discount">
+                                        5 to 10 Cases S$ 26
+                                    </li>
+                                    <li class="discount">
+                                        10 and above S$ 25
+                                    </li>
                                 </ul>
                                 <div id="product">
                                     @*<h3 class="product-option">
@@ -272,26 +273,30 @@
                                             </div>
                                         </div>*@
                                     <div class="form-group cart">
-                                        @*<label class="control-label qty" for="input-quantity">
-                                                Qty
-                                            </label>*@
-                                        @*<input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control" />*@
-                                        <a asp-area="" asp-controller="Favorites" asp-action="Add" asp-route-id="@Model.Id">
-                                            <button type="button" id="button-cart" data-loading-text="Loading..." class="btn btn-primary btn-lg btn-block">
-                                                Add to Wishlist
+                                        <label class="control-label qty" for="input-quantity">
+                                            Qty
+                                        </label>
+                                        <input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control" />
+                                        @*<a asp-area="" asp-controller="Favorites" asp-action="Add" asp-route-id="@Model.Id">
+                                                <button type="button" id="button-cart" data-loading-text="Loading..." class="btn btn-primary btn-lg btn-block">
+                                                    Add to Wishlist
+                                                </button>
+                                            </a>*@
+                                        <a asp-area="" asp-controller="ShoppingCart" asp-action="Add" asp-route-productId="@Model.Id">
+                                            <button type="button" id="button-cart2" data-loading-text="Loading..." class="btn btn-primary btn-lg btn-block">
+                                                Add to Cart
                                             </button>
                                         </a>
-                                        @*<span>
-                                                - OR -
-                                            </span>
-                                            <div class="btn-group">
+                                        <span>
+                                            - OR -
+                                        </span>
+                                        <div class="btn-group">
+                                            <a asp-area="" asp-controller="Favorites" asp-action="Add" asp-route-id="@Model.Id">
                                                 <button type="button" class="btn btn-default wishlist" title="Add to Wish List" onclick="wishlist.add('51');">
                                                     Add to Wish List
                                                 </button>
-                                                <button type="button" class="btn btn-default compare" title="Compare this Product" onclick="compare.add('51');">
-                                                    Compare this Product
-                                                </button>
-                                            </div>*@
+                                            </a>
+                                        </div>
 
                                     </div>
                                     <input type="hidden" name="@Model.Id" value="@Model.Id" />

@@ -17,6 +17,10 @@
         [Required]
         public string Description { get; set; }
 
+        [Range(1, (double)int.MaxValue)]
+        [Display(Name = "Price (SGD)")]
+        public decimal Price { get; set; }
+
         [Required]
         [Display(Name = "Select Origin")]
         public int OriginId { get; set; }

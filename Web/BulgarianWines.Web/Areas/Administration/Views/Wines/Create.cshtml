@@ -58,6 +58,11 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
                     <label asp-for="OriginId" class="control-label"></label>
                     <select asp-for="OriginId" class="form-control" asp-items="originItems"></select>
                     <span asp-validation-for="OriginId" class="text-danger"></span>
@@ -87,11 +92,11 @@
                     <select asp-for="AvailabilityId" class="form-control" asp-items="availabilityItems"></select>
                     <span asp-validation-for="AvailabilityId"></span>
                 </div>
-                <div class="form-group col-md-6">
-                    <label asp-for="UploadedImages" class="control-label"></label>
-                    <input asp-for="UploadedImages" class="col-md-2" />
-                    <span asp-validation-for="UploadedImages" class="text-danger"></span>
-                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="UploadedImages" class="control-label"></label>
+                <input asp-for="UploadedImages" class="col-md-2" />
+                <span asp-validation-for="UploadedImages" class="text-danger"></span>
             </div>
             <hr />
             <div class="form-group text-center">

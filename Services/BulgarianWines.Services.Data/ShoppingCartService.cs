@@ -129,14 +129,22 @@
 
         public async Task<IEnumerable<T>> GetAllProductsAsync<T>(bool isUserAuthenticated, ISession session, string userId)
         {
-            var user = await this.userManager.FindByIdAsync(userId);
-            var shoppingCartId = user.ShoppingCartId;
+            if (isUserAuthenticated)
+            {
+                var user = await this.userManager.FindByIdAsync(userId);
+                var shoppingCartId = user.ShoppingCartId;
 
-            return this.shoppingCartProductRepository
-                .AllAsNoTracking()
-                .Where(x => x.ShoppingCartId == shoppingCartId)
-                .To<T>()
-                .ToList();
+                return this.shoppingCartProductRepository
+                    .AllAsNoTracking()
+                    .Where(x => x.ShoppingCartId == shoppingCartId)
+                    .To<T>()
+                    .ToList();
+            }
+            else
+            {
+                var products = session.GetObjectFromJson<List<T>>(GlobalConstants.SessionShoppingCartKey);
+                return products;
+            }
         }
 
         public async Task<bool> DeleteProductAsync(bool isUserAuthenticated, ISession session, string userId, int productId)
