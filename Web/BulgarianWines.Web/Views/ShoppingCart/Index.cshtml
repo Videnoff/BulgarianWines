@@ -45,13 +45,37 @@
                                     <td>
                                         <div class="t-content">
                                             <p class="t-heading">
-                                                <a asp-area="" asp-controller="Wines" asp-action="Details" asp-route-id="@product.ProductId">@product.ProductName</a>
+                                                <a asp-area="" asp-controller="Wines" asp-action="Details" asp-route-id="@product.ProductId">
+                                                    @product.ProductName
+                                                </a>
                                             </p>
-                                            <partial name="_WineRatingPartial" model="new BulgarianWines.Web.ViewModels.Wines.WineRatingViewModel(){ AverageRating = product.AverageRating, ShowAverageRating = false }" />
+                                            <partial name="_WineRatingPartial" model="new BulgarianWines.Web.ViewModels.Wines.WineRatingViewModel{ AverageRating = product.AverageRating, ShowAverageRating = false }" />
                                         </div>
                                     </td>
                                     <td class="t-price">
                                         @product.ProductPrice лв.
+                                    </td>
+                                    <td class="t-qty">
+                                        <div class="qty-box">
+                                            <div class="quantity buttons_added">
+                                                <a asp-area="" asp-controller="ShoppingCart" asp-action="UpdateQuantity" asp-route-productId="@product.ProductId" asp-route-increase="false" class="minus">
+                                                    -
+                                                </a>
+                                                <input type="number" step="1" min="1" max="100" value="@product.Quantity" class="qty text" size="4" readonly>
+                                                <a asp-area="" asp-controller="ShoppingCart" asp-action="UpdateQuantity" asp-route-productId="@product.ProductId" asp-route-increase="true" class="plus">
+                                                    +
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="t-total">
+                                        @product.TotalPrice лв.
+                                    </td>
+                                    <td class="">
+                                        <a asp-area="" asp-controller="ShoppingCart" asp-action="Delete" asp-route-id="@product.ProductId">
+                                            <i class="fa fa-trash">
+                                            </i>
+                                        </a>
                                     </td>
                                 </tr>
                             }

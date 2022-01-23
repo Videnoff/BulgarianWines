@@ -45,6 +45,57 @@ namespace BulgarianWines.Web.Controllers
             });
         }
 
+        [HttpGet("/ShoppingCart/Add/{productId:int}")]
+        public async Task<IActionResult> Add(int productId)
+        {
+            var addResult =
+                await this.shoppingCartService.AddProductAsync(this.isUserAuthenticated, this.session, this.userId,
+                    productId);
 
+            if (addResult)
+            {
+                this.TempData["Alert"] = "Successfully added the product to the shopping cart.";
+            }
+            else
+            {
+                this.TempData["Error"] = "There was a problem adding the product to the shopping cart.";
+            }
+
+            return this.RedirectToAction(nameof(this.Index));
+        }
+
+        [HttpGet("/ShoppingCart/Delete/{productId}")]
+        public async Task<IActionResult> Delete(int productId)
+        {
+            var deleteResult = await this.shoppingCartService.DeleteProductAsync(this.isUserAuthenticated, this.session, this.userId, productId);
+
+            if (deleteResult)
+            {
+                this.TempData["Alert"] = "Successfully removed the product from the shopping cart.";
+            }
+            else
+            {
+                this.TempData["Error"] = "There was a problem removing the product from the shopping cart.";
+            }
+
+            return this.RedirectToAction(nameof(this.Index));
+        }
+
+        [HttpGet("/ShoppingCart/Quantity/{productId}")]
+        public async Task<IActionResult> UpdateQuantity(int productId, bool increase)
+        {
+            var updateResult = await this.shoppingCartService.UpdateQuantityAsync(this.isUserAuthenticated, this.session, this.userId, productId, increase);
+
+            if (updateResult)
+            {
+                this.TempData["Alert"] = "Successfully updated product quantity.";
+            }
+            else
+            {
+                this.TempData["Error"] = "There was a problem updating the product quantity.";
+            }
+
+            return this.RedirectToAction(nameof(this.Index));
+        }
     }
 }
