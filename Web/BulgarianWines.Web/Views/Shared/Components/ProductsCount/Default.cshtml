@@ -1,4 +1,4 @@
-﻿@model BulgarianWines.Web.ViewModels.ShoppingBagAndFavorites.FavoritesViewModel
+﻿@model BulgarianWines.Web.ViewModels.ShoppingCartAndFavorites.ShoppingCartAndFavoritesViewModel
 
 <div class="header-cart">
     <div id="cart" class="btn-group btn-block">
@@ -6,10 +6,10 @@
         <button type="button" data-toggle="dropdown" data-loading-text="Loading..." class="btn btn-inverse btn-block btn-lg dropdown-toggle">
             <!-- <span class="heading-title">from the Blogs</span>-->
             <span id="cart-total">
-                @Model.FavoriteProductsCount
+                @Model.ShoppingCartProductsCount
             </span>
             <span id="cart-title">
-                your wishlist
+                your bag
                 <i class="fa fa-angle-down"></i>
             </span>
         </button>
@@ -17,16 +17,16 @@
         <ul class="dropdown-menu pull-right cart-menu">
             <li>
                 <p class="text-center">
-                    @if (@Model.FavoriteProductsCount > 0)
+                    @if (@Model.ShoppingCartProductsCount > 0)
                     {
-                        <a asp-controller="Favorites" asp-action="All">
-                            You have @Model.FavoriteProductsCount @(Model.FavoriteProductsCount > 1 ? "items" : "item")
+                        <a asp-controller="ShoppingCart" asp-action="Index">
+                            You have @Model.ShoppingCartProductsCount @(Model.ShoppingCartProductsCount> 1 ? "items" : "item")
                         </a>
                     }
                     else
                     {
                         <span>
-                            Your wishlist is empty!
+                            Your shopping cart is empty!
                         </span>
                     }
                 </p>

@@ -5,16 +5,16 @@
 @inject UserManager<ApplicationUser> UserManager
 
 <ul class="navbar-nav">
-@if (this.SignInManager.IsSignedIn(this.User))
+    @if (this.SignInManager.IsSignedIn(this.User))
     {
         <a asp-area="Identity" asp-page="/Account/Manage/Index" title="My Account" class="dropdown-toggle" data-toggle="dropdown">
             <!--<span class="account-title">My Account</span>--> <span class="caret"></span>
             <span class="user-info-image">
                 @*<img src="@this.UserManager.Users.Select(x => x.UserImages.Select(x => x.ImageUrl))" />*@
                 @*@if (UserManager.GetUserAsync(User).Result.ProfilePicture != null)
-                {
-                    <img style="width:40px;height:40px; object-fit:cover; border-radius:30px" src="data:image/*;base64,@(Convert.ToBase64String(UserManager.GetUserAsync(User).Result.ProfilePicture))">
-                }*@
+                    {
+                        <img style="width:40px;height:40px; object-fit:cover; border-radius:30px" src="data:image/*;base64,@(Convert.ToBase64String(UserManager.GetUserAsync(User).Result.ProfilePicture))">
+                    }*@
 
                 Hello @this.User.Identity.Name!
                 <i class="fa fa-angle-down"></i>
@@ -43,6 +43,16 @@
                         My Profile
                     </a>
                 </li>
+                <li>
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Favorites" asp-action="All" title="Orders">
+                        My Orders
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Favorites" asp-action="All" title="Wishlist">
+                        Wishlist
+                    </a>
+                </li>
                 <li class="nav-item">
                     <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@this.Url.Action("Index", "Home", new { area = string.Empty })">
                         <button type="submit" class="nav-link btn btn-link text-dark">
@@ -69,50 +79,10 @@
                                         English
                                     </button>
                                 </li>
-                                @*<li>
-                                    <button class="btn btn-link btn-block language-select" type="button" name="ar" title="Arabic">
-                                        <img src="~/images/wined/account/ar.png" alt="Arabic" title="Arabic" />
-                                        Arabic
-                                    </button>
-                                </li>
-                                <li>
-                                    <button class="btn btn-link btn-block language-select" type="button" name="fr-Fr" title="Français">
-                                        <img src="~/images/wined/account/fr-Fr.png" alt="Français" title="Français" />
-                                        Français
-                                    </button>
-                                </li>*@
                             </ul>
                         </div>
-                        <input type="hidden" name="code" value="" />
-                        <input type="hidden" name="redirect" value="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=common/home" />
                     </form>
                 </div>
-
-                <div class="pull-left">
-                    <form action="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=common/currency/currency" method="post" enctype="multipart/form-data" id="form-currency" title="Currency">
-                        <!--<div class="btn-group">
-                            <button class="btn btn-link dropdown-toggle common-btn" data-toggle="dropdown">
-                                <strong>$</strong>
-
-                                <span class="currency-text">Currency</span>&nbsp;--><!--<i class="fa fa-caret-down"></i>-->
-                            <!--</button>
-                            <ul class="dropdown-menu currency-menu">
-                                <li>
-                                    <button class="currency-select btn btn-link btn-block" type="button" name="EUR">€ Euro</button>
-                                </li>
-                                <li>
-                                    <button class="currency-select btn btn-link btn-block" type="button" name="GBP">£ Pound Sterling</button>
-                                </li>
-                                <li>
-                                    <button class="currency-select btn btn-link btn-block" type="button" name="USD">$ US Dollar</button>
-                                </li>
-                            </ul>
-                        </div>-->
-                        <input type="hidden" name="code" value="" />
-                        <input type="hidden" name="redirect" value="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=common/home" />
-                    </form>
-                </div>
-
             </div>
         </ul>
     }
@@ -159,17 +129,17 @@
                                     </button>
                                 </li>
                                 @*<li>
-                                    <button class="btn btn-link btn-block language-select" type="button" name="ar" title="Arabic">
-                                        <img src="~/images/wined/account/ar.png" alt="Arabic" title="Arabic" />
-                                        Arabic
-                                    </button>
-                                </li>
-                                <li>
-                                    <button class="btn btn-link btn-block language-select" type="button" name="fr-Fr" title="Français">
-                                        <img src="~/images/wined/account/fr-Fr.png" alt="Français" title="Français" />
-                                        Français
-                                    </button>
-                                </li>*@
+                                        <button class="btn btn-link btn-block language-select" type="button" name="ar" title="Arabic">
+                                            <img src="~/images/wined/account/ar.png" alt="Arabic" title="Arabic" />
+                                            Arabic
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button class="btn btn-link btn-block language-select" type="button" name="fr-Fr" title="Français">
+                                            <img src="~/images/wined/account/fr-Fr.png" alt="Français" title="Français" />
+                                            Français
+                                        </button>
+                                    </li>*@
                             </ul>
                         </div>
                         <input type="hidden" name="code" value="" />
@@ -185,8 +155,9 @@
 
                                 <span class="currency-text">
                                     Currency
-                                </span>&nbsp;--><!--<i class="fa fa-caret-down"></i>-->
-                            <!--</button>
+                                </span>&nbsp;-->
+                        <!--<i class="fa fa-caret-down"></i>-->
+                        <!--</button>
                             <ul class="dropdown-menu currency-menu">
                                 <li>
                                     <button class="currency-select btn btn-link btn-block" type="button" name="EUR">

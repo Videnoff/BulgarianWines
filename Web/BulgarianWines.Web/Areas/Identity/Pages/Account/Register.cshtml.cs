@@ -1,9 +1,4 @@
-﻿using BulgarianWines.Data;
-using BulgarianWines.Services.Data;
-using BulgarianWines.Web.Infrastructure;
-using BulgarianWines.Web.ViewModels.ShoppingCart;
-
-namespace BulgarianWines.Web.Areas.Identity.Pages.Account
+﻿namespace BulgarianWines.Web.Areas.Identity.Pages.Account
 {
     using System;
     using System.Collections.Generic;
@@ -15,14 +10,18 @@ namespace BulgarianWines.Web.Areas.Identity.Pages.Account
     using System.Threading.Tasks;
 
     using BulgarianWines.Common;
+    using BulgarianWines.Data;
     using BulgarianWines.Data.Common.Repositories;
     using BulgarianWines.Data.Models;
     using BulgarianWines.Services;
+    using BulgarianWines.Services.Data;
     using BulgarianWines.Services.Mapping;
     using BulgarianWines.Services.Messaging;
     using BulgarianWines.Web.Areas.Identity.ViewModels;
+    using BulgarianWines.Web.Infrastructure;
     using BulgarianWines.Web.Infrastructure.ValidationAttributes;
     using BulgarianWines.Web.ViewModels.Administration.Users;
+    using BulgarianWines.Web.ViewModels.ShoppingCart;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;

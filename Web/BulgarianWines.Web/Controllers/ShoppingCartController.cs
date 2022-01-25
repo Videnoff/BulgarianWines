@@ -1,16 +1,20 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using BulgarianWines.Services.Data;
-using BulgarianWines.Web.ViewModels.ShoppingCart;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using System.Security.Claims;
 
 namespace BulgarianWines.Web.Controllers
 {
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using BulgarianWines.Services.Data;
+    using BulgarianWines.Web.ViewModels.ShoppingCart;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+
     public class ShoppingCartController : BaseController
     {
         private readonly IShoppingCartService shoppingCartService;
         private readonly IWinesService winesService;
+
 
         private readonly string userId;
         private readonly bool isUserAuthenticated;
@@ -23,6 +27,9 @@ namespace BulgarianWines.Web.Controllers
         {
             this.shoppingCartService = shoppingCartService;
             this.winesService = winesService;
+
+            this.userId = contextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            this.isUserAuthenticated = contextAccessor.HttpContext.User.Identity.IsAuthenticated;
             this.session = contextAccessor.HttpContext.Session;
         }
 
@@ -49,8 +56,7 @@ namespace BulgarianWines.Web.Controllers
         public async Task<IActionResult> Add(int productId)
         {
             var addResult =
-                await this.shoppingCartService.AddProductAsync(this.isUserAuthenticated, this.session, this.userId,
-                    productId);
+                await this.shoppingCartService.AddProductAsync(this.isUserAuthenticated, this.session, this.userId, productId);
 
             if (addResult)
             {

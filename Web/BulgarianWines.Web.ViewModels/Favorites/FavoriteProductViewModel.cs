@@ -16,6 +16,8 @@
 
         public string ImageUrl { get; set; }
 
+        public string WineAvailabilityStatus { get; set; }
+
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<FavoriteProduct, FavoriteProductViewModel>()

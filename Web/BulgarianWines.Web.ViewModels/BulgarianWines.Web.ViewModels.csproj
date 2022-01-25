@@ -31,7 +31,6 @@
 
   <ItemGroup>
     <Folder Include="Administration\Components\" />
-    <Folder Include="Favorites\" />
   </ItemGroup>
 
 </Project>

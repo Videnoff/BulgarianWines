@@ -16,5 +16,7 @@
         public Task<bool> DeleteProductAsync(bool isUserAuthenticated, ISession session, string userId, int productId);
 
         public Task DeleteAllProductsAsync(string userId);
+
+        public Task<int> GetProductsCountAsync(bool isUserAuthenticated, ISession session, string userId);
     }
 }

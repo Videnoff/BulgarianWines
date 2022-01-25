@@ -182,6 +182,23 @@
             await this.shoppingCartProductRepository.SaveChangesAsync();
         }
 
+        public async Task<int> GetProductsCountAsync(bool isUserAuthenticated, ISession session, string userId)
+        {
+            if (isUserAuthenticated)
+            {
+                var user = await this.userManager.FindByIdAsync(userId);
+                var shoppingCartId = user.ShoppingCartId;
+
+                return this.shoppingCartProductRepository.AllAsNoTracking()
+                    .Count(x => x.ShoppingCartId == shoppingCartId);
+            }
+            else
+            {
+                var products = session.GetObjectFromJson<List<ShoppingCartProductViewModel>>(GlobalConstants.SessionShoppingCartKey);
+                return (products == null) ? 0 : products.Count;
+            }
+        }
+
         private ShoppingCartProduct GetShoppingCartByIdAndProductId(int productId, string shoppingCartId) =>
             this.shoppingCartProductRepository.All()
                 .FirstOrDefault(x => x.ShoppingCartId == shoppingCartId && x.WineId == productId);
