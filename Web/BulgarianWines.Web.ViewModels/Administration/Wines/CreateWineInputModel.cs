@@ -22,6 +22,9 @@
         public decimal Price { get; set; }
 
         [Required]
+        public string ProductCode { get; set; }
+
+        [Required]
         [Display(Name = "Select Origin")]
         public int OriginId { get; set; }
 

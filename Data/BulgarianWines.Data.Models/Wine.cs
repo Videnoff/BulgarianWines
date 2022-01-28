@@ -20,6 +20,8 @@
 
         public decimal Price { get; set; }
 
+        public string ProductCode { get; set; }
+
         public int OriginId { get; set; }
 
         public virtual Origin Origin { get; set; }
