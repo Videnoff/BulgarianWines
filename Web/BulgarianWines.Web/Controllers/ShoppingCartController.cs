@@ -1,8 +1,7 @@
-﻿using System.Security.Claims;
-
-namespace BulgarianWines.Web.Controllers
+﻿namespace BulgarianWines.Web.Controllers
 {
     using System.Linq;
+    using System.Security.Claims;
     using System.Threading.Tasks;
 
     using BulgarianWines.Services.Data;

@@ -12,7 +12,7 @@
         public virtual Order Order { get; set; }
 
         [Required]
-        public string WineId { get; set; }
+        public int WineId { get; set; }
 
         public virtual Wine Wine { get; set; }
 

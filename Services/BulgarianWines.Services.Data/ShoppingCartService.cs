@@ -182,6 +182,16 @@
             await this.shoppingCartProductRepository.SaveChangesAsync();
         }
 
+        public async Task<bool> AnyProductsAsync(string userId)
+        {
+            var user = await this.userManager.FindByIdAsync(userId);
+            var shoppingCartId = user.ShoppingCartId;
+
+            return this.shoppingCartProductRepository
+                .AllAsNoTracking()
+                .Any(x => x.ShoppingCartId == shoppingCartId);
+        }
+
         public async Task<int> GetProductsCountAsync(bool isUserAuthenticated, ISession session, string userId)
         {
             if (isUserAuthenticated)
