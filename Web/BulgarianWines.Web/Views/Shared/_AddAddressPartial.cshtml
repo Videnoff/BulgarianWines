@@ -1,0 +1,118 @@
+﻿@model BulgarianWines.Web.ViewModels.Addresses.AddressInputViewModel
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    @*<script src="~/js/wined/jquery/jquery-2.1.1.min.js" asp-append-version="true"></script>*@
+    <!-- <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" /> -->
+    <script src="~/js/wined/bootstrap/js/bootstrap.min.js" asp-append-version="true"></script>
+    <link href="~/js/wined/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" asp-append-version="true" />
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
+
+    <link href="~/css/wined/stylesheet.css" rel="stylesheet" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/wined/themecss/lightbox.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/js/wined/jquery/magnific/magnific-popup.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/js/wined/jquery/owl-carousel/owl.carousel.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/js/wined/jquery/owl-carousel/owl.transitions.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/wined/themecss/carousel.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/wined/themecss/custom.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/wined/themecss/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/wined/themecss/animate.css" asp-append-version="true" />
+
+    <script src="~/js/wined/lightbox/lightbox-2.6.min.js" asp-append-version="true"></script>
+    <link href="~/js/wined/jquery/datetimepicker/bootstrap-datetimepicker.min.css" type="text/css" rel="stylesheet" media="screen" asp-append-version="true" />
+    <script src="~/js/wined/jquery/datetimepicker/moment/moment.min.js" asp-append-version="true"></script>
+    <script src="~/js/wined/jquery/datetimepicker/moment/moment-with-locales.min.js" asp-append-version="true"></script>
+    <script src="~/js/wined/jquery/datetimepicker/bootstrap-datetimepicker.min.js" asp-append-version="true"></script>
+    @*<script src="~/js/wined/common.js" asp-append-version="true"></script>*@
+    <!-- Theme Start -->
+
+    <script type="text/javascript" src="~/js/wined/themejs/custom.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jstree.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/carousel.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/productcarosel.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jquery.custom.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jquery.formalize.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jquery.elevatezoom.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/bootstrap-notify.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/jquery/magnific/jquery.magnific-popup.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/owl.carousel.min.js" asp-append-version="true"></script>
+    <link rel="stylesheet" type="text/css" href="~/js/wined/jquery/magnific/magnific-popup.css" asp-append-version="true" />
+    <script src="~/js/wined/themejs/tabs.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/jquery.countdown.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/jquery.countdown.min.js" asp-append-version="true"></script>
+    <!-- Theme End -->
+
+    <script src="~/js/wined/common.js" asp-append-version="true"></script>
+    <script src="~/js/wined/themejs/parallax.js" asp-append-version="true"></script>
+</head>
+
+<body class="account-address-add   layout-2 left-col">
+    <div id="account-address" class="container">
+        <div class="row">
+            <aside id="column-left" class="col-sm-3 hidden-xs">
+            </aside>
+            <div id="content" class="col-sm-9">
+                <form asp-area="" asp-controller="Addresses" asp-action="Create" method="post" class="form-horizontal">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <fieldset>
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label" asp-for="Street">
+                                Street
+                            </label>
+                            <div class="col-sm-10">
+                                <input asp-for="Street" type="text" name="street" value="" placeholder="Street" id="input-street" class="form-control" />
+                            </div>
+                            <span asp-validation-for="Street" class="text-danger"></span>
+                        </div>
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label" asp-for="City">
+                                City
+                            </label>
+                            <div class="col-sm-10">
+                                <input asp-for="City" type="text" name="city" value="" placeholder="City" id="input-city" class="form-control" />
+                            </div>
+                            <span asp-validation-for="City" class="text-danger"></span>
+                        </div>
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label" asp-for="PostCode">
+                                Post Code
+                            </label>
+                            <div class="col-sm-10">
+                                <input asp-for="PostCode" type="text" name="postcode" value="" placeholder="Post Code" id="input-postcode" class="form-control" />
+                            </div>
+                            <span asp-validation-for="PostCode" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" asp-for="Description">
+                                Description
+                            </label>
+                            <div class="col-sm-10">
+                                <textarea asp-for="Description" type="text" name="description" value="" placeholder="Description" id="input-description" class="form-control"></textarea>
+                            </div>
+                            <span asp-validation-for="Description"></span>
+                        </div>
+                        <input asp-for="UserId" hidden />
+                    </fieldset>
+                    <div class="buttons clearfix">
+                        <div class="pull-left">
+                        </div>
+                        <div class="pull-right">
+                            <button type="submit" value="Add" class="btn btn-primary">
+                                Add Address
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <br />
+        </div>
+        <br />
+    </div>
+</body>
+</html>

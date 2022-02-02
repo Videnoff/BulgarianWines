@@ -79,7 +79,7 @@
                 }
             }
 
-            order.TotalPrice = order.Wines.Sum(x => x.Quantity * x.Price) + order.DeliveryPrice;
+            order.TotalPrice = order.Wines.Sum(x => x.Quantity * x.Price);
 
             if (order.PaymentType == PaymentType.CashOnDelivery || order.PaymentStatus == PaymentStatus.Paid)
             {

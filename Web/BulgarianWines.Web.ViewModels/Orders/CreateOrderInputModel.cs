@@ -12,12 +12,6 @@
     {
         [Required]
         [MinLength(10, ErrorMessage = "The name must be at least 10 characters long.")]
-        [MaxLength(100, ErrorMessage = "The name can be maximum 100 characters long.")]
-        [Display(Name = "Full Name")]
-        public string UserFullName { get; set; }
-
-        [Required]
-        [MinLength(10, ErrorMessage = "The name must be at least 10 characters long.")]
         [MaxLength(100, ErrorMessage = "The name can be maximum 20 characters long.")]
         [Display(Name = "First Name")]
         public string UserFirstName { get; set; }
@@ -36,8 +30,8 @@
         [RegularExpression(@"^[+]?[0-9]+$", ErrorMessage = "The phone can have only numbers and can begin with a plus symbol.")]
         public string Phone { get; set; }
 
-        [Required]
-        public DeliveryType DeliveryType { get; set; }
+        //[Required]
+        //public DeliveryType DeliveryType { get; set; }
 
         [Required]
         public string AddressId { get; set; }
