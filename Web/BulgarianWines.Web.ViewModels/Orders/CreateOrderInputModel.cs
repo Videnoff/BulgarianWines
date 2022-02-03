@@ -11,14 +11,14 @@
     public class CreateOrderInputModel : IMapTo<Order>
     {
         [Required]
-        [MinLength(10, ErrorMessage = "The name must be at least 10 characters long.")]
-        [MaxLength(100, ErrorMessage = "The name can be maximum 20 characters long.")]
+        [MinLength(3, ErrorMessage = "The name must be at least 3 characters long.")]
+        [MaxLength(20, ErrorMessage = "The name can be maximum 20 characters long.")]
         [Display(Name = "First Name")]
         public string UserFirstName { get; set; }
 
         [Required]
-        [MinLength(10, ErrorMessage = "The name must be at least 10 characters long.")]
-        [MaxLength(100, ErrorMessage = "The name can be maximum 20 characters long.")]
+        [MinLength(3, ErrorMessage = "The name must be at least 3 characters long.")]
+        [MaxLength(50, ErrorMessage = "The name can be maximum 50 characters long.")]
         [Display(Name = "Last Name")]
         public string UserLastName { get; set; }
 

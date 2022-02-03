@@ -91,7 +91,8 @@
                 orderViewModel.Status = order.Status;
                 orderViewModel.TotalPrice = order.TotalPrice;
 
-                var emailContent = await this.renderViewService.RenderToStringAsync("/Views/Orders/OrderRegisterEmailModel.cshtml", orderViewModel);
+                //var emailContent = await this.renderViewService.RenderToStringAsync("/Views/Orders/OrderRegisterEmailModel.cshtml", orderViewModel);
+                var emailContent = "Thank you!";
                 await this.emailSender.SendEmailAsync("bulsing@baramail.com", "Bulsing", orderViewModel.Email, "Successfully registered order", emailContent);
             }
 

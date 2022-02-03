@@ -13,7 +13,7 @@
 
         public string CityName { get; set; }
 
-        public string PostCode { get; set; }
+        public string CityPostCode { get; set; }
 
         public string CityCountryName { get; set; }
     }

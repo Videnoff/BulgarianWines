@@ -1,0 +1,42 @@
+﻿@model BulgarianWines.Web.ViewModels.ShoppingCart.ShoppingCartViewModel
+
+
+@{
+    var productClassName = string.Empty;
+}
+
+<div class="col-md-12">
+    <div class="order-review">
+        <h4>
+            Order Review
+        </h4>
+        <div class="review-box">
+            <ul class="list-unstyled">
+                <li>Product <span>Total</span></li>
+                @foreach (var product in Model.Products)
+                {
+                    productClassName = (product.ProductId == Model.Products.Last().ProductId) ? "last-product" : string.Empty;
+                    <li class="d-flex justify-content-between @productClassName">
+                        <div class="pro">
+                            <a asp-area="" asp-controller="Wines" asp-action="Details" asp-route-id="@product.ProductId">
+                                <img src="@product.ImageUrl" class="custom-image-box" />
+                                <p>
+                                    @product.ProductName
+                                </p>
+                            </a>
+                            <span>
+                                @product.Quantity X S$@product.ProductPrice
+                            </span>
+                        </div>
+                        <div class="prc">
+                            <p>
+                                S$@product.TotalPrice
+                            </p>
+                        </div>
+                    </li>
+                }
+                <li>Grand Total <span>$@Model.GrandTotalPrice</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
