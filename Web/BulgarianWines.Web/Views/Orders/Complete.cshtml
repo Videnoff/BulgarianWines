@@ -1,4 +1,5 @@
 ﻿@using Microsoft.Extensions.Configuration
+@using BulgarianWines.Data.Models.Enums
 @inject IConfiguration Configuration
 
 @model BulgarianWines.Web.ViewModels.Orders.OrderPaymentStatusViewModel
@@ -12,7 +13,7 @@
     <div class="container">
         <div class="row">
             <vc:order-details order-id="@Model.Id"></vc:order-details>
-            @if (Model.PaymentStatus != BulgarianWines.Data.Models.Enums.PaymentStatus.Paid)
+            @if (Model.PaymentStatus != PaymentStatus.Paid)
             {
                 <vc:payment-order order-id="@Model.Id"></vc:payment-order>
             }

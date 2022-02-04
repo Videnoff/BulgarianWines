@@ -15,8 +15,11 @@
         [Display(Name = "Order Id")]
         public string Id { get; set; }
 
-        [Display(Name = "Full Name")]
-        public string UserFullName { get; set; }
+        [Display(Name = "First Name")]
+        public string UserFirstName { get; set; }
+
+        [Display(Name = "Last Name")]
+        public string UserLastName { get; set; }
 
         public string Email { get; set; }
 

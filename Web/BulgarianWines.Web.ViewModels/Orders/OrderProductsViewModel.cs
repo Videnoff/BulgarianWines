@@ -9,9 +9,9 @@
 
     public class OrderProductsViewModel : IMapFrom<WineOrder>, IHaveCustomMappings
     {
-        public string ProductId { get; set; }
+        public string WineId { get; set; }
 
-        public string ProductName { get; set; }
+        public string WineName { get; set; }
 
         public string ImageUrl { get; set; }
 

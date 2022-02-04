@@ -190,7 +190,7 @@
                                             <li class="list-group-item">
                                                 <label label class="col-sm-10 control-label">
                                                     <input asp-for="AddressId" type="radio" value="@address.Id" checked />
-                                                    @address.Street, @address.CityName, @address.CityPostCode, @(string.IsNullOrEmpty(address.Description) ? string.Empty : ", " + address.Description)
+                                                    @address.Street, @address.CityName, @address.CityPostCode@(string.IsNullOrEmpty(address.Description) ? string.Empty : ", " + address.Description)
                                                 </label>
                                                 <div class="float-right">
                                                     <a asp-area="" asp-controller="Addresses" asp-action="Delete" asp-route-id="@address.Id">
@@ -223,14 +223,14 @@
                                                     <li>
                                                         <input type="radio" name="payment" id="cashOnDeliveryInput" value="CashOnDelivery" checked />
                                                         <label for="cashOnDeliveryInput">
-                                                            <span><i class="fa fa-circle"></i></span>
+                                                            @*<span><i class="fa fa-circle"></i></span>*@
                                                             Cash On Delivery
                                                         </label>
                                                     </li>
                                                     <li>
                                                         <input type="radio" name="payment" id="stripeInput" value="Stripe" />
                                                         <label for="stripeInput">
-                                                            <span><i class="fa fa-circle"></i></span>
+                                                            @*<span><i class="fa fa-circle"></i></span>*@
                                                             Stripe
                                                         </label>
                                                     </li>

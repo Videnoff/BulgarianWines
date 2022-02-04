@@ -1,0 +1,12 @@
+﻿@using BulgarianWines.Data.Models.Enums
+@model PaymentViewModel
+
+@if (Model.PaymentType == PaymentType.Stripe)
+{
+    <div class="col-md-7">
+        <button id="checkout-button" class="ord-btn">
+            Pay With Stripe
+        </button>
+    </div>
+    <form method="post" id="antiForgeryForm"></form>
+}
