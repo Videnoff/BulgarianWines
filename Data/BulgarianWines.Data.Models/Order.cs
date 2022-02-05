@@ -55,6 +55,8 @@
 
         public DeliveryType DeliveryType { get; set; }
 
+        public string StripeId { get; set; }
+
         public virtual ICollection<WineOrder> Wines { get; set; }
     }
 }
