@@ -19,6 +19,8 @@
 
         public int Quantity { get; set; }
 
+        public string WineProductCode { get; set; }
+
         [IgnoreMap]
         public decimal TotalPrice => this.Quantity * this.Price;
 
@@ -27,13 +29,16 @@
             configuration.CreateMap<WineOrder, OrderWinesViewModel>()
                 .ForMember(
                     x => x.ImageUrl,
-                    opt => opt.MapFrom(m => (!m.Wine.Images.Any())))
+                    opt => opt.MapFrom(x => x.Wine.ImageUrl))
                 .ForMember(
                     x => x.WineId,
                     opt => opt.MapFrom(x => x.WineId))
                 .ForMember(
                     x => x.WineName,
-                    opt => opt.MapFrom(x => x.Wine.Name));
+                    opt => opt.MapFrom(x => x.Wine.Name))
+                .ForMember(
+                    x => x.WineProductCode,
+                    opt => opt.MapFrom(x => x.Wine.ProductCode));
         }
     }
 }

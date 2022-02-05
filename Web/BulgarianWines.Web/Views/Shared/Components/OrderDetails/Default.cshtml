@@ -4,88 +4,299 @@
     var productClassName = string.Empty;
 
 }
-<div class="col-md-7">
-    <form>
-        <h5>
-            Order Information
-        </h5>
-        <div class="row">
-            <div class="col-md-6">
-                <label asp-for="UserFirstName"></label>
-                <input asp-for="UserFirstName" disabled />
-            </div>
-            <div class="col-md-6">
-                <label asp-for="Email"></label>
-                <input asp-for="Email" disabled />
-            </div>
-            <div class="col-md-6">
-                <label asp-for="Phone"></label>
-                <input asp-for="Phone" disabled />
-            </div>
-            <div class="col-md-6">
-                <label asp-for="Address"></label>
-                <input asp-for="Address" disabled />
-            </div>
-            <div class="col-md-6">
-                <label asp-for="Id"></label>
-                <input asp-for="Id" disabled />
-            </div>
-            <div class="col-md-6">
-                <label asp-for="CreatedOn"></label>
-                <time class="disabled" datetime="@Model.CreatedOn"></time>
-            </div>
-            <div class="col-md-6">
-                <label asp-for="PaymentType"></label>
-                <input asp-for="PaymentType" disabled />
-            </div>
-            <div class="col-md-6">
-                <label asp-for="PaymentStatus"></label>
-                <input asp-for="PaymentStatus" disabled />
-            </div>
-            <div class="col-md-6">
-                <label asp-for="Status"></label>
-                <input asp-for="Status" disabled />
-            </div>
-            @if (Model.IsDelivered)
-            {
-                <div class="col-md-6">
-                    <label asp-for="DeliveredOn"></label>
-                    <time class="disabled" datetime="@Model.DeliveredOn"></time>
-                </div>
-            }
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+        Success
+    </title>
+    @*<script src="~/js/wined/jquery/jquery-2.1.1.min.js" asp-append-version="true"></script>*@
+    <!-- <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" /> -->
+    <script src="~/js/wined/bootstrap/js/bootstrap.min.js" asp-append-version="true"></script>
+    <link href="~/js/wined/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" asp-append-version="true" />
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
+
+    <link href="~/css/wined/stylesheet.css" rel="stylesheet" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/wined/themecss/lightbox.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/js/wined/jquery/magnific/magnific-popup.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/js/wined/jquery/owl-carousel/owl.carousel.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/js/wined/jquery/owl-carousel/owl.transitions.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/wined/themecss/carousel.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/wined/themecss/custom.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/wined/themecss/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/wined/themecss/animate.css" asp-append-version="true" />
+
+    <script src="~/js/wined/lightbox/lightbox-2.6.min.js" asp-append-version="true"></script>
+    <link href="~/js/wined/jquery/datetimepicker/bootstrap-datetimepicker.min.css" type="text/css" rel="stylesheet" media="screen" asp-append-version="true" />
+    <script src="~/js/wined/jquery/datetimepicker/moment/moment.min.js" asp-append-version="true"></script>
+    <script src="~/js/wined/jquery/datetimepicker/moment/moment-with-locales.min.js" asp-append-version="true"></script>
+    <script src="~/js/wined/jquery/datetimepicker/bootstrap-datetimepicker.min.js" asp-append-version="true"></script>
+    @*<script src="~/js/wined/common.js" asp-append-version="true"></script>*@
+    <!-- Theme Start -->
+
+    <script type="text/javascript" src="~/js/wined/themejs/custom.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jstree.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/carousel.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/productcarosel.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jquery.custom.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jquery.formalize.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jquery.elevatezoom.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/bootstrap-notify.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/jquery/magnific/jquery.magnific-popup.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/owl.carousel.min.js" asp-append-version="true"></script>
+    <link rel="stylesheet" type="text/css" href="~/js/wined/jquery/magnific/magnific-popup.css" asp-append-version="true" />
+    <script src="~/js/wined/themejs/tabs.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/jquery.countdown.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/jquery.countdown.min.js" asp-append-version="true"></script>
+    <!-- Theme End -->
+
+    <script src="~/js/wined/common.js" asp-append-version="true"></script>
+    <script src="~/js/wined/themejs/parallax.js" asp-append-version="true"></script>
+</head>
+
+<body class="checkout-success   layout-1">
+    <div id="breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Index">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Orders" asp-action="Complete">
+                        Success
+                    </a>
+                </li>
+            </ul>
         </div>
-    </form>
-</div>
-<div class="col-md-5">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="order-review">
-                <h5>Order Review</h5>
-                <div class="review-box">
-                    <ul class="list-unstyled">
-                        <li>Product <span>Total</span></li>
-                        @foreach (var product in Model.Wines)
+    </div>
+    <br />
+
+    <div id="common-success" class="container">
+        <div class="row">
+            <div id="content" class="col-sm-12">
+                <h1>
+                    Your order has been placed!
+                </h1>
+                <p>
+                    Your order has been successfully processed!
+                </p>
+                <p>
+                    You can view your order history by going to the <a asp-area="Identity" asp-page="/Account/Manage/Index">my account</a> page and by clicking on <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=account/order">history</a>.
+                </p>
+                <p>
+                    Thanks for shopping with us online!
+                </p>
+
+                <form class="form-horizontal">
+                    <h5>
+                        Order Information
+                    </h5>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" asp-for="UserFirstName">
+                                First Name
+                            </label>
+                            <div class="col-sm-10">
+                                <input asp-for="UserFirstName" type="text" class="form-control" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" asp-for="UserLastName">
+                                Last Name
+                            </label>
+                            <div class="col-sm-10">
+                                <input asp-for="UserLastName" type="text" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" asp-for="Email">
+                                Email
+                            </label>
+                            <div class="col-sm-10">
+                                <input asp-for="Email" type="text" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" asp-for="Phone">
+                                Phone
+                            </label>
+                            <div class="col-sm-10">
+                                <input asp-for="Phone" type="text" name="phone" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" asp-for="Address">
+                                Address
+                            </label>
+                            <div class="col-sm-10">
+                                <input asp-for="Address" type="text" name="address" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" asp-for="Id">
+                                Id
+                            </label>
+                            <div class="col-sm-10">
+                                <input asp-for="Id" type="text" name="id" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" asp-for="CreatedOn">
+                                Created on
+                            </label>
+                            <div class="col-sm-10">
+                                <input asp-for="CreatedOn" type="text" name="createdon" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" asp-for="PaymentType">
+                                Payment Type
+                            </label>
+                            <div class="col-sm-10">
+                                <input asp-for="PaymentType" type="text" name="paymenttype" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" asp-for="PaymentStatus">
+                                Payment Status
+                            </label>
+                            <div class="col-sm-10">
+                                <input asp-for="PaymentStatus" type="paymentstatus" name="phone" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" asp-for="Status">
+                                Status
+                            </label>
+                            <div class="col-sm-10">
+                                <input asp-for="Status" type="text" name="status" class="form-control" disabled>
+                            </div>
+                        </div>
+                        @if (Model.IsDelivered)
                         {
-                            productClassName = (product.WineId == Model.Wines.Last().WineId) ? "last-product" : string.Empty;
-                            <li class="d-flex justify-content-between @productClassName">
-                                <div class="pro">
-                                    <a asp-area="" asp-controller="Wines" asp-action="Details" asp-route-id="@product.WineId">
-                                        <img src="@product.ImageUrl" />
-                                        <p>@product.WineName</p>
-                                    </a>
-                                    <span>@product.Quantity X $@product.Price</span>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" asp-for="DeliveredOn">
+                                    DeliveredOn
+                                </label>
+                                <div class="col-sm-10">
+                                    <input asp-for="DeliveredOn" type="text" name="deliveredon" class="form-control" disabled>
                                 </div>
-                                <div class="prc">
-                                    <p>$@product.TotalPrice</p>
-                                </div>
-                            </li>
+                            </div>
                         }
-                        <li class="sub-total">Sub Total <span>$@(Model.TotalPrice - Model.DeliveryPrice)</span></li>
-                        <li class="shipping-and-tax">Shipping <span>$@Model.DeliveryPrice</span></li>
-                        <li>Grand Total <span>$@Model.TotalPrice</span></li>
-                    </ul>
+                    </div>
+                </form>
+
+                <div class="panel-collapse collapse in" id="collapse-checkout-confirm" aria-expanded="true" style="">
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <td class="text-left">
+                                        </td>
+                                        <td class="text-left">
+                                            Product Name
+                                        </td>
+                                        <td class="text-left">
+                                            Model
+                                        </td>
+                                        <td class="text-right">
+                                            Quantity
+                                        </td>
+                                        <td class="text-right">
+                                            Unit Price
+                                        </td>
+                                        <td class="text-right">
+                                            Total
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var product in Model.Wines)
+                                    {
+                                        <tr>
+                                            <td class="text-left">
+                                                <a asp-area="" asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.WineId">
+                                                    <img src="@product.ImageUrl" alt="@product.WineName" title="@product.WineName" class="custom-image-box" />
+                                                </a>
+                                            </td>
+                                            <td class="text-left">
+                                                <a href="">
+                                                    @product.WineName
+                                                </a>
+                                            </td>
+                                            <td class="text-left">
+                                                @product.WineProductCode
+                                            </td>
+                                            <td class="text-right">
+                                                @product.Quantity
+                                            </td>
+                                            <td class="text-right">
+                                                S$@product.Price
+                                            </td>
+                                            <td class="text-right">
+                                                S$@(product.Price * product.Quantity)
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="5" class="text-right">
+                                            <strong>
+                                                Sub-Total:
+                                            </strong>
+                                        </td>
+                                        <td class="text-right">
+                                            S$@Model.Subtotal
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" class="text-right">
+                                            <strong>
+                                                VAT (20%):
+                                            </strong>
+                                        </td>
+                                        <td class="text-right">
+                                            S$@Model.VAT
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" class="text-right">
+                                            <strong>
+                                                Total:
+                                            </strong>
+                                        </td>
+                                        <td class="text-right">
+                                            S$@Model.GrandTotalPrice
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <div class="pull-right">
+                            <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-primary">
+                                Continue
+                            </a>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
                 </div>
+                <br />
+                <br />
             </div>
         </div>
     </div>
-</div>
+</body>
+</html>

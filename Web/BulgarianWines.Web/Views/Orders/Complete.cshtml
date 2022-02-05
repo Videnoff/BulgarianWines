@@ -10,7 +10,7 @@
 
 <!-- Complete Order -->
 <section class="checkout">
-    <div class="container">
+    @*<div class="container">*@
         <div class="row">
             <vc:order-details order-id="@Model.Id"></vc:order-details>
             @if (Model.PaymentStatus != PaymentStatus.Paid)
@@ -18,7 +18,7 @@
                 <vc:payment-order order-id="@Model.Id"></vc:payment-order>
             }
         </div>
-    </div>
+    @*</div>*@
 </section>
 <!-- End Complete Order -->
 

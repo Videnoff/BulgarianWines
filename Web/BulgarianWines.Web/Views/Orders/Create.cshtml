@@ -213,7 +213,7 @@
                             @*<div class="col-md-5">*@
                                 <div class="row">
                                     <vc:cart-body-checkout></vc:cart-body-checkout>
-                                    <div class="col-md-12">
+                                    <!--<div class="col-md-12">
                                         <div class="pay-meth">
                                             <h4>
                                                 Payment Method
@@ -222,23 +222,62 @@
                                                 <ul class="list-unstyled">
                                                     <li>
                                                         <input type="radio" name="payment" id="cashOnDeliveryInput" value="CashOnDelivery" checked />
-                                                        <label for="cashOnDeliveryInput">
+                                                        <label for="cashOnDeliveryInput">-->
                                                             @*<span><i class="fa fa-circle"></i></span>*@
-                                                            Cash On Delivery
+                                                            <!--Cash On Delivery
                                                         </label>
                                                     </li>
                                                     <li>
                                                         <input type="radio" name="payment" id="stripeInput" value="Stripe" />
-                                                        <label for="stripeInput">
+                                                        <label for="stripeInput">-->
                                                             @*<span><i class="fa fa-circle"></i></span>*@
-                                                            Stripe
-                                                        </label>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <span asp-validation-for="PaymentType" class="text-danger"></span>
+                                    <!--Stripe
+                                    </label>
+                                    </li>
+                                    </ul>
+                                    </div>
+                                    <span asp-validation-for="PaymentType" class="text-danger"></span>
+                                    </div>-->
+                                    
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a>
+                                                    Payment Method
+                                                </a>
+                                            </h4>
                                         </div>
-                                        <div class="buttons clearfix">
+                                        <div class="panel-collapse collapse in" id="collapse-payment-method" aria-expanded="true" style="">
+                                            <div class="panel-body">
+                                                <p>
+                                                    Please select the preferred payment method to use on this order.
+                                                </p>
+                                                <div class="radio">
+                                                    <label for="cashOnDeliveryInput">
+                                                         <input type="radio" name="payment" id="cashOnDeliveryInput" value="CashOnDelivery" checked="checked">
+                                                        Cash On Delivery
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label for="stripeInput">
+                                                         <input type="radio" name="payment" id="stripeInput" value="Stripe" checked="checked">
+                                                        Stripe
+                                                    </label>
+                                                </div>
+                                                <p>
+                                                    <strong>
+                                                        Add Comments About Your Order
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <textarea name="comment" rows="8" class="form-control"></textarea>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+
+                                    <div class="buttons clearfix">
                                             <div class="pull-right">
                                                 <button type="button" name="button" id="orderButton" data-loading-text="Loading..." class="btn btn-primary">
                                                     Confirm Order

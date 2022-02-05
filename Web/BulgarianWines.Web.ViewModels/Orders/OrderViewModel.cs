@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web.ViewModels.Orders
+﻿using System.Linq;
+
+namespace BulgarianWines.Web.ViewModels.Orders
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -54,6 +56,12 @@
         [Display(Name = "Delivery Type")]
         public DeliveryType DeliveryType { get; set; }
 
+        public decimal GrandTotalPrice => this.Wines.Sum(x => x.TotalPrice);
+
+        public decimal VAT => this.GrandTotalPrice * 20 / 100;
+
+        public decimal Subtotal => this.GrandTotalPrice - this.VAT;
+
         public IEnumerable<OrderWinesViewModel> Wines { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)
@@ -61,7 +69,7 @@
             configuration.CreateMap<Order, OrderViewModel>()
             .ForMember(
                 x => x.Address,
-                opt => opt.MapFrom(m => $"{m.Address.Street} {m.Address.City.Name}, {m.Address.City.PostCode}"))
+                opt => opt.MapFrom(m => $"{m.Address.Street}, {m.Address.City.Name}, {m.Address.City.PostCode}"))
             .ForMember(
                 x => x.CreatedOn,
                 opt => opt.MapFrom(m => m.CreatedOn.ToString(GlobalConstants.DateTimeFormat, CultureInfo.InvariantCulture)))
