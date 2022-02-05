@@ -104,7 +104,7 @@
                         <a asp-area="" asp-controller="Favorites" asp-action="All" class="list-group-item">
                             Wish List
                         </a>
-                        <a href="" class="list-group-item">
+                        <a asp-area="" asp-controller="Orders" asp-action="History" class="list-group-item">
                             Order History
                         </a>
                         <a href="" class="list-group-item">
@@ -125,68 +125,79 @@
                 <h2>
                     Account
                 </h2>
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <td class="text-center">
-                                    Image
-                                </td>
-                                <td class="text-left">
-                                    Product Name
-                                </td>
-                                <td class="text-left">
-                                    Model
-                                </td>
-                                <td class="text-right">
-                                    Stock
-                                </td>
-                                <td class="text-right">
-                                    Unit Price
-                                </td>
-                                <td class="text-right">
-                                    Action
-                                </td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var product in Model)
-                            {
+
+                @if (Model.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
                                 <tr>
                                     <td class="text-center">
-                                        <a asp-area="" asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.WineId"><img src="@product.ImageUrl" alt="@product.WineName" title="@product.WineName" class="custom-image-box" /></a>
+                                        Image
                                     </td>
                                     <td class="text-left">
-                                        <a asp-area="" asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.WineId">
-                                            @product.WineName
-                                        </a>
+                                        Product Name
                                     </td>
                                     <td class="text-left">
-                                        Product 14
+                                        Model
                                     </td>
                                     <td class="text-right">
-                                        @product.WineAvailabilityStatus
+                                        Stock
                                     </td>
                                     <td class="text-right">
-                                        <div class="price">
-                                            S$@product.WinePrice
-                                        </div>
+                                        Unit Price
                                     </td>
                                     <td class="text-right">
-                                        <a asp-area="" asp-controller="ShoppingCart" asp-action="Add" asp-route-productId="@product.WineId">
-                                            <button type="button" onclick="cart.add('41');" data-toggle="tooltip" title="Add to Cart" class="btn btn-primary">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </button>
-                                        </a>
-                                        <a asp-area="" asp-controller="Favorites" asp-action="Delete" asp-route-id="@product.WineId" data-toggle="tooltip" title="Remove" class="btn btn-danger">
-                                            <i class="fa fa-times"></i>
-                                        </a>
+                                        Action
                                     </td>
                                 </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
+                            </thead>
+                            <tbody>
+                                @foreach (var product in Model)
+                                {
+                                    <tr>
+                                        <td class="text-center">
+                                            <a asp-area="" asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.WineId"><img src="@product.ImageUrl" alt="@product.WineName" title="@product.WineName" class="custom-image-box" /></a>
+                                        </td>
+                                        <td class="text-left">
+                                            <a asp-area="" asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.WineId">
+                                                @product.WineName
+                                            </a>
+                                        </td>
+                                        <td class="text-left">
+                                            Product 14
+                                        </td>
+                                        <td class="text-right">
+                                            @product.WineAvailabilityStatus
+                                        </td>
+                                        <td class="text-right">
+                                            <div class="price">
+                                                S$@product.WinePrice
+                                            </div>
+                                        </td>
+                                        <td class="text-right">
+                                            <a asp-area="" asp-controller="ShoppingCart" asp-action="Add" asp-route-productId="@product.WineId">
+                                                <button type="button" onclick="cart.add('41');" data-toggle="tooltip" title="Add to Cart" class="btn btn-primary">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                </button>
+                                            </a>
+                                            <a asp-area="" asp-controller="Favorites" asp-action="Delete" asp-route-id="@product.WineId" data-toggle="tooltip" title="Remove" class="btn btn-danger">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <br/>
+                    <h7>
+                        You have no products in your wishlist.
+                    </h7>
+                }
                 <div class="buttons clearfix">
                     <div class="pull-right">
                         <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-primary">
