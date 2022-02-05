@@ -22,7 +22,7 @@
         {
             var order = this.ordersService.GetById<OrderViewModel>(orderId);
 
-            foreach (var product in order.Products)
+            foreach (var product in order.Wines)
             {
                 product.WineName = this.shortTextService.ShortText(product.WineName, 30);
             }

@@ -7,7 +7,7 @@
     using BulgarianWines.Data.Models;
     using BulgarianWines.Services.Mapping;
 
-    public class OrderProductsViewModel : IMapFrom<WineOrder>, IHaveCustomMappings
+    public class OrderWinesViewModel : IMapFrom<WineOrder>, IHaveCustomMappings
     {
         public string WineId { get; set; }
 
@@ -24,10 +24,16 @@
 
         public void CreateMappings(IProfileExpression configuration)
         {
-            configuration.CreateMap<WineOrder, OrderProductsViewModel>()
+            configuration.CreateMap<WineOrder, OrderWinesViewModel>()
                 .ForMember(
                     x => x.ImageUrl,
-                    opt => opt.MapFrom(m => (!m.Wine.Images.Any())));
+                    opt => opt.MapFrom(m => (!m.Wine.Images.Any())))
+                .ForMember(
+                    x => x.WineId,
+                    opt => opt.MapFrom(x => x.WineId))
+                .ForMember(
+                    x => x.WineName,
+                    opt => opt.MapFrom(x => x.Wine.Name));
         }
     }
 }

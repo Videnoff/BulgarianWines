@@ -6,7 +6,9 @@
 }
 <div class="col-md-7">
     <form>
-        <h5>Order Information</h5>
+        <h5>
+            Order Information
+        </h5>
         <div class="row">
             <div class="col-md-6">
                 <label asp-for="UserFirstName"></label>
@@ -62,9 +64,9 @@
                 <div class="review-box">
                     <ul class="list-unstyled">
                         <li>Product <span>Total</span></li>
-                        @foreach (var product in Model.Products)
+                        @foreach (var product in Model.Wines)
                         {
-                            productClassName = (product.WineId == Model.Products.Last().WineId) ? "last-product" : string.Empty;
+                            productClassName = (product.WineId == Model.Wines.Last().WineId) ? "last-product" : string.Empty;
                             <li class="d-flex justify-content-between @productClassName">
                                 <div class="pro">
                                     <a asp-area="" asp-controller="Wines" asp-action="Details" asp-route-id="@product.WineId">

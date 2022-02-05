@@ -54,7 +54,7 @@
         [Display(Name = "Delivery Type")]
         public DeliveryType DeliveryType { get; set; }
 
-        public IEnumerable<OrderProductsViewModel> Products { get; set; }
+        public IEnumerable<OrderWinesViewModel> Wines { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)
         {
