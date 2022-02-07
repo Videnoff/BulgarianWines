@@ -10,15 +10,15 @@
 
 <!-- Complete Order -->
 <section class="checkout">
-    @*<div class="container">*@
-        <div class="row">
-            <vc:order-details order-id="@Model.Id"></vc:order-details>
-            @if (Model.PaymentStatus != PaymentStatus.Paid)
-            {
-                <vc:payment-order order-id="@Model.Id"></vc:payment-order>
-            }
-        </div>
-    @*</div>*@
+    <div class="row">
+        <vc:order-details order-id="@Model.Id"></vc:order-details>
+        @if (Model.PaymentStatus != PaymentStatus.Paid)
+        {
+            <vc:payment-order order-id="@Model.Id"></vc:payment-order>
+        }
+    </div>
+    <br />
+    <br />
 </section>
 <!-- End Complete Order -->
 
@@ -29,8 +29,8 @@
         // Create an instance of the Stripe object with your publishable API key
         var stripe = Stripe("@Configuration["Stripe:PublicKey"]");
         var antiForgeryToken = document.querySelector("#antiForgeryForm > input[type=hidden]").value;
-        var checkoutButton = document.getElementById("checkout-button");
-        checkoutButton.addEventListener("click", function () {
+        var orderButton = document.getElementById("orderButton");
+        orderButton.addEventListener("click", function () {
             fetch("/api/checkout", {
                 method: "POST",
                 headers: {

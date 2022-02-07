@@ -1,14 +1,15 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Globalization;
-using AutoMapper;
-using BulgarianWines.Common;
-using BulgarianWines.Data.Models;
-using BulgarianWines.Data.Models.Enums;
-using BulgarianWines.Services.Mapping;
-
-namespace BulgarianWines.Web.ViewModels.Orders
+﻿namespace BulgarianWines.Web.ViewModels.Orders
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Globalization;
+
+    using AutoMapper;
+    using BulgarianWines.Common;
+    using BulgarianWines.Data.Models;
+    using BulgarianWines.Data.Models.Enums;
+    using BulgarianWines.Services.Mapping;
+
     public class OrderDetailsViewModel : IMapFrom<Order>, IHaveCustomMappings
     {
         [Display(Name = "Order Id")]

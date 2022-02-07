@@ -3,10 +3,20 @@
 
 @if (Model.PaymentType == PaymentType.Stripe)
 {
-    <div class="col-md-7">
-        <button id="checkout-button" class="ord-btn">
-            Pay With Stripe
-        </button>
+    @*<div class="col-md-7">
+            <button id="orderButton" class="ord-btn">
+                Pay With Stripe
+            </button>
+        </div>*@
+    <div class="container">
+        <div class="buttons">
+            <div class="pull-right">
+                <button id="orderButton" class="btn btn-primary">
+                    Pay With Stripe
+                </button>
+            </div>
+        </div>
     </div>
+    <br />
     <form method="post" id="antiForgeryForm"></form>
 }

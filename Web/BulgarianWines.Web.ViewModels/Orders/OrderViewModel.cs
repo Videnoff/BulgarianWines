@@ -1,10 +1,9 @@
-﻿using System.Linq;
-
-namespace BulgarianWines.Web.ViewModels.Orders
+﻿namespace BulgarianWines.Web.ViewModels.Orders
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Globalization;
+    using System.Linq;
 
     using AutoMapper;
     using BulgarianWines.Common;
