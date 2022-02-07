@@ -56,9 +56,11 @@
                                                             </a>
 
                                                             <div class="button-group">
-                                                                @*<button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('51 ');">
+                                                                <button type="button" data-placement="right" title="Add to Cart" class="addtocart" onclick="cart.add('@product.Id');">
+                                                                    <a asp-area="" asp-controller="ShoppingCart" asp-action="Add" asp-route-productId="@product.Id">
                                                                         Add to Cart
-                                                                    </button>*@
+                                                                    </a>
+                                                                </button>
                                                                 <button class="wishlist" type="button" data-placement="right" title="Add to Wish List " onclick="wishlist.add('@product.Id');">
                                                                     <a asp-area="" asp-controller="Favorites" asp-action="Add" asp-route-id="@product.Id" class="it-fav" data-toggle="tooltip" data-placement="left" title="Favorite">
                                                                         <i class="fas fa-heart mr-0 pt-1"></i>
