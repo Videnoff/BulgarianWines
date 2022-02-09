@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web.Controllers
+﻿using Microsoft.AspNetCore.Hosting;
+
+namespace BulgarianWines.Web.Controllers
 {
     using System;
     using System.Diagnostics;
