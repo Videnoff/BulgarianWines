@@ -33,4 +33,8 @@
     <ProjectReference Include="..\..\Web\BulgarianWines.Web\BulgarianWines.Web.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Administration\Pages\" />
+  </ItemGroup>
+
 </Project>

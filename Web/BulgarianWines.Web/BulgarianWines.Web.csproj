@@ -1900,6 +1900,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Administration\Components\" />
+    <Folder Include="Areas\Administration\Views\Orders\" />
     <Folder Include="wwwroot\images\admin\" />
   </ItemGroup>
 
