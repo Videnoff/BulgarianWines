@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web.Controllers
+﻿using System.Collections.Generic;
+
+namespace BulgarianWines.Web.Controllers
 {
     using System.Threading.Tasks;
 
@@ -9,6 +11,8 @@
 
     public class WinesController : BaseController
     {
+        private readonly List<int> itemsPerPageValues = new List<int> { 6, 12, 18, 24 };
+
         private readonly IWinesService winesService;
         private readonly ApplicationDbContext dbContext;
 
@@ -20,18 +24,19 @@
             this.dbContext = dbContext;
         }
 
-        public IActionResult AllWines(int id = 1)
+        public IActionResult AllWines(int id = 1, int pageNumber = 1, int itemsPerPage = 8, string sorting = "price asc")
         {
             if (id <= 0)
             {
                 return this.NotFound();
             }
 
-            const int itemsPerPage = 8;
+            //const int itemsPerPage = 8;
 
             var viewModel = new WinesListViewModel
             {
                 ItemsPerPage = itemsPerPage,
+                ItemsPerPageValues = this.itemsPerPageValues,
                 PageNumber = id,
                 WinesCount = this.winesService.GetCount(),
                 Wines = this.winesService.GetAll<AllWinesViewModel>(id, itemsPerPage),
