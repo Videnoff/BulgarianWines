@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-
-namespace BulgarianWines.Web.Controllers
+﻿namespace BulgarianWines.Web.Controllers
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using BulgarianWines.Data;

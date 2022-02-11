@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Hosting;
-
-namespace BulgarianWines.Web.Controllers
+﻿namespace BulgarianWines.Web.Controllers
 {
     using System;
     using System.Diagnostics;
@@ -16,6 +14,7 @@ namespace BulgarianWines.Web.Controllers
     using BulgarianWines.Web.ViewModels.Index;
     using BulgarianWines.Web.ViewModels.Wines;
     using Microsoft.AspNetCore.Diagnostics;
+    using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Caching.Distributed;
     using Newtonsoft.Json;

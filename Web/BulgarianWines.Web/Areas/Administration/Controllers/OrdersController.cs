@@ -1,10 +1,12 @@
-﻿using BulgarianWines.Data.Models.Enums;
-using BulgarianWines.Services.Data;
-using BulgarianWines.Web.ViewModels.Orders;
-using Microsoft.AspNetCore.Mvc;
-
-namespace BulgarianWines.Web.Areas.Administration.Controllers
+﻿namespace BulgarianWines.Web.Areas.Administration.Controllers
 {
+    using System.Threading.Tasks;
+
+    using BulgarianWines.Data.Models.Enums;
+    using BulgarianWines.Services.Data;
+    using BulgarianWines.Web.ViewModels.Orders;
+    using Microsoft.AspNetCore.Mvc;
+
     public class OrdersController : AdministrationController
     {
         private const int ItemsPerPage = 8;
@@ -89,6 +91,89 @@ namespace BulgarianWines.Web.Areas.Administration.Controllers
             };
 
             return this.View(viewModel);
+        }
+
+        public IActionResult Deleted(int pageNumber = 1)
+        {
+            if (pageNumber <= 0)
+            {
+                return this.Deleted();
+            }
+
+            var deletedOrders = this.ordersService.TakeDeletedOrders<OrderSummaryViewModel>(pageNumber, ItemsPerPage);
+
+            var viewModel = new OrderListViewModel()
+            {
+                ItemsPerPage = ItemsPerPage,
+                PageNumber = pageNumber,
+                Orders = deletedOrders,
+                Area = AreaName,
+                Controller = ControllerName,
+                Action = nameof(this.Deleted),
+            };
+
+            return this.View(viewModel);
+        }
+
+        public IActionResult Details(string id)
+        {
+            var order = this.ordersService.GetById<OrderDetailsViewModel>(id);
+
+            if (order == null)
+            {
+                this.TempData["Error"] = "Order not found.";
+                return this.RedirectToAction(nameof(this.Unprocessed));
+            }
+
+            return this.View(order);
+        }
+
+        public async Task<IActionResult> SetStatus(string id, string status)
+        {
+            var result = await this.ordersService.SetOrderStatusAsync(id, status);
+
+            if (result)
+            {
+                this.TempData["Alert"] = "Successfully changed order status.";
+            }
+            else
+            {
+                this.TempData["Alert"] = "There was a problem changing the status";
+            }
+
+            return this.RedirectToAction(status.ToString());
+        }
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            var result = await this.ordersService.DeleteAsync(id);
+
+            if (result)
+            {
+                this.TempData["Alert"] = "Successfully deleted order.";
+            }
+            else
+            {
+                this.TempData["Alert"] = "There was a problem deleting the order.";
+            }
+
+            return this.RedirectToAction(nameof(this.Unprocessed));
+        }
+
+        public async Task<IActionResult> Restore(string id)
+        {
+            var result = await this.ordersService.RestoreAsync(id);
+
+            if (result)
+            {
+                this.TempData["Alert"] = "Successfully restored order.";
+            }
+            else
+            {
+                this.TempData["Alert"] = "There was a problem restoring the order.";
+            }
+
+            return this.RedirectToAction(nameof(this.Deleted));
         }
     }
 }
