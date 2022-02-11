@@ -12,6 +12,8 @@
             this.MaxMessagesToDisplay = 5;
         }
 
+        public int UnprocessedOrdersCount { get; set; }
+
         public IEnumerable<UserMessagesNavbarViewModel> UnreadUserMessages { get; set; }
 
         [IgnoreMap]
