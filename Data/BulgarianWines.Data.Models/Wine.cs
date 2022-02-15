@@ -20,6 +20,10 @@
 
         public decimal Price { get; set; }
 
+        public decimal Price5To10 { get; set; }
+
+        public decimal PriceAbove10 { get; set; }
+
         public string ProductCode { get; set; }
 
         public int OriginId { get; set; }

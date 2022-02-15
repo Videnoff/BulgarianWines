@@ -1,0 +1,127 @@
+﻿@model BulgarianWines.Web.ViewModels.Orders.OrderDetailsViewModel
+
+@{
+    this.ViewData["Title"] = "Order Details";
+}
+
+<div class="shadow card">
+    <div class="card-header h3 text-center">
+        @ViewData["Title"]
+    </div>
+    <div class="card-body">
+        <div class="container justify-content-center">
+            <div class="form-row">
+                <div class="form-group col-md-8">
+                    <label asp-for="Id" class="control-label"></label>
+                    <input asp-for="Id" class="form-control" disabled />
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Status" class="control-label"></label>
+                    <input asp-for="Status" class="form-control" disabled />
+                </div>
+            </div>
+            <hr />
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label asp-for="UserFirstName" class="control-label"></label>
+                    <input asp-for="UserFirstName" class="form-control" disabled />
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="UserLastName" class="control-label"></label>
+                    <input asp-for="UserLastName" class="form-control" disabled />
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" disabled />
+                </div>
+                <div class="form-group col-md-2">
+                    <label asp-for="Phone" class="control-label"></label>
+                    <input asp-for="Phone" class="form-control" disabled />
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Address" class="control-label"></label>
+                    <input asp-for="Address" class="form-control" disabled />
+                </div>
+            </div>
+            <hr />
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label asp-for="CreatedOn" class="control-label"></label>
+                    <div class="form-control disabled">
+                        @Model.CreatedOn
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="DeliveredOn" class="control-label"></label>
+                    @if (Model.IsDelivered)
+                    {
+                        <time class="form-control disabled" datetime="@Model.DeliveredOn"></time>
+                    }
+                    else
+                    {
+                        <input asp-for="DeliveredOn" class="form-control" value="Not yet delivered" disabled />
+                    }
+                </div>
+            </div>
+            <hr />
+            @if (Model.StripeId != null)
+            {
+                <div class="form-group">
+                    <label asp-for="StripeId" class="control-label"></label>
+                    <input asp-for="StripeId" class="form-control" disabled />
+                </div>
+            }
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label asp-for="PaymentStatus" class="control-label"></label>
+                    <input asp-for="PaymentStatus" class="form-control" disabled />
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="PaymentType" class="control-label"></label>
+                    <input asp-for="PaymentType" class="form-control" disabled />
+                </div>
+                <div class="form-group col-md-2">
+                    <label asp-for="TotalPrice" class="control-label"></label>
+                    <input asp-for="TotalPrice" class="form-control" disabled />
+                </div>
+            </div>
+            <hr />
+            <div class="col-md-12">
+                <table class="table table-hover">
+                    <thead class="thead-light">
+                    <tr class="row">
+                        <th scope="col" class="col-6 d-flex justify-content-center">
+                            Product
+                        </th>
+                        <th scope="col" class="col-3 d-flex justify-content-center">
+                            Price (SGD)
+                        </th>
+                        <th scope="col" class="col-3 d-flex justify-content-center">
+                            Quantity
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var product in Model.Wines)
+                    {
+                        <tr class="row">
+                            <td class="col-6 d-flex justify-content-center">
+                                <img src="@product.ImageUrl" class="custom-image-box" style="width: 74px; height: 74px;" />
+                                <a asp-area="" asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.WineId" target="_blank">
+                                    @product.WineName
+                                </a>
+                            </td>
+                            <td class="col-3 d-flex justify-content-around">
+                                @product.Price
+                            </td>
+                            <td class="col-3 d-flex justify-content-around">
+                                @product.Quantity
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -49,6 +49,10 @@
 
         public decimal Price { get; set; }
 
+        public decimal Price5To10 { get; set; }
+
+        public decimal PriceAbove10 { get; set; }
+
         public string SanitizedDescription => this.sanitizer.Sanitize(this.Description);
 
         public IEnumerable<WineReviewViewModel> Reviews { get; set; }

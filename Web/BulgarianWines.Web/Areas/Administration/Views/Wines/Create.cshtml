@@ -68,6 +68,16 @@
                     <span asp-validation-for="Price" class="text-danger"></span>
                 </div>
                 <div class="form-group col-md-6">
+                    <label asp-for="Price5To10" class="control-label"></label>
+                    <input asp-for="Price5To10" class="form-control" />
+                    <span asp-validation-for="Price5To10" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="PriceAbove10" class="control-label"></label>
+                    <input asp-for="PriceAbove10" class="form-control" />
+                    <span asp-validation-for="PriceAbove10" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
                     <label asp-for="OriginId" class="control-label"></label>
                     <select asp-for="OriginId" class="form-control" asp-items="originItems"></select>
                     <span asp-validation-for="OriginId" class="text-danger"></span>

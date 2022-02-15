@@ -46,7 +46,10 @@
                         ProductData = new SessionLineItemPriceDataProductDataOptions
                         {
                             Name = wine.WineName,
-                            Images = new List<string> { wine.ImageUrl },
+                            Images = new List<string>
+                            {
+                                wine.ImageUrl,
+                            },
                         },
                     },
 

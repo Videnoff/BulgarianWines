@@ -1903,6 +1903,14 @@
     <Folder Include="wwwroot\images\admin\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Areas\Administration\Views\Orders\Details.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Areas\Administration\Views\Orders\Details.cshtml" />
+  </ItemGroup>
+
   <!-- <ItemGroup>
     <UpToDateCheckInput Remove="Views\Categories\Products.cshtml" />
   </ItemGroup>

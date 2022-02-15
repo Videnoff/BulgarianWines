@@ -18,8 +18,16 @@
         public string Description { get; set; }
 
         [Range(1, (double)int.MaxValue)]
-        [Display(Name = "Price (SGD)")]
+        [Display(Name = "Price 1 to 5 (SGD)")]
         public decimal Price { get; set; }
+
+        [Range(1, (double)int.MaxValue)]
+        [Display(Name = "Price 5 to 10 (SGD)")]
+        public decimal Price5To10 { get; set; }
+
+        [Range(1, (double)int.MaxValue)]
+        [Display(Name = "Price above 10 (SGD)")]
+        public decimal PriceAbove10 { get; set; }
 
         [Required]
         public string ProductCode { get; set; }

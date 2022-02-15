@@ -116,23 +116,6 @@
     <br />
     <div class="productpage">
         <div id="product-product" class="container">
-            @*<ul class="breadcrumb">
-                    <li>
-                        <a asp-area="" asp-controller="Home" asp-action="Index">
-                            <i class="fa fa-home"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-controller="Categories" asp-action="Products" asp-route-categoryId="@Model.CategoryId">
-                            @Model.CategoryName
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-controller="Wines" asp-action="SingleWine" asp-route-id="@Model.Id">
-                            @Model.Name
-                        </a>
-                    </li>
-                </ul>*@
             <div class="row">
                 <div id="content" class="col-sm-12 productpage">
                     <div class="row">
@@ -246,13 +229,13 @@
                                         </h2>
                                     </li>
                                     <li class="discount">
-                                        1 to 5 Cases S$ 27
+                                        1 to 5 Cases S$ @Model.Price
                                     </li>
                                     <li class="discount">
-                                        5 to 10 Cases S$ 26
+                                        5 to 10 Cases S$ @Model.Price5To10
                                     </li>
                                     <li class="discount">
-                                        10 and above S$ 25
+                                        10 and above S$ @Model.PriceAbove10
                                     </li>
                                 </ul>
                                 <div id="product">
