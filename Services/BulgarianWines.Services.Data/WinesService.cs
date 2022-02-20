@@ -152,11 +152,17 @@
             }
 
             foundProduct.Name = newProduct.Name;
+            foundProduct.ProductCode = newProduct.ProductCode;
             foundProduct.Description = newProduct.Description;
-            foundProduct.Harvest = newProduct.Harvest;
-            foundProduct.Origin = newProduct.Origin;
-            foundProduct.Variety = newProduct.Variety;
-            foundProduct.Category = newProduct.Category;
+            foundProduct.HarvestId = newProduct.HarvestId;
+            foundProduct.OriginId = newProduct.OriginId;
+            foundProduct.VarietyId = newProduct.VarietyId;
+            foundProduct.CategoryId = newProduct.CategoryId;
+            foundProduct.VolumeId = newProduct.VolumeId;
+            foundProduct.AvailabilityId = newProduct.AvailabilityId;
+            foundProduct.Price = newProduct.Price;
+            foundProduct.Price5To10 = newProduct.Price5To10;
+            foundProduct.PriceAbove10 = newProduct.PriceAbove10;
 
             if (images != null && images.Count() > 0)
             {

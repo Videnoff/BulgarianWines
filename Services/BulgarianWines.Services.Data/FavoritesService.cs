@@ -41,7 +41,7 @@
                 return false;
             }
 
-            var wineExists = this.favoriteProductsRepository.AllAsNoTracking().Any(x => x.WineId == wineId);
+            var wineExists = this.favoriteProductsRepository.AllAsNoTracking().Any(x => x.WineId == wineId && x.UserId == userId);
 
             if (wineExists)
             {
