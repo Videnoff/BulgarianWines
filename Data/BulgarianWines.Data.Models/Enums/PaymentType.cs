@@ -5,5 +5,6 @@
         Unknown = 0,
         CashOnDelivery = 1,
         Stripe = 2,
+        PayNow = 3,
     }
 }
