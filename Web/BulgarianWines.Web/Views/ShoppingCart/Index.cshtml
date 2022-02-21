@@ -145,9 +145,13 @@
                                         <td class="t-qty">
                                             <div class="qty-box">
                                                 <div class="quantity buttons_added">
-                                                    <a asp-area="" asp-controller="ShoppingCart" asp-action="UpdateQuantity" asp-route-productId="@product.ProductId" asp-route-increase="false" class="minus">-</a>
+                                                    <a asp-area="" asp-controller="ShoppingCart" asp-action="UpdateQuantity" asp-route-productId="@product.ProductId" asp-route-increase="false" class="minus">
+                                                        -
+                                                    </a>
                                                     <input type="number" step="1" min="1" max="100" value="@product.Quantity" class="qty text" size="2" readonly>
-                                                    <a asp-area="" asp-controller="ShoppingCart" asp-action="UpdateQuantity" asp-route-productId="@product.ProductId" asp-route-increase="true" class="plus">+</a>
+                                                    <a asp-area="" asp-controller="ShoppingCart" asp-action="UpdateQuantity" asp-route-productId="@product.ProductId" asp-route-increase="true" class="plus">
+                                                        +
+                                                    </a>
                                                 </div>
                                             </div>
 
@@ -165,10 +169,32 @@
                                         </td>
 
                                         <td class="text-right">
-                                            S$@product.ProductPrice
+                                            @if (product.Quantity >= 10)
+                                            {
+                                                @:S$@product.PriceAbove10;
+                                            }
+                                            else if (product.Quantity is < 10 and >= 5)
+                                            {
+                                                @:S$@product.Price5To10;
+                                            }
+                                            else
+                                            {
+                                                @:S$@product.ProductPrice;
+                                            }
                                         </td>
                                         <td class="text-right">
-                                            S$@product.TotalPrice
+                                            @if (product.Quantity >= 10)
+                                            {
+                                                @:S$@product.TotalPriceAbove10;
+                                            }
+                                            else if (product.Quantity is < 10 and >= 5)
+                                            {
+                                                @:S$@product.TotalPrice5To10;
+                                            }
+                                            else
+                                            {
+                                                @:S$@product.TotalPrice;
+                                            }
                                         </td>
                                     </tr>
                                 }
@@ -203,7 +229,7 @@
                                         $2.00
                                     </td>
                                 </tr>*@
-                            <tr>
+                            @*<tr>
                                 <td class="text-right">
                                     <strong>
                                         VAT (20%):
@@ -212,15 +238,18 @@
                                 <td class="text-right">
                                     S$@Model.VAT
                                 </td>
-                            </tr>
+                            </tr>*@
                             <tr>
                                 <td class="text-right">
                                     <strong>
                                         Total:
                                     </strong>
                                 </td>
-                                <td class="text-right">
+                                @*<td class="text-right">
                                     S$@Model.GrandTotalPrice
+                                </td>*@
+                                <td class="text-right">
+                                    S$@Model.Subtotal
                                 </td>
                             </tr>
                         </table>

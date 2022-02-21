@@ -3,7 +3,9 @@
 <nav aria-label="...">
     <ul class="pagination justify-content-center">
         <li class="page-item @if (!Model.HasPreviousPage) { <text>disabled</text> }">
-            <a class="page-link" asp-area="@Model.Area" asp-controller="@Model.Controller" asp-action="@Model.Action" asp-all-route-data="@Model.GetPageQuery(Model.PreviousPageNumber)">Previous</a>
+            <a class="page-link" asp-area="@Model.Area" asp-controller="@Model.Controller" asp-action="@Model.Action" asp-all-route-data="@Model.GetPageQuery(Model.PreviousPageNumber)">
+                Previous
+            </a>
         </li>
         @for (int i = Model.PageNumber - 4; i < Model.PageNumber; i++)
         {
