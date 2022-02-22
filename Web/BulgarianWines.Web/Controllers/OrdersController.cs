@@ -1,14 +1,17 @@
 ﻿namespace BulgarianWines.Web.Controllers
 {
+    using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
+    using BulgarianWines.Data.Models;
     using BulgarianWines.Data.Models.Enums;
     using BulgarianWines.Services;
     using BulgarianWines.Services.Data;
     using BulgarianWines.Web.ViewModels.Addresses;
     using BulgarianWines.Web.ViewModels.Orders;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
     public class OrdersController : BaseController
@@ -17,6 +20,7 @@
         private readonly IOrdersService ordersService;
         private readonly IAddressesService addressesService;
         private readonly IShortTextService shortTextService;
+        private readonly UserManager<ApplicationUser> userManager;
 
         private readonly string userId;
 
@@ -25,12 +29,14 @@
             IOrdersService ordersService,
             IHttpContextAccessor contextAccessor,
             IAddressesService addressesService,
-            IShortTextService shortTextService)
+            IShortTextService shortTextService,
+            UserManager<ApplicationUser> userManager)
         {
             this.shoppingCartService = shoppingCartService;
             this.ordersService = ordersService;
             this.addressesService = addressesService;
             this.shortTextService = shortTextService;
+            this.userManager = userManager;
 
             this.userId = contextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
         }
@@ -52,7 +58,9 @@
                 address.Description = this.shortTextService.ShortText(address.Description, 30);
             }
 
-            var email = this.User.Identity.Name;
+            var userName = this.User.Identity.Name;
+            var user = await this.userManager.FindByNameAsync(userName);
+            var email = await this.userManager.GetEmailAsync(user);
 
             var model = new CreateOrderInputModel
             {

@@ -171,31 +171,31 @@
                                         <td class="text-right">
                                             @if (product.Quantity >= 10)
                                             {
-                                                @:S$@product.PriceAbove10;
+                                                @:S$@product.PriceAbove10
                                             }
                                             else if (product.Quantity is < 10 and >= 5)
                                             {
-                                                @:S$@product.Price5To10;
+                                                @:S$@product.Price5To10
                                             }
                                             else
                                             {
-                                                @:S$@product.ProductPrice;
+                                                @:S$@product.ProductPrice
                                             }
                                         </td>
                                         <td class="text-right">
                                             @if (product.Quantity >= 10)
                                             {
-                                                @:S$@product.TotalPriceAbove10;
+                                                @:S$@product.TotalPriceAbove10
                                                 subTotalPrice += (product.PriceAbove10 * product.Quantity);
                                             }
                                             else if (product.Quantity is < 10 and >= 5)
                                             {
-                                                @:S$@product.TotalPrice5To10;
+                                                @:S$@product.TotalPrice5To10
                                                 subTotalPrice += (product.Price5To10 * product.Quantity);
                                             }
                                             else
                                             {
-                                                @:S$@product.TotalPrice;
+                                                @:S$@product.TotalPrice
                                                 subTotalPrice += (product.ProductPrice * product.Quantity);
                                             }
                                         </td>

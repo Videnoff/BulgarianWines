@@ -15,6 +15,7 @@
     using BulgarianWines.Web.ViewModels.Wines;
     using Microsoft.AspNetCore.Diagnostics;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Caching.Distributed;
     using Newtonsoft.Json;
@@ -22,6 +23,8 @@
     public class HomeController : BaseController
     {
         private const int DescriptionMaxLength = 40;
+
+        private readonly UserManager<ApplicationUser> userManager;
 
         private readonly IHomePageSlidesService homePageSlidesService;
         private readonly IDistributedCache distributedCache;
@@ -37,7 +40,8 @@
             ICategoriesService categoriesService,
             IWinesService winesService,
             IShortTextService shortTextService,
-            IUserMessagesService userMessagesService)
+            IUserMessagesService userMessagesService,
+            UserManager<ApplicationUser> userManager)
         {
             this.homePageSlidesService = homePageSlidesService;
             this.distributedCache = distributedCache;
@@ -45,6 +49,7 @@
             this.winesService = winesService;
             this.shortTextService = shortTextService;
             this.userMessagesService = userMessagesService;
+            this.userManager = userManager;
         }
 
         public async Task<IActionResult> Index()
@@ -123,13 +128,17 @@
             return this.View();
         }
 
-        public IActionResult Contact()
+        public async Task<IActionResult> Contact()
         {
+            var userName = this.User.Identity.Name;
+            var user = await this.userManager.FindByNameAsync(userName);
+            var email = await this.userManager.GetEmailAsync(user);
+
             if (this.User.Identity.IsAuthenticated)
             {
                 ContactFormViewModel model = new ContactFormViewModel()
                 {
-                    Email = this.User.Identity.Name,
+                    Email = email,
                 };
 
                 return this.View(model);
