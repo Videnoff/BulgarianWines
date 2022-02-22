@@ -11,8 +11,10 @@
 
         public decimal GrandTotalPrice => this.Products.Sum(x => x.TotalPrice);
 
-        public decimal VAT => this.GrandTotalPrice * 20 / 100;
+        //public decimal VAT => this.GrandTotalPrice * 20 / 100;
 
-        public decimal Subtotal => this.GrandTotalPrice - this.VAT;
+        //public decimal Subtotal => this.GrandTotalPrice - this.VAT;
+
+        public decimal Subtotal => this.GrandTotalPrice;
     }
 }

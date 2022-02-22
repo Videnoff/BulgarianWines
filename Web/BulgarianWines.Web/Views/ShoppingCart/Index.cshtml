@@ -97,6 +97,7 @@
                     your bag
                     &nbsp;(@Model.Products.Count() @(Model.Products.Count() > 1 ? "items" : "item"))
                 </h2>
+                @{ decimal subTotalPrice = 0; }
                 <form action="" method="post" enctype="multipart/form-data">
                     <div class="table-responsive">
                         <table class="table table-bordered shopping-cart">
@@ -154,7 +155,6 @@
                                                     </a>
                                                 </div>
                                             </div>
-
                                         </td>
                                         <td class="text-left">
                                             <div class="input-group btn-block" style="max-width: 200px;">
@@ -186,14 +186,17 @@
                                             @if (product.Quantity >= 10)
                                             {
                                                 @:S$@product.TotalPriceAbove10;
+                                                subTotalPrice += (product.PriceAbove10 * product.Quantity);
                                             }
                                             else if (product.Quantity is < 10 and >= 5)
                                             {
                                                 @:S$@product.TotalPrice5To10;
+                                                subTotalPrice += (product.Price5To10 * product.Quantity);
                                             }
                                             else
                                             {
                                                 @:S$@product.TotalPrice;
+                                                subTotalPrice += (product.ProductPrice * product.Quantity);
                                             }
                                         </td>
                                     </tr>
@@ -216,7 +219,8 @@
                                     </strong>
                                 </td>
                                 <td class="text-right">
-                                    S$@Model.Subtotal
+                                    @*S$@Model.Subtotal*@
+                                    S$@subTotalPrice
                                 </td>
                             </tr>
                             @*<tr>
@@ -230,15 +234,15 @@
                                     </td>
                                 </tr>*@
                             @*<tr>
-                                <td class="text-right">
-                                    <strong>
-                                        VAT (20%):
-                                    </strong>
-                                </td>
-                                <td class="text-right">
-                                    S$@Model.VAT
-                                </td>
-                            </tr>*@
+                                    <td class="text-right">
+                                        <strong>
+                                            VAT (20%):
+                                        </strong>
+                                    </td>
+                                    <td class="text-right">
+                                        S$@Model.VAT
+                                    </td>
+                                </tr>*@
                             <tr>
                                 <td class="text-right">
                                     <strong>
@@ -246,10 +250,11 @@
                                     </strong>
                                 </td>
                                 @*<td class="text-right">
-                                    S$@Model.GrandTotalPrice
-                                </td>*@
+                                        S$@Model.GrandTotalPrice
+                                    </td>*@
                                 <td class="text-right">
-                                    S$@Model.Subtotal
+                                    @*S$@Model.Subtotal*@
+                                    S$@subTotalPrice
                                 </td>
                             </tr>
                         </table>
