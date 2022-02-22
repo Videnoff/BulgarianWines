@@ -1,0 +1,45 @@
+﻿@{
+    this.ViewData["Title"] = "Return Policy";
+}
+
+<head>
+    <meta charset="UTF-8" />
+</head>
+
+<div id="breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li>
+                <a asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="fa fa-home"></i>
+                </a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="Home" asp-action="About">
+                    @this.ViewData["Title"]
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<br />
+<br />
+
+<div class="container">
+    <h1>
+        @this.ViewData["Title"]
+    </h1>
+    <br/>
+    <p>
+        We want you to be completely happy with your purchase with Bulsing.
+    </p>
+
+    <p>
+        If you are not 100% satisfied with your purchase due to Leakages or Torn & Dirty Labels or Manufacturer’s Defect, you can return it for a refund of the purchase price, an in-house credit, or exchange for another product by simply producing your proof of purchase within 7 days from the date of receipt of wines.
+    </p>
+
+    <p>
+        For Wine Faults, we will, at our discretion consider a refund or replacement, where the wine is deemed undrinkable in quality. We will require the wine to be returned to our retail store with the content at least half-filled.
+    </p>
+</div>

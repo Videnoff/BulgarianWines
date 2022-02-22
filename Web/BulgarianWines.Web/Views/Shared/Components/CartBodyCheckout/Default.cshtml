@@ -71,6 +71,7 @@
                                 </a>
                             </h4>
                         </div>
+                        @{ decimal subTotalPrice = 0; }
                         <div class="panel-collapse collapse in" id="collapse-checkout-confirm" aria-expanded="true" style="">
                             <div class="panel-body">
                                 <div class="table-responsive">
@@ -78,7 +79,6 @@
                                         <thead>
                                             <tr>
                                                 <td class="text-left">
-                                                    
                                                 </td>
                                                 <td class="text-left">
                                                     Product Name
@@ -100,30 +100,55 @@
                                         <tbody>
                                             @foreach (var product in Model.Products)
                                             {
-                                            <tr>
-                                                <td class="text-left">
-                                                <a asp-area="" asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.ProductId">
-                                                    <img src="@product.ImageUrl" alt="@product.ProductName" title="@product.ProductName" class="custom-image-box" />
-                                                </a>
-                                                </td>
-                                                <td class="text-left">
-                                                    <a href="">
-                                                        @product.ProductName
-                                                    </a>
-                                                </td>
-                                                <td class="text-left">
-                                                    @product.ProductCode
-                                                </td>
-                                                <td class="text-right">
-                                                    @product.Quantity
-                                                </td>
-                                                <td class="text-right">
-                                                    S$@product.ProductPrice
-                                                </td>
-                                                <td class="text-right">
-                                                    S$@(product.ProductPrice * product.Quantity)
-                                                </td>
-                                            </tr>
+                                                <tr>
+                                                    <td class="text-left">
+                                                        <a asp-area="" asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.ProductId">
+                                                            <img src="@product.ImageUrl" alt="@product.ProductName" title="@product.ProductName" class="custom-image-box" />
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-left">
+                                                        <a href="">
+                                                            @product.ProductName
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-left">
+                                                        @product.ProductCode
+                                                    </td>
+                                                    <td class="text-right">
+                                                        @product.Quantity
+                                                    </td>
+                                                    <td class="text-right">
+                                                        @if (product.Quantity >= 10)
+                                                        {
+                                                            @:S$@product.PriceAbove10;
+                                                        }
+                                                        else if (product.Quantity is < 10 and >= 5)
+                                                        {
+                                                            @:S$@product.Price5To10;
+                                                        }
+                                                        else
+                                                        {
+                                                            @:S$@product.ProductPrice;
+                                                        }
+                                                    </td>
+                                                    <td class="text-right">
+                                                        @if (product.Quantity >= 10)
+                                                        {
+                                                            @:S$@product.TotalPriceAbove10;
+                                                            subTotalPrice += (product.PriceAbove10 * product.Quantity);
+                                                        }
+                                                        else if (product.Quantity is < 10 and >= 5)
+                                                        {
+                                                            @:S$@product.TotalPrice5To10;
+                                                            subTotalPrice += (product.Price5To10 * product.Quantity);
+                                                        }
+                                                        else
+                                                        {
+                                                            @:S$@product.TotalPrice;
+                                                            subTotalPrice += (product.ProductPrice * product.Quantity);
+                                                        }
+                                                    </td>
+                                                </tr>
                                             }
                                         </tbody>
                                         <tfoot>
@@ -134,19 +159,20 @@
                                                     </strong>
                                                 </td>
                                                 <td class="text-right">
-                                                    S$@Model.Subtotal
+                                                    @*S$@Model.Subtotal*@
+                                                    S$@subTotalPrice
                                                 </td>
                                             </tr>
                                             @*<tr>
-                                                <td colspan="5" class="text-right">
-                                                    <strong>
-                                                        VAT (20%):
-                                                    </strong>
-                                                </td>
-                                                <td class="text-right">
-                                                    S$@Model.VAT
-                                                </td>
-                                            </tr>*@
+                                <td colspan="5" class="text-right">
+                                    <strong>
+                                        VAT (20%):
+                                    </strong>
+                                </td>
+                                <td class="text-right">
+                                    S$@Model.VAT
+                                </td>
+                            </tr>*@
                                             <tr>
                                                 <td colspan="5" class="text-right">
                                                     <strong>
@@ -154,7 +180,8 @@
                                                     </strong>
                                                 </td>
                                                 <td class="text-right">
-                                                    S$@Model.GrandTotalPrice
+                                                    @*S$@Model.GrandTotalPrice*@
+                                                    S$@subTotalPrice
                                                 </td>
                                             </tr>
                                         </tfoot>

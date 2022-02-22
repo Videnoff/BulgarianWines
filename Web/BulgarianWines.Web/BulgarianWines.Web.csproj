@@ -1909,6 +1909,11 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Areas\Administration\Views\Orders\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Home\Return.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Home\Return.cshtml" />
   </ItemGroup>
 
   <!-- <ItemGroup>

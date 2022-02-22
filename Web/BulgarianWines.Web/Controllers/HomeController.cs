@@ -118,6 +118,11 @@
             return this.View();
         }
 
+        public IActionResult Return()
+        {
+            return this.View();
+        }
+
         public IActionResult Contact()
         {
             if (this.User.Identity.IsAuthenticated)
