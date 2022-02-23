@@ -2,16 +2,23 @@
 
 <div class="cart-body">
     <div class="close-btn">
-        <button class="close-cart"><img src="~/images/close.png" alt="">Close</button>
+        <button class="close-cart">
+            <img src="~/images/close.png" alt="">
+            Close
+        </button>
     </div>
     <div class="crt-bd-box">
         <div class="cart-heading text-center">
-            <h5>Shopping Cart</h5>
+            <h5>
+                Shopping Cart
+            </h5>
         </div>
         <div class="cart-content">
             @if (!Model.Products.Any())
             {
-                <h3 class="text-center">No products</h3>
+                <h3 class="text-center">
+                    No products
+                </h3>
             }
             @foreach (var product in Model.Products)
             {

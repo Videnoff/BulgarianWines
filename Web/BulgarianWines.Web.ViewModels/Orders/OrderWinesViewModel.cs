@@ -21,8 +21,18 @@
 
         public string WineProductCode { get; set; }
 
+        public decimal Price5To10 { get; set; }
+
+        public decimal PriceAbove10 { get; set; }
+
         [IgnoreMap]
         public decimal TotalPrice => this.Quantity * this.Price;
+
+        [IgnoreMap]
+        public decimal TotalPriceAbove10 => this.Quantity * this.PriceAbove10;
+
+        [IgnoreMap]
+        public decimal TotalPrice5To10 => this.Quantity * this.Price5To10;
 
         public void CreateMappings(IProfileExpression configuration)
         {
@@ -38,7 +48,13 @@
                     opt => opt.MapFrom(x => x.Wine.Name))
                 .ForMember(
                     x => x.WineProductCode,
-                    opt => opt.MapFrom(x => x.Wine.ProductCode));
+                    opt => opt.MapFrom(x => x.Wine.ProductCode))
+                .ForMember(
+                    x => x.Price5To10,
+                    opt => opt.MapFrom(m => m.Wine.Price5To10))
+                .ForMember(
+                    x => x.PriceAbove10,
+                    opt => opt.MapFrom(m => m.Wine.PriceAbove10));
         }
     }
 }

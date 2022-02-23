@@ -58,19 +58,19 @@
             }
 
             // Add shipping price
-            items.Add(new SessionLineItemOptions()
-            {
-                PriceData = new SessionLineItemPriceDataOptions()
-                {
-                    UnitAmount = (long?)(order.DeliveryPrice * 100),
-                    Currency = "sgd",
-                    ProductData = new SessionLineItemPriceDataProductDataOptions()
-                    {
-                        Name = "Shipping",
-                    },
-                },
-                Quantity = 1,
-            });
+            //items.Add(new SessionLineItemOptions()
+            //{
+            //    PriceData = new SessionLineItemPriceDataOptions()
+            //    {
+            //        UnitAmount = (long?)(order.DeliveryPrice * 100),
+            //        Currency = "sgd",
+            //        ProductData = new SessionLineItemPriceDataProductDataOptions()
+            //        {
+            //            Name = "Shipping",
+            //        },
+            //    },
+            //    Quantity = 1,
+            //});
 
             var options = new SessionCreateOptions()
             {

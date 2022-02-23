@@ -1,4 +1,6 @@
-﻿namespace BulgarianWines.Web.ViewModels.Orders
+﻿using BulgarianWines.Web.ViewModels.ShoppingCart;
+
+namespace BulgarianWines.Web.ViewModels.Orders
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -13,6 +15,8 @@
 
     public class OrderViewModel : IMapFrom<Order>, IHaveCustomMappings
     {
+        public IEnumerable<ShoppingCartProductViewModel> Products { get; set; }
+
         [Display(Name = "Order Id")]
         public string Id { get; set; }
 
@@ -57,9 +61,9 @@
 
         public decimal GrandTotalPrice => this.Wines.Sum(x => x.TotalPrice);
 
-        public decimal VAT => this.GrandTotalPrice * 20 / 100;
+        //public decimal VAT => this.GrandTotalPrice * 20 / 100;
 
-        public decimal Subtotal => this.GrandTotalPrice - this.VAT;
+        //public decimal Subtotal => this.GrandTotalPrice - this.VAT;
 
         public IEnumerable<OrderWinesViewModel> Wines { get; set; }
 

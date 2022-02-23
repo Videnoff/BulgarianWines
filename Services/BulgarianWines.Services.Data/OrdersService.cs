@@ -65,6 +65,17 @@
 
             foreach (var shoppingCartProduct in shoppingCartProducts)
             {
+
+                if (shoppingCartProduct.Quantity >= 10)
+                {
+                    shoppingCartProduct.ProductPrice = shoppingCartProduct.PriceAbove10;
+                }
+
+                if (shoppingCartProduct.Quantity is < 10 and >= 5)
+                {
+                    shoppingCartProduct.ProductPrice = shoppingCartProduct.Price5To10;
+                }
+
                 var productOrder = new WineOrder
                 {
                     Order = order,
@@ -72,6 +83,8 @@
                     Quantity = shoppingCartProduct.Quantity,
                     Price = shoppingCartProduct.ProductPrice,
                 };
+
+
 
                 if (!this.OrderHasProduct(order.Id, shoppingCartProduct.ProductId))
                 {
