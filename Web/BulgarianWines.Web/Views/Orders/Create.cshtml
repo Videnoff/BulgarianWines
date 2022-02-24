@@ -193,11 +193,12 @@
                                             </p>
                                             <div class="radio">
                                                 <label for="payNowInput">
+                                                    <input type="radio" name="payment" id="payNowInput" value="PayNow" checked="checked">
                                                     <a data-toggle="collapse" href="#payNowQr" role="button" aria-expanded="false" aria-controls="payNowQr">
                                                         @*<input type="radio" name="payment" id="payNowInput" value="PayNow" checked="checked">*@
 
                                                         @*Cash On Delivery*@
-                                                        PayNow (Generate QR Code)
+                                                        PayNow (Click to generate QR Code)
                                                     </a>
                                                 </label>
                                             </div>
@@ -212,45 +213,36 @@
                                             <div class="radio">
                                                 <label for="stripeInput">
                                                     <input type="radio" name="payment" id="stripeInput" value="Stripe" checked="checked">
-                                                    <a data-toggle="collapse" href="#stripeField" role="button" aria-expanded="false" aria-controls="stripeField">
-                                                        Stripe (additional fees)
-                                                    </a>
+                                                    Stripe
                                                 </label>
                                             </div>
-                                            <div class="collapse" id="stripeField">
-                                                <p>
-                                                    <strong>
-                                                        Add Comments About Your Order
-                                                    </strong>
-                                                </p>
-                                                <p>
-                                                    <textarea name="comment" rows="8" class="form-control"></textarea>
-                                                </p>
-                                            </div>
+                                            <p>
+                                                <strong>
+                                                    Add Comments About Your Order
+                                                </strong>
+                                            </p>
+                                            <p>
+                                                <textarea name="comment" rows="8" class="form-control"></textarea>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="collapse" id="stripeField">
-                                    <div class="buttons clearfix">
-                                        <div class="pull-right">
-                                            <button type="button" name="button" id="orderButton" data-loading-text="Loading..." class="btn btn-primary">
-                                                Confirm Order
-                                            </button>
-                                        </div>
+                                <div class="buttons clearfix">
+                                    <div class="pull-right">
+                                        <button type="button" name="button" id="orderButton" data-loading-text="Loading..." class="btn btn-primary">
+                                            Confirm Order
+                                        </button>
                                     </div>
-                                    <br />
-                                    <br />
                                 </div>
+                                <br />
+                                <br />
                             </div>
                         </div>
                         @*</div>*@
                     </div>
-
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </body>
 </html>

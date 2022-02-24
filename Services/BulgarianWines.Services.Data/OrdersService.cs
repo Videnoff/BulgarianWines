@@ -84,8 +84,6 @@
                     Price = shoppingCartProduct.ProductPrice,
                 };
 
-
-
                 if (!this.OrderHasProduct(order.Id, shoppingCartProduct.ProductId))
                 {
                     order.Wines.Add(productOrder);
@@ -94,7 +92,7 @@
 
             order.TotalPrice = order.Wines.Sum(x => x.Quantity * x.Price);
 
-            if (order.PaymentType == PaymentType.CashOnDelivery || order.PaymentStatus == PaymentStatus.Paid)
+            if (order.PaymentType is PaymentType.CashOnDelivery or PaymentType.PayNow || order.PaymentStatus == PaymentStatus.Paid)
             {
                 await this.shoppingCartService.DeleteAllProductsAsync(userId);
                 order.Status = OrderStatus.Unprocessed;

@@ -117,7 +117,7 @@
 
             var orderId = await this.ordersService.CompleteOrderAsync(this.userId);
 
-            if (this.ordersService.GetPaymentTypeById(orderId) == PaymentType.CashOnDelivery)
+            if (this.ordersService.GetPaymentTypeById(orderId) == PaymentType.CashOnDelivery || this.ordersService.GetPaymentTypeById(orderId) == PaymentType.PayNow)
             {
                 this.TempData["Alert"] = "Successfully registered order.";
             }

@@ -96,16 +96,16 @@
                             context.User.IsInRole(GlobalConstants.SuperAdministratorRoleName)));
             });
 
-            services.AddAuthentication()
-#pragma warning disable SA1305 // Field names should not use Hungarian notation
-                .AddGoogle(gOptions =>
-#pragma warning restore SA1305 // Field names should not use Hungarian notation
-                {
-                    var googleAuthNSection = this.configuration.GetSection("Authentication:Google");
+//            services.AddAuthentication()
+//#pragma warning disable SA1305 // Field names should not use Hungarian notation
+//                .AddGoogle(gOptions =>
+//#pragma warning restore SA1305 // Field names should not use Hungarian notation
+//                {
+//                    var googleAuthNSection = this.configuration.GetSection("Authentication:Google");
 
-                    gOptions.ClientId = googleAuthNSection["ClientId"];
-                    gOptions.ClientSecret = googleAuthNSection["ClientSecret"];
-                });
+//                    gOptions.ClientId = googleAuthNSection["ClientId"];
+//                    gOptions.ClientSecret = googleAuthNSection["ClientSecret"];
+//                });
 
             services.AddAntiforgery(options =>
             {

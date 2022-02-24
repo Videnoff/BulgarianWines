@@ -100,6 +100,7 @@
                                         <tbody>
                                             @foreach (var product in Model.Products)
                                             {
+                                                productClassName = (product.ProductId == Model.Products.Last().ProductId) ? "last-product" : string.Empty;
                                                 <tr>
                                                     <td class="text-left">
                                                         <a asp-area="" asp-controller="Wines" asp-action="SingleWine" asp-route-id="@product.ProductId">
