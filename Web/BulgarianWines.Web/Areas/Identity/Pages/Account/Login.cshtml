@@ -1,111 +1,186 @@
-﻿@page
+@page
 @model LoginModel
 
 @{
-    ViewData["Title"] = "Log in";
+    ViewData["Title"] = "Account Login";
 }
 
-<div class="container">
-    <main role="main" class="pb-3">
-        <h1>
-            @ViewData["Title"]
-        </h1>
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+        @ViewData["Title"]
+    </title>
+    @*<script src="~/js/wined/jquery/jquery-2.1.1.min.js" asp-append-version="true"></script>*@
+    <!-- <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" /> -->
+    <script src="~/js/wined/bootstrap/js/bootstrap.min.js" asp-append-version="true"></script>
+    <link href="~/js/wined/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" asp-append-version="true" />
 
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
+
+    <link href="~/css/wined/stylesheet.css" rel="stylesheet" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/wined/themecss/lightbox.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/js/wined/jquery/magnific/magnific-popup.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/js/wined/jquery/owl-carousel/owl.carousel.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/js/wined/jquery/owl-carousel/owl.transitions.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/wined/themecss/carousel.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/wined/themecss/custom.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/wined/themecss/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/wined/themecss/animate.css" asp-append-version="true" />
+    <!--  -->
+
+    <script src="~/js/wined/lightbox/lightbox-2.6.min.js" asp-append-version="true"></script>
+    @*<script src="~/js/wined/common.js" asp-append-version="true"></script>*@
+    <!-- Theme Start -->
+
+    <script type="text/javascript" src="~/js/wined/themejs/custom.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jstree.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/carousel.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/productcarosel.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jquery.custom.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jquery.formalize.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jquery.elevatezoom.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/bootstrap-notify.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/jquery/magnific/jquery.magnific-popup.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/owl.carousel.min.js" asp-append-version="true"></script>
+    <link rel="stylesheet" type="text/css" href="~/js/wined/jquery/magnific/magnific-popup.css" asp-append-version="true" />
+    <script src="~/js/wined/themejs/tabs.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/jquery.countdown.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/jquery.countdown.min.js" asp-append-version="true"></script>
+    <!-- Theme End -->
+
+    <script src="~/js/wined/common.js" asp-append-version="true"></script>
+    <script src="~/js/wined/themejs/parallax.js" asp-append-version="true"></script>
+</head>
+
+
+<body class="account-login   layout-2 left-col">
+    <div id="breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Index">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="About">
+                        Account
+                    </a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="About">
+                        Login
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div id="account-login" class="container">
         <div class="row">
-            <div class="col-md-4">
-                <section>
-                    <form id="account" method="post">
-                        <h4>
-                            Use a local account to log in.
-                        </h4>
-                        <hr />
-                        <div asp-validation-summary="All" class="text-danger"></div>
-                        @*<div class="form-group">
-                            <label asp-for="Input.Username"></label>
-                            <input asp-for="Input.Username" class="form-control" />
-                            <span asp-validation-for="Input.Username" class="text-danger"></span>
-                        </div>*@
-                        <div class="form-group">
-                            <label asp-for="Input.Email"></label>
-                            <input asp-for="Input.Email" class="form-control" />
-                            <span asp-validation-for="Input.Email" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Input.Password"></label>
-                            <input asp-for="Input.Password" class="form-control" />
-                            <span asp-validation-for="Input.Password" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <div class="checkbox">
-                                <label asp-for="Input.RememberMe">
-                                    <input asp-for="Input.RememberMe" />
-                                    @Html.DisplayNameFor(m => m.Input.RememberMe)
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">
-                                Log in
-                            </button>
-                        </div>
-                        <div class="form-group">
+            <aside id="column-left" class="col-sm-3 hidden-xs">
+                <div class="box">
+                    <div class="box-heading">
+                        Account
+                    </div>
+                    <div class="list-group">
+                        <a href="" class="list-group-item">
+                            Login
+                        </a> 
+                        <a href="" class="list-group-item">
+                            Register
+                        </a> 
+                        <a href="" class="list-group-item">
+                            Forgotten Password
+                        </a>
+                        <a href="" class="list-group-item">
+                            My Account
+                        </a>
+                        <a href="" class="list-group-item">
+                            Address Book
+                        </a> 
+                        <a href="" class="list-group-item">
+                            Wish List
+                        </a> 
+                        <a href="" class="list-group-item">
+                            Order History
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <div id="content" class="col-sm-9">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="well">
+                            <h2>
+                                New Customer
+                            </h2>
                             <p>
-                                <a id="forgot-password" asp-page="./ForgotPassword">
-                                    Forgot your password?
-                                </a>
+                                <strong>
+                                    Register
+                                </strong>
                             </p>
                             <p>
-                                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">
-                                    Register as a new user
-                                </a>
+                                By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.
                             </p>
-                            <p>
-                                <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">
-                                    Resend email confirmation
-                                </a>
-                            </p>
+                            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="btn btn-primary">
+                                Continue
+                            </a>
                         </div>
-                    </form>
-                </section>
-            </div>
-            <div class="col-md-6 col-md-offset-2">
-                <section>
-                    <h4>
-                        Use another service to log in.
-                    </h4>
-                    <hr />
-                    @{
-                        if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                        {
-                            <div>
-                                <p>
-                                    There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                                    for details on setting up this ASP.NET application to support logging in via external services.
-                                </p>
-                            </div>
-                        }
-                        else
-                        {
-                            <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                                <div>
-                                    <p>
-                                        @foreach (var provider in Model.ExternalLogins)
-                                        {
-                                            <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
-                                                @provider.DisplayName
-                                            </button>
-                                        }
-                                    </p>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="well">
+                            <h2>
+                                Returning Customer
+                            </h2>
+                            <p>
+                                <strong>
+                                    I am a returning customer
+                                </strong>
+                            </p>
+                            <form id="account" method="post" enctype="multipart/form-data">
+                                <div asp-validation-summary="All" class="text-danger"></div>
+                                <div class="form-group">
+                                    <label asp-for="Input.Email" class="control-label" for="input-email">
+                                        Enter your e-mail
+                                    </label>
+                                    <input asp-for="Input.Email" type="text" name="email" value="" placeholder="Enter your e-mail" id="input-email" class="form-control" />
+                                    <span asp-validation-for="Input.Email" class="text-danger"></span>
                                 </div>
+                                <div class="form-group">
+                                    <label asp-for="Input.Password" class="control-label" for="input-password">
+                                        Password
+                                    </label>
+                                    <input asp-for="Input.Password" type="password" name="password" value="" placeholder="Password" id="input-password" class="form-control" />
+                                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                    <div class="form-group">
+                                        <div class="checkbox">
+                                            <label asp-for="Input.RememberMe">
+                                                <input asp-for="Input.RememberMe" />
+                                                @Html.DisplayNameFor(m => m.Input.RememberMe)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <a id="forgot-password" asp-page="./ForgotPassword">
+                                        Forgotten Password
+                                    </a>
+                                </div>
+                                <input type="submit" value="Login" class="btn btn-primary" />
                             </form>
-                        }
-                    }
-                </section>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-    </main>
-</div>
+    </div>
+</body>
+</html>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

@@ -1,95 +1,350 @@
-﻿@page
+@page
 @model RegisterModel
 @{
     ViewData["Title"] = "Register";
 }
 
-<div class="container">
-
-    <h1>
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
         @ViewData["Title"]
-    </h1>
+    </title>
+    @*<script src="~/js/wined/jquery/jquery-2.1.1.min.js" asp-append-version="true"></script>*@
+    <!-- <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" /> -->
+    <script src="~/js/wined/bootstrap/js/bootstrap.min.js" asp-append-version="true"></script>
+    <link href="~/js/wined/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" asp-append-version="true" />
 
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data">
-                <h4>
-                    Create a new account.
-                </h4>
-                <hr />
-                <div asp-validation-summary="All" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Input.FirstName"></label>
-                    <input asp-for="Input.FirstName" class="form-control" />
-                    <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
+
+    <link href="~/css/wined/stylesheet.css" rel="stylesheet" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/wined/themecss/lightbox.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/js/wined/jquery/magnific/magnific-popup.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/js/wined/jquery/owl-carousel/owl.carousel.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/js/wined/jquery/owl-carousel/owl.transitions.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/wined/themecss/carousel.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/wined/themecss/custom.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/wined/themecss/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="~/css/wined/themecss/animate.css" asp-append-version="true" />
+    <!--  -->
+
+    <script src="~/js/wined/lightbox/lightbox-2.6.min.js" asp-append-version="true"></script>
+    @*<script src="~/js/wined/common.js" asp-append-version="true"></script>*@
+    <!-- Theme Start -->
+
+    <script type="text/javascript" src="~/js/wined/themejs/custom.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jstree.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/carousel.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/productcarosel.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jquery.custom.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jquery.formalize.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/jquery.elevatezoom.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/bootstrap-notify.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/jquery/magnific/jquery.magnific-popup.min.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/themejs/owl.carousel.min.js" asp-append-version="true"></script>
+    <link rel="stylesheet" type="text/css" href="~/js/wined/jquery/magnific/magnific-popup.css" asp-append-version="true" />
+    <script src="~/js/wined/themejs/tabs.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/jquery.countdown.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/wined/jquery.countdown.min.js" asp-append-version="true"></script>
+    <!-- Theme End -->
+
+    <script src="~/js/wined/common.js" asp-append-version="true"></script>
+    <script src="~/js/wined/themejs/parallax.js" asp-append-version="true"></script>
+</head>
+
+
+<body class="account-register   layout-2 left-col">
+
+    <div id="breadcrumb">
+        <div class="container">
+            <div id="breadcrumb">
+                <div class="container">
+                    <ul class="breadcrumb">
+                        <li>
+                            <a asp-area="" asp-controller="Home" asp-action="Index">
+                                <i class="fa fa-home"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-controller="Home" asp-action="About">
+                                Account
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-controller="Home" asp-action="About">
+                                Register
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Input.LastName"></label>
-                    <input asp-for="Input.LastName" class="form-control" />
-                    <span asp-validation-for="Input.LastName" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Input.Email"></label>
-                    <input asp-for="Input.Email" class="form-control" />
-                    <span asp-validation-for="Input.Email" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Input.Password"></label>
-                    <input asp-for="Input.Password" class="form-control" />
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Input.ConfirmPassword"></label>
-                    <input asp-for="Input.ConfirmPassword" class="form-control" />
-                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-                </div>
-                @*<div class="form-group">
-            <label asp-for="Input.ImagePath"></label>
-            <input asp-for="Input.ImagePath" class="form-control" />
-            <span asp-validation-for="Input.ImagePath" class="text-danger"></span>
-        </div>*@
-                <button type="submit" class="btn btn-primary">
-                    Register
-                </button>
-            </form>
+            </div>
         </div>
-        @*<div class="col-md-6 col-md-offset-2">
-            <section>
-                <h4>
-                    Use another service to register.
-                </h4>
-                <hr />
-                @{
-                    if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                    {
-                        <div>
-                            <p>
-                                There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                                for details on setting up this ASP.NET application to support logging in via external services.
-                            </p>
-                        </div>
-                    }
-                    else
-                    {
-                        <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                            <div>
-                                <p>
-                                    @foreach (var provider in Model.ExternalLogins)
-                                    {
-                                        <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
-                                            @provider.DisplayName
-                                        </button>
-                                    }
-                                </p>
-                            </div>
-                        </form>
-                    }
-                }
-            </section>
-        </div>*@
     </div>
-</div>
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+    <div id="account-register" class="container">
+        <ul class="breadcrumb">
+            <li>
+                <a href="">
+                    <i class="fa fa-home"></i>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    Account
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    Register
+                </a>
+            </li>
+        </ul>
+        <div class="row">
+            <aside id="column-left" class="col-sm-3 hidden-xs">
+                <div class="box">
+                    <div class="box-heading">
+                        Account
+                    </div>
+                    <div class="list-group">
+
+                        <a href="" class="list-group-item">
+                            Login
+                        </a>
+                        <a href="" class="list-group-item">
+                            Register
+                        </a>
+                        <a href="" class="list-group-item">
+                            Forgotten Password
+                        </a>
+                        <a href="" class="list-group-item">
+                            My Account
+                        </a>
+                        <a href="" class="list-group-item">
+                            Address Book
+                        </a>
+                        <a href="" class="list-group-item">
+                            Wish List
+                        </a>
+                        <a href="" class="list-group-item">
+                            Order History
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <div id="content" class="col-sm-9">
+                <h1>
+                    Account
+                </h1>
+                <p>
+                    If you already have an account with us, please login at the <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=account/login">login page</a>.
+                </p>
+                <form action="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=account/register" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <fieldset id="account">
+                        <legend>Your Personal Details</legend>
+                        <div class="form-group required" style="display:  none ;">
+                            <label class="col-sm-2 control-label">Customer Group</label>
+                            <div class="col-sm-10">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="customer_group_id" value="1" checked="checked" />
+                                        Default
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label" for="input-firstname">First Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="firstname" value="" placeholder="First Name" id="input-firstname" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label" for="input-lastname">Last Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="lastname" value="" placeholder="Last Name" id="input-lastname" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label" for="input-email">
+                                Enter your e-mail
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="email" name="email" value="" placeholder="Enter your e-mail" id="input-email" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label" for="input-telephone">
+                                Telephone
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="tel" name="telephone" value="" placeholder="Telephone" id="input-telephone" class="form-control" />
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Your Password</legend>
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label" for="input-password">
+                                Password
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="password" name="password" value="" placeholder="Password" id="input-password" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label" for="input-confirm">
+                                Password Confirm
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="password" name="confirm" value="" placeholder="Password Confirm" id="input-confirm" class="form-control" />
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="buttons">
+                        <div class="pull-right">
+                            I have read and agree to the <a asp-area="" asp-controller="Home" asp-action="Privacy" class="agree">
+                                <b>
+                                    Privacy Policy
+                                </b>
+                            </a>
+                            <input type="checkbox" name="agree" value="1" />
+                            &nbsp;
+                            <input type="submit" value="Continue" class="btn btn-primary" />
+                        </div>
+                    </div>
+                    <br>
+                </form>
+            </div>
+        </div>
+        <br>
+        <br>
+    </div>
+</body>
+</html>
+
+@section Scripts{
+    <script type="text/javascript">
+    <!--
+        // Sort the custom fields
+        $('#account .form-group[data-sort]').detach().each(function () {
+            if ($(this).attr('data-sort') >= 0 && $(this).attr('data-sort') <= $('#account .form-group').length) {
+                $('#account .form-group').eq($(this).attr('data-sort')).before(this);
+            }
+
+            if ($(this).attr('data-sort') > $('#account .form-group').length) {
+                $('#account .form-group:last').after(this);
+            }
+
+            if ($(this).attr('data-sort') == $('#account .form-group').length) {
+                $('#account .form-group:last').after(this);
+            }
+
+            if ($(this).attr('data-sort') < -$('#account .form-group').length) {
+                $('#account .form-group:first').before(this);
+            }
+        });
+
+        $('input[name=\'customer_group_id\']').on('change', function () {
+            $.ajax({
+                url: 'index.php?route=account/register/customfield&customer_group_id=' + this.value,
+                dataType: 'json',
+                success: function (json) {
+                    $('.custom-field').hide();
+                    $('.custom-field').removeClass('required');
+
+                    for (i = 0; i < json.length; i++) {
+                        custom_field = json[i];
+
+                        $('#custom-field' + custom_field['custom_field_id']).show();
+
+                        if (custom_field['required']) {
+                            $('#custom-field' + custom_field['custom_field_id']).addClass('required');
+                        }
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                }
+            });
+        });
+
+        $('input[name=\'customer_group_id\']:checked').trigger('change');
+    </script>
+    <script type="text/javascript">
+        $('button[id^=\'button-custom-field\']').on('click', function () {
+            var element = this;
+
+            $('#form-upload').remove();
+
+            $('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>');
+
+            $('#form-upload input[name=\'file\']').trigger('click');
+
+            if (typeof timer != 'undefined') {
+                clearInterval(timer);
+            }
+
+            timer = setInterval(function () {
+                if ($('#form-upload input[name=\'file\']').val() != '') {
+                    clearInterval(timer);
+
+                    $.ajax({
+                        url: 'index.php?route=tool/upload',
+                        type: 'post',
+                        dataType: 'json',
+                        data: new FormData($('#form-upload')[0]),
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        beforeSend: function () {
+                            $(element).button('loading');
+                        },
+                        complete: function () {
+                            $(element).button('reset');
+                        },
+                        success: function (json) {
+                            $(element).parent().find('.text-danger').remove();
+
+                            if (json['error']) {
+                                $(node).parent().find('input').after('<div class="text-danger">' + json['error'] + '</div>');
+                            }
+
+                            if (json['success']) {
+                                alert(json['success']);
+
+                                $(element).parent().find('input').val(json['code']);
+                            }
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                        }
+                    });
+                }
+            }, 500);
+        });
+    </script>
+    <script type="text/javascript">
+<!--
+        $('.date').datetimepicker({
+            language: 'en-gb',
+            pickTime: false
+        });
+
+        $('.time').datetimepicker({
+            language: 'en-gb',
+            pickDate: false
+        });
+
+        $('.datetime').datetimepicker({
+            language: 'en-gb',
+            pickDate: true,
+            pickTime: true
+        });
+    </script>
 }
