@@ -110,25 +110,22 @@
                     </div>
                     <div class="list-group">
 
-                        <a href="" class="list-group-item">
+                        <a asp-area="Identity" asp-page="/Account/Login" class="list-group-item">
                             Login
                         </a>
-                        <a href="" class="list-group-item">
+                        <a asp-area="Identity" asp-page="/Account/Register" class="list-group-item">
                             Register
                         </a>
-                        <a href="" class="list-group-item">
+                        <a asp-area="Identity" asp-page="/Account/ForgotPassword" class="list-group-item">
                             Forgotten Password
                         </a>
-                        <a href="" class="list-group-item">
+                        <a asp-area="Identity" asp-page="/Account/Manage/Index" class="list-group-item">
                             My Account
                         </a>
-                        <a href="" class="list-group-item">
-                            Address Book
-                        </a>
-                        <a href="" class="list-group-item">
+                        <a asp-area="" asp-controller="Favorites" asp-action="All" class="list-group-item">
                             Wish List
                         </a>
-                        <a href="" class="list-group-item">
+                        <a asp-area="" asp-controller="Orders" asp-action="History" class="list-group-item">
                             Order History
                         </a>
                     </div>
@@ -141,13 +138,17 @@
                     Account
                 </h1>
                 <p>
-                    If you already have an account with us, please login at the <a href="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=account/login">login page</a>.
+                    If you already have an account with us, please login at the <a asp-area="Identity" asp-page="/Account/Login">login page</a>.
                 </p>
-                <form action="http://demos.thementic.com/opencart/OPC01/OPC0100034/index.php?route=account/register" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <form asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data" class="form-horizontal">
                     <fieldset id="account">
-                        <legend>Your Personal Details</legend>
+                        <legend>
+                            Your Personal Details
+                        </legend>
                         <div class="form-group required" style="display:  none ;">
-                            <label class="col-sm-2 control-label">Customer Group</label>
+                            <label class="col-sm-2 control-label">
+                                Customer Group
+                            </label>
                             <div class="col-sm-10">
                                 <div class="radio">
                                     <label>
@@ -157,52 +158,57 @@
                                 </div>
                             </div>
                         </div>
+                        <div asp-validation-summary="All" class="text-danger"></div>
                         <div class="form-group required">
-                            <label class="col-sm-2 control-label" for="input-firstname">First Name</label>
+                            <label asp-for="Input.FirstName" class="col-sm-2 control-label">
+                                First Name
+                            </label>
                             <div class="col-sm-10">
                                 <input type="text" name="firstname" value="" placeholder="First Name" id="input-firstname" class="form-control" />
                             </div>
+                            <span asp-validation-for="Input.FirstName"></span>
                         </div>
                         <div class="form-group required">
-                            <label class="col-sm-2 control-label" for="input-lastname">Last Name</label>
+                            <label asp-for="Input.LastName" class="col-sm-2 control-label">
+                                Last Name
+                            </label>
                             <div class="col-sm-10">
                                 <input type="text" name="lastname" value="" placeholder="Last Name" id="input-lastname" class="form-control" />
                             </div>
+                            <span asp-validation-for="Input.LastName"></span>
                         </div>
                         <div class="form-group required">
-                            <label class="col-sm-2 control-label" for="input-email">
+                            <label asp-for="Input.Email" class="col-sm-2 control-label">
                                 Enter your e-mail
                             </label>
                             <div class="col-sm-10">
                                 <input type="email" name="email" value="" placeholder="Enter your e-mail" id="input-email" class="form-control" />
                             </div>
-                        </div>
-                        <div class="form-group required">
-                            <label class="col-sm-2 control-label" for="input-telephone">
-                                Telephone
-                            </label>
-                            <div class="col-sm-10">
-                                <input type="tel" name="telephone" value="" placeholder="Telephone" id="input-telephone" class="form-control" />
-                            </div>
+                            <span asp-validation-for="Input.Email"></span>
                         </div>
                     </fieldset>
                     <fieldset>
-                        <legend>Your Password</legend>
+                        <legend>
+                            Your Password
+                        </legend>
+                        <div asp-validation-summary="All" class="text-danger"></div>
                         <div class="form-group required">
-                            <label class="col-sm-2 control-label" for="input-password">
+                            <label asp-for="Input.Password" class="col-sm-2 control-label">
                                 Password
                             </label>
                             <div class="col-sm-10">
                                 <input type="password" name="password" value="" placeholder="Password" id="input-password" class="form-control" />
                             </div>
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
                         </div>
                         <div class="form-group required">
-                            <label class="col-sm-2 control-label" for="input-confirm">
+                            <label asp-for="Input.ConfirmPassword" class="col-sm-2 control-label">
                                 Password Confirm
                             </label>
                             <div class="col-sm-10">
                                 <input type="password" name="confirm" value="" placeholder="Password Confirm" id="input-confirm" class="form-control" />
                             </div>
+                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                         </div>
                     </fieldset>
 

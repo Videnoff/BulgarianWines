@@ -89,25 +89,22 @@
                         Account
                     </div>
                     <div class="list-group">
-                        <a href="" class="list-group-item">
+                        <a asp-area="Identity" asp-page="/Account/Login" class="list-group-item">
                             Login
                         </a> 
-                        <a href="" class="list-group-item">
+                        <a asp-area="Identity" asp-page="/Account/Register" class="list-group-item">
                             Register
                         </a> 
-                        <a href="" class="list-group-item">
+                        <a asp-area="Identity" asp-page="/Account/ForgotPassword" class="list-group-item">
                             Forgotten Password
                         </a>
-                        <a href="" class="list-group-item">
+                        <a asp-area="Identity" asp-page="/Account/Manage/Index" class="list-group-item">
                             My Account
                         </a>
-                        <a href="" class="list-group-item">
-                            Address Book
-                        </a> 
-                        <a href="" class="list-group-item">
+                        <a asp-area="" asp-controller="Favorites" asp-action="All" class="list-group-item">
                             Wish List
                         </a> 
-                        <a href="" class="list-group-item">
+                        <a asp-area="" asp-controller="Orders" asp-action="History" class="list-group-item">
                             Order History
                         </a>
                     </div>
