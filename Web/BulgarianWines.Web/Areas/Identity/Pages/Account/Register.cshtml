@@ -138,7 +138,9 @@
                     Account
                 </h1>
                 <p>
-                    If you already have an account with us, please login at the <a asp-area="Identity" asp-page="/Account/Login">login page</a>.
+                    If you already have an account with us, please login at the <a asp-area="Identity" asp-page="/Account/Login">
+                        login page
+                    </a>.
                 </p>
                 <form asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data" class="form-horizontal">
                     <fieldset id="account">
@@ -206,7 +208,7 @@
                                 Password Confirm
                             </label>
                             <div class="col-sm-10">
-                                <input type="password" name="confirm" value="" placeholder="Password Confirm" id="input-confirm" class="form-control" />
+                                <input type="password" name="confirmPassword" value="" placeholder="Password Confirm" id="input-confirm" class="form-control" />
                             </div>
                             <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                         </div>

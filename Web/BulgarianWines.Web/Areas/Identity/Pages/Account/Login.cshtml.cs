@@ -103,7 +103,7 @@
                         userName = user.UserName;
                     }
 
-                    if (!user.EmailConfirmed && (await this.userManager.CheckPasswordAsync(user, this.Input.Password)))
+                    if (user is {EmailConfirmed: false} && (await this.userManager.CheckPasswordAsync(user, this.Input.Password)))
                     {
                         this.ModelState.AddModelError(string.Empty, "Email not confirmed yet");
                         return this.Page();

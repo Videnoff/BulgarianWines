@@ -130,18 +130,23 @@
 
         public async Task<IActionResult> Contact()
         {
-            var userName = this.User.Identity.Name;
-            var user = await this.userManager.FindByNameAsync(userName);
-            var email = await this.userManager.GetEmailAsync(user);
-
-            if (this.User.Identity.IsAuthenticated)
+            var userIdentity = this.User.Identity;
+            if (userIdentity != null)
             {
-                ContactFormViewModel model = new ContactFormViewModel()
+                var userName = userIdentity.Name;
+                if (userName != null)
                 {
-                    Email = email,
-                };
 
-                return this.View(model);
+                    var user = await this.userManager.FindByNameAsync(userName);
+                    var email = await this.userManager.GetEmailAsync(user);
+
+                    if (userIdentity.IsAuthenticated)
+                    {
+                        ContactFormViewModel model = new ContactFormViewModel() {Email = email,};
+
+                        return this.View(model);
+                    }
+                }
             }
 
             return this.View();
